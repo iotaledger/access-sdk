@@ -36,8 +36,6 @@ typedef struct {
 void access_init(access_ctx_t *access_context) {
   access_ctx_t_ *ctx = calloc(1, sizeof(access_ctx_t_));
 
-  timer_init();
-
   pep_init();
 
   *access_context = (access_ctx_t)ctx;
@@ -55,7 +53,6 @@ void access_deinit(access_ctx_t access_context) {
 
   // stop and terminate plugins
   pep_term();
-  timer_deinit();
 }
 
 int access_register_pep_plugin(access_ctx_t access_context, plugin_t *plugin) {

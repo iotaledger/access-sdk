@@ -27,8 +27,6 @@ typedef void *access_ctx_t;
 
 void access_init(access_ctx_t *access_context);
 
-void access_start(access_ctx_t access_context);
-
 void access_deinit(access_ctx_t access_context);
 
 int access_register_pep_plugin(access_ctx_t access_context, plugin_t *plugin);
