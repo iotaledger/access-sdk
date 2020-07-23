@@ -30,9 +30,6 @@ set(libs
   pep
   misc
   fastjson
-  platform_interface
-  pip_plugins
-  pep_plugins
   access_wallet)
 
 add_library(${target} access.c)
