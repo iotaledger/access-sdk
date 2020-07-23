@@ -28,7 +28,8 @@
 #include "pip.h"
 #include "timer.h"
 
-// placeholder context structure
+// currently empty
+// placeholder context structure for future use
 typedef struct {
 } access_ctx_t_;
 
