@@ -23,15 +23,3 @@ add_subdirectory(pdp)
 add_subdirectory(pip)
 add_subdirectory(pap)
 add_subdirectory(pep)
-
-set(target access_core)
-
-set(libs
-  pep
-  misc
-  fastjson
-  access_wallet)
-
-add_library(${target} access.c)
-target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(${target} PUBLIC ${libs})
