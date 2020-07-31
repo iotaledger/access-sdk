@@ -39,7 +39,7 @@ set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}/user
   ${CMAKE_CURRENT_SOURCE_DIR}/user/implementations/${user_management_implementation}
   ${CMAKE_CURRENT_SOURCE_DIR}/policy_loader
-  ${CMAKE_CURRENT_SOURCE_DIR}/../../access_plugins
+  ${CMAKE_CURRENT_SOURCE_DIR}/../../access_plugins_api
   ${sqlite3_SOURCE_DIR}
 )
 

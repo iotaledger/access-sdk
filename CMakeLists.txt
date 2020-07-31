@@ -21,12 +21,12 @@ cmake_minimum_required(VERSION 3.11)
 
 project(access_sdk)
 
-# fetch iota.c
+# fetch iota_common
 include(FetchContent)
 FetchContent_Declare(
-        iota.c
-        GIT_REPOSITORY http://github.com/iotaledger/iota.c.git
-        GIT_TAG 5d4433f7b936822f7d4c5bfc4f3e25899f7a3ce8
+  iota_common
+  GIT_REPOSITORY http://github.com/iotaledger/iota_common.git
+  GIT_TAG cf649803757abf48432d4fa60e9f27ac119bae5f
 )
 
 # fetch sqlite-amalgamation
@@ -50,8 +50,8 @@ endif()
 message(STATUS "Fetching sqlite3")
 FetchContent_MakeAvailable(sqlite3)
 
-message(STATUS "Fetching iota.c")
-FetchContent_MakeAvailable(iota.c)
+message(STATUS "Fetching iota_common")
+FetchContent_MakeAvailable(iota_common)
 
 # fetch external libs
 include(ExternalProject)
@@ -61,7 +61,6 @@ include_directories(utils/misc plugins/data/dataset)
 
 add_subdirectory(access_core_api)
 add_subdirectory(access_secure_network_api)
-add_subdirectory(access_plugins)
-add_subdirectory(access_wallet)
+add_subdirectory(access_plugins_api)
 add_subdirectory(access_utils)
 add_subdirectory(access_tests)
