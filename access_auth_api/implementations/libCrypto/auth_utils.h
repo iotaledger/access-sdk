@@ -19,46 +19,47 @@
 
 /****************************************************************************
  * \project IOTA Access
- * \file asn_utils.h
+ * \file auth_utils.h
  * \brief
  * Header file for ssl based authentication module
  *
- * @Author Djordje Golubovic
+ * @Author Djordje Golubovic, Bernardo Araujo
  *
  * \notes
  *
  * \history
  * 05.05.2020. Initial version.
+ * 01.08.2020. Renaming.
  ****************************************************************************/
 
-#ifndef ASN_UTILS_H_
-#define ASN_UTILS_H_
+#ifndef AUTH_UTILS_H_
+#define AUTH_UTILS_H_
 
 #include <stdlib.h>
 #include <string.h>
 
-#include "asn_debug.h"
-#include "asn_internal.h"
+#include "auth_debug.h"
+#include "auth_internal.h"
 
-void asnutils_randmem(unsigned char *randomString, int length);
+void auth_utils_randmem(unsigned char *randomString, int length);
 
-int asnutils_send_message_part(asn_ctx_t *session, void *data, unsigned short data_len);
+int auth_utils_send_message_part(auth_ctx_t *session, void *data, unsigned short data_len);
 
-int asnutils_send_message_part_bignum(asn_ctx_t *session, const BIGNUM *bn);
+int auth_utils_send_message_part_bignum(auth_ctx_t *session, const BIGNUM *bn);
 
-int asnutils_receive_message_part(asn_ctx_t *session, unsigned char **data, unsigned short *data_len);
+int auth_utils_receive_message_part(auth_ctx_t *session, unsigned char **data, unsigned short *data_len);
 
-int asnutils_compute_hash(asn_ctx_t *session, unsigned char *md, unsigned char *pkey, int pkey_len, const BIGNUM *e,
+int auth_utils_compute_hash(auth_ctx_t *session, unsigned char *md, unsigned char *pkey, int pkey_len, const BIGNUM *e,
                           const BIGNUM *pub_key);
 
-void asnutils_debug_binary(char *name, unsigned char *data, int len);
+void auth_utils_debug_binary(char *name, unsigned char *data, int len);
 
-void asnutils_generate_keys(asn_ctx_t *session);
+void auth_utils_generate_keys(auth_ctx_t *session);
 
-int asnutils_send(asn_ctx_t *session, const void *hmacKey, AES_KEY *aes_key, unsigned char *iv,
+int auth_utils_send(auth_ctx_t *session, const void *hmacKey, AES_KEY *aes_key, unsigned char *iv,
                   const unsigned char *data, unsigned short data_len);
 
-int asnutils_receive(asn_ctx_t *session, const void *hmacKey, AES_KEY *aes_key, unsigned char *iv, unsigned char **data,
+int auth_utils_receive(auth_ctx_t *session, const void *hmacKey, AES_KEY *aes_key, unsigned char *iv, unsigned char **data,
                      unsigned short *data_len);
 
-#endif /* ASN_UTILS_H_ */
+#endif /* AUTH_UTILS_H_ */

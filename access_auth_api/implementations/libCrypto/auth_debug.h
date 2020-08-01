@@ -19,7 +19,7 @@
 
 /****************************************************************************
  * \project IOTA Access
- * \file asn_debug.h
+ * \file auth_debug.h
  * \brief
  * Debug macros for this module
  *
@@ -29,10 +29,11 @@
  *
  * \history
  * 05.05.2020. Initial version.
+ * 01.08.2020. Renaming.
  ****************************************************************************/
 
-#ifndef ASN_DEBUG_H_
-#define ASN_DEBUG_H_
+#ifndef AUTH_DEBUG_H_
+#define AUTH_DEBUG_H_
 
 #include <errno.h>
 #include <stdio.h>
@@ -106,4 +107,4 @@
     goto error;                \
   }
 
-#endif /* ASN_DEBUG_H_ */
+#endif /* AUTH_DEBUG_H_ */

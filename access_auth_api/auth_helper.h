@@ -19,21 +19,22 @@
 
 /****************************************************************************
  * \project IOTA Access
- * \file asn_auth_helper.c
+ * \file auth_helper.c
  * \brief
- * Implementation of helper functions for pep module
+ * Implementation of helper authentication functions for pep module
  *
- * @Author Dejan Nedic
+ * @Author Dejan Nedic, Bernardo Araujo.
  *
  * \notes
  *
  * \history
  * 02.10.2018. Initial version.
+ * 01.08.2020. Renaming.
  ****************************************************************************/
-#ifndef ASN_AUTH_HELPER_H
-#define ASN_AUTH_HELPER_H
+#ifndef AUTH_HELPER_H
+#define AUTH_HELPER_H
 
-#include "asn_auth.h"
+#include "auth.h"
 
 #ifndef TRUE
 #define TRUE 1
@@ -66,7 +67,7 @@ typedef enum {
 } ADH_error_e;
 
 /**
- * @fn      int asnauth_send_decision(int decision, asn_ctx_t *session,
+ * @fn      int auth_send_decision(int decision, auth_ctx_t *session,
  * char* response, int size)
  *
  * @brief   Function that send decision to the client that requested action
@@ -78,10 +79,10 @@ typedef enum {
  *
  * @return  0 if it succeeds.
  */
-int asnauthhelper_send_decision(int decision, asn_ctx_t *session, char *response, int size);
+int auth_helper_send_decision(int decision, auth_ctx_t *session, char *response, int size);
 
 /**
- * @fn      int asnauthhelper_check_msg_format(const char *request)
+ * @fn      int authhelper_check_msg_format(const char *request)
  *
  * @brief   Function that checks that format of received request is in right
  *format and form
@@ -108,6 +109,6 @@ int asnauthhelper_send_decision(int decision, asn_ctx_t *session, char *response
  *			-9  if "get_auth_user_id" string is not found
  *			-10 if "register_user" string is not found
  */
-int asnauthhelper_check_msg_format(const char *request);
+int auth_helper_check_msg_format(const char *request);
 
 #endif

@@ -19,9 +19,9 @@
 
 /****************************************************************************
  * \project IOTA Access
- * \file asn_logger.h
+ * \file auth_logger.h
  * \brief
- * Logger for Access Secure Network module
+ * Logger for Authentication module
  *
  * @Author Bernardo Araujo
  *
@@ -29,11 +29,12 @@
  *
  * \history
  * 17.07.2020. Initial version.
+ * 01.08.2020. Renaming.
  ****************************************************************************/
 
 
-#ifndef ASN_LOGGER_H
-#define ASN_LOGGER_H
+#ifndef auth_LOGGER_H
+#define AUTH_LOGGER_ID
 
 #include "utils/logger_helper.h"
 
@@ -41,20 +42,20 @@
  * @brief logger ID
  *
  */
-extern logger_id_t asn_logger_id;
+extern logger_id_t auth_logger_id;
 
 /**
- * @brief init Access Secure Network logger
+ * @brief init Authentication logger
  *
  * @param[in] level A level of the logger
  *
  */
-void logger_init_asn(logger_level_t level);
+void logger_init_auth(logger_level_t level);
 
 /**
- * @brief cleanup Access Secure Network logger
+ * @brief cleanup Authentication logger
  *
  */
-void logger_destroy_asn();
+void logger_destroy_auth();
 
-#endif  // ASN_LOGGER_H
+#endif  // AUTH_LOGGER_ID

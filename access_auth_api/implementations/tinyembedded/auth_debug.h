@@ -1,29 +1,39 @@
-/****************************************************************************
- *  Copyright (c) 2020 IOTA Stiftung
+/*
+ * This file is part of the Frost distribution
+ * (https://github.com/xainag/frost)
  *
- *  All Rights Reserved
+ * Copyright (c) 2020 IOTA Stiftung
  *
- *  P R O P R I E T A R Y    &    C O N F I D E N T I A L
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *  -----------------------------------------------------
- *  https://xain.io/
- *  -----------------------------------------------------
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+ /****************************************************************************
  * \project IOTA Access
- * \file asn_debug.h
+ * \file auth_debug.h
  * \brief
  * Definition of macros used for debugging.
  *
- * @Author Nikola Kuzmanovic
+ * @Author Nikola Kuzmanovic, Bernardo Araujo
  *
  * \notes
  *
  * \history
  * 14.08.2018. Initial version.
+ * 01.08.2020. Renaming.
  ****************************************************************************/
 
-#ifndef ASN_DEBUG_H_
-#define ASN_DEBUG_H_
+#ifndef AUTH_DEBUG_H_
+#define AUTH_DEBUG_H_
 
 #include "dlog.h"
 
@@ -95,4 +105,4 @@
     goto error;                \
   }
 
-#endif /* ASN_DEBUG_H_ */
+#endif /* AUTH_DEBUG_H_ */
