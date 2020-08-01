@@ -1,35 +1,45 @@
+/*
+ * This file is part of the IOTA Access distribution
+ * (https://github.com/iotaledger/access)
+ *
+ * Copyright (c) 2020 IOTA Stiftung
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /****************************************************************************
- *  Copyright (c) 2020 IOTA Stiftung
- *
- *  All Rights Reserved
- *
- *  P R O P R I E T A R Y    &    C O N F I D E N T I A L
- *
- *  -----------------------------------------------------
- *  https://xain.io/
- *  -----------------------------------------------------
- *
  * \project IOTA Access
- * \file asn_utils.h
+ * \file auth_utils.h
  * \brief
- * Header file with function definitions for ASN authentication.
+ * Header file with function definitions for authentication.
  *
- * @Author Nikola Kuzmanovic
+ * @Author Nikola Kuzmanovic, Bernardo Araujo
  *
  * \notes
  *
  * \history
  * 14.08.2018. Initial version.
+ * 01.08.2020. Renaming.
  ****************************************************************************/
-#ifndef ASN_UTILS_H_
-#define ASN_UTILS_H_
+#ifndef AUTH_UTILS_H_
+#define AUTH_UTILS_H_
 
 #include <stdlib.h>
 
-#include "asn_internal.h"
+#include "auth_internal.h"
 
 /**
- * @fn  int asnutils_compute_signature_s(unsigned char *sig, asn_ctx_t
+ * @fn  int auth_utils_compute_signature_s(unsigned char *sig, auth_ctx_t
  * *session, unsigned char *hash);
  *
  * @brief   Function that signes data with private key
@@ -40,10 +50,10 @@
  *
  * @return  0 if it succeeds, 1 if it fails.
  */
-int asnutils_compute_signature_s(unsigned char *sig, asn_ctx_t *session, unsigned char *hash);
+int auth_utils_compute_signature_s(unsigned char *sig, auth_ctx_t *session, unsigned char *hash);
 
 /**
- * @fn  int asnutils_verify_signature(unsigned char *sig, unsigned char
+ * @fn  int auth_utils_verify_signature(unsigned char *sig, unsigned char
  * *public_key, unsigned char *hash);
  *
  * @brief   Function that verifies signed date with public key
@@ -54,10 +64,10 @@ int asnutils_compute_signature_s(unsigned char *sig, asn_ctx_t *session, unsigne
  *
  * @return  0 if it succeeds, 1 if it fails.
  */
-int asnutils_verify_signature(unsigned char *sig, unsigned char *public_key, unsigned char *hash);
+int auth_utils_verify_signature(unsigned char *sig, unsigned char *public_key, unsigned char *hash);
 
 /**
- * @fn  int asnutils_dh_generate_keys(asn_ctx_t *session);
+ * @fn  int auth_utils_dh_generate_keys(auth_ctx_t *session);
  *
  * @brief   Function that generates Diffie-Hellman private and public keys
  *
@@ -66,10 +76,10 @@ int asnutils_verify_signature(unsigned char *sig, unsigned char *public_key, uns
  *
  * @return  0 if it succeeds, 1 if it fails.
  */
-int asnutils_dh_generate_keys(asn_ctx_t *session);
+int auth_utils_dh_generate_keys(auth_ctx_t *session);
 
 /**
- * @fn  int asnutils_dh_compute_secret_k(asn_ctx_t *session,  const unsigned
+ * @fn  int auth_utils_dh_compute_secret_k(auth_ctx_t *session,  const unsigned
  * char *public_key);
  *
  * @brief   Function that computes shared secret from Diffie-Hellman key
@@ -80,10 +90,10 @@ int asnutils_dh_generate_keys(asn_ctx_t *session);
  *
  * @return  0 if it succeeds, 1 if it fails.
  */
-int asnutils_dh_compute_secret_k(asn_ctx_t *session, const unsigned char *public_key);
+int auth_utils_dh_compute_secret_k(auth_ctx_t *session, const unsigned char *public_key);
 
 /**
- * @fn  int asnutils_compute_session_identifier_h(unsigned char *exchange_hash,
+ * @fn  int auth_utils_compute_session_identifier_h(unsigned char *exchange_hash,
  * char *vc, char *vs, char *ks, unsigned char *c_public, unsigned char
  * *s_public, unsigned char *secretK);
  *
@@ -99,12 +109,12 @@ int asnutils_dh_compute_secret_k(asn_ctx_t *session, const unsigned char *public
  *
  * @return  0 if it succeeds, 1 if it fails.
  */
-int asnutils_compute_session_identifier_h(unsigned char *exchange_hash, unsigned char *vc, unsigned char *vs,
+int auth_utils_compute_session_identifier_h(unsigned char *exchange_hash, unsigned char *vc, unsigned char *vs,
                                           unsigned char *k, unsigned char *c_public, unsigned char *s_public,
                                           unsigned char *secretK);
 
 /**
- * @fn  int asnutils_generate_enc_auth_keys(unsigned char *hash, char
+ * @fn  int auth_utils_generate_enc_auth_keys(unsigned char *hash, char
  * *shared_secret_K, char *shared_H, char magic_letter);
  *
  * @brief   Function that computes AES keys
@@ -117,11 +127,11 @@ int asnutils_compute_session_identifier_h(unsigned char *exchange_hash, unsigned
  *
  * @return  0 if it succeeds, 1 if it fails.
  */
-int asnutils_generate_enc_auth_keys(unsigned char *hash, unsigned char *shared_secret_K, unsigned char *shared_H,
+int auth_utils_generate_enc_auth_keys(unsigned char *hash, unsigned char *shared_secret_K, unsigned char *shared_H,
                                     char magic_letter);
 
 /**
- * @fn  int asnutils_concatenate_strings(unsigned char *concatenatedString,
+ * @fn  int auth_utils_concatenate_strings(unsigned char *concatenatedString,
  * unsigned char *str1, int str1_l, unsigned char * str2, int str2_l);
  *
  * @brief   Function that takes two strings and concatenates them
@@ -134,11 +144,11 @@ int asnutils_generate_enc_auth_keys(unsigned char *hash, unsigned char *shared_s
  *
  * @return  0 if it succeeds, 1 if it fails.
  */
-int asnutils_concatenate_strings(unsigned char *concatenatedString, unsigned char *str1, int str1_l,
+int auth_utils_concatenate_strings(unsigned char *concatenatedString, unsigned char *str1, int str1_l,
                                  unsigned char *str2, int str2_l);
 
 /**
- * @fn  int asnutils_read(asn_ctx_t *session, unsigned char **msg, int
+ * @fn  int auth_utils_read(auth_ctx_t *session, unsigned char **msg, int
  * length);
  *
  * @brief   Function that reads messages
@@ -149,10 +159,10 @@ int asnutils_concatenate_strings(unsigned char *concatenatedString, unsigned cha
  *
  * @return  0 if it succeeds, 1 if it fails.
  */
-int asnutils_read(asn_ctx_t *session, unsigned char **msg, unsigned short *message_length);
+int auth_utils_read(auth_ctx_t *session, unsigned char **msg, unsigned short *message_length);
 
 /**
- * @fn  int asnutils_write(asn_ctx_t *session, unsigned char *msg, int
+ * @fn  int auth_utils_write(auth_ctx_t *session, unsigned char *msg, int
  * length);
  *
  * @brief   Function that writes messages
@@ -163,10 +173,10 @@ int asnutils_read(asn_ctx_t *session, unsigned char **msg, unsigned short *messa
  *
  * @return  0 if it succeeds, 1 if it fails.
  */
-int asnutils_write(asn_ctx_t *session, const unsigned char *msg, unsigned short message_length);
+int auth_utils_write(auth_ctx_t *session, const unsigned char *msg, unsigned short message_length);
 
 /**
- * @fn  int asnutils_set_option(asn_ctx_t *session, const char *key,
+ * @fn  int auth_utils_set_option(auth_ctx_t *session, const char *key,
  * unsigned char *value)
  *
  * @brief   Function that writes messages
@@ -177,6 +187,6 @@ int asnutils_write(asn_ctx_t *session, const unsigned char *msg, unsigned short 
  *
  * @return  0 if it succeeds, 1 if it fails.
  */
-int asnutils_set_option(asn_ctx_t *session, const char *key, unsigned char *value);
+int auth_utils_set_option(auth_ctx_t *session, const char *key, unsigned char *value);
 
-#endif /* ASN_UTILS_H_ */
+#endif /* AUTH_UTILS_H_ */

@@ -19,26 +19,27 @@
 
 /****************************************************************************
  * \project IOTA Access
- * \file asn_auth.h
+ * \file auth.h
  * \brief
  *    Authentication module API
  *
- * @Author Nikola Kuzmanovic
+ * @Author Nikola Kuzmanovic, Bernardo Araujo
  *
  * \notes
  *
  * \history
  * 31.07.2018. Initial version.
+ * 01.08.2020. Renaming.
  ****************************************************************************/
 
-#ifndef ASN_AUTH_H
-#define ASN_AUTH_H
+#ifndef AUTH_H
+#define AUTH_H
 
 #include <stdio.h>
 
-/* ASN_ERRORS */
-#define ASN_OK 0
-#define ASN_ERROR 1
+/* AUTH_ERRORS */
+#define AUTH_OK 0
+#define AUTH_ERROR 1
 
 #define AUTH_SERVER_PORT 9998
 
@@ -46,38 +47,38 @@
 extern "C" {
 #endif
 
-typedef ssize_t f_asn_ext_t(void *, void *, unsigned short);
+typedef ssize_t f_auth_ext_t(void *, void *, unsigned short);
 
-typedef int f_asn_key_verify(unsigned char *, int);
+typedef int f_auth_key_verify(unsigned char *, int);
 
-typedef struct asn_struct asn_struct_t;
+typedef struct auth_struct auth_struct_t;
 
 typedef struct {
-  asn_struct_t *internal;
+  auth_struct_t *internal;
 
   void *ext; /* External data structure */
 
-  f_asn_ext_t *f_write;
-  f_asn_ext_t *f_read;
+  f_auth_ext_t *f_write;
+  f_auth_ext_t *f_read;
 
-  f_asn_key_verify *f_verify;
+  f_auth_key_verify *f_verify;
 
   int status;
-} asn_ctx_t;
+} auth_ctx_t;
 
-int asnauth_init_client(asn_ctx_t *, void *);
-int asnauth_init_server(asn_ctx_t *, void *);
+int auth_init_client(auth_ctx_t *, void *);
+int auth_init_server(auth_ctx_t *, void *);
 
-int asnauth_set_option(asn_ctx_t *, const char *, unsigned char *);
+int auth_set_option(auth_ctx_t *, const char *, unsigned char *);
 
-int asnauth_authenticate(asn_ctx_t *);
+int auth_authenticate(auth_ctx_t *);
 
-int asnauth_send(asn_ctx_t *, const unsigned char *, unsigned short);
+int auth_send(auth_ctx_t *, const unsigned char *, unsigned short);
 
-int asnauth_receive(asn_ctx_t *, unsigned char **, unsigned short *);
+int auth_receive(auth_ctx_t *, unsigned char **, unsigned short *);
 
-int asnauth_release(asn_ctx_t *);
+int auth_release(auth_ctx_t *);
 #ifdef __cplusplus
 };
 #endif
-#endif /* ASN_AUTH_H */
+#endif /* AUTH_H */

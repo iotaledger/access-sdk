@@ -19,13 +19,13 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-set(target asn_test)
+set(target auth_test)
 
 set(sources
-  asn_test.c)
+  auth_test.c)
 
 set(libs
-  asn)
+  auth)
 
 add_executable(${target} ${sources})
 target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

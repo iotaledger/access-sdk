@@ -19,20 +19,21 @@
 
 /****************************************************************************
  * \project IOTA Access
- * \file asn_utils.c
+ * \file auth_utils.c
  * \brief
  * Implementation of key exchange and encryption key computation
  *
- * @Author Dejan Nedic, Milivoje Knezevic
+ * @Author Dejan Nedic, Milivoje Knezevic, Bernardo Araujo.
  *
  * \notes
  *
  * \history
  * 31.07.2018. Initial version.
  * 06.12.2018. Implemented ed25519 signature algorithm
+ * 01.08.2020. Renaming.
  ****************************************************************************/
-#include "asn_utils.h"
-#include "asn_logger.h"
+#include "auth_utils.h"
+#include "auth_logger.h"
 
 #define ENC_DATA_LEN 2
 #define SEC_NUM_LEN 1
@@ -43,23 +44,23 @@
 ///
 //////////////////////////////////////
 
-int asnutils_dh_generate_keys(asn_ctx_t *session) {
+int auth_utils_dh_generate_keys(auth_ctx_t *session) {
   static const unsigned char basepoint[DH_PRIVATE_L] = {9};
   int r = rand();
 
   // TODO: From where this magic numbers came from?
-  memset(ASN_GET_INTERNAL_DH_PRIVATE(session), r, DH_PRIVATE_L);
-  ASN_GET_INTERNAL_DH_PRIVATE(session)[0] &= 248;
-  ASN_GET_INTERNAL_DH_PRIVATE(session)[31] &= 127;
-  ASN_GET_INTERNAL_DH_PRIVATE(session)[31] |= 64;
+  memset(AUTH_GET_INTERNAL_DH_PRIVATE(session), r, DH_PRIVATE_L);
+  AUTH_GET_INTERNAL_DH_PRIVATE(session)[0] &= 248;
+  AUTH_GET_INTERNAL_DH_PRIVATE(session)[31] &= 127;
+  AUTH_GET_INTERNAL_DH_PRIVATE(session)[31] |= 64;
 
-  curve25519_donna(ASN_GET_INTERNAL_DH_PUBLIC(session), ASN_GET_INTERNAL_DH_PRIVATE(session), basepoint);
+  curve25519_donna(AUTH_GET_INTERNAL_DH_PUBLIC(session), AUTH_GET_INTERNAL_DH_PRIVATE(session), basepoint);
 
   return 0;
 }
 
-int asnutils_dh_compute_secret_k(asn_ctx_t *session, const unsigned char *public_key) {
-  curve25519_donna(ASN_GET_INTERNAL_SECREY_K(session), ASN_GET_INTERNAL_DH_PRIVATE(session), public_key);
+int auth_utils_dh_compute_secret_k(auth_ctx_t *session, const unsigned char *public_key) {
+  curve25519_donna(AUTH_GET_INTERNAL_SECREY_K(session), AUTH_GET_INTERNAL_DH_PRIVATE(session), public_key);
 
   return 0;
 }
@@ -73,7 +74,7 @@ static int hash(unsigned char *exchange_hash, unsigned char *message, int messag
   return 0;
 }
 
-int asnutils_compute_session_identifier_h(unsigned char *exchange_hash, unsigned char *vc, unsigned char *vs,
+int auth_utils_compute_session_identifier_h(unsigned char *exchange_hash, unsigned char *vc, unsigned char *vs,
                                           unsigned char *k, unsigned char *c_public, unsigned char *s_public,
                                           unsigned char *secretK) {
   int CONCATINATED_STRING_L = 2 * IDENTIFICATION_STRING_L + PUBLIC_KEY_L + 2 * DH_PUBLIC_L + DH_SHARED_SECRET_L;
@@ -114,7 +115,7 @@ int asnutils_compute_session_identifier_h(unsigned char *exchange_hash, unsigned
   return 0;
 }
 
-int asnutils_generate_enc_auth_keys(unsigned char *hash, unsigned char *shared_secret_K, unsigned char *shared_H,
+int auth_utils_generate_enc_auth_keys(unsigned char *hash, unsigned char *shared_secret_K, unsigned char *shared_H,
                                     char magic_letter) {
   SHA256_CTX ctx;
   unsigned char contatinated_string[DH_SHARED_SECRET_L + EXCHANGE_HASH_L + 1];
@@ -136,27 +137,27 @@ int asnutils_generate_enc_auth_keys(unsigned char *hash, unsigned char *shared_s
   return 0;
 }
 
-int asnutils_compute_signature_s(unsigned char *sig, asn_ctx_t *session, unsigned char *hash) {
+int auth_utils_compute_signature_s(unsigned char *sig, auth_ctx_t *session, unsigned char *hash) {
   unsigned long long smlen;
 
-  crypto_sign(sig, &smlen, hash, DH_SHARED_SECRET_L, ASN_GET_INTERNAL_PRIVATE_KEY(session));
+  crypto_sign(sig, &smlen, hash, DH_SHARED_SECRET_L, AUTH_GET_INTERNAL_PRIVATE_KEY(session));
 
-  log_info(asn_logger_id, "[%s:%d] SMLEN: %d\n", __func__, __LINE__, smlen);
+  log_info(auth_logger_id, "[%s:%d] SMLEN: %d\n", __func__, __LINE__, smlen);
   return 0;
 }
 
-int asnutils_verify_signature(unsigned char *sig, unsigned char *public_key, unsigned char *hash) {
+int auth_utils_verify_signature(unsigned char *sig, unsigned char *public_key, unsigned char *hash) {
   unsigned long long mlen;
   int ret = crypto_sign_open(hash, &mlen, sig, SIGNED_MESSAGE_L, public_key);
 
   if (ret == -1) {
-    log_error(asn_logger_id, "[%s:%d] Verification failed.\n", __func__, __LINE__);
+    log_error(auth_logger_id, "[%s:%d] Verification failed.\n", __func__, __LINE__);
   }
 
   return -ret;
 }
 
-int asnutils_concatenate_strings(unsigned char *concatenatedString, unsigned char *str1, int str1_l,
+int auth_utils_concatenate_strings(unsigned char *concatenatedString, unsigned char *str1, int str1_l,
                                  unsigned char *str2, int str2_l) {
   for (int i = 0; i < str1_l; i++) {
     concatenatedString[i] = str1[i];
@@ -229,7 +230,7 @@ static void hmac_sha256(unsigned char *mac, unsigned char *integrityKey, uint16_
   sha256_final(&ss, mac);
 }
 
-int asnutils_write(asn_ctx_t *session, const unsigned char *msg, unsigned short message_length) {
+int auth_utils_write(auth_ctx_t *session, const unsigned char *msg, unsigned short message_length) {
   // TODO: From where this magic numbers came from?
   unsigned short encrypted_data_length =
       ((message_length + 2 + 15) / 16) * 16;  // determine size of encrypted data with padding
@@ -238,7 +239,7 @@ int asnutils_write(asn_ctx_t *session, const unsigned char *msg, unsigned short 
 
   unsigned char buffer[buffer_length];
 
-  buffer[0] = ASN_GET_INTERNAL_SEQ_NUM_ENCRYPT(session);
+  buffer[0] = AUTH_GET_INTERNAL_SEQ_NUM_ENCRYPT(session);
   buffer[1] = ((encrypted_data_length >> 8));
   buffer[2] = (encrypted_data_length);
   buffer[3] = ((message_length >> 8));
@@ -252,9 +253,9 @@ int asnutils_write(asn_ctx_t *session, const unsigned char *msg, unsigned short 
     buffer[i + 3] = 0;
   }
 
-  aes_encrypt(&ASN_GET_INTERNAL_CTX_ENCRYPT(session), buffer + 3, encrypted_data_length);
+  aes_encrypt(&AUTH_GET_INTERNAL_CTX_ENCRYPT(session), buffer + 3, encrypted_data_length);
 
-  hmac_sha256(mac, ASN_GET_INTERNAL_INTEGRITY_KEY_ENCRYPTION(session), INTEGRITY_KEY_L, buffer,
+  hmac_sha256(mac, AUTH_GET_INTERNAL_INTEGRITY_KEY_ENCRYPTION(session), INTEGRITY_KEY_L, buffer,
               encrypted_data_length + 3);
 
   for (int i = 0; i < MAC_HASH_L; i++) {
@@ -263,7 +264,7 @@ int asnutils_write(asn_ctx_t *session, const unsigned char *msg, unsigned short 
 
   int n = session->f_write(session->ext, buffer, buffer_length);
 
-  ASN_GET_INTERNAL_SEQ_NUM_ENCRYPT(session)++;
+  AUTH_GET_INTERNAL_SEQ_NUM_ENCRYPT(session)++;
 
   if (n <= 0) {
     return 1;
@@ -272,7 +273,7 @@ int asnutils_write(asn_ctx_t *session, const unsigned char *msg, unsigned short 
   return 0;
 }
 
-int asnutils_read(asn_ctx_t *session, unsigned char **msg, unsigned short *message_length) {
+int auth_utils_read(auth_ctx_t *session, unsigned char **msg, unsigned short *message_length) {
   unsigned short encrypted_data_length = 0;
 
   unsigned char sequence_number = 0;
@@ -287,7 +288,7 @@ int asnutils_read(asn_ctx_t *session, unsigned char **msg, unsigned short *messa
 
   sequence_number = buffer[0];
 
-  if (sequence_number != ASN_GET_INTERNAL_SEQ_NUM_DECRYPT(session)) {
+  if (sequence_number != AUTH_GET_INTERNAL_SEQ_NUM_DECRYPT(session)) {
     return 1;
   }
   encrypted_data_length = buffer[1];
@@ -297,7 +298,7 @@ int asnutils_read(asn_ctx_t *session, unsigned char **msg, unsigned short *messa
   encrypted_msg_buffer = malloc(encrypted_data_length + 3);
 
   if (NULL == encrypted_msg_buffer) {
-    log_error(asn_logger_id, "[%s:%d] MALLOC failed encrypted_msg_buffer.\n", __func__, __LINE__);
+    log_error(auth_logger_id, "[%s:%d] MALLOC failed encrypted_msg_buffer.\n", __func__, __LINE__);
     return 1;
   }
 
@@ -309,11 +310,11 @@ int asnutils_read(asn_ctx_t *session, unsigned char **msg, unsigned short *messa
 
   session->f_read(session->ext, received_mac, MAC_HASH_L);
 
-  hmac_sha256(mac, ASN_GET_INTERNAL_INTEGRITY_KEY_DECRYPTION(session), INTEGRITY_KEY_L, encrypted_msg_buffer,
+  hmac_sha256(mac, AUTH_GET_INTERNAL_INTEGRITY_KEY_DECRYPTION(session), INTEGRITY_KEY_L, encrypted_msg_buffer,
               encrypted_data_length + 3);
 
   if (memcmp(mac, received_mac, MAC_HASH_L) == 0) {
-    aes_decrypt(&ASN_GET_INTERNAL_CTX_DECRYPT(session), encrypted_msg_buffer + 3, encrypted_data_length);
+    aes_decrypt(&AUTH_GET_INTERNAL_CTX_DECRYPT(session), encrypted_msg_buffer + 3, encrypted_data_length);
 
     *message_length = encrypted_msg_buffer[3];
     *message_length *= 256;
@@ -329,28 +330,28 @@ int asnutils_read(asn_ctx_t *session, unsigned char **msg, unsigned short *messa
 
       free(encrypted_msg_buffer);
       *msg = ss;
-      ASN_GET_INTERNAL_SEQ_NUM_DECRYPT(session)++;
+      AUTH_GET_INTERNAL_SEQ_NUM_DECRYPT(session)++;
     } else {
-      log_error(asn_logger_id, "[%s:%d] MALLOC failed ss.\n", __func__, __LINE__);
+      log_error(auth_logger_id, "[%s:%d] MALLOC failed ss.\n", __func__, __LINE__);
       return 1;
     }
   } else {
-    log_error(asn_logger_id, "[%s:%d] Data integrity not confirmed.\n", __func__, __LINE__);
+    log_error(auth_logger_id, "[%s:%d] Data integrity not confirmed.\n", __func__, __LINE__);
     return 1;
   }
 
   return 0;
 }
 
-int asnutils_set_option(asn_ctx_t *session, const char *key, unsigned char *value) {
-  int ret = ASN_ERROR;
+int auth_utils_set_option(auth_ctx_t *session, const char *key, unsigned char *value) {
+  int ret = AUTH_ERROR;
 
   if ((strlen(key) == strlen("private")) && (0 == memcmp(key, "private", strlen("private")))) {
-    memcpy(ASN_GET_INTERNAL_PRIVATE_KEY(session), value, PRIVATE_KEY_L);
-    ret = ASN_OK;
+    memcpy(AUTH_GET_INTERNAL_PRIVATE_KEY(session), value, PRIVATE_KEY_L);
+    ret = AUTH_OK;
   } else if ((strlen(key) == strlen("public")) && (0 == memcmp(key, "public", strlen("public")))) {
-    memcpy(ASN_GET_INTERNAL_PUBLIC_KEY(session), value, PUBLIC_KEY_L);
-    ret = ASN_OK;
+    memcpy(AUTH_GET_INTERNAL_PUBLIC_KEY(session), value, PUBLIC_KEY_L);
+    ret = AUTH_OK;
   }
 
   return ret;

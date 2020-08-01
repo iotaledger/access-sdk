@@ -19,24 +19,25 @@
 
 /****************************************************************************
  * \project IOTA Access
- * \file asn_client.c
+ * \file auth_client.c
  * \brief
- * Implementation of client side ASN authentication
+ * Implementation of client side authentication
  *
- * @Author Dejan Nedic, Milivoje Knezevic
+ * @Author Dejan Nedic, Milivoje Knezevic, Bernardo Araujo
  *
  * \notes
  *
  * \history
  * 31.07.2018. Initial version.
  * 06.12.2018. Implemented ed25519 signature algorithm
+ * 01.08.2020. Renaming.
  ****************************************************************************/
 
 /////////////////
 /// Includes
 /////////////////
-#include "asn_internal.h"
-#include "asn_utils.h"
+#include "auth_internal.h"
+#include "auth_utils.h"
 
 /////////////////////////////////////
 /// Macros and defines
@@ -54,7 +55,7 @@
 /// Client authantication function declarations and definitions
 //////////////////////////////////////////////////////////////////
 
-int auth_client_init(asn_ctx_t *session) {
+int auth_client_init(auth_ctx_t *session) {
   int next_stage = AUTH_ERROR;
 
   unsigned char public[PUBLIC_KEY_L];
@@ -63,10 +64,10 @@ int auth_client_init(asn_ctx_t *session) {
   // generate private and public key on client side
   crypto_sign_keypair(public, private);
 
-  memcpy(ASN_GET_INTERNAL_PUBLIC_KEY(session), public, PUBLIC_KEY_L);
-  memcpy(ASN_GET_INTERNAL_PRIVATE_KEY(session), private, PRIVATE_KEY_L);
+  memcpy(AUTH_GET_INTERNAL_PUBLIC_KEY(session), public, PUBLIC_KEY_L);
+  memcpy(AUTH_GET_INTERNAL_PRIVATE_KEY(session), private, PRIVATE_KEY_L);
 
-  memcpy(ASN_GET_INTERNAL_ID_V(session), "client", IDENTIFICATION_STRING_L);
+  memcpy(AUTH_GET_INTERNAL_ID_V(session), "client", IDENTIFICATION_STRING_L);
   next_stage = AUTH_COMPUTE;
   return next_stage;
 }
@@ -78,17 +79,17 @@ int auth_client_init(asn_ctx_t *session) {
  *
  * */
 
-int auth_client_generate(asn_ctx_t *session) {
+int auth_client_generate(auth_ctx_t *session) {
   int next_stage = AUTH_ERROR;
 
   // Client generates p, g, vc and x and calculates e = gx mod p.
-  int keys_generated = asnutils_dh_generate_keys(session);
+  int keys_generated = authutils_dh_generate_keys(session);
 
   // Client sends e to Server.
-  int write_message = session->f_write(session->ext, ASN_GET_INTERNAL_DH_PUBLIC(session), DH_PUBLIC_L);
+  int write_message = session->f_write(session->ext, AUTH_GET_INTERNAL_DH_PUBLIC(session), DH_PUBLIC_L);
 
-  ASN_GET_INTERNAL_SEQ_NUM_ENCRYPT(session) = 1;
-  ASN_GET_INTERNAL_SEQ_NUM_DECRYPT(session) = 1;
+  AUTH_GET_INTERNAL_SEQ_NUM_ENCRYPT(session) = 1;
+  AUTH_GET_INTERNAL_SEQ_NUM_DECRYPT(session) = 1;
 
   if ((keys_generated == 0) && (write_message == DH_PUBLIC_L)) {
     next_stage = AUTH_VERIFY;
@@ -109,7 +110,7 @@ int auth_client_generate(asn_ctx_t *session) {
  *
  * */
 
-int auth_client_verify(asn_ctx_t *session) {
+int auth_client_verify(auth_ctx_t *session) {
   int next_stage = AUTH_ERROR;
 
   int SIZE_OF_READ_BUFFER = PUBLIC_KEY_L + DH_PUBLIC_L + SIGNED_MESSAGE_L;  // size of ks + f + s
@@ -137,27 +138,27 @@ int auth_client_verify(asn_ctx_t *session) {
   int key_verified = session->f_verify(received_dh_public, PUBLIC_KEY_L);
 
   // Client computes k = fx mod p
-  int secret_computed = asnutils_dh_compute_secret_k(session, received_dh_public);
+  int secret_computed = auth_utils_dh_compute_secret_k(session, received_dh_public);
 
   // Client computes h  = hash( vc || vs || ks || e || f || k )
-  int h_computed = asnutils_compute_session_identifier_h(
-      ASN_GET_INTERNAL_EXCHANGE_HASH(session), ASN_GET_INTERNAL_ID_V(session), vs, server_public_key,
-      ASN_GET_INTERNAL_DH_PUBLIC(session), received_dh_public, ASN_GET_INTERNAL_SECREY_K(session));
+  int h_computed = auth_utils_compute_session_identifier_h(
+      AUTH_GET_INTERNAL_EXCHANGE_HASH(session), AUTH_GET_INTERNAL_ID_V(session), vs, server_public_key,
+      AUTH_GET_INTERNAL_DH_PUBLIC(session), received_dh_public, AUTH_GET_INTERNAL_SECREY_K(session));
 
   // Client verifies the signature s on h
   int signature_verified =
-      asnutils_verify_signature(s_signed, server_public_key, ASN_GET_INTERNAL_EXCHANGE_HASH(session));
+      auth_utils_verify_signature(s_signed, server_public_key, AUTH_GET_INTERNAL_EXCHANGE_HASH(session));
 
   // Client computes hc = hash( vc || vs || kc || e || f || k )
-  int computed_H = asnutils_compute_session_identifier_h(
-      ASN_GET_INTERNAL_EXCHANGE_HASH2(session), ASN_GET_INTERNAL_ID_V(session), vs,
-      ASN_GET_INTERNAL_PUBLIC_KEY(session), ASN_GET_INTERNAL_DH_PUBLIC(session), received_dh_public,
-      ASN_GET_INTERNAL_SECREY_K(session));
+  int computed_H = auth_utils_compute_session_identifier_h(
+      AUTH_GET_INTERNAL_EXCHANGE_HASH2(session), AUTH_GET_INTERNAL_ID_V(session), vs,
+      AUTH_GET_INTERNAL_PUBLIC_KEY(session), AUTH_GET_INTERNAL_DH_PUBLIC(session), received_dh_public,
+      AUTH_GET_INTERNAL_SECREY_K(session));
 
   // Client computes signature sc = sign( skc, hc )
-  int message_signed = asnutils_compute_signature_s(signature, session, ASN_GET_INTERNAL_EXCHANGE_HASH2(session));
+  int message_signed = auth_utils_compute_signature_s(signature, session, AUTH_GET_INTERNAL_EXCHANGE_HASH2(session));
 
-  asnutils_concatenate_strings(message, ASN_GET_INTERNAL_PUBLIC_KEY(session), PUBLIC_KEY_L, signature,
+  auth_utils_concatenate_strings(message, AUTH_GET_INTERNAL_PUBLIC_KEY(session), PUBLIC_KEY_L, signature,
                                SIGNED_MESSAGE_L);
   ssize_t message_written = session->f_write(session->ext, message, PUBLIC_KEY_L + SIGNED_MESSAGE_L);
 
@@ -186,30 +187,30 @@ int auth_client_verify(asn_ctx_t *session) {
  *
  * */
 
-int auth_client_finish(asn_ctx_t *session) {
+int auth_client_finish(auth_ctx_t *session) {
   int next_stage = AUTH_ERROR;
 
   int generated = 0;
 
   // Client generates AES keys.
   generated +=
-      asnutils_generate_enc_auth_keys(ASN_GET_INTERNAL_IV_ENCRYPTION(session), ASN_GET_INTERNAL_SECREY_K(session),
-                                      ASN_GET_INTERNAL_EXCHANGE_HASH(session), 'A');
+      auth_utils_generate_enc_auth_keys(AUTH_GET_INTERNAL_IV_ENCRYPTION(session), AUTH_GET_INTERNAL_SECREY_K(session),
+                                      AUTH_GET_INTERNAL_EXCHANGE_HASH(session), 'A');
   generated +=
-      asnutils_generate_enc_auth_keys(ASN_GET_INTERNAL_IV_DECRYPTION(session), ASN_GET_INTERNAL_SECREY_K(session),
-                                      ASN_GET_INTERNAL_EXCHANGE_HASH(session), 'B');
+      auth_utils_generate_enc_auth_keys(AUTH_GET_INTERNAL_IV_DECRYPTION(session), AUTH_GET_INTERNAL_SECREY_K(session),
+                                      AUTH_GET_INTERNAL_EXCHANGE_HASH(session), 'B');
   generated +=
-      asnutils_generate_enc_auth_keys(ASN_GET_INTERNAL_ENCRYPTION_KEY(session), ASN_GET_INTERNAL_SECREY_K(session),
-                                      ASN_GET_INTERNAL_EXCHANGE_HASH(session), 'C');
+      auth_utils_generate_enc_auth_keys(AUTH_GET_INTERNAL_ENCRYPTION_KEY(session), AUTH_GET_INTERNAL_SECREY_K(session),
+                                      AUTH_GET_INTERNAL_EXCHANGE_HASH(session), 'C');
   generated +=
-      asnutils_generate_enc_auth_keys(ASN_GET_INTERNAL_DECRYPTION_KEY(session), ASN_GET_INTERNAL_SECREY_K(session),
-                                      ASN_GET_INTERNAL_EXCHANGE_HASH(session), 'D');
+      auth_utils_generate_enc_auth_keys(AUTH_GET_INTERNAL_DECRYPTION_KEY(session), AUTH_GET_INTERNAL_SECREY_K(session),
+                                      AUTH_GET_INTERNAL_EXCHANGE_HASH(session), 'D');
   generated +=
-      asnutils_generate_enc_auth_keys(ASN_GET_INTERNAL_INTEGRITY_KEY_ENCRYPTION(session),
-                                      ASN_GET_INTERNAL_SECREY_K(session), ASN_GET_INTERNAL_EXCHANGE_HASH(session), 'E');
+      auth_utils_generate_enc_auth_keys(AUTH_GET_INTERNAL_INTEGRITY_KEY_ENCRYPTION(session),
+                                      AUTH_GET_INTERNAL_SECREY_K(session), AUTH_GET_INTERNAL_EXCHANGE_HASH(session), 'E');
   generated +=
-      asnutils_generate_enc_auth_keys(ASN_GET_INTERNAL_INTEGRITY_KEY_DECRYPTION(session),
-                                      ASN_GET_INTERNAL_SECREY_K(session), ASN_GET_INTERNAL_EXCHANGE_HASH(session), 'F');
+      auth_utils_generate_enc_auth_keys(AUTH_GET_INTERNAL_INTEGRITY_KEY_DECRYPTION(session),
+                                      AUTH_GET_INTERNAL_SECREY_K(session), AUTH_GET_INTERNAL_EXCHANGE_HASH(session), 'F');
 
   if (generated == 0) {
     next_stage = AUTH_DONE;
@@ -218,8 +219,8 @@ int auth_client_finish(asn_ctx_t *session) {
   return next_stage;
 }
 
-int asninternal_client_authenticate(asn_ctx_t *session) {
-  int ret = ASN_ERROR;
+int auth_internal_client_authenticate(auth_ctx_t *session) {
+  int ret = AUTH_ERROR;
 
   int auth_stage = AUTH_INIT;
   while ((AUTH_DONE != auth_stage) && (AUTH_ERROR != auth_stage)) {
@@ -245,16 +246,16 @@ int asninternal_client_authenticate(asn_ctx_t *session) {
   return ret;
 }
 
-int asninternal_client_send(asn_ctx_t *session, const unsigned char *data, unsigned short data_len) {
-  return asnutils_write(session, data, data_len);
+int auth_internal_client_send(auth_ctx_t *session, const unsigned char *data, unsigned short data_len) {
+  return auth_utils_write(session, data, data_len);
 }
 
-int asninternal_client_receive(asn_ctx_t *session, unsigned char **data, unsigned short *data_len) {
-  return asnutils_read(session, data, data_len);
+int auth_internal_client_receive(auth_ctx_t *session, unsigned char **data, unsigned short *data_len) {
+  return auth_utils_read(session, data, data_len);
 }
 
-void asninternal_release_client(asn_ctx_t *session) {}
+void auth_internal_release_client(auth_ctx_t *session) {}
 
-int asninternal_client_set_option(asn_ctx_t *session, const char *key, unsigned char *value) {
-  return asnutils_set_option(session, key, value);
+int auth_internal_client_set_option(auth_ctx_t *session, const char *key, unsigned char *value) {
+  return auth_utils_set_option(session, key, value);
 }
