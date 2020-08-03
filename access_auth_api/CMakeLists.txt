@@ -22,33 +22,33 @@ cmake_minimum_required(VERSION 3.11)
 # libs in the sandbox
 link_directories("${CMAKE_INSTALL_PREFIX}/lib")
 
-set(target asn)
+set(target auth)
 
-set(asn_implementation tinyembedded CACHE STRING "ASN implementation choice")
+set(auth_implementation libCrypto CACHE STRING "auth implementation choice")
 
 set(libs json_parser cryptography common)
 
 # Depends on system libcrypto for libCrypto (ssl) variant
-if(asn_implementation STREQUAL libCrypto)
+if(auth_implementation STREQUAL libCrypto)
 set(libs ${libs} -lcrypto)
 endif()
 
 set(sources
-  asn_logger.c
-  asn_auth.c
-  asn_auth_helper.c
-  implementations/${asn_implementation}/asn_client.c
-  implementations/${asn_implementation}/asn_server.c
-  implementations/${asn_implementation}/asn_client.c
-  implementations/${asn_implementation}/asn_utils.c)
+  auth_logger.c
+  auth.c
+  auth_helper.c
+  implementations/${auth_implementation}/auth_client.c
+  implementations/${auth_implementation}/auth_server.c
+  implementations/${auth_implementation}/auth_client.c
+  implementations/${auth_implementation}/auth_utils.c)
 
 set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/implementations/${asn_implementation})
+  ${CMAKE_CURRENT_SOURCE_DIR}/implementations/${auth_implementation})
 
 add_library(${target} ${sources})
 
-target_link_directories(asn PUBLIC
+target_link_directories(auth PUBLIC
   "${CMAKE_INSTALL_PREFIX}/lib"
   "${iota_common_BUILD_DIR}")
 

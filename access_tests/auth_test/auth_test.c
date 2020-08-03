@@ -28,8 +28,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "asn_auth.h"
-#include "asn_auth_helper.h"
+#include "auth.h"
+#include "auth_helper.h"
 
 #define RECV_BUFF_LEN 1024
 
@@ -52,7 +52,7 @@ ssize_t write_socket(void *ext, void *data, unsigned short len) {
 
 int verify(unsigned char *key, int len) { return 0; }
 
-static asn_ctx_t session;
+static auth_ctx_t session;
 
 int main(int argc, char **argv) {
   int count = 0;
@@ -86,23 +86,23 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  asnauth_init_client(&session, &sockfd);
+  auth_init_client(&session, &sockfd);
 
   session.f_read = read_socket;
   session.f_write = write_socket;
   session.f_verify = verify;
 
-  int auth = asnauth_authenticate(&session);
+  int auth = auth_authenticate(&session);
 
   if (argc == 2) {
-    asnauthhelper_send_decision(1, &session, argv[1], strlen(argv[1]) + 1);
+    auth_helper_send_decision(1, &session, argv[1], strlen(argv[1]) + 1);
   } else {
-    asnauthhelper_send_decision(1, &session, "{\"cmd\": \"get_all_users\"}",
+    auth_helper_send_decision(1, &session, "{\"cmd\": \"get_all_users\"}",
                                 strlen("{\"cmd\": \"get_all_users\"}") + 1);
   }
 
   unsigned short length;
-  asnauth_receive(&session, (unsigned char **)&recv_buff, &length);
+  auth_receive(&session, (unsigned char **)&recv_buff, &length);
 
   int temp = (int)length;
 

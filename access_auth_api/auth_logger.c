@@ -19,7 +19,7 @@
 
 /****************************************************************************
  * \project IOTA Access
- * \file asn_logger.c
+ * \file auth_logger.c
  * \brief
  * Logger for Access Secure Network module
  *
@@ -31,18 +31,18 @@
  * 17.07.2020. Initial version.
  ****************************************************************************/
 
-#include "asn_logger.h"
+#include "auth_logger.h"
 
-#define ASN_LOGGER_ID "asn"
+#define AUTH_LOGGER_ID "auth"
 
-logger_id_t asn_logger_id;
+logger_id_t auth_logger_id;
 
-void logger_init_asn(logger_level_t level) {
-  asn_logger_id = logger_helper_enable(ASN_LOGGER_ID, level, true);
-  log_info(asn_logger_id, "[%s:%d] enable logger %s.\n", __func__, __LINE__, ASN_LOGGER_ID);
+void logger_init_auth(logger_level_t level) {
+  auth_logger_id = logger_helper_enable(AUTH_LOGGER_ID, level, true);
+  log_info(auth_logger_id, "[%s:%d] enable logger %s.\n", __func__, __LINE__, AUTH_LOGGER_ID);
 }
 
-void logger_destroy_asn() {
-  log_info(asn_logger_id, "[%s:%d] destroy logger %s.\n", __func__, __LINE__, ASN_LOGGER_ID);
-  logger_helper_release(asn_logger_id);
+void logger_destroy_auth() {
+  log_info(auth_logger_id, "[%s:%d] destroy logger %s.\n", __func__, __LINE__, AUTH_LOGGER_ID);
+  logger_helper_release(auth_logger_id);
 }

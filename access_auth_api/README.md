@@ -1,6 +1,6 @@
 # ASN
 
-ASN authentication protocol implementation
+Access Authentication protocol implementation
 
 ## OpenSSL
 

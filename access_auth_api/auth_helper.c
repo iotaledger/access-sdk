@@ -19,11 +19,11 @@
 
 /****************************************************************************
  * \project IOTA Access
- * \file asn_auth_helper.c
+ * \file auth_helper.c
  * \brief
- * Implementation of helper functions for pep module
+ * Implementation of helper authentication functions for pep module
  *
- * @Author Dejan Nedic
+ * @Author Dejan Nedic, Bernardo Araujo.
  *
  * \notes
  *
@@ -31,19 +31,18 @@
  * 02.10.2018. Initial version.
  * 21.02.2020. Added obligations handling
  * 28.02.2020. Added data sharing through action functionality
+ * 01.08.2020. Renaming.
  ****************************************************************************/
 
-#include "asn_auth_helper.h"
+#include "auth_helper.h"
 #include <string.h>
 #include "json_helper.h"
 
-#define dlog_printf printf
-
-int asnauthhelper_send_decision(int decision, asn_ctx_t *session, char *response, int size) {
-  return asnauth_send(session, response, size);
+int auth_helper_send_decision(int decision, auth_ctx_t *session, char *response, int size) {
+  return auth_send(session, response, size);
 }
 
-int asnauthhelper_check_msg_format(const char *request) {
+int auth_helper_check_msg_format(const char *request) {
   if (request == NULL) {
     return ADH_ERROR_JSON_NULL;
   }
