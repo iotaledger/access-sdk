@@ -46,7 +46,7 @@ set(include_dirs
 set(libs
   fastjson
   sqlite3
-  json_parser
+  ${policy_format}
   cryptography
   misc)
 

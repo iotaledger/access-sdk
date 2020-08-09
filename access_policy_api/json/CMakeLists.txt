@@ -1,4 +1,3 @@
-
 #
 # This file is part of the IOTA Access distribution
 # (https://github.com/iotaledger/access)
@@ -20,6 +19,7 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-add_subdirectory(crypto)
-add_subdirectory(misc)
+set(target json)
 
+add_library(${target} jsmn.c json_helper.c)
+target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

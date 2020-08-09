@@ -25,8 +25,6 @@
 #ifndef ASN_DEBUG_H_
 #define ASN_DEBUG_H_
 
-#include "dlog.h"
-
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define BOLDBLACK "\033[1m\033[30m"   /* Bold Black */

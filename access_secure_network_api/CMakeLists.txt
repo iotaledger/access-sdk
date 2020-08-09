@@ -26,7 +26,7 @@ set(target asn)
 
 set(asn_implementation tinyembedded CACHE STRING "ASN implementation choice")
 
-set(libs json_parser cryptography common)
+set(libs ${policy_format} cryptography common)
 
 # Depends on system libcrypto for libCrypto (ssl) variant
 if(asn_implementation STREQUAL libCrypto)
