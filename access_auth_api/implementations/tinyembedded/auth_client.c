@@ -83,7 +83,7 @@ int auth_client_generate(auth_ctx_t *session) {
   int next_stage = AUTH_ERROR;
 
   // Client generates p, g, vc and x and calculates e = gx mod p.
-  int keys_generated = authutils_dh_generate_keys(session);
+  int keys_generated = auth_utils_dh_generate_keys(session);
 
   // Client sends e to Server.
   int write_message = session->f_write(session->ext, AUTH_GET_INTERNAL_DH_PUBLIC(session), DH_PUBLIC_L);
