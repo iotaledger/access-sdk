@@ -191,39 +191,6 @@ int auth_receive(auth_ctx_t *session, unsigned char **data, unsigned short *len)
  */
 int auth_release(auth_ctx_t *session);
 
-=======
-typedef ssize_t f_auth_ext_t(void *, void *, unsigned short);
-
-typedef int f_auth_key_verify(unsigned char *, int);
-
-typedef struct auth_struct auth_struct_t;
-
-typedef struct {
-  auth_struct_t *internal;
-
-  void *ext; /* External data structure */
-
-  f_auth_ext_t *f_write;
-  f_auth_ext_t *f_read;
-
-  f_auth_key_verify *f_verify;
-
-  int status;
-} auth_ctx_t;
-
-int auth_init_client(auth_ctx_t *, void *);
-int auth_init_server(auth_ctx_t *, void *);
-
-int auth_set_option(auth_ctx_t *, const char *, unsigned char *);
-
-int auth_authenticate(auth_ctx_t *);
-
-int auth_send(auth_ctx_t *, const unsigned char *, unsigned short);
-
-int auth_receive(auth_ctx_t *, unsigned char **, unsigned short *);
-
-int auth_release(auth_ctx_t *);
-
 #ifdef __cplusplus
 };
 #endif
