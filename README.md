@@ -16,6 +16,6 @@ It is composed of the following pieces:
     * Plugin Manager
 - Access Utils
     * Cryptographic primitives
-    * 
+    * Miscelaneous
 
     

@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['s',['S',['../symbols_8h.html#af933676109efed7ab34cea71d748a517',1,'S():&#160;symbols.h'],['../sha512_8c.html#a5a9675d71aad8449f8e4112ce611fd93',1,'S():&#160;sha512.c'],['../symbols_8h.html#ac9562ee4ecb3b8aeebeb04656e7e57a9',1,'s():&#160;symbols.h']]],
+  ['sc25519',['sc25519',['../sc25519_8h.html#ae66b4bd8e71d542eaf2d5a80df6ef06e',1,'sc25519.h']]],
+  ['sc25519_5f2interleave2',['sc25519_2interleave2',['../sc25519_8h.html#a63ec42e0036fa0470511634ff76459b3',1,'sc25519.h']]],
+  ['sc25519_5fadd',['sc25519_add',['../sc25519_8h.html#a16052f26820d1ce8751892116d1ce63f',1,'sc25519.h']]],
+  ['sc25519_5ffrom32bytes',['sc25519_from32bytes',['../sc25519_8h.html#a0f2305dc99df8bd9e83eb868e9af51d5',1,'sc25519.h']]],
+  ['sc25519_5ffrom64bytes',['sc25519_from64bytes',['../sc25519_8h.html#a723644806a7bfde4ce2481c4255401ae',1,'sc25519.h']]],
+  ['sc25519_5fmul',['sc25519_mul',['../sc25519_8h.html#aa3d77963058bb483c36866ab1a78b173',1,'sc25519.h']]],
+  ['sc25519_5fto32bytes',['sc25519_to32bytes',['../sc25519_8h.html#a45470bc285c12d39e034a9b118b8bdb3',1,'sc25519.h']]],
+  ['sc25519_5fwindow3',['sc25519_window3',['../sc25519_8h.html#a3474419db3d04efd98c958cc99aed2e2',1,'sc25519.h']]],
+  ['sec_5fnum_5flen',['SEC_NUM_LEN',['../tinyembedded_2auth__utils_8c.html#aa4a77c66a2ab0a569dfeb010d6510850',1,'auth_utils.c']]],
+  ['sec_5fprescaler',['SEC_PRESCALER',['../timer_8c.html#ac55d633d7cd89e36203c786e529991a8',1,'timer.c']]],
+  ['sentinel',['sentinel',['../openssl_2auth__debug_8h.html#aee3bbc2ee9da587b5525a1ad8e053c92',1,'sentinel():&#160;auth_debug.h'],['../tinyembedded_2auth__debug_8h.html#aee3bbc2ee9da587b5525a1ad8e053c92',1,'sentinel():&#160;auth_debug.h']]],
+  ['sha256_5fblock_5fbytes',['SHA256_BLOCK_BYTES',['../tinyembedded_2auth__internal_8h.html#a4cceafb542cf15d3a9a237518cf56cd3',1,'auth_internal.h']]],
+  ['sha256_5fblock_5fsize',['SHA256_BLOCK_SIZE',['../sha256_8h.html#a9c1fe69ad43d4ca74b84303a0ed64f2f',1,'sha256.h']]],
+  ['sig0',['SIG0',['../sha256_8c.html#a2f0da11cf6577ba2dd4aea7685d0268e',1,'sha256.c']]],
+  ['sig1',['SIG1',['../sha256_8c.html#a865de5131d1e990ca62d66220a527d2c',1,'sha256.c']]],
+  ['sigma0',['Sigma0',['../sha512_8c.html#a613f88ad88919b6ed21ff223070f9a21',1,'sha512.c']]],
+  ['sigma1',['Sigma1',['../sha512_8c.html#a6d34508d6d962274083fcd992fb4e340',1,'sha512.c']]],
+  ['signed_5fmessage_5fl',['SIGNED_MESSAGE_L',['../tinyembedded_2auth__internal_8h.html#a4056e83ae5dcf82c4ec2a7363218e739',1,'auth_internal.h']]],
+  ['sodium_5fexport',['SODIUM_EXPORT',['../export_8h.html#a9a35f15c7aaca02eba96cf12a7655a85',1,'export.h']]],
+  ['sodium_5fexport_5fweak',['SODIUM_EXPORT_WEAK',['../export_8h.html#aac1dfaaff7e2623aa51bb3f3bdb65d50',1,'export.h']]],
+  ['sodium_5fmin',['SODIUM_MIN',['../export_8h.html#a20f714571c837c9497ad8bc7b2f8f433',1,'export.h']]],
+  ['sodium_5fsize_5fmax',['SODIUM_SIZE_MAX',['../export_8h.html#ad99423eea92178a3bd1010a5c8667a90',1,'export.h']]],
+  ['store64h',['STORE64H',['../sha512_8c.html#af796780add86fc70e9e7dee6fd94f367',1,'sha512.c']]],
+  ['str_5fsize',['STR_SIZE',['../user__implementation_8c.html#a38a196d020f78f178a33927d741a03f2',1,'user_implementation.c']]]
+];

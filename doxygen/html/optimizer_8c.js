@@ -1,0 +1,25 @@
+var optimizer_8c =
+[
+    [ "JSMN_HEADER", "optimizer_8c.html#aeef9c3539ffb9ed912a2976b67b43d68", null ],
+    [ "OPTIMIZER_ASCII_SPACE", "optimizer_8c.html#a2896b11bf4e868dc07512d695708ad39", null ],
+    [ "OPTIMIZER_CHAR_PER_ITERATION", "optimizer_8c.html#a70bbc94c68b7d08148f5ac7986859683", null ],
+    [ "OPTIMIZER_DOC_GOC_INDENTATION", "optimizer_8c.html#a98d301b87ef9e0bcc1bb0cab4a88c96f", null ],
+    [ "OPTIMIZER_FIRST_NON_WHITESPACE_ASCII_CHAR", "optimizer_8c.html#af770f305c45ac4478a432493d2f2f75f", null ],
+    [ "OPTIMIZER_MAX_BUFFER", "optimizer_8c.html#a7f246ea884c9f6c576360ae90d8d934e", null ],
+    [ "OPTIMIZER_MAX_OPERATION_LEN", "optimizer_8c.html#aa0b9792dd15c5b0dc0627d1be7a1b57e", null ],
+    [ "OPTIMIZER_MAX_TOKENS", "optimizer_8c.html#ad31912b52fbd2fdf8cc0420ca1157d02", null ],
+    [ "OPTIMIZER_REMOVAL_BRACKET_ELEMENTS", "optimizer_8c.html#a272115923955cc6515525a8de23fb615", null ],
+    [ "check_absorption", "optimizer_8c.html#a16211c433741cccd56ec14f08e85dfe9", null ],
+    [ "expression_to_policy", "optimizer_8c.html#abdad5e23efe5f306cc28a2c0ba0ade66", null ],
+    [ "get_list_size", "optimizer_8c.html#a5995c3b6365c98846d8a6ed3487db240", null ],
+    [ "list_cmp", "optimizer_8c.html#a4c4f42694ef3337567c995e89606b82e", null ],
+    [ "new_complex_element", "optimizer_8c.html#abf75295426571ecf492c0b8cca3a2b82", null ],
+    [ "new_operator", "optimizer_8c.html#a276fa6ec470d9471a1d420fa595b7b87", null ],
+    [ "new_simple_element", "optimizer_8c.html#ab1337d1c306ca814e36224aeaf69bc7a", null ],
+    [ "obj_to_expression", "optimizer_8c.html#a34f2efe20b4122fb38850808d6ebc92e", null ],
+    [ "optimize_expression", "optimizer_8c.html#a733bad5d0bb9d458ec76c2477d849181", null ],
+    [ "optimizer_optimize_pol", "optimizer_8c.html#aff537fe0491f8648b31c7b12a75e49b8", null ],
+    [ "remove_dummy_brackets", "optimizer_8c.html#afb54a593f339006b45c79b2a1db1d463", null ],
+    [ "sprint_expression", "optimizer_8c.html#a30e8b53b064da6a570f33ffc12f2ea7e", null ],
+    [ "sprint_object", "optimizer_8c.html#a61dc1e4a9a26d2624aea5e7b14f6d83d", null ]
+];

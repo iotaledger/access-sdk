@@ -18,10 +18,9 @@
  */
 
 /****************************************************************************
- * \project IOTA Access
- * \file auth.h
- * \brief
- *    Authentication module API
+ * IOTA Access
+ * @file auth.h
+ * @brief authentication module API
  *
  * @Author Nikola Kuzmanovic, Bernardo Araujo
  *
@@ -38,18 +37,17 @@
 #include <stdio.h>
 
 /**
- * @brief authenticator module errors
- *
- * These defines are used as return values.
+ * @brief no authentication error
  */
 #define AUTH_OK 0
-#define AUTH_ERROR 1
 
+/**
+ * @brief authentication error
+ */
+#define AUTH_ERROR 1
 
 /**
  * @brief authenticator server port
- *
- * Defines authenticator server port.
  */
 #define AUTH_SERVER_PORT 9998
 
@@ -131,7 +129,6 @@ int auth_init_client(auth_ctx_t *session, void *ext);
  */
 int auth_init_server(auth_ctx_t *session, void *ext);
 
-
 /**
  * @brief sets option (priv/pub keys) to authenticator session context.
  *
@@ -181,7 +178,6 @@ int auth_send(auth_ctx_t *session, const unsigned char *data, unsigned short len
  * @return AUTH_OK or AUTH_ERROR
  */
 int auth_receive(auth_ctx_t *session, unsigned char **data, unsigned short *len);
-
 
 /**
  * @brief release authenticated session
