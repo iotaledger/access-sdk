@@ -24,7 +24,8 @@ link_directories("${CMAKE_INSTALL_PREFIX}/lib")
 
 set(target auth)
 
-set(auth_implementation openssl CACHE STRING "auth implementation choice")
+set(auth_implementation tinyembedded CACHE STRING "auth implementation choice")
+#set(auth_implementation openssl CACHE STRING "auth implementation choice")
 
 set(libs json_parser cryptography common)
 
