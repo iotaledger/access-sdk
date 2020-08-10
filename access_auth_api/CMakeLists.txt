@@ -27,7 +27,7 @@ set(target auth)
 set(auth_implementation tinyembedded CACHE STRING "auth implementation choice")
 #set(auth_implementation openssl CACHE STRING "auth implementation choice")
 
-set(libs json_parser cryptography common)
+set(libs ${policy_format} cryptography common)
 
 # Choose between openssl and tinyembedded
 if(auth_implementation STREQUAL openssl)
