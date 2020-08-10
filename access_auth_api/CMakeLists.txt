@@ -24,13 +24,13 @@ link_directories("${CMAKE_INSTALL_PREFIX}/lib")
 
 set(target auth)
 
-set(auth_implementation libCrypto CACHE STRING "auth implementation choice")
+set(auth_implementation openssl CACHE STRING "auth implementation choice")
 
 set(libs json_parser cryptography common)
 
-# Depends on system libcrypto for libCrypto (ssl) variant
-if(auth_implementation STREQUAL libCrypto)
-set(libs ${libs} -lcrypto)
+# Choose between openssl and tinyembedded
+if(auth_implementation STREQUAL openssl)
+  set(libs ${libs} -lcrypto)
 endif()
 
 set(sources
