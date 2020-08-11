@@ -17,3 +17,10 @@ It is composed of the following pieces:
 - Access Utils
     * Cryptographic primitives
     * Miscelaneous
+
+# Documentation
+You can find a precompiled Doxygen html book at [`doxygen/html`](https://github.com/iotaledger/access-sdk/tree/master/doxygen/html).
+
+In order to read it:
+1. Clone `https://github.com/iotaledger/access-sdk` to `$SDK` directory
+1. Render `$SDK/doxygen/html/auth_8h.html` on a web-browser.
