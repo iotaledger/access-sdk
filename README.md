@@ -23,4 +23,4 @@ You can find a precompiled Doxygen html book at [`doxygen/html`](https://github.
 
 In order to read it:
 1. Clone `https://github.com/iotaledger/access-sdk` to `$SDK` directory
-1. Render `$SDK/doxygen/html/auth_8h.html` on a web-browser.
+1. Render `$SDK/doxygen/html/index.html` on a web-browser.
