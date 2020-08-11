@@ -38,3 +38,4 @@ target_link_libraries(${target} PUBLIC ${libs})
 
 install(TARGETS pdp DESTINATION lib)
 install(FILES pdp.h DESTINATION include)
+install(FILES pdp_logger.h DESTINATION include)

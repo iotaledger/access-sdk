@@ -36,3 +36,4 @@ target_link_libraries(${target} PUBLIC ${libs})
 
 install(TARGETS pep DESTINATION lib)
 install(FILES pep.h DESTINATION include)
+install(FILES pep_plugin.h DESTINATION include)

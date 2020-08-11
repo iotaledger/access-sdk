@@ -32,3 +32,4 @@ target_link_libraries(${target} PUBLIC ${libs})
 
 install(TARGETS pip DESTINATION lib)
 install(FILES pip.h DESTINATION include)
+install(FILES pip_plugin.h DESTINATION include)

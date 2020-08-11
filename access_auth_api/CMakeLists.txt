@@ -62,3 +62,4 @@ target_link_libraries(${target} PUBLIC ${libs})
 
 install(TARGETS auth DESTINATION lib)
 install(FILES auth.h DESTINATION include)
+install(FILES auth_logger.h DESTINATION include)

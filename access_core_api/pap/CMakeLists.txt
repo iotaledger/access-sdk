@@ -60,3 +60,5 @@ target_link_libraries(${target} PUBLIC ${libs})
 
 install(TARGETS pap DESTINATION lib)
 install(FILES pap.h DESTINATION include)
+install(FILES pap_logger.h DESTINATION include)
+install(FILES pap_plugin.h DESTINATION include)
