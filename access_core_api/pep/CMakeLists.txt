@@ -32,3 +32,6 @@ set(libs
 add_library(${target} pep.c)
 target_include_directories(${target} PUBLIC ${include_dirs})
 target_link_libraries(${target} PUBLIC ${libs})
+
+install(TARGETS pep DESTINATION lib)
+install(FILES pep.h DESTINATION include)
