@@ -1,7 +1,7 @@
 var NAVTREE =
 [
   [ "Access Core SDK", "index.html", [
-    [ "Access Authentication protocol implementations", "md_access_auth_api__r_e_a_d_m_e.html", null ],
+    [ "Auth API implementations", "md_access_auth_api__r_e_a_d_m_e.html", null ],
     [ "Access Core SDK", "md__r_e_a_d_m_e.html", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -33,7 +33,7 @@ var NAVTREEINDEX =
 "openssl_2auth__internal_8h.html#a65b5cde410eb47d5116696edd136fe34",
 "pdp_8h.html#a85bf71f7d38cc451799efe4838f36313ae9e4c627760f36823cdd153c24229157",
 "structauth__struct.html#adccd9dd29239d1d84f1c2f893d2d243d",
-"tinyembedded_2auth__debug_8h.html#aaa02670e1ed110c42077a315af734eda"
+"tinyauth_2auth__debug_8h.html#aaa02670e1ed110c42077a315af734eda"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

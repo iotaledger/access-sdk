@@ -1,0 +1,14 @@
+digraph "access_core_api/pip" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_7e4dab425606acec96969abf19ab4dc9 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="access_core_api" fontname="Helvetica", fontsize="10", URL="dir_7e4dab425606acec96969abf19ab4dc9.html"]
+  dir_1d9cf8c712780d98e5bc000899d3e952 [shape=box, label="pip", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_1d9cf8c712780d98e5bc000899d3e952.html"];
+  }
+  dir_0ed7280cc5d19de21268b81ddec224fe [shape=box label="pdp" URL="dir_0ed7280cc5d19de21268b81ddec224fe.html"];
+  dir_6aca27a592d18eeff8ec598209838acf [shape=box label="access_plugins_api" URL="dir_6aca27a592d18eeff8ec598209838acf.html"];
+  dir_0ed7280cc5d19de21268b81ddec224fe->dir_1d9cf8c712780d98e5bc000899d3e952 [headlabel="1", labeldistance=1.5 headhref="dir_000010_000012.html"];
+  dir_1d9cf8c712780d98e5bc000899d3e952->dir_0ed7280cc5d19de21268b81ddec224fe [headlabel="2", labeldistance=1.5 headhref="dir_000012_000010.html"];
+  dir_1d9cf8c712780d98e5bc000899d3e952->dir_6aca27a592d18eeff8ec598209838acf [headlabel="2", labeldistance=1.5 headhref="dir_000012_000013.html"];
+}

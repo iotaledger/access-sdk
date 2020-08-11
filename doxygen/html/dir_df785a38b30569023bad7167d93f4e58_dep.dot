@@ -1,0 +1,16 @@
+digraph "access_auth_api/implementations" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_abb8f3e6aace721b4af5cb11cd0446ba {
+    graph [ bgcolor="#ddddee", pencolor="black", label="access_auth_api" fontname="Helvetica", fontsize="10", URL="dir_abb8f3e6aace721b4af5cb11cd0446ba.html"]
+  subgraph clusterdir_df785a38b30569023bad7167d93f4e58 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_df785a38b30569023bad7167d93f4e58.html"];
+    dir_df785a38b30569023bad7167d93f4e58 [shape=plaintext label="implementations"];
+    dir_0897bf5d4998a59c22ad076fea6f7779 [shape=box label="openssl" color="black" fillcolor="white" style="filled" URL="dir_0897bf5d4998a59c22ad076fea6f7779.html"];
+    dir_c4b2ba14b85ae8280edf9e9583bbb316 [shape=box label="tinyauth" color="black" fillcolor="white" style="filled" URL="dir_c4b2ba14b85ae8280edf9e9583bbb316.html"];
+  }
+  }
+  dir_e187d86c28d7179cbb71885950332f5f [shape=box label="access_utils" fillcolor="white" style="filled" color="red" URL="dir_e187d86c28d7179cbb71885950332f5f.html"];
+  dir_c4b2ba14b85ae8280edf9e9583bbb316->dir_e187d86c28d7179cbb71885950332f5f [headlabel="4", labeldistance=1.5 headhref="dir_000003_000016.html"];
+}

@@ -1,0 +1,19 @@
+digraph "access_tests" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_5730ed08089846f29f0e37259ba9e5bb {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_5730ed08089846f29f0e37259ba9e5bb.html"];
+    dir_5730ed08089846f29f0e37259ba9e5bb [shape=plaintext label="access_tests"];
+    dir_2a75b80ffbc1ce50fe1d4085dbc8d31d [shape=box label="auth_test" color="black" fillcolor="white" style="filled" URL="dir_2a75b80ffbc1ce50fe1d4085dbc8d31d.html"];
+    dir_74bc3b26acd3650a325837a8ffcdf51a [shape=box label="user_management" color="black" fillcolor="white" style="filled" URL="dir_74bc3b26acd3650a325837a8ffcdf51a.html"];
+  }
+  dir_f09f96038abb9788ce35ead44b7d19f6 [shape=box label="access_policy_api" fillcolor="white" style="filled" color="red" URL="dir_f09f96038abb9788ce35ead44b7d19f6.html"];
+  dir_7e4dab425606acec96969abf19ab4dc9 [shape=box label="access_core_api" fillcolor="white" style="filled" color="red" URL="dir_7e4dab425606acec96969abf19ab4dc9.html"];
+  dir_abb8f3e6aace721b4af5cb11cd0446ba [shape=box label="access_auth_api" fillcolor="white" style="filled" color="red" URL="dir_abb8f3e6aace721b4af5cb11cd0446ba.html"];
+  dir_74bc3b26acd3650a325837a8ffcdf51a->dir_f09f96038abb9788ce35ead44b7d19f6 [headlabel="1", labeldistance=1.5 headhref="dir_000021_000014.html"];
+  dir_74bc3b26acd3650a325837a8ffcdf51a->dir_7e4dab425606acec96969abf19ab4dc9 [headlabel="1", labeldistance=1.5 headhref="dir_000021_000004.html"];
+  dir_2a75b80ffbc1ce50fe1d4085dbc8d31d->dir_abb8f3e6aace721b4af5cb11cd0446ba [headlabel="2", labeldistance=1.5 headhref="dir_000020_000000.html"];
+  dir_7e4dab425606acec96969abf19ab4dc9->dir_f09f96038abb9788ce35ead44b7d19f6 [headlabel="6", labeldistance=1.5 headhref="dir_000004_000014.html"];
+  dir_abb8f3e6aace721b4af5cb11cd0446ba->dir_f09f96038abb9788ce35ead44b7d19f6 [headlabel="1", labeldistance=1.5 headhref="dir_000000_000014.html"];
+}
