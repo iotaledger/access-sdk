@@ -24,7 +24,7 @@ link_directories("${CMAKE_INSTALL_PREFIX}/lib")
 
 set(target auth)
 
-set(auth_implementation tinyembedded CACHE STRING "auth implementation choice")
+set(auth_implementation tinyauth CACHE STRING "auth implementation choice")
 #set(auth_implementation openssl CACHE STRING "auth implementation choice")
 
 set(libs
@@ -34,7 +34,7 @@ set(libs
 
 if(auth_implementation STREQUAL openssl)
   list(APPEND libs ssl)
-elseif(auth_implementation STREQUAL tinyembedded)
+elseif(auth_implementation STREQUAL tinyauth)
   list(APPEND libs cryptography)
 endif()
 

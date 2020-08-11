@@ -28,7 +28,7 @@ endif()
 
 if(NOT DEFINED auth_implementation)
   set(auth_implementation openssl CACHE STRING "auth implementation choice")
-  #set(auth_implementation tinyembedded CHACE STRING "auth implementation choice")
+  #set(auth_implementation tinyauth CHACE STRING "auth implementation choice")
 endif()
 
 # fetch iota_common
