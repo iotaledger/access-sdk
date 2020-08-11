@@ -27,7 +27,16 @@ set(target auth)
 set(auth_implementation tinyembedded CACHE STRING "auth implementation choice")
 #set(auth_implementation openssl CACHE STRING "auth implementation choice")
 
-set(libs ${policy_format} cryptography common)
+set(libs
+  ${policy_format}
+  common
+)
+
+if(auth_implementation STREQUAL openssl)
+  list(APPEND libs ssl)
+elseif(auth_implementation STREQUAL tinyembedded)
+  list(APPEND libs cryptography)
+endif()
 
 set(sources
   auth_logger.c
