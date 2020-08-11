@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r',['r',['../symbols_8h.html#a62969232668331297e2dca1ae2ddd10d',1,'r():&#160;symbols.h'],['../symbols_8h.html#a5c71a5e59a53413cd6c270266d63b031',1,'R():&#160;symbols.h'],['../sha512_8c.html#a8fb1dfc3ad6dd07bc99c1962e6583087',1,'R():&#160;sha512.c']]],
+  ['r',['R',['../symbols_8h.html#a5c71a5e59a53413cd6c270266d63b031',1,'R():&#160;symbols.h'],['../sha512_8c.html#a8fb1dfc3ad6dd07bc99c1962e6583087',1,'R():&#160;sha512.c'],['../symbols_8h.html#a62969232668331297e2dca1ae2ddd10d',1,'r():&#160;symbols.h']]],
   ['read_5fbuf_5flen',['READ_BUF_LEN',['../tinyembedded_2auth__utils_8c.html#a50d6f01ddd6a618217321629f3f99b63',1,'auth_utils.c']]],
   ['recv_5fbuff_5flen',['RECV_BUFF_LEN',['../auth__test_8c.html#ab2c994d35038d7c90bed068008bff3b4',1,'auth_test.c']]],
   ['red',['RED',['../openssl_2auth__debug_8h.html#a8d23feea868a983c8c2b661e1e16972f',1,'RED():&#160;auth_debug.h'],['../tinyembedded_2auth__debug_8h.html#a8d23feea868a983c8c2b661e1e16972f',1,'RED():&#160;auth_debug.h']]],

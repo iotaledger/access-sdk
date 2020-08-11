@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['m',['m',['../symbols_8h.html#a00626facb4f86efb8618a4c5f5c3c5f8',1,'m():&#160;symbols.h'],['../symbols_8h.html#a52037c938e3c1b126c6277da5ca689d0',1,'M():&#160;symbols.h']]],
+  ['m',['M',['../symbols_8h.html#a52037c938e3c1b126c6277da5ca689d0',1,'M():&#160;symbols.h'],['../symbols_8h.html#a00626facb4f86efb8618a4c5f5c3c5f8',1,'m():&#160;symbols.h']]],
   ['mac_5fhash_5fl',['MAC_HASH_L',['../tinyembedded_2auth__internal_8h.html#ac4d0540a385419ee4a5dd0692cfc2187',1,'auth_internal.h']]],
   ['main',['main',['../validate_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;validate.c'],['../auth__test_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;auth_test.c'],['../user__management__test_8c.html#acdef7a1fd863a6d3770c1268cb06add3',1,'main():&#160;user_management_test.c']]],
   ['maj',['MAJ',['../sha256_8c.html#ae2f6c7a0b4fdb15387259356b16854c9',1,'MAJ():&#160;sha256.c'],['../sha512_8c.html#a447cd1d7fb703b62666400976be24bf3',1,'Maj():&#160;sha512.c']]],

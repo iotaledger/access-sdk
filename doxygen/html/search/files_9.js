@@ -22,5 +22,7 @@ var searchData=
   ['plugin_5flogger_2ec',['plugin_logger.c',['../plugin__logger_8c.html',1,'']]],
   ['plugin_5flogger_2eh',['plugin_logger.h',['../plugin__logger_8h.html',1,'']]],
   ['plugin_5fmanager_2ec',['plugin_manager.c',['../plugin__manager_8c.html',1,'']]],
-  ['plugin_5fmanager_2eh',['plugin_manager.h',['../plugin__manager_8h.html',1,'']]]
+  ['plugin_5fmanager_2eh',['plugin_manager.h',['../plugin__manager_8h.html',1,'']]],
+  ['protobuf_2dc_2ec',['protobuf-c.c',['../protobuf-c_8c.html',1,'']]],
+  ['protobuf_2dc_2eh',['protobuf-c.h',['../protobuf-c_8h.html',1,'']]]
 ];

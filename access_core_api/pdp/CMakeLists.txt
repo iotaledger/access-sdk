@@ -26,7 +26,7 @@ set(sources pdp.c pdp_logger.c)
 set(include_dirs ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(libs
-  json_parser
+  ${policy_format}
   pip
   pap)
 

@@ -61,6 +61,7 @@ include_directories(utils/misc plugins/data/dataset)
 
 add_subdirectory(access_core_api)
 add_subdirectory(access_auth_api)
+add_subdirectory(access_policy_api)
 add_subdirectory(access_plugins_api)
 add_subdirectory(access_utils)
 add_subdirectory(access_tests)

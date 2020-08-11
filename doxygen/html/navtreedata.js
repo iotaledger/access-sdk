@@ -1,6 +1,7 @@
 var NAVTREE =
 [
   [ "Access Core SDK", "index.html", [
+    [ "Access Authentication protocol implementations", "md_access_auth_api__r_e_a_d_m_e.html", null ],
     [ "Access Core SDK", "md__r_e_a_d_m_e.html", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -27,12 +28,12 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"aes_8c.html",
-"fe25519_8h.html#aab48f89784561aa6d2155b42719f0d70",
-"openssl_2auth__internal_8h.html#a3c8cb9479228d3bbff68c5efd0fec213",
-"pdp_8h.html#a8aa67685ec45a25ead774d9a0cfa3556",
-"structea__keys.html#a0089655e3c3cd91e4fad0a1fa3c194ab",
-"tinyembedded_2auth__debug_8h.html#ab912d02c7998c3d47d05f87be4e2c920"
+"access__policy__api_2json_2dlog_8h.html",
+"fe25519_8h.html#ac6f430aaee12b04ecacd9a404f2e922c",
+"openssl_2auth__internal_8h.html#a65b5cde410eb47d5116696edd136fe34",
+"pdp_8h.html#a85bf71f7d38cc451799efe4838f36313ae9e4c627760f36823cdd153c24229157",
+"structauth__struct.html#adccd9dd29239d1d84f1c2f893d2d243d",
+"tinyembedded_2auth__debug_8h.html#aaa02670e1ed110c42077a315af734eda"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

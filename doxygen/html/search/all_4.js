@@ -18,8 +18,8 @@ var searchData=
   ['dh_5fpublic',['dh_public',['../structauth__struct.html#a6d9818af508ed941e548316bf855a8e5',1,'auth_struct']]],
   ['dh_5fpublic_5fl',['DH_PUBLIC_L',['../tinyembedded_2auth__internal_8h.html#a19e10e24169fab0c2d085d2a5cf4a770',1,'auth_internal.h']]],
   ['dh_5fshared_5fsecret_5fl',['DH_SHARED_SECRET_L',['../tinyembedded_2auth__internal_8h.html#a126ba68ade6ffc915b23ce24ab47303a',1,'auth_internal.h']]],
-  ['dlog_2eh',['dlog.h',['../json__parser_2dlog_8h.html',1,'(Global Namespace)'],['../misc_2dlog_8h.html',1,'(Global Namespace)']]],
-  ['dlog_5fprintf',['dlog_printf',['../json__parser_2dlog_8h.html#af9ccfb12ac63d9ef6ebb67005d9ed8d0',1,'dlog_printf():&#160;dlog.h'],['../misc_2dlog_8h.html#af9ccfb12ac63d9ef6ebb67005d9ed8d0',1,'dlog_printf():&#160;dlog.h']]],
+  ['dlog_2eh',['dlog.h',['../access__policy__api_2json_2dlog_8h.html',1,'(Global Namespace)'],['../access__utils_2misc_2dlog_8h.html',1,'(Global Namespace)']]],
+  ['dlog_5fprintf',['dlog_printf',['../access__policy__api_2json_2dlog_8h.html#af9ccfb12ac63d9ef6ebb67005d9ed8d0',1,'dlog_printf():&#160;dlog.h'],['../access__utils_2misc_2dlog_8h.html#af9ccfb12ac63d9ef6ebb67005d9ed8d0',1,'dlog_printf():&#160;dlog.h']]],
   ['dobl_5fsize',['DOBL_SIZE',['../json__helper_8c.html#a2612ab5fa7780ede1677f4a69ece8898',1,'json_helper.c']]],
   ['does_5fhave',['does_have',['../structpap__plugin__has__args__t.html#a4bc82c11df0e26f6645ea335fc30631f',1,'pap_plugin_has_args_t']]]
 ];
