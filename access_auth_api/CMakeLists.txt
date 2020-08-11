@@ -29,11 +29,6 @@ set(auth_implementation tinyembedded CACHE STRING "auth implementation choice")
 
 set(libs ${policy_format} cryptography common)
 
-# Choose between openssl and tinyembedded
-if(auth_implementation STREQUAL openssl)
-  set(libs ${libs} -lcrypto)
-endif()
-
 set(sources
   auth_logger.c
   auth.c
