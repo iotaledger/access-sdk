@@ -1,6 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"structauth__struct.html#ada93c4d51e5ae941c5c20216da55c5a2":[2,0,4,21],
 "structauth__struct.html#adccd9dd29239d1d84f1c2f893d2d243d":[2,0,4,0],
 "structauth__struct.html#aeafb3025d83caaec5fb4f94e15d7767f":[2,0,4,33],
 "structauth__struct.html#aeb15ffbf422489adca80b89745683abf":[2,0,4,22],
@@ -249,5 +248,6 @@ var NAVTREEINDEX4 =
 "tinyembedded_2auth__debug_8h.html#a4a6c893a1703c33ede7d702fe5f97c91":[3,0,0,0,1,2,3],
 "tinyembedded_2auth__debug_8h.html#a8cec79108dfc3c61e8e32d390ec28b26":[3,0,0,0,1,2,7],
 "tinyembedded_2auth__debug_8h.html#a8d23feea868a983c8c2b661e1e16972f":[3,0,0,0,1,2,16],
-"tinyembedded_2auth__debug_8h.html#aa2bc70b303cc6f84f40b76b4d00cb58f":[3,0,0,0,1,2,8]
+"tinyembedded_2auth__debug_8h.html#aa2bc70b303cc6f84f40b76b4d00cb58f":[3,0,0,0,1,2,8],
+"tinyembedded_2auth__debug_8h.html#aa4ef051614aa0bd503b0a18ee158c5d7":[3,0,0,0,1,2,6]
 };

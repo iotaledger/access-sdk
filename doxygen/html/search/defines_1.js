@@ -65,7 +65,6 @@ var searchData=
   ['auth_5fok',['AUTH_OK',['../auth_8h.html#a3eec421a4aa4499514a884eb909a63c8',1,'auth.h']]],
   ['auth_5frsa_5fkey_5flen',['AUTH_RSA_KEY_LEN',['../openssl_2auth__internal_8h.html#ae62f85a9bbc12c938fe0fc12cf251e76',1,'auth_internal.h']]],
   ['auth_5frsa_5fsign_5flen',['AUTH_RSA_SIGN_LEN',['../openssl_2auth__internal_8h.html#a76339a353df270c95ea98bc327203853',1,'auth_internal.h']]],
-  ['auth_5fserver_5fport',['AUTH_SERVER_PORT',['../auth_8h.html#a1ae7f1254ec45fe7034adec4fd50bde1',1,'auth.h']]],
   ['auth_5ftype_5fclient',['AUTH_TYPE_CLIENT',['../openssl_2auth__internal_8h.html#a2fd4e53241ac650eb0fa6761cc0df316',1,'AUTH_TYPE_CLIENT():&#160;auth_internal.h'],['../tinyembedded_2auth__internal_8h.html#a2fd4e53241ac650eb0fa6761cc0df316',1,'AUTH_TYPE_CLIENT():&#160;auth_internal.h']]],
   ['auth_5ftype_5fserver',['AUTH_TYPE_SERVER',['../openssl_2auth__internal_8h.html#a25a9a3912c723ff4e636e05156f8f00b',1,'AUTH_TYPE_SERVER():&#160;auth_internal.h'],['../tinyembedded_2auth__internal_8h.html#a25a9a3912c723ff4e636e05156f8f00b',1,'AUTH_TYPE_SERVER():&#160;auth_internal.h']]],
   ['auth_5fv_5fstring_5flen',['AUTH_V_STRING_LEN',['../openssl_2auth__internal_8h.html#a3c9aadb28cc58869db147ebca90dce61',1,'auth_internal.h']]],

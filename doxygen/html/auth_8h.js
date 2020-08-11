@@ -3,7 +3,6 @@ var auth_8h =
     [ "auth_ctx_t", "structauth__ctx__t.html", "structauth__ctx__t" ],
     [ "AUTH_ERROR", "auth_8h.html#a0fa4da0c4ac94a4779bf38bbcdf4ad68", null ],
     [ "AUTH_OK", "auth_8h.html#a3eec421a4aa4499514a884eb909a63c8", null ],
-    [ "AUTH_SERVER_PORT", "auth_8h.html#a1ae7f1254ec45fe7034adec4fd50bde1", null ],
     [ "auth_struct_t", "auth_8h.html#aa33893e31fca7b51b379653cf8fd7c96", null ],
     [ "f_auth_ext_t", "auth_8h.html#af2ff55b418b97cde07a600eef749df5d", null ],
     [ "f_auth_key_verify", "auth_8h.html#a5f360416ba0cce74cd3e4d5ca83076a7", null ],

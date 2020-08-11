@@ -47,11 +47,6 @@
  */
 #define AUTH_ERROR 1
 
-/**
- * @brief authenticator server port
- */
-#define AUTH_SERVER_PORT 9998
-
 #ifdef __cplusplus
 extern "C" {
 #endif
