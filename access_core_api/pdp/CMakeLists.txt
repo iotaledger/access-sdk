@@ -28,9 +28,11 @@ set(include_dirs ${CMAKE_CURRENT_SOURCE_DIR})
 set(libs
   ${policy_format}
   pip
-  pap)
+  pap
+)
 
 add_library(${target} ${sources})
+
 target_include_directories(${target} PUBLIC ${include_dirs})
 target_link_libraries(${target} PUBLIC ${libs})
 

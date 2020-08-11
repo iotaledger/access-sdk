@@ -19,7 +19,7 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-set(target plugin_manager)
+set(target plugin)
 
 set(sources
   plugin.c
@@ -34,3 +34,7 @@ set(include_dirs
 
 add_library(${target} ${sources})
 target_include_directories(${target} PUBLIC ${include_dirs})
+
+install(TARGETS plugin DESTINATION lib)
+install(FILES plugin.h DESTINATION include)
+install(FILES plugin_manager.h DESTINATION include)
