@@ -1,26 +1,13 @@
-# Access Authentication protocol implementations
+# Auth API implementations
 
 ## OpenSSL
+- key exchange: DH
+- signing/verification: RSA
+- HMAC: SHA-256
+- encryption/decryption: AES256
 
-...
-Diffie hellman key exchange
-
-signing/verification: RSA
-
-HMAC is based on SHA-256
-
-Encryption/Decryption: AES256
-...
-
-
-## TinyEmbedded
-
-...
-ECDH using C25519
-
-signing/verification: ECDSA
-
-HMAC is based on SHA-256
-
-Encryption/Decryption: AES256
-...
+## TinyAuth
+- key exchange: ECDH with C25519
+- signing/verification: ECDSA
+- HMAC: SHA-256
+- encryption/decryption: AES256

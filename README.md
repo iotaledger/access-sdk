@@ -9,13 +9,11 @@ It is composed of the following pieces:
     * Policy Enforcement API
     * Policy Information API
 - Access Authentication API
-    * OpenSSL based Implementation
-    * TinyEmbedded Implementation
+    * OpenSSL Implementation
+    * TinyAuth Implementation
 - Access Plugins API
     * Plugin API
     * Plugin Manager
 - Access Utils
     * Cryptographic primitives
     * Miscelaneous
-
-    

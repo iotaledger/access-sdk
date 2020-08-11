@@ -21,6 +21,16 @@ cmake_minimum_required(VERSION 3.11)
 
 project(access_sdk)
 
+if(NOT DEFINED policy_format)
+  set(policy_format json CACHE STRING "Policy Format Choice")
+  #set(policy_format protobuf-c CHACE STRING "Policy Format Choice")
+endif()
+
+if(NOT DEFINED auth_implementation)
+  set(auth_implementation openssl CACHE STRING "auth implementation choice")
+  #set(auth_implementation tinyauth CHACE STRING "auth implementation choice")
+endif()
+
 # fetch iota_common
 include(FetchContent)
 FetchContent_Declare(
@@ -37,6 +47,16 @@ FetchContent_Declare(
   GIT_TAG 9be05e13408dd8cf8dafe8f11b1700a28194e07e
 )
 
+if(auth_implementation STREQUAL openssl)
+  # fetch openssl
+  include(FetchContent)
+  FetchContent_Declare(
+    openssl
+    GIT_REPOSITORY https://github.com/honeycombOS/openssl-cmake.git
+    GIT_TAG 8ffd9276ec8750ae4293cfa0bc9e7562807bb37d
+  )
+endif()
+
 if(${CMAKE_VERSION} VERSION_LESS 3.14)
     macro(FetchContent_MakeAvailable NAME)
         FetchContent_GetProperties(${NAME})
@@ -47,11 +67,16 @@ if(${CMAKE_VERSION} VERSION_LESS 3.14)
     endmacro()
 endif()
 
+message(STATUS "Fetching iota_common")
+FetchContent_MakeAvailable(iota_common)
+
 message(STATUS "Fetching sqlite3")
 FetchContent_MakeAvailable(sqlite3)
 
-message(STATUS "Fetching iota_common")
-FetchContent_MakeAvailable(iota_common)
+if(auth_implementation STREQUAL openssl)
+  message(STATUS "Fetching openssl")
+  FetchContent_MakeAvailable(openssl)
+endif()
 
 # fetch external libs
 include(ExternalProject)

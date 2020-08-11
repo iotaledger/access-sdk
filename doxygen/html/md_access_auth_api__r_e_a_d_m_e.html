@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Access Core SDK: Access Authentication protocol implementations</title>
+<title>Access Core SDK: Auth API implementations</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,19 +80,23 @@ $(document).ready(function(){initNavTree('md_access_auth_api__r_e_a_d_m_e.html',
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Access Authentication protocol implementations </div>  </div>
+<div class="title">Auth API implementations </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h2>OpenSSL</h2>
-<p>... Diffie hellman key exchange</p>
-<p>signing/verification: RSA</p>
-<p>HMAC is based on SHA-256</p>
-<p>Encryption/Decryption: AES256 ...</p>
-<h2>TinyEmbedded</h2>
-<p>... ECDH using C25519</p>
-<p>signing/verification: ECDSA</p>
-<p>HMAC is based on SHA-256</p>
-<p>Encryption/Decryption: AES256 ... </p>
+<ul>
+<li>key exchange: DH</li>
+<li>signing/verification: RSA</li>
+<li>HMAC: SHA-256</li>
+<li>encryption/decryption: AES256</li>
+</ul>
+<h2>TinyAuth</h2>
+<ul>
+<li>key exchange: ECDH with C25519</li>
+<li>signing/verification: ECDSA</li>
+<li>HMAC: SHA-256</li>
+<li>encryption/decryption: AES256 </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
