@@ -28,3 +28,6 @@ set(libs
 add_library(${target} pip.c)
 target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(${target} PUBLIC ${libs})
+
+install(TARGETS pip DESTINATION lib)
+install(FILES pip.h DESTINATION include)

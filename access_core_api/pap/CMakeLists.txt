@@ -57,3 +57,6 @@ target_include_directories(${target} PUBLIC
   "${iota_common_SOURCE_DIR}"
 )
 target_link_libraries(${target} PUBLIC ${libs})
+
+install(TARGETS pap DESTINATION lib)
+install(FILES pap.h DESTINATION include)

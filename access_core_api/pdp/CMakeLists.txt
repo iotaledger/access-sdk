@@ -33,3 +33,6 @@ set(libs
 add_library(${target} ${sources})
 target_include_directories(${target} PUBLIC ${include_dirs})
 target_link_libraries(${target} PUBLIC ${libs})
+
+install(TARGETS pdp DESTINATION lib)
+install(FILES pdp.h DESTINATION include)
