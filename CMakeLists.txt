@@ -21,6 +21,11 @@ cmake_minimum_required(VERSION 3.11)
 
 project(access_sdk)
 
+if(NOT DEFINED policy_format)
+  set(policy_format json CACHE STRING "Policy Format Choice")
+  #set(policy_format protobuf-c CHACE STRING "Policy Format Choice")
+endif()
+
 # fetch iota_common
 include(FetchContent)
 FetchContent_Declare(
