@@ -16,5 +16,5 @@ var searchData=
   ['auth_5fserver_2ec',['auth_server.c',['../openssl_2auth__server_8c.html',1,'(Global Namespace)'],['../tinyembedded_2auth__server_8c.html',1,'(Global Namespace)']]],
   ['auth_5ftest_2ec',['auth_test.c',['../auth__test_8c.html',1,'']]],
   ['auth_5futils_2ec',['auth_utils.c',['../openssl_2auth__utils_8c.html',1,'(Global Namespace)'],['../tinyembedded_2auth__utils_8c.html',1,'(Global Namespace)']]],
-  ['auth_5futils_2eh',['auth_utils.h',['../auth__utils_8h.html',1,'']]]
+  ['auth_5futils_2eh',['auth_utils.h',['../openssl_2auth__utils_8h.html',1,'(Global Namespace)'],['../tinyembedded_2auth__utils_8h.html',1,'(Global Namespace)']]]
 ];

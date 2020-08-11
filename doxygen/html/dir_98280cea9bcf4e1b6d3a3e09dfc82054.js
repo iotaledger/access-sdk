@@ -1,6 +1,6 @@
 var dir_98280cea9bcf4e1b6d3a3e09dfc82054 =
 [
-    [ "dlog.h", "misc_2dlog_8h.html", "misc_2dlog_8h" ],
+    [ "dlog.h", "access__utils_2misc_2dlog_8h.html", "access__utils_2misc_2dlog_8h" ],
     [ "globals_declarations.h", "globals__declarations_8h.html", "globals__declarations_8h" ],
     [ "time_manager.c", "time__manager_8c.html", "time__manager_8c" ],
     [ "time_manager.h", "time__manager_8h.html", "time__manager_8h" ],

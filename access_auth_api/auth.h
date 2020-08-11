@@ -68,7 +68,7 @@ extern "C" {
 typedef ssize_t f_auth_ext_t(void *ext, void *data, unsigned short len);
 
 /**
- * @brief verifies key exchange
+ * @brief generic function signature type for key exchange verification
  *
  * @param
  */

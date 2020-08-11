@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['n',['N',['../symbols_8h.html#a0240ac851181b84ac374872dc5434ee4',1,'N():&#160;symbols.h'],['../symbols_8h.html#ad5228cd48403ef9d8b632f5c7c124720',1,'n():&#160;symbols.h']]],
+  ['n',['n',['../symbols_8h.html#ad5228cd48403ef9d8b632f5c7c124720',1,'n():&#160;symbols.h'],['../symbols_8h.html#a0240ac851181b84ac374872dc5434ee4',1,'N():&#160;symbols.h']]],
   ['nb',['Nb',['../aes_8c.html#a1ae104196f1fc7af4751c5b9e07b1610',1,'aes.c']]],
   ['new_5fcomplex_5felement',['new_complex_element',['../optimizer_8c.html#abf75295426571ecf492c0b8cca3a2b82',1,'optimizer.c']]],
   ['new_5foperator',['new_operator',['../optimizer_8c.html#a276fa6ec470d9471a1d420fa595b7b87',1,'optimizer.c']]],

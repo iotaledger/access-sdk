@@ -35,7 +35,7 @@ var searchData=
   ['crypto_5fint32_2eh',['crypto_int32.h',['../crypto__int32_8h.html',1,'']]],
   ['crypto_5flogger_2ec',['crypto_logger.c',['../crypto__logger_8c.html',1,'']]],
   ['crypto_5flogger_2eh',['crypto_logger.h',['../crypto__logger_8h.html',1,'']]],
-  ['crypto_5flogger_5fid',['crypto_logger_id',['../crypto__logger_8c.html#a538cf4454698cf9121e040c855994aaf',1,'crypto_logger_id():&#160;crypto_logger.c'],['../crypto__logger_8h.html#a538cf4454698cf9121e040c855994aaf',1,'crypto_logger_id():&#160;crypto_logger.c'],['../crypto__logger_8c.html#a2f3aa4ea25e85dfced997b5bbb026198',1,'CRYPTO_LOGGER_ID():&#160;crypto_logger.c']]],
+  ['crypto_5flogger_5fid',['CRYPTO_LOGGER_ID',['../crypto__logger_8c.html#a2f3aa4ea25e85dfced997b5bbb026198',1,'CRYPTO_LOGGER_ID():&#160;crypto_logger.c'],['../crypto__logger_8c.html#a538cf4454698cf9121e040c855994aaf',1,'crypto_logger_id():&#160;crypto_logger.c'],['../crypto__logger_8h.html#a538cf4454698cf9121e040c855994aaf',1,'crypto_logger_id():&#160;crypto_logger.c']]],
   ['crypto_5fpublickeybytes',['CRYPTO_PUBLICKEYBYTES',['../apiorig_8h.html#ad3ae9ccc17354eeb4bfd498a1b76e938',1,'apiorig.h']]],
   ['crypto_5fsecretkeybytes',['CRYPTO_SECRETKEYBYTES',['../apiorig_8h.html#a15a0b213afe1dabb9286f9f92a05251e',1,'apiorig.h']]],
   ['crypto_5fsign',['crypto_sign',['../apiorig_8h.html#ac1c227c8a0466846d60cb66e5b853554',1,'crypto_sign(unsigned char *sm, unsigned long long *smlen, const unsigned char *m, unsigned long long mlen, const unsigned char *sk):&#160;sign.c'],['../sign_8c.html#ac1c227c8a0466846d60cb66e5b853554',1,'crypto_sign(unsigned char *sm, unsigned long long *smlen, const unsigned char *m, unsigned long long mlen, const unsigned char *sk):&#160;sign.c']]],
