@@ -9,8 +9,8 @@ It is composed of the following pieces:
     * Policy Enforcement API
     * Policy Information API
 - Access Authentication API
-    * OpenSSL Implementation
-    * TinyAuth Implementation
+    * RSA Flavour
+    * ECDSA Flavour
 - Access Plugins API
     * Plugin API
     * Plugin Manager
