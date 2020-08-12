@@ -17,7 +17,7 @@ Both flavours share the following cryptographic primitives:
 - signing/verification: **RSA**
 - pros:
   - OpenSSL compatible.
-  - keypair generated deterministically from IOTA seeds (IOTA 2.0).
+  -   - keypair generated deterministically from IOTA seeds (IOTA 2.0) (via [dOpenSSL](https://github.com/bernardoaraujor/dopenssl)).
 - cons:
   - RAM hungry.
 - scenarios:
