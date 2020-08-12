@@ -17,20 +17,19 @@ Both flavours share the following cryptographic primitives:
 - signing/verification: **RSA**
 - pros:
   - OpenSSL compatible.
-  - keypair generated deterministically from IOTA seeds.
+  - keypair generated deterministically from IOTA seeds (IOTA 2.0).
 - cons:
   - RAM hungry.
 - scenarios:
   - **SSL**/**TCP**/**IPv4**/**802.3** Wide Area Network (**WAN**) on **SoC HW-based MMU with 512Mb RAM** (Embedded Linux arm64).
   - **SSL**/**TCP**/**IPv4**/**802.3** World Wide Web (**WWW**) on **VPS** (Linux x86-64).
 
-
-
 ## ECDSA Flavour
 - key exchange: **ECDH** with **Curve25519**
 - signing/verification: **ECDSA** with **secp160r1**.
 - pros:
   - RAM-light.
+  - [IOTA 1.5 Compatible](https://github.com/Wollac/protocol-rfcs/blob/ed25519/text/0009-ed25519-signature-scheme/0009-ed25519-signature-scheme.md).
 - cons:
   - Not Quantum robust.
 -scenarios:
