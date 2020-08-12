@@ -14,7 +14,7 @@ Both flavours share the following cryptographic primitives:
 
 ## RSA Flavour
 - key exchange: **DH**
-- signing/verification: **RSA**
+- signing/verification: **RSA 2048**
 - pros:
   - OpenSSL compatible.
   -   - keypair generated deterministically from IOTA seeds (IOTA 2.0) (via [dOpenSSL](https://github.com/bernardoaraujor/dopenssl)).
