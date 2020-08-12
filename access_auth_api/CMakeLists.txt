@@ -24,17 +24,17 @@ link_directories("${CMAKE_INSTALL_PREFIX}/lib")
 
 set(target auth)
 
-set(auth_implementation tinyauth CACHE STRING "auth implementation choice")
-#set(auth_implementation openssl CACHE STRING "auth implementation choice")
+set(auth_flavour ecdsa CACHE STRING "auth flavour choice")
+#set(auth_flavour rsa CACHE STRING "auth flavour choice")
 
 set(libs
   ${policy_format}
   common
 )
 
-if(auth_implementation STREQUAL openssl)
+if(auth_flavour STREQUAL rsa)
   list(APPEND libs ssl)
-elseif(auth_implementation STREQUAL tinyauth)
+elseif(auth_flavour STREQUAL ecdsa)
   list(APPEND libs cryptography)
 endif()
 
@@ -42,14 +42,14 @@ set(sources
   auth_logger.c
   auth.c
   auth_helper.c
-  implementations/${auth_implementation}/auth_client.c
-  implementations/${auth_implementation}/auth_server.c
-  implementations/${auth_implementation}/auth_client.c
-  implementations/${auth_implementation}/auth_utils.c)
+  flavours/${auth_flavour}/auth_client.c
+  flavours/${auth_flavour}/auth_server.c
+  flavours/${auth_flavour}/auth_client.c
+  flavours/${auth_flavour}/auth_utils.c)
 
 set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/implementations/${auth_implementation})
+  ${CMAKE_CURRENT_SOURCE_DIR}/flavours/${auth_flavour})
 
 add_library(${target} ${sources})
 
