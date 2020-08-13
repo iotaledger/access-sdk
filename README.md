@@ -4,7 +4,7 @@ The Access Core Software Development Kit provides the  components to be used as 
 
 It is composed of the following pieces:
 - Access Policy API
-    * Policy Creation API
+    * Policy Encoding API
         * JSON Flavour
         * Protobuf Flavour
     * Policy Administration API

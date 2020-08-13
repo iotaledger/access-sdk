@@ -84,28 +84,20 @@ $(document).ready(function(){initNavTree('md_auth__r_e_a_d_m_e.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Access Auth API comes in two flavours:</p><ul>
-<li>RSA flavour<ul>
-<li><a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-56ar.pdf">NIST FIPS PUB 800-56A</a> Diffie-Hellman (<b>DH</b>) key exchange.</li>
-<li><a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar2.pdf">NIST FIPS PUB 800-131A</a>: Rivest-Shamir-Adleman (<b>RSA</b>) 2048 signature scheme.</li>
-</ul>
-</li>
-<li>ECDSA flavour<ul>
-<li><a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf">NIST SP 800-186</a>: Elliptic Curve Diffie-Hellman (<b>ECDH</b>) key exchange.</li>
-<li><a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf">NIST SP 800-186</a>: Elliptic Curve Digital Signature Algorithm (<b>ECDSA</b>) with secp160r1.</li>
-</ul>
-</li>
+<li>RSA flavour</li>
+<li>ECDSA flavour</li>
 </ul>
 <p>Both flavours share the following cryptographic primitives:</p><ul>
-<li><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.198-1.pdf">NIST FIPS PUB 198-1</a>: Keyed-Hash Message Authentication Code (<b>HMAC</b>) <a href="https://www.cs.princeton.edu/~appel/papers/verif-sha.pdf"><b>SHA-256</b></a>.</li>
-<li><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf">NIST FIPS PUB 197</a>: Advanced Encryption Standard 256 (<b>AES256</b>).</li>
+<li>Keyed-Hash Message Authentication Code (<b>HMAC</b>) <b>SHA-256</b> [<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.198-1.pdf">NIST FIPS PUB 198-1</a>]</li>
+<li>Advanced Encryption Standard 256 (<b>AES256</b>) [<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf">NIST FIPS PUB 197</a>]</li>
 </ul>
 <h2>RSA Flavour</h2>
 <ul>
-<li>key exchange: <b>DH</b></li>
-<li>signing/verification: <b>RSA 2048</b></li>
+<li>key exchange: <a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-56ar.pdf">NIST FIPS PUB 800-56A</a> Diffie-Hellman (<b>DH</b>).</li>
+<li>signing/verification: <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar2.pdf">NIST FIPS PUB 800-131A</a>: Rivest-Shamir-Adleman (<b>RSA</b>) 2048 bits.</li>
 <li>pros:<ul>
-<li>OpenSSL-friendly.</li>
-<li>RSA is still the leading digital signature algorithm for most certificate applications</li>
+<li>OpenSSL friendly.</li>
+<li>RSA is still the leading DSA for most certificate applications.</li>
 <li>deterministic keypair derived from IOTA seed (legacy or BIP39, IOTA 2.0) (via <a href="https://github.com/bernardoaraujor/dopenssl">dOpenSSL</a>).</li>
 </ul>
 </li>
@@ -122,8 +114,8 @@ $(document).ready(function(){initNavTree('md_auth__r_e_a_d_m_e.html','');});
 </ul>
 <h2>ECDSA Flavour</h2>
 <ul>
-<li>key exchange: <b>ECDH</b> with <b>Curve25519</b></li>
-<li>signing/verification: <b>ECDSA</b> with <b>secp160r1</b>.</li>
+<li>key exchange: Elliptic Curve Diffie-Hellman (<b>ECDH</b>) with <b>Curve25519</b> [<a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf">NIST SP 800-186</a>]</li>
+<li>signing/verification: Elliptic Curve Digital Signature Algorithm (<b>ECDSA</b>) with secp160r1 [<a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf">NIST SP 800-186</a>].</li>
 <li>pros:<ul>
 <li>not hungry for CPU+RAM (IoT friendly).</li>
 </ul>

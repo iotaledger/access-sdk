@@ -83,7 +83,31 @@ $(document).ready(function(){initNavTree('md_policy__r_e_a_d_m_e.html','');});
 <div class="title">Policy API </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"></div></div><!-- contents -->
+<div class="textblock"><p>Access Policy API is used to encapsulate <a href="https://www.doc.ic.ac.uk/research/technicalreports/2011/DTR11-6.pdf">Belnap Logic</a> for Access Control.</p>
+<h2>Encoding</h2>
+<p>Policy Encoding comes in two flavours:</p><ul>
+<li>JSON</li>
+<li>protobuf-c</li>
+</ul>
+<h3>JSON</h3>
+<p>JavaScript Object Notation (JSON) is a popular data-interchange format. It is easy for humans to read and write.</p><ul>
+<li>pros: human readable.</li>
+<li>cons: resource hungry (not IoT friendly).</li>
+</ul>
+<h3>protobuf-c</h3>
+<p>Protocol Buffers are a language-neutral, platform-neutral extensible mechanism for serializing structured data. It allows for lightweight binary representation of data. <code>protobuf-c</code> is a C implementation of the <a href="https://developers.google.com/protocol-buffers/">Google Protocol Buffers</a>.</p><ul>
+<li>pros: light (IoT friendly).</li>
+<li>cons: not human readable.</li>
+</ul>
+<h2>Administration</h2>
+<p>Policy Administration API provides the abstractions for the Policy Administration Point (PAP). The PAP is used for managing local policy updates and matching policies to incoming requests. The API expects callback functions to be registered as PAP Plugins.</p>
+<h2>Decision</h2>
+<p>Policy Decision API provides the abstractions for Policy Decision Point (PDP). The PDP is responsible for calculating the output for access requests. The API only consumed internally by other Policy API modules.</p>
+<h2>Enforcement</h2>
+<p>Policy Enforcement API provides the abstractions for Policy Enforcement Point (PEP). The PEP routes the access request to the PDP for decision making, and acts on the received decision as appropriate within the system context. The API expects callback functions to be registered as PEP Plugins.</p>
+<h2>Information</h2>
+<p>Policy Information API provides the abstractions for Policy Information Point. PIP provides attribute values used by the PDP. Attribute values are information collected from the outside world, such as IOTA transactions, sensor data or network traffic. The API expects callback functions to be registered as PIP Plugins. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
