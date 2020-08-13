@@ -29,7 +29,7 @@ Both flavours share the following cryptographic primitives:
 - signing/verification: **ECDSA** with **secp160r1**.
 - pros:
   - RAM-light.
-  - [IOTA 1.5 Compatible](https://github.com/Wollac/protocol-rfcs/blob/ed25519/text/0009-ed25519-signature-scheme/0009-ed25519-signature-scheme.md).
+  - IOTA 1.5 Compatible.
 - cons:
   - Not Quantum robust.
 -scenarios:
