@@ -19,7 +19,7 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-add_subdirectory(flavours)
+add_subdirectory(encoding)
 add_subdirectory(pdp)
 add_subdirectory(pip)
 add_subdirectory(pap)
