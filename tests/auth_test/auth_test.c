@@ -18,14 +18,10 @@
  */
 
 #include <arpa/inet.h>
-#include <errno.h>
-#include <netdb.h>
 #include <netinet/in.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <sys/socket.h>
-#include <sys/types.h>
 #include <unistd.h>
 
 #include "auth.h"
@@ -39,18 +35,6 @@ static int state = 0;
 int get_server_state() { return state; }
 
 void print_data(char *name, unsigned char *data, int len);
-
-ssize_t read_socket(void *ext, void *data, unsigned short len) {
-  int *sockfd = (int *)ext;
-  return read(*sockfd, data, len);
-}
-
-ssize_t write_socket(void *ext, void *data, unsigned short len) {
-  int *sockfd = (int *)ext;
-  return write(*sockfd, data, len);
-}
-
-int verify(unsigned char *key, int len) { return 0; }
 
 static auth_ctx_t session;
 
@@ -87,10 +71,6 @@ int main(int argc, char **argv) {
   }
 
   auth_init_client(&session, &sockfd);
-
-  session.f_read = read_socket;
-  session.f_write = write_socket;
-  session.f_verify = verify;
 
   int auth = auth_authenticate(&session);
 
