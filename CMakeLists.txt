@@ -84,7 +84,6 @@ include(ExternalProject)
 # Global includes
 include_directories(utils/misc plugins/data/dataset)
 
-add_subdirectory(pxp)
 add_subdirectory(auth)
 add_subdirectory(policy)
 add_subdirectory(plugin)

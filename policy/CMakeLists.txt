@@ -1,4 +1,3 @@
-
 #
 # This file is part of the IOTA Access distribution
 # (https://github.com/iotaledger/access)
@@ -20,12 +19,8 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-# Depends on policy format
-if(policy_format STREQUAL json)
-  add_subdirectory(json)
-endif()
-
-if(policy_format STREQUAL protobuf-c)
-  add_subdirectory(protobuf-c)
-endif()
-
+add_subdirectory(flavours)
+add_subdirectory(pdp)
+add_subdirectory(pip)
+add_subdirectory(pap)
+add_subdirectory(pep)
