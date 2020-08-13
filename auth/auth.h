@@ -72,7 +72,7 @@ typedef int f_auth_key_verify(unsigned char *, int);
 /**
  * @brief declaration of auth_struct typedef.
  *
- * actual definition of this struct happens at access_auth_api/implementations/${auth_implementation}/auth_internal.h
+ * actual definition of this struct happens at auth/flavours/${auth_flavour}/auth_internal.h
  */
 typedef struct auth_struct auth_struct_t;
 
