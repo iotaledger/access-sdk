@@ -11,7 +11,7 @@ var searchData=
   ['not',['NOT',['../pdp_8h.html#a40edf8b2e3ddde4f654a272d06bb6d9ea0378ebc895849163b249d0b330257dd6',1,'pdp.h']]],
   ['nr',['Nr',['../aes_8c.html#a9d210afc812225ee0a0bcd51bb984246',1,'aes.c']]],
   ['nsec_5fprescaler',['NSEC_PRESCALER',['../timer_8c.html#a6367ec8c537f67807bb8557974c752bd',1,'timer.c']]],
-  ['ntohl',['ntohl',['../openssl_2auth__utils_8c.html#a21dff5fd22359d8019b2144e8e626fdd',1,'auth_utils.c']]],
-  ['ntohs',['ntohs',['../openssl_2auth__utils_8c.html#ad01743b73969567f09d0ba1616637452',1,'auth_utils.c']]],
+  ['ntohl',['ntohl',['../rsa_2auth__utils_8c.html#a21dff5fd22359d8019b2144e8e626fdd',1,'auth_utils.c']]],
+  ['ntohs',['ntohs',['../rsa_2auth__utils_8c.html#ad01743b73969567f09d0ba1616637452',1,'auth_utils.c']]],
   ['number',['NUMBER',['../pdp_8h.html#a85bf71f7d38cc451799efe4838f36313a12a90dfe20486bbe3e075afcd19ef2d0',1,'pdp.h']]]
 ];

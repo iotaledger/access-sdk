@@ -1,14 +1,14 @@
-digraph "access_plugins_api/plugin_manager.h"
+digraph "plugin/plugin_manager.h"
 {
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node3 [label="access_plugins_api\l/plugin_manager.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 [label="plugin/plugin_manager.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="access_core_api/pap\l/pap.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pap_8c.html"];
+  Node4 [label="plugin/plugin_manager.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$plugin__manager_8c.html"];
   Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="access_core_api/pep\l/pep.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pep_8c.html"];
+  Node5 [label="pxp/pap/pap.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pap_8c.html"];
   Node3 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="access_core_api/pip\l/pip.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pip_8c.html"];
+  Node6 [label="pxp/pep/pep.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pep_8c.html"];
   Node3 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="access_plugins_api\l/plugin_manager.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$plugin__manager_8c.html"];
+  Node7 [label="pxp/pip/pip.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pip_8c.html"];
 }

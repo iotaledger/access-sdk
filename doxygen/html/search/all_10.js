@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['p',['p',['../symbols_8h.html#ade66e4ccafbc33b117610bbc0d85feb0',1,'p():&#160;symbols.h'],['../symbols_8h.html#a2748566f4c443ee77aa831e63dbb5ebe',1,'P():&#160;symbols.h']]],
+  ['p',['P',['../symbols_8h.html#a2748566f4c443ee77aa831e63dbb5ebe',1,'P():&#160;symbols.h'],['../symbols_8h.html#ade66e4ccafbc33b117610bbc0d85feb0',1,'p():&#160;symbols.h']]],
   ['pap_2ec',['pap.c',['../pap_8c.html',1,'']]],
   ['pap_2eh',['pap.h',['../pap_8h.html',1,'']]],
   ['pap_5faction_5flist_5f',['pap_action_list_',['../structpap__action__list__.html',1,'']]],
@@ -157,7 +157,7 @@ var searchData=
   ['plugin_5finit',['plugin_init',['../plugin_8c.html#a7cad87cef37a618e494aa12c93478f0c',1,'plugin_init(plugin_t *plugin, plugin_cb initializer, void *data):&#160;plugin.c'],['../plugin_8h.html#a7cad87cef37a618e494aa12c93478f0c',1,'plugin_init(plugin_t *plugin, plugin_cb initializer, void *data):&#160;plugin.c']]],
   ['plugin_5flogger_2ec',['plugin_logger.c',['../plugin__logger_8c.html',1,'']]],
   ['plugin_5flogger_2eh',['plugin_logger.h',['../plugin__logger_8h.html',1,'']]],
-  ['plugin_5flogger_5fid',['plugin_logger_id',['../plugin__logger_8c.html#afb6eb9cd8a3f128e6ccdfdb0a4cc4e1f',1,'plugin_logger_id():&#160;plugin_logger.c'],['../plugin__logger_8h.html#afb6eb9cd8a3f128e6ccdfdb0a4cc4e1f',1,'plugin_logger_id():&#160;plugin_logger.c'],['../plugin__logger_8c.html#a24912d3a60e175cc493a1c08ca6c0d86',1,'PLUGIN_LOGGER_ID():&#160;plugin_logger.c']]],
+  ['plugin_5flogger_5fid',['PLUGIN_LOGGER_ID',['../plugin__logger_8c.html#a24912d3a60e175cc493a1c08ca6c0d86',1,'PLUGIN_LOGGER_ID():&#160;plugin_logger.c'],['../plugin__logger_8c.html#afb6eb9cd8a3f128e6ccdfdb0a4cc4e1f',1,'plugin_logger_id():&#160;plugin_logger.c'],['../plugin__logger_8h.html#afb6eb9cd8a3f128e6ccdfdb0a4cc4e1f',1,'plugin_logger_id():&#160;plugin_logger.c']]],
   ['plugin_5fmanager_2ec',['plugin_manager.c',['../plugin__manager_8c.html',1,'']]],
   ['plugin_5fmanager_2eh',['plugin_manager.h',['../plugin__manager_8h.html',1,'']]],
   ['plugin_5fmanager_5fget',['plugin_manager_get',['../plugin__manager_8c.html#a0fc3a4d608313954cde567d0d1109f53',1,'plugin_manager_get(plugin_manager_t *pm, size_t idx, plugin_t **plugin):&#160;plugin_manager.c'],['../plugin__manager_8h.html#a1f5202cf29e6a385c3ba44674bdfe681',1,'plugin_manager_get(plugin_manager_t *, size_t idx, plugin_t **):&#160;plugin_manager.c']]],
@@ -184,12 +184,12 @@ var searchData=
   ['previous',['previous',['../struct__function__list.html#a9e6ee9141e09336efd4c9fbf976b2f25',1,'_function_list']]],
   ['print_5fdata',['print_data',['../auth__test_8c.html#ae4eee954cdf1530ab7b95577606fb58f',1,'auth_test.c']]],
   ['private_5fkey',['private_key',['../structauth__struct.html#af84738c6aeec8055f423fa45dd2c8d2a',1,'auth_struct']]],
-  ['private_5fkey_5fl',['PRIVATE_KEY_L',['../tinyauth_2auth__internal_8h.html#ad894bf9de0d9deeeb51d02260e6a8589',1,'auth_internal.h']]],
+  ['private_5fkey_5fl',['PRIVATE_KEY_L',['../ecdsa_2auth__internal_8h.html#ad894bf9de0d9deeeb51d02260e6a8589',1,'auth_internal.h']]],
   ['proper_5fformat',['proper_format',['../structvalidator__report__t.html#aca4e85ad19cfe63af93724583afa36e5',1,'validator_report_t']]],
   ['protobuf_2dc_2ec',['protobuf-c.c',['../protobuf-c_8c.html',1,'']]],
   ['protobuf_2dc_2eh',['protobuf-c.h',['../protobuf-c_8h.html',1,'']]],
   ['pub_5fkey',['pub_key',['../structauth__struct.html#aad713005343ebfb84e09a7441d655802',1,'auth_struct']]],
   ['public_5fid_5fsize',['PUBLIC_ID_SIZE',['../user__implementation_8c.html#a40e9389f1d320e18b1e4ee1fe8733929',1,'user_implementation.c']]],
   ['public_5fkey',['public_key',['../structauth__struct.html#a1b15e2b6adb24dae950013b9203b0036',1,'auth_struct::public_key()'],['../structpap__policy__id__signature__t.html#a26bff882d92e4fe75913746a4ab16d54',1,'pap_policy_id_signature_t::public_key()']]],
-  ['public_5fkey_5fl',['PUBLIC_KEY_L',['../tinyauth_2auth__internal_8h.html#a06cb5c0bb50ba10451097f66367b3c97',1,'auth_internal.h']]]
+  ['public_5fkey_5fl',['PUBLIC_KEY_L',['../ecdsa_2auth__internal_8h.html#a06cb5c0bb50ba10451097f66367b3c97',1,'auth_internal.h']]]
 ];

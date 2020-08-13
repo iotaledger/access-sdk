@@ -1,9 +1,9 @@
 var files =
 [
-    [ "access_auth_api", "dir_abb8f3e6aace721b4af5cb11cd0446ba.html", "dir_abb8f3e6aace721b4af5cb11cd0446ba" ],
-    [ "access_core_api", "dir_7e4dab425606acec96969abf19ab4dc9.html", "dir_7e4dab425606acec96969abf19ab4dc9" ],
-    [ "access_plugins_api", "dir_6aca27a592d18eeff8ec598209838acf.html", "dir_6aca27a592d18eeff8ec598209838acf" ],
-    [ "access_policy_api", "dir_f09f96038abb9788ce35ead44b7d19f6.html", "dir_f09f96038abb9788ce35ead44b7d19f6" ],
-    [ "access_tests", "dir_5730ed08089846f29f0e37259ba9e5bb.html", "dir_5730ed08089846f29f0e37259ba9e5bb" ],
-    [ "access_utils", "dir_e187d86c28d7179cbb71885950332f5f.html", "dir_e187d86c28d7179cbb71885950332f5f" ]
+    [ "auth", "dir_00ae9869f82e985780277dc684d7236c.html", "dir_00ae9869f82e985780277dc684d7236c" ],
+    [ "plugin", "dir_b4c3aec6cd8f28418150dce663061cfa.html", "dir_b4c3aec6cd8f28418150dce663061cfa" ],
+    [ "policy", "dir_eb07bcf3f6bbebad6f759869cfa1383b.html", "dir_eb07bcf3f6bbebad6f759869cfa1383b" ],
+    [ "pxp", "dir_7be6e3fdd8243354b31c1d83c38a916a.html", "dir_7be6e3fdd8243354b31c1d83c38a916a" ],
+    [ "tests", "dir_59425e443f801f1f2fd8bbe4959a3ccf.html", "dir_59425e443f801f1f2fd8bbe4959a3ccf" ],
+    [ "utils", "dir_cbdb8362360e11eafe2fa3bc74cf0ffd.html", "dir_cbdb8362360e11eafe2fa3bc74cf0ffd" ]
 ];

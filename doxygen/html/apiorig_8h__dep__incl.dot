@@ -1,24 +1,22 @@
-digraph "access_utils/crypto/ref/apiorig.h"
+digraph "utils/crypto/ref/apiorig.h"
 {
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="access_utils/crypto\l/ref/apiorig.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 [label="utils/crypto/ref/apiorig.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="access_auth_api/implementations\l/tinyauth/auth_internal.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tinyauth_2auth__internal_8h.html"];
+  Node2 [label="auth/flavours/ecdsa\l/auth_internal.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ecdsa_2auth__internal_8h.html"];
   Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="access_auth_api/auth.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth_8c.html"];
+  Node3 [label="auth/flavours/ecdsa\l/asn_utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$asn__utils_8h.html"];
   Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="access_auth_api/implementations\l/tinyauth/asn_utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$asn__utils_8h.html"];
+  Node4 [label="auth/flavours/ecdsa\l/auth_client.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ecdsa_2auth__client_8c.html"];
   Node2 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="access_auth_api/implementations\l/tinyauth/auth_client.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tinyauth_2auth__client_8c.html"];
+  Node5 [label="auth/flavours/ecdsa\l/auth_utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ecdsa_2auth__utils_8h.html"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="auth/flavours/ecdsa\l/auth_server.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ecdsa_2auth__server_8c.html"];
+  Node5 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="auth/flavours/ecdsa\l/auth_utils.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ecdsa_2auth__utils_8c.html"];
   Node2 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="access_auth_api/implementations\l/tinyauth/auth_utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tinyauth_2auth__utils_8h.html"];
-  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="access_auth_api/implementations\l/tinyauth/auth_server.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tinyauth_2auth__server_8c.html"];
-  Node6 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node8 [label="access_auth_api/implementations\l/tinyauth/auth_utils.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tinyauth_2auth__utils_8c.html"];
-  Node2 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node9 [label="access_core_api/pap\l/pap.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pap_8c.html"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="pxp/pap/pap.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pap_8c.html"];
 }

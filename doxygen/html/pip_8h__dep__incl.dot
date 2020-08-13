@@ -1,13 +1,13 @@
-digraph "access_core_api/pip/pip.h"
+digraph "pxp/pip/pip.h"
 {
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node9 [label="access_core_api/pip\l/pip.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node9 [label="pxp/pip/pip.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node10 [label="access_core_api/pdp\l/pdp.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pdp_8c.html"];
+  Node10 [label="pxp/pdp/pdp.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pdp_8c.html"];
   Node9 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node11 [label="access_core_api/pip\l/pip.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pip_8c.html"];
+  Node11 [label="pxp/pip/pip.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pip_8c.html"];
   Node9 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node12 [label="access_core_api/pip\l/pip_plugin.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pip__plugin_8h.html"];
+  Node12 [label="pxp/pip/pip_plugin.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pip__plugin_8h.html"];
   Node12 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

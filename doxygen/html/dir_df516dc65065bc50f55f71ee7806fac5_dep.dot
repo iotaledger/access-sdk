@@ -1,0 +1,11 @@
+digraph "tests/auth_test" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_59425e443f801f1f2fd8bbe4959a3ccf {
+    graph [ bgcolor="#ddddee", pencolor="black", label="tests" fontname="Helvetica", fontsize="10", URL="dir_59425e443f801f1f2fd8bbe4959a3ccf.html"]
+  dir_df516dc65065bc50f55f71ee7806fac5 [shape=box, label="auth_test", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_df516dc65065bc50f55f71ee7806fac5.html"];
+  }
+  dir_00ae9869f82e985780277dc684d7236c [shape=box label="auth" fillcolor="white" style="filled" color="red" URL="dir_00ae9869f82e985780277dc684d7236c.html"];
+  dir_df516dc65065bc50f55f71ee7806fac5->dir_00ae9869f82e985780277dc684d7236c [headlabel="2", labeldistance=1.5 headhref="dir_000020_000000.html"];
+}

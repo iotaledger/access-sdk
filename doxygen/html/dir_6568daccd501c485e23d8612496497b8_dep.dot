@@ -1,0 +1,11 @@
+digraph "auth/flavours/ecdsa" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_de5b33f5c290337181d9fd995af16f41 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="flavours" fontname="Helvetica", fontsize="10", URL="dir_de5b33f5c290337181d9fd995af16f41.html"]
+  dir_6568daccd501c485e23d8612496497b8 [shape=box, label="ecdsa", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_6568daccd501c485e23d8612496497b8.html"];
+  }
+  dir_cbdb8362360e11eafe2fa3bc74cf0ffd [shape=box label="utils" fillcolor="white" style="filled" color="red" URL="dir_cbdb8362360e11eafe2fa3bc74cf0ffd.html"];
+  dir_6568daccd501c485e23d8612496497b8->dir_cbdb8362360e11eafe2fa3bc74cf0ffd [headlabel="4", labeldistance=1.5 headhref="dir_000002_000007.html"];
+}

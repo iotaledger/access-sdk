@@ -1,0 +1,14 @@
+digraph "auth" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_00ae9869f82e985780277dc684d7236c {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_00ae9869f82e985780277dc684d7236c.html"];
+    dir_00ae9869f82e985780277dc684d7236c [shape=plaintext label="auth"];
+    dir_de5b33f5c290337181d9fd995af16f41 [shape=box label="flavours" color="red" fillcolor="white" style="filled" URL="dir_de5b33f5c290337181d9fd995af16f41.html"];
+  }
+  dir_cbdb8362360e11eafe2fa3bc74cf0ffd [shape=box label="utils" fillcolor="white" style="filled" color="red" URL="dir_cbdb8362360e11eafe2fa3bc74cf0ffd.html"];
+  dir_eb07bcf3f6bbebad6f759869cfa1383b [shape=box label="policy" fillcolor="white" style="filled" color="red" URL="dir_eb07bcf3f6bbebad6f759869cfa1383b.html"];
+  dir_00ae9869f82e985780277dc684d7236c->dir_eb07bcf3f6bbebad6f759869cfa1383b [headlabel="1", labeldistance=1.5 headhref="dir_000000_000005.html"];
+  dir_de5b33f5c290337181d9fd995af16f41->dir_cbdb8362360e11eafe2fa3bc74cf0ffd [headlabel="4", labeldistance=1.5 headhref="dir_000001_000007.html"];
+}

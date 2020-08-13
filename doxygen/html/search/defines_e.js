@@ -5,6 +5,6 @@ var searchData=
   ['nk',['Nk',['../aes_8c.html#a7b1938df390b1afe917e8baa663c22af',1,'aes.c']]],
   ['nr',['Nr',['../aes_8c.html#a9d210afc812225ee0a0bcd51bb984246',1,'aes.c']]],
   ['nsec_5fprescaler',['NSEC_PRESCALER',['../timer_8c.html#a6367ec8c537f67807bb8557974c752bd',1,'timer.c']]],
-  ['ntohl',['ntohl',['../openssl_2auth__utils_8c.html#a21dff5fd22359d8019b2144e8e626fdd',1,'auth_utils.c']]],
-  ['ntohs',['ntohs',['../openssl_2auth__utils_8c.html#ad01743b73969567f09d0ba1616637452',1,'auth_utils.c']]]
+  ['ntohl',['ntohl',['../rsa_2auth__utils_8c.html#a21dff5fd22359d8019b2144e8e626fdd',1,'auth_utils.c']]],
+  ['ntohs',['ntohs',['../rsa_2auth__utils_8c.html#ad01743b73969567f09d0ba1616637452',1,'auth_utils.c']]]
 ];
