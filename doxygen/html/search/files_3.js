@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dlog_2eh',['dlog.h',['../policy_2flavours_2json_2dlog_8h.html',1,'(Global Namespace)'],['../utils_2misc_2dlog_8h.html',1,'(Global Namespace)']]]
+  ['export_2eh',['export.h',['../export_8h.html',1,'']]]
 ];

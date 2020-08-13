@@ -1,10 +1,10 @@
 var NAVTREE =
 [
   [ "Access Core SDK", "index.html", [
-    [ "Access Core SDK", "md_00-_r_e_a_d_m_e.html", null ],
-    [ "Auth API", "md_auth_01-_r_e_a_d_m_e.html", null ],
-    [ "Plugin API", "md_plugin_03-_r_e_a_d_m_e.html", null ],
-    [ "Policy API", "md_policy_02-_r_e_a_d_m_e.html", null ],
+    [ "Auth API", "md_auth__r_e_a_d_m_e.html", null ],
+    [ "Plugin API", "md_plugin__r_e_a_d_m_e.html", null ],
+    [ "Policy API", "md_policy__r_e_a_d_m_e.html", null ],
+    [ "Access Core SDK", "md__r_e_a_d_m_e.html", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
