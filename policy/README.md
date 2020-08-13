@@ -1,6 +1,6 @@
 # Policy API
 
-Access Policy API is used to encapsulate the [Belnap Logic](https://www.doc.ic.ac.uk/research/technicalreports/2011/DTR11-6.pdf).
+Access Policy API is used to encapsulate [Belnap Logic](https://www.doc.ic.ac.uk/research/technicalreports/2011/DTR11-6.pdf) for Access Control.
 
 ## Encoding
 Policy Encoding comes in two flavours:
