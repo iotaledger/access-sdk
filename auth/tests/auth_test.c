@@ -17,87 +17,53 @@
  * limitations under the License.
  */
 
-#include <arpa/inet.h>
-#include <netinet/in.h>
+#include <assert.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/socket.h>
-#include <unistd.h>
+#include <arpa/inet.h>
 
 #include "auth.h"
 #include "auth_helper.h"
 
-#define RECV_BUFF_LEN 1024
+int auth_connect_client(int sockfd, char *servip, int port) {
 
-int g_task_sleep_time = 1000000;
+  struct sockaddr_in serv_addr;
+  memset(&serv_addr, '0', sizeof(serv_addr));
+  serv_addr.sin_family = AF_INET;
+  serv_addr.sin_port = htons(port);
 
-static int state = 0;
-int get_server_state() { return state; }
+  if (inet_pton(AF_INET, servip, &serv_addr.sin_addr) <= 0) {
+    printf("inet_pton error\n");
+    return AUTH_ERROR;
+  }
 
-void print_data(char *name, unsigned char *data, int len);
+  if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
+    printf("connection error\n");
+    return AUTH_ERROR;
+  }
 
-static auth_ctx_t session;
+  return AUTH_OK;
+}
 
 int main(int argc, char **argv) {
-  int count = 0;
-  int ret = 0;
 
-  int sockfd = 0;
-  int port = 9998;
+  int sockfd;
+  auth_ctx_t session;
+  unsigned char *buf;
+  unsigned short length;
 
-  unsigned char recv_buff[RECV_BUFF_LEN];
-  struct sockaddr_in serv_addr;
-  char *servip = "127.0.0.1";
-
-  memset(recv_buff, '0', sizeof(recv_buff));
   if ((sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) {
     printf("\n Error : Could not create socket \n");
     return 1;
   }
 
-  memset(&serv_addr, '0', sizeof(serv_addr));
-
-  serv_addr.sin_family = AF_INET;
-  serv_addr.sin_port = htons(port);
-
-  if (inet_pton(AF_INET, servip, &serv_addr.sin_addr) <= 0) {
-    printf("\n inet_pton error occured\n");
-    return 1;
-  }
-
-  if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
-    printf("\n Error : Connect Failed \n");
-    return 1;
-  }
-
-  auth_init_client(&session, &sockfd);
-
-  int auth = auth_authenticate(&session);
-
-  if (argc == 2) {
-    auth_helper_send_decision(1, &session, argv[1], strlen(argv[1]) + 1);
-  } else {
-    auth_helper_send_decision(1, &session, "{\"cmd\": \"get_all_users\"}",
-                              strlen("{\"cmd\": \"get_all_users\"}") + 1);
-  }
-
-  unsigned short length;
-  auth_receive(&session, (unsigned char **)&recv_buff, &length);
-
-  int temp = (int)length;
-
-  print_data("\n\n\nRECEIVED DATA: ", recv_buff, temp);
-
-  close(sockfd);
+  assert(auth_init_client(&session, &sockfd) == AUTH_OK);
+  assert(auth_connect_client(sockfd, "127.0.0.1", 9998) == AUTH_OK);
+  assert(auth_authenticate(&session) == AUTH_OK);
+  assert(auth_helper_send_decision(1, &session, "test", strlen("test")) == AUTH_OK);
+  assert(auth_receive(&session, (unsigned char **)&buf, &length) == AUTH_OK);
+  assert(strcmp(buf, "{\"response\":\"access denied \"}") == 0);
 
   return 0;
-}
-
-void print_data(char *name, unsigned char *data, int len) {
-  int i;
-  printf("\n%s (%d) = {", name, len);
-  for (i = 0; i < len - 1; i++) {
-    printf("0x%02X, ", data[i]);
-  }
-  printf("0x%02X};\n\n", data[len - 1]);
 }
