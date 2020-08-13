@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['y',['y',['../structge25519__aff.html#a3d62ce104a61698a3390ed64e51960d5',1,'ge25519_aff::y()'],['../structge25519.html#a3d62ce104a61698a3390ed64e51960d5',1,'ge25519::y()'],['../structge25519__p1p1.html#a3d62ce104a61698a3390ed64e51960d5',1,'ge25519_p1p1::y()'],['../structge25519__p2.html#a3d62ce104a61698a3390ed64e51960d5',1,'ge25519_p2::y()'],['../symbols_8h.html#a0ed6a908288e0cd87f79c1b5ab56d07c',1,'y():&#160;symbols.h'],['../symbols_8h.html#a798e4073d613ca5ba9618e1b3253df14',1,'Y():&#160;symbols.h']]],
-  ['yesno',['YESNO',['../validate_8c.html#a94ca6557bda87529f86f07450ca9f993',1,'validate.c']]]
+  ['x',['x',['../structge25519__aff.html#abc97e145315e90cf2171df3efe8bf770',1,'ge25519_aff::x()'],['../structge25519.html#abc97e145315e90cf2171df3efe8bf770',1,'ge25519::x()'],['../structge25519__p1p1.html#abc97e145315e90cf2171df3efe8bf770',1,'ge25519_p1p1::x()'],['../structge25519__p2.html#abc97e145315e90cf2171df3efe8bf770',1,'ge25519_p2::x()'],['../symbols_8h.html#a207fd5507206d307cd63f95374fcd00d',1,'X():&#160;symbols.h'],['../symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b',1,'x():&#160;symbols.h']]]
 ];

@@ -1,4 +1,4 @@
-# Auth API Flavours
+# Auth API
 
 Access Auth API comes in two flavours:
 - RSA flavour

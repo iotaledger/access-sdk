@@ -4,9 +4,9 @@ digraph "utils/misc/utils.h"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="utils/misc/utils.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="pxp/pap/pap.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pap_8c.html"];
+  Node2 [label="policy/pap/pap.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pap_8c.html"];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="pxp/pep/pep.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pep_8c.html"];
+  Node3 [label="policy/pep/pep.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pep_8c.html"];
   Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="utils/misc/utils.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html"];
 }

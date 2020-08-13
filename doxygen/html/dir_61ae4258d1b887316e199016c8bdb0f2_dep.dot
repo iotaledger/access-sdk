@@ -1,0 +1,15 @@
+digraph "policy/pap/user/implementations" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_8817023b5ed0777935b8c79fa907433a {
+    graph [ bgcolor="#ddddee", pencolor="black", label="user" fontname="Helvetica", fontsize="10", URL="dir_8817023b5ed0777935b8c79fa907433a.html"]
+  subgraph clusterdir_61ae4258d1b887316e199016c8bdb0f2 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_61ae4258d1b887316e199016c8bdb0f2.html"];
+    dir_61ae4258d1b887316e199016c8bdb0f2 [shape=plaintext label="implementations"];
+    dir_e8fce65914a3b75b997fcc331b1911e9 [shape=box label="sqlite3_example" color="black" fillcolor="white" style="filled" URL="dir_e8fce65914a3b75b997fcc331b1911e9.html"];
+  }
+  }
+  dir_00f9acfe637aef9d827230e0105c5364 [shape=box label="flavours" fillcolor="white" style="filled" color="red" URL="dir_00f9acfe637aef9d827230e0105c5364.html"];
+  dir_e8fce65914a3b75b997fcc331b1911e9->dir_00f9acfe637aef9d827230e0105c5364 [headlabel="1", labeldistance=1.5 headhref="dir_000014_000006.html"];
+}

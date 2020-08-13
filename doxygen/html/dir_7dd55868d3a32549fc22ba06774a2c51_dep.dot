@@ -1,0 +1,24 @@
+digraph "policy/pap" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_eb07bcf3f6bbebad6f759869cfa1383b {
+    graph [ bgcolor="#ddddee", pencolor="black", label="policy" fontname="Helvetica", fontsize="10", URL="dir_eb07bcf3f6bbebad6f759869cfa1383b.html"]
+  subgraph clusterdir_7dd55868d3a32549fc22ba06774a2c51 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_7dd55868d3a32549fc22ba06774a2c51.html"];
+    dir_7dd55868d3a32549fc22ba06774a2c51 [shape=plaintext label="pap"];
+    dir_8817023b5ed0777935b8c79fa907433a [shape=box label="user" color="red" fillcolor="white" style="filled" URL="dir_8817023b5ed0777935b8c79fa907433a.html"];
+    dir_e023d8fcba2ca3d2ee1459ef1f372736 [shape=box label="validator" color="black" fillcolor="white" style="filled" URL="dir_e023d8fcba2ca3d2ee1459ef1f372736.html"];
+  }
+  }
+  dir_00f9acfe637aef9d827230e0105c5364 [shape=box label="flavours" fillcolor="white" style="filled" color="red" URL="dir_00f9acfe637aef9d827230e0105c5364.html"];
+  dir_cbdb8362360e11eafe2fa3bc74cf0ffd [shape=box label="utils" fillcolor="white" style="filled" color="red" URL="dir_cbdb8362360e11eafe2fa3bc74cf0ffd.html"];
+  dir_b4c3aec6cd8f28418150dce663061cfa [shape=box label="plugin" URL="dir_b4c3aec6cd8f28418150dce663061cfa.html"];
+  dir_7dd55868d3a32549fc22ba06774a2c51->dir_e023d8fcba2ca3d2ee1459ef1f372736 [headlabel="1", labeldistance=1.5 headhref="dir_000011_000015.html"];
+  dir_7dd55868d3a32549fc22ba06774a2c51->dir_00f9acfe637aef9d827230e0105c5364 [headlabel="5", labeldistance=1.5 headhref="dir_000011_000006.html"];
+  dir_7dd55868d3a32549fc22ba06774a2c51->dir_cbdb8362360e11eafe2fa3bc74cf0ffd [headlabel="3", labeldistance=1.5 headhref="dir_000011_000008.html"];
+  dir_7dd55868d3a32549fc22ba06774a2c51->dir_8817023b5ed0777935b8c79fa907433a [headlabel="2", labeldistance=1.5 headhref="dir_000011_000012.html"];
+  dir_7dd55868d3a32549fc22ba06774a2c51->dir_b4c3aec6cd8f28418150dce663061cfa [headlabel="2", labeldistance=1.5 headhref="dir_000011_000004.html"];
+  dir_e023d8fcba2ca3d2ee1459ef1f372736->dir_00f9acfe637aef9d827230e0105c5364 [headlabel="3", labeldistance=1.5 headhref="dir_000015_000006.html"];
+  dir_8817023b5ed0777935b8c79fa907433a->dir_00f9acfe637aef9d827230e0105c5364 [headlabel="1", labeldistance=1.5 headhref="dir_000012_000006.html"];
+}

@@ -1,4 +1,9 @@
 var searchData=
 [
-  ['x',['x',['../structge25519__aff.html#abc97e145315e90cf2171df3efe8bf770',1,'ge25519_aff::x()'],['../structge25519.html#abc97e145315e90cf2171df3efe8bf770',1,'ge25519::x()'],['../structge25519__p1p1.html#abc97e145315e90cf2171df3efe8bf770',1,'ge25519_p1p1::x()'],['../structge25519__p2.html#abc97e145315e90cf2171df3efe8bf770',1,'ge25519_p2::x()'],['../symbols_8h.html#a207fd5507206d307cd63f95374fcd00d',1,'X():&#160;symbols.h'],['../symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b',1,'x():&#160;symbols.h']]]
+  ['w',['W',['../symbols_8h.html#a649b8f01fd6c0f47ff3cbddaeba63bfb',1,'W():&#160;symbols.h'],['../symbols_8h.html#a6c6772207c061db8f6ca77c2661f497a',1,'w():&#160;symbols.h']]],
+  ['wallet_5faddress',['wallet_address',['../structpap__policy__value__t.html#a0808cc37e17577272a84f8adf32cfb48',1,'pap_policy_value_t::wallet_address()'],['../structpdp__action__t.html#a0953bb963182e341d847373e037ca6aa',1,'pdp_action_t::wallet_address()']]],
+  ['windowmask',['WINDOWMASK',['../fe25519_8c.html#af30c3ccaf80cd4a5009bb173309440b1',1,'fe25519.c']]],
+  ['windowsize',['WINDOWSIZE',['../fe25519_8c.html#a7cf6abdb80c7e45e52a9484ed4f8ac0e',1,'fe25519.c']]],
+  ['word',['WORD',['../sha256_8h.html#ad2baa11c897721ff6f14b452b547f9bc',1,'sha256.h']]],
+  ['write_5fsocket',['write_socket',['../auth__test_8c.html#a6cdcf7275413c3c7a99fbbdabcd4f273',1,'auth_test.c']]]
 ];

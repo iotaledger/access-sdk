@@ -7,5 +7,5 @@ digraph "auth/flavours/ecdsa" {
   dir_6568daccd501c485e23d8612496497b8 [shape=box, label="ecdsa", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_6568daccd501c485e23d8612496497b8.html"];
   }
   dir_cbdb8362360e11eafe2fa3bc74cf0ffd [shape=box label="utils" fillcolor="white" style="filled" color="red" URL="dir_cbdb8362360e11eafe2fa3bc74cf0ffd.html"];
-  dir_6568daccd501c485e23d8612496497b8->dir_cbdb8362360e11eafe2fa3bc74cf0ffd [headlabel="4", labeldistance=1.5 headhref="dir_000002_000007.html"];
+  dir_6568daccd501c485e23d8612496497b8->dir_cbdb8362360e11eafe2fa3bc74cf0ffd [headlabel="4", labeldistance=1.5 headhref="dir_000002_000008.html"];
 }
