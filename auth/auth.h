@@ -52,6 +52,36 @@ extern "C" {
 #endif
 
 /**
+ * @brief write to socket
+ *
+ * @param sockfd pointer to socker file descriptor
+ * @param buffer with data to be written
+ * @param len length of data
+ *
+ * @return On success, the number of bytes written is returned (zero indicates nothing was written). On error, -1 is returned, and errno is set appropriately.
+ */
+ssize_t write_socket(int *sockfd, void *data, unsigned short len);
+
+/**
+ * @brief read from socket
+ *
+ * @param sockfd pointer to socker file descriptor
+ * @param buffer with for data to be read
+ * @param len length of data
+ *
+ * @return On success, the number of bytes read is returned (zero indicates end of file), and the file position is advanced by this number. On error, -1 is returned, and errno is set appropriately. In this case, it is left unspecified whether the file position (if any) changes.
+ */
+ssize_t read_socket(int *sockfd, void *data, unsigned short len);
+
+/**
+ * @brief verify key
+ * @param key
+ * @param len
+ * @return
+ */
+int verify(unsigned char *key, int len);
+
+/**
  * @brief generic function signature type for socket read/write
  *
  * it is used on the definition of auth_ctx_t to declare f_read and f_write function members.

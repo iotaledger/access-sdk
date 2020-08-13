@@ -21,8 +21,20 @@
 #include "auth_debug.h"
 #include "auth_internal.h"
 
-typedef struct auth_struct auth_struct_t;
+#include <unistd.h>
 
+ssize_t read_socket(int *sockfd, void *data, unsigned short len) {
+  return read(*sockfd, data, len);
+}
+
+ssize_t write_socket(int *sockfd, void *data, unsigned short len) {
+  return write(*sockfd, data, len);
+}
+
+// ToDo: implement proper verification.
+int verify(unsigned char *key, int len) { return 0; }
+
+typedef struct auth_struct auth_struct_t;
 static auth_struct_t internal;
 
 static int auth_init(auth_ctx_t *session, int *sockfd, int type) {
@@ -42,6 +54,10 @@ static int auth_init(auth_ctx_t *session, int *sockfd, int type) {
       ret = AUTH_OK;
     }
   }
+
+  session->f_read = read_socket;
+  session->f_write = write_socket;
+  session->f_verify = verify;
 
   return ret;
 }
