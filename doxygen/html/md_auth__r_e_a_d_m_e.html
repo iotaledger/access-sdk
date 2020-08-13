@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Access Core SDK: Auth API Flavours</title>
+<title>Access Core SDK: Auth API</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,7 +30,6 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Access Core SDK
    </div>
-   <div id="projectbrief">The Access Core Software Development Kit provides the components to be used as building pieces for the Access Server and Client Implementations, IOTA Access applications.</div>
   </td>
  </tr>
  </tbody>
@@ -81,7 +80,7 @@ $(document).ready(function(){initNavTree('md_auth__r_e_a_d_m_e.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Auth API Flavours </div>  </div>
+<div class="title">Auth API </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Access Auth API comes in two flavours:</p><ul>
@@ -105,17 +104,19 @@ $(document).ready(function(){initNavTree('md_auth__r_e_a_d_m_e.html','');});
 <li>key exchange: <b>DH</b></li>
 <li>signing/verification: <b>RSA 2048</b></li>
 <li>pros:<ul>
-<li>OpenSSL compatible.</li>
-<li>- keypair generated deterministically from IOTA seeds (IOTA 2.0) (via <a href="https://github.com/bernardoaraujor/dopenssl">dOpenSSL</a>).</li>
+<li>OpenSSL-friendly.</li>
+<li>RSA is still the leading digital signature algorithm for most certificate applications</li>
+<li>deterministic keypair derived from IOTA seed (legacy or BIP39, IOTA 2.0) (via <a href="https://github.com/bernardoaraujor/dopenssl">dOpenSSL</a>).</li>
 </ul>
 </li>
 <li>cons:<ul>
-<li>RAM hungry.</li>
+<li>hungry for CPU+RAM (not IoT friendly).</li>
+<li><a href="https://crypto.stanford.edu/~dabo/pubs/papers/RSA-survey.pdf">RSA known vulnerabilities</a>, especially <a href="https://eprint.iacr.org/2017/351.pdf">Shor</a>.</li>
 </ul>
 </li>
-<li>scenarios:<ul>
-<li><b>SSL</b>/**TCP**/**IPv4**/**802.3** Wide Area Network (<b>WAN</b>) on <b>SoC HW-based MMU with 512Mb RAM</b> (Embedded Linux arm64).</li>
-<li><b>SSL</b>/**TCP**/**IPv4**/**802.3** World Wide Web (<b>WWW</b>) on <b>VPS</b> (Linux x86-64).</li>
+<li>usage scenarios:<ul>
+<li>Wide Area Network (<b>WAN</b>) over <b>SSL</b> / <b>TCP</b> / <b>IPv4</b> / <b>802.3</b> stack on <b>SoC HW-based MMU with 512Mb RAM</b> (Embedded Linux arm64).</li>
+<li>World Wide Web (<b>WWW</b>) over <b>SSL</b> / <b>TCP</b> / <b>IPv4</b> / <b>802.3</b> stack on <b>VPS</b> (Linux x86-64).</li>
 </ul>
 </li>
 </ul>
@@ -124,14 +125,18 @@ $(document).ready(function(){initNavTree('md_auth__r_e_a_d_m_e.html','');});
 <li>key exchange: <b>ECDH</b> with <b>Curve25519</b></li>
 <li>signing/verification: <b>ECDSA</b> with <b>secp160r1</b>.</li>
 <li>pros:<ul>
-<li>RAM-light.</li>
-<li>IOTA 1.5 Compatible.</li>
+<li>not hungry for CPU+RAM (IoT friendly).</li>
 </ul>
 </li>
 <li>cons:<ul>
-<li>Not Quantum robust. -scenarios:</li>
-<li><b>SSL</b>/**TCP**/**IPv6**/**6LoWPAN** Bluetooth Low Energy (<b>BLE</b>) Network on <b>uC SW-based MMU with 256kb RAM</b> (FreeRTOS armv7-m).</li>
-<li><b>SSL</b>/**TCP**/**IPv4**/**802.11** Local Area Network (<b>LAN</b>) on <b>uC SW-based MMU with 520 KiB SRAM</b> (ZephyrOS esp32). </li>
+<li>ECDSA is less mature and standardized than RSA.</li>
+<li>Unknown vulnerabilities != No vulnerabilities.</li>
+<li>No deterministic keypairs derived from IOTA seeds.</li>
+</ul>
+</li>
+<li>usage scenarios:<ul>
+<li>Bluetooth Low Energy (<b>BLE</b>) Network over <b>SSL</b> / <b>TCP</b> / <b>IPv6</b> / <b>6LoWPAN</b> stack on <b>uC SW-based MMU with 256kb RAM</b> (FreeRTOS armv7-m).</li>
+<li>Local Area Network (<b>LAN</b>) over <b>SSL</b> / <b>TCP</b> / <b>IPv4</b> / <b>802.11</b> stack on <b>uC SW-based MMU with 520 KiB SRAM</b> (ZephyrOS esp32). </li>
 </ul>
 </li>
 </ul>

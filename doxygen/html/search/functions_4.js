@@ -5,6 +5,5 @@ var searchData=
   ['ge25519_5fscalarmult_5fbase',['ge25519_scalarmult_base',['../ge25519_8c.html#a7beb2c4e34e16deb83ba47135a16a9a7',1,'ge25519_scalarmult_base(ge25519_p3 *r, const sc25519 *s):&#160;ge25519.c'],['../ge25519_8h.html#a33c66e891b99f278897dad04b8c877ef',1,'ge25519_scalarmult_base(ge25519 *r, const sc25519 *s):&#160;ge25519.h']]],
   ['ge25519_5funpackneg_5fvartime',['ge25519_unpackneg_vartime',['../ge25519_8c.html#ad010d20878201e4b383fc9124f2c8da0',1,'ge25519_unpackneg_vartime(ge25519_p3 *r, const unsigned char p[32]):&#160;ge25519.c'],['../ge25519_8h.html#a6584a3b2ea620d08aa97b043176b4293',1,'ge25519_unpackneg_vartime(ge25519 *r, const unsigned char p[32]):&#160;ge25519.h']]],
   ['get_5flist_5fsize',['get_list_size',['../optimizer_8c.html#a5995c3b6365c98846d8a6ed3487db240',1,'optimizer.c']]],
-  ['get_5fserver_5fstate',['get_server_state',['../auth__test_8c.html#a30906267637e113852184f08c56ec411',1,'auth_test.c']]],
   ['get_5ftimer_5ffrom_5ffd',['get_timer_from_fd',['../timer_8c.html#a784a8f2822dc30fe256a9e900abb91b8',1,'timer.c']]]
 ];

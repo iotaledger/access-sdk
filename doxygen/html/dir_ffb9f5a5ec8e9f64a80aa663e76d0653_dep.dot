@@ -1,0 +1,11 @@
+digraph "policy/pap/user/tests" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_8817023b5ed0777935b8c79fa907433a {
+    graph [ bgcolor="#ddddee", pencolor="black", label="user" fontname="Helvetica", fontsize="10", URL="dir_8817023b5ed0777935b8c79fa907433a.html"]
+  dir_ffb9f5a5ec8e9f64a80aa663e76d0653 [shape=box, label="tests", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_ffb9f5a5ec8e9f64a80aa663e76d0653.html"];
+  }
+  dir_00f9acfe637aef9d827230e0105c5364 [shape=box label="flavours" fillcolor="white" style="filled" color="red" URL="dir_00f9acfe637aef9d827230e0105c5364.html"];
+  dir_ffb9f5a5ec8e9f64a80aa663e76d0653->dir_00f9acfe637aef9d827230e0105c5364 [headlabel="1", labeldistance=1.5 headhref="dir_000016_000007.html"];
+}

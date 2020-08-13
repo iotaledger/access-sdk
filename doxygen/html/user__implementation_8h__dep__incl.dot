@@ -37,7 +37,7 @@ digraph "policy/pap/user/implementations/sqlite3_example/user_implementation.h"
   Node14 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node7 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node15 [label="policy/pap/user/user.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$user_8c.html"];
+  Node15 [label="policy/pap/user/tests\l/user_test.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$user__test_8c.html"];
   Node3 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node16 [label="tests/user_management\l/user_management_test.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$user__management__test_8c.html"];
+  Node16 [label="policy/pap/user/user.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$user_8c.html"];
 }

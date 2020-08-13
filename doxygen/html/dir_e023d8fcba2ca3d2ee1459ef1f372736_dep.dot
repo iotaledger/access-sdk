@@ -7,5 +7,5 @@ digraph "policy/pap/validator" {
   dir_e023d8fcba2ca3d2ee1459ef1f372736 [shape=box, label="validator", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_e023d8fcba2ca3d2ee1459ef1f372736.html"];
   }
   dir_00f9acfe637aef9d827230e0105c5364 [shape=box label="flavours" fillcolor="white" style="filled" color="red" URL="dir_00f9acfe637aef9d827230e0105c5364.html"];
-  dir_e023d8fcba2ca3d2ee1459ef1f372736->dir_00f9acfe637aef9d827230e0105c5364 [headlabel="3", labeldistance=1.5 headhref="dir_000015_000006.html"];
+  dir_e023d8fcba2ca3d2ee1459ef1f372736->dir_00f9acfe637aef9d827230e0105c5364 [headlabel="3", labeldistance=1.5 headhref="dir_000017_000007.html"];
 }

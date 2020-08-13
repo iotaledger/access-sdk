@@ -16,22 +16,27 @@ Both flavours share the following cryptographic primitives:
 - key exchange: **DH**
 - signing/verification: **RSA 2048**
 - pros:
-  - OpenSSL compatible.
-  -   - keypair generated deterministically from IOTA seeds (IOTA 2.0) (via [dOpenSSL](https://github.com/bernardoaraujor/dopenssl)).
+  - OpenSSL-friendly.
+  - RSA is still  
+  the leading digital signature
+    algorithm for most certificate applications
+  - deterministic keypair derived from IOTA seed (legacy or BIP39, IOTA 2.0) (via [dOpenSSL](https://github.com/bernardoaraujor/dopenssl)).
 - cons:
-  - RAM hungry.
-- scenarios:
-  - **SSL**/**TCP**/**IPv4**/**802.3** Wide Area Network (**WAN**) on **SoC HW-based MMU with 512Mb RAM** (Embedded Linux arm64).
-  - **SSL**/**TCP**/**IPv4**/**802.3** World Wide Web (**WWW**) on **VPS** (Linux x86-64).
+  - hungry for CPU+RAM (not IoT friendly).
+  - [RSA known vulnerabilities](https://crypto.stanford.edu/~dabo/pubs/papers/RSA-survey.pdf), especially [Shor](https://eprint.iacr.org/2017/351.pdf).
+- usage scenarios:
+  - Wide Area Network (**WAN**) over **SSL** / **TCP** / **IPv4** / **802.3** stack on **SoC HW-based MMU with 512Mb RAM** (Embedded Linux arm64).
+  - World Wide Web (**WWW**) over **SSL** / **TCP** / **IPv4** / **802.3** stack on **VPS** (Linux x86-64).
 
 ## ECDSA Flavour
 - key exchange: **ECDH** with **Curve25519**
 - signing/verification: **ECDSA** with **secp160r1**.
 - pros:
-  - RAM-light.
-  - IOTA 1.5 Compatible.
+  - not hungry for CPU+RAM (IoT friendly).
 - cons:
-  - Not Quantum robust.
--scenarios:
-  - **SSL**/**TCP**/**IPv6**/**6LoWPAN** Bluetooth Low Energy (**BLE**) Network on **uC SW-based MMU with 256kb RAM** (FreeRTOS armv7-m).
-  - **SSL**/**TCP**/**IPv4**/**802.11** Local Area Network (**LAN**) on **uC SW-based MMU with 520 KiB SRAM** (ZephyrOS esp32).
+  - ECDSA is less mature and standardized than RSA.
+  - Unknown vulnerabilities != No vulnerabilities.
+  - No deterministic keypairs derived from IOTA seeds.
+- usage scenarios:
+  - Bluetooth Low Energy (**BLE**) Network over **SSL** / **TCP** / **IPv6** / **6LoWPAN** stack on **uC SW-based MMU with 256kb RAM** (FreeRTOS armv7-m).
+  - Local Area Network (**LAN**) over **SSL** / **TCP** / **IPv4** / **802.11** stack on **uC SW-based MMU with 520 KiB SRAM** (ZephyrOS esp32).

@@ -89,6 +89,9 @@ $(document).ready(function(){initNavTree('auth_8c.html','');});
 <div class="textblock"><code>#include &quot;<a class="el" href="auth_8h_source.html">auth.h</a>&quot;</code><br />
 <code>#include &quot;auth_debug.h&quot;</code><br />
 <code>#include &quot;auth_internal.h&quot;</code><br />
+<code>#include &lt;arpa/inet.h&gt;</code><br />
+<code>#include &lt;netinet/in.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for auth.c:</div>
 <div class="dyncontent">
@@ -104,12 +107,24 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8efcd4933b2b7acd6a2bf10b660fc533"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a8efcd4933b2b7acd6a2bf10b660fc533">auth_init_client</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, void *ext)</td></tr>
-<tr class="memdesc:a8efcd4933b2b7acd6a2bf10b660fc533"><td class="mdescLeft">&#160;</td><td class="mdescRight">authenticator client initializer function  <a href="#a8efcd4933b2b7acd6a2bf10b660fc533">More...</a><br /></td></tr>
-<tr class="separator:a8efcd4933b2b7acd6a2bf10b660fc533"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab334cd0929c92ddaf439829f97fbbc3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#aab334cd0929c92ddaf439829f97fbbc3">auth_init_server</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, void *ext)</td></tr>
-<tr class="memdesc:aab334cd0929c92ddaf439829f97fbbc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">authenticator server intiializer function  <a href="#aab334cd0929c92ddaf439829f97fbbc3">More...</a><br /></td></tr>
-<tr class="separator:aab334cd0929c92ddaf439829f97fbbc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad266358fec3ea82008c0728eec2491ea"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#ad266358fec3ea82008c0728eec2491ea">read_socket</a> (int *sockfd, void *data, unsigned short len)</td></tr>
+<tr class="memdesc:ad266358fec3ea82008c0728eec2491ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">read from socket  <a href="#ad266358fec3ea82008c0728eec2491ea">More...</a><br /></td></tr>
+<tr class="separator:ad266358fec3ea82008c0728eec2491ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6859a7b7dc923f0c2425c46c5f67f894"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a6859a7b7dc923f0c2425c46c5f67f894">write_socket</a> (int *sockfd, void *data, unsigned short len)</td></tr>
+<tr class="memdesc:a6859a7b7dc923f0c2425c46c5f67f894"><td class="mdescLeft">&#160;</td><td class="mdescRight">write to socket  <a href="#a6859a7b7dc923f0c2425c46c5f67f894">More...</a><br /></td></tr>
+<tr class="separator:a6859a7b7dc923f0c2425c46c5f67f894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8af361c884fcf2ad1f1ebf8df6a2efcc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a8af361c884fcf2ad1f1ebf8df6a2efcc">verify</a> (unsigned char *key, int len)</td></tr>
+<tr class="memdesc:a8af361c884fcf2ad1f1ebf8df6a2efcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">verify key  <a href="#a8af361c884fcf2ad1f1ebf8df6a2efcc">More...</a><br /></td></tr>
+<tr class="separator:a8af361c884fcf2ad1f1ebf8df6a2efcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa915e80d3bbd756aaf57633b16c1f81d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#aa915e80d3bbd756aaf57633b16c1f81d">auth_init_client</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, int *sockfd)</td></tr>
+<tr class="memdesc:aa915e80d3bbd756aaf57633b16c1f81d"><td class="mdescLeft">&#160;</td><td class="mdescRight">authenticator client initializer function  <a href="#aa915e80d3bbd756aaf57633b16c1f81d">More...</a><br /></td></tr>
+<tr class="separator:aa915e80d3bbd756aaf57633b16c1f81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a175e4ad01a3ad5ad42a4325b41c91452"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a175e4ad01a3ad5ad42a4325b41c91452">auth_init_server</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, int *sockfd)</td></tr>
+<tr class="memdesc:a175e4ad01a3ad5ad42a4325b41c91452"><td class="mdescLeft">&#160;</td><td class="mdescRight">authenticator server intiializer function  <a href="#a175e4ad01a3ad5ad42a4325b41c91452">More...</a><br /></td></tr>
+<tr class="separator:a175e4ad01a3ad5ad42a4325b41c91452"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1435abd3d6dd6f85657aad2f74b3d6a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#ac1435abd3d6dd6f85657aad2f74b3d6a">auth_connect_client</a> (int sockfd, char *servip, int port)</td></tr>
+<tr class="memdesc:ac1435abd3d6dd6f85657aad2f74b3d6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">connects as client to some server  <a href="#ac1435abd3d6dd6f85657aad2f74b3d6a">More...</a><br /></td></tr>
+<tr class="separator:ac1435abd3d6dd6f85657aad2f74b3d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa629fed5186908a443d5878fd70e509a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#aa629fed5186908a443d5878fd70e509a">auth_set_option</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, const char *key, unsigned char *value)</td></tr>
 <tr class="memdesc:aa629fed5186908a443d5878fd70e509a"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets option (priv/pub keys) to authenticator session context.  <a href="#aa629fed5186908a443d5878fd70e509a">More...</a><br /></td></tr>
 <tr class="separator:aa629fed5186908a443d5878fd70e509a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,8 +185,53 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8efcd4933b2b7acd6a2bf10b660fc533"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8efcd4933b2b7acd6a2bf10b660fc533">&#9670;&nbsp;</a></span>auth_init_client()</h2>
+<a id="ac1435abd3d6dd6f85657aad2f74b3d6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1435abd3d6dd6f85657aad2f74b3d6a">&#9670;&nbsp;</a></span>auth_connect_client()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int auth_connect_client </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>servip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>connects as client to some server </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sockfd</td><td>socket file descriptor </td></tr>
+    <tr><td class="paramname">servip</td><td>pointer to string with server IP </td></tr>
+    <tr><td class="paramname">port</td><td>server port </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>AUTH_OR or AUTH_ERROR </dd></dl>
+
+</div>
+</div>
+<a id="aa915e80d3bbd756aaf57633b16c1f81d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa915e80d3bbd756aaf57633b16c1f81d">&#9670;&nbsp;</a></span>auth_init_client()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -185,8 +245,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>ext</em>&#160;</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>sockfd</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -209,8 +269,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aab334cd0929c92ddaf439829f97fbbc3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab334cd0929c92ddaf439829f97fbbc3">&#9670;&nbsp;</a></span>auth_init_server()</h2>
+<a id="a175e4ad01a3ad5ad42a4325b41c91452"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a175e4ad01a3ad5ad42a4325b41c91452">&#9670;&nbsp;</a></span>auth_init_server()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -224,8 +284,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>ext</em>&#160;</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>sockfd</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -411,6 +471,134 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>AUTH_OR or AUTH_ERROR </dd></dl>
+
+</div>
+</div>
+<a id="ad266358fec3ea82008c0728eec2491ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad266358fec3ea82008c0728eec2491ea">&#9670;&nbsp;</a></span>read_socket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ssize_t read_socket </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>read from socket </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sockfd</td><td>pointer to socker file descriptor </td></tr>
+    <tr><td class="paramname">buffer</td><td>with for data to be read </td></tr>
+    <tr><td class="paramname">len</td><td>length of data</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>On success, the number of bytes read is returned (zero indicates end of file), and the file position is advanced by this number. On error, -1 is returned, and errno is set appropriately. In this case, it is left unspecified whether the file position (if any) changes. </dd></dl>
+
+</div>
+</div>
+<a id="a8af361c884fcf2ad1f1ebf8df6a2efcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8af361c884fcf2ad1f1ebf8df6a2efcc">&#9670;&nbsp;</a></span>verify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int verify </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>verify key </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td></td></tr>
+    <tr><td class="paramname">len</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a6859a7b7dc923f0c2425c46c5f67f894"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6859a7b7dc923f0c2425c46c5f67f894">&#9670;&nbsp;</a></span>write_socket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ssize_t write_socket </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>sockfd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>write to socket </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sockfd</td><td>pointer to socker file descriptor </td></tr>
+    <tr><td class="paramname">buffer</td><td>with data to be written </td></tr>
+    <tr><td class="paramname">len</td><td>length of data</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>On success, the number of bytes written is returned (zero indicates nothing was written). On error, -1 is returned, and errno is set appropriately. </dd></dl>
 
 </div>
 </div>
