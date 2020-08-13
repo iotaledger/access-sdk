@@ -83,7 +83,22 @@ $(document).ready(function(){initNavTree('md_plugin__r_e_a_d_m_e.html','');});
 <div class="title">Plugin API </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"></div></div><!-- contents -->
+<div class="textblock"><p>While Access Core SDK is platform agnostic, Plugins add flexibility for different use cases.</p>
+<p>Plugins handle hardware (sensors and actuators) abstractions while respecting the specifications imposed by their correspondent Access Policy API modules.</p>
+<h2>PAP Plugins</h2>
+<p>Policies need to be stored on the device in a non-volatile manner.</p>
+<p>Embedded Systems can have different forms of permanent storage. It can be eMMC, SSD, SATA, USB, or many other examples. This variability implies the need for a modular approach for Policy Storage. Also, (RT) Operating Systems impose different ways to handle non-volatile memory, as with <a href="/portability/os/posix/posix.h">file abstractions in POSIX</a> for example.</p>
+<p>PAP Plugins are used by PAP to read and write Policies from non-volatile memory.</p>
+<h2>PEP Plugins</h2>
+<p>PEP Plugins are used by PEP to enforce actions in the physical world. They are the main interface for <b>actuators</b> that need to behave in accordance to the Access being granted or denied.</p>
+<p>For example, imagine a door that is controlled by a relay attached to the board's GPIO. The GPIO needs to set the relay such that the door locks and unlocks depending on the decision for grant or denial of access.</p>
+<h2>PIP Plugins</h2>
+<p>PIP Plugins are used by PIP to gather information about the external environment. They are the main interface for <b>sensors</b> that provide information that help determine whether access will be granted or denied.</p>
+<p>For example, a Wallet-based PIP Plugin is used to verify whether an IOTA transaction was indeed performed. Another example is of a GPS-based PIP Plugin that checks device location.</p>
+<h2>Plugin API</h2>
+<p>Access Core SDK provides a Plugin API with the logical abstractions to handle <code>plugin_t</code> objects. </p><div class="fragment"><div class="line">typedef struct {</div><div class="line">  plugin_cb destroy;</div><div class="line">  plugin_cb *callbacks;</div><div class="line">  size_t callbacks_num;</div><div class="line">  void *plugin_data;</div><div class="line">} plugin_t;</div></div><!-- fragment --><p>The type <code>plugin_cb</code> is represents a callback function. It receives a reference to the plugin and some input arguments. </p><div class="fragment"><div class="line">typedef int (*plugin_cb)(plugin_t *plugin, void *data);</div></div><!-- fragment --><p>So that means each <code>plugin_t</code> object has one <code>destroy</code> callback (<code>plugin_cb</code>), and a pointer array to other functional (also <code>plugin_cb</code>) callbacks. There is a <code>callbacks_num</code> counter to keep track of the pointer array size. Finally, there is a <code>void</code> pointer called <code>plugin_data</code>, where any kind of additional plugin information is stored.</p>
+<p>xxx </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -2,24 +2,18 @@
 
 Access Auth API comes in two flavours:
 - RSA flavour
-  - [NIST FIPS PUB 800-56A](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-56ar.pdf) Diffie-Hellman (**DH**) key exchange.
-  - [NIST FIPS PUB 800-131A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar2.pdf): Rivest-Shamir-Adleman (**RSA**) 2048 signature scheme.
 - ECDSA flavour
-  - [NIST SP 800-186](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf): Elliptic Curve Diffie-Hellman (**ECDH**) key exchange.
-  - [NIST SP 800-186](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf): Elliptic Curve Digital Signature Algorithm (**ECDSA**) with secp160r1.
 
 Both flavours share the following cryptographic primitives:
-- [NIST FIPS PUB 198-1](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.198-1.pdf): Keyed-Hash Message Authentication Code (**HMAC**) [**SHA-256**](https://www.cs.princeton.edu/~appel/papers/verif-sha.pdf).
-- [NIST FIPS PUB 197](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf): Advanced Encryption Standard 256 (**AES256**).
+- Keyed-Hash Message Authentication Code (**HMAC**) **SHA-256** [[NIST FIPS PUB 198-1](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.198-1.pdf)]
+- Advanced Encryption Standard 256 (**AES256**) [[NIST FIPS PUB 197](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf)]
 
 ## RSA Flavour
-- key exchange: **DH**
-- signing/verification: **RSA 2048**
+- key exchange: [NIST FIPS PUB 800-56A](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-56ar.pdf) Diffie-Hellman (**DH**).
+- signing/verification: [NIST FIPS PUB 800-131A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar2.pdf): Rivest-Shamir-Adleman (**RSA**) 2048 bits.
 - pros:
-  - OpenSSL-friendly.
-  - RSA is still  
-  the leading digital signature
-    algorithm for most certificate applications
+  - OpenSSL friendly.
+  - RSA is still the leading DSA for most certificate applications.
   - deterministic keypair derived from IOTA seed (legacy or BIP39, IOTA 2.0) (via [dOpenSSL](https://github.com/bernardoaraujor/dopenssl)).
 - cons:
   - hungry for CPU+RAM (not IoT friendly).
@@ -29,8 +23,8 @@ Both flavours share the following cryptographic primitives:
   - World Wide Web (**WWW**) over **SSL** / **TCP** / **IPv4** / **802.3** stack on **VPS** (Linux x86-64).
 
 ## ECDSA Flavour
-- key exchange: **ECDH** with **Curve25519**
-- signing/verification: **ECDSA** with **secp160r1**.
+- key exchange: Elliptic Curve Diffie-Hellman (**ECDH**) with **Curve25519** [[NIST SP 800-186](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf)]
+- signing/verification: Elliptic Curve Digital Signature Algorithm (**ECDSA**) with secp160r1 [[NIST SP 800-186](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf)].
 - pros:
   - not hungry for CPU+RAM (IoT friendly).
 - cons:
