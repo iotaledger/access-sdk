@@ -1,12 +1,12 @@
-digraph "access_auth_api/auth_logger.h"
+digraph "auth/auth_logger.h"
 {
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node2 [label="access_auth_api/auth\l_logger.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 [label="auth/auth_logger.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="access_auth_api/auth\l_logger.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth__logger_8c.html"];
+  Node3 [label="auth/auth_logger.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth__logger_8c.html"];
   Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="access_auth_api/implementations\l/tinyauth/auth_server.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tinyauth_2auth__server_8c.html"];
+  Node4 [label="auth/flavours/ecdsa\l/auth_server.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ecdsa_2auth__server_8c.html"];
   Node2 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="access_auth_api/implementations\l/tinyauth/auth_utils.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tinyauth_2auth__utils_8c.html"];
+  Node5 [label="auth/flavours/ecdsa\l/auth_utils.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ecdsa_2auth__utils_8c.html"];
 }

@@ -1,0 +1,14 @@
+digraph "pxp/pip" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_7be6e3fdd8243354b31c1d83c38a916a {
+    graph [ bgcolor="#ddddee", pencolor="black", label="pxp" fontname="Helvetica", fontsize="10", URL="dir_7be6e3fdd8243354b31c1d83c38a916a.html"]
+  dir_18e30ac59e623ec13a29b7502f078963 [shape=box, label="pip", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_18e30ac59e623ec13a29b7502f078963.html"];
+  }
+  dir_3ea9e9b6371f85f35f597fd71075e197 [shape=box label="pdp" URL="dir_3ea9e9b6371f85f35f597fd71075e197.html"];
+  dir_b4c3aec6cd8f28418150dce663061cfa [shape=box label="plugin" URL="dir_b4c3aec6cd8f28418150dce663061cfa.html"];
+  dir_3ea9e9b6371f85f35f597fd71075e197->dir_18e30ac59e623ec13a29b7502f078963 [headlabel="1", labeldistance=1.5 headhref="dir_000016_000018.html"];
+  dir_18e30ac59e623ec13a29b7502f078963->dir_3ea9e9b6371f85f35f597fd71075e197 [headlabel="2", labeldistance=1.5 headhref="dir_000018_000016.html"];
+  dir_18e30ac59e623ec13a29b7502f078963->dir_b4c3aec6cd8f28418150dce663061cfa [headlabel="2", labeldistance=1.5 headhref="dir_000018_000004.html"];
+}
