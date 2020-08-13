@@ -39,11 +39,15 @@ int main(int argc, char **argv) {
   }
 
   assert(auth_init_client(&session, &sockfd) == AUTH_OK);
+
+  // assuming there's an open socket on server side
   assert(auth_connect_client(sockfd, "127.0.0.1", 9998) == AUTH_OK);
   assert(auth_authenticate(&session) == AUTH_OK);
   assert(auth_helper_send_decision(1, &session, "test", strlen("test")) == AUTH_OK);
   assert(auth_receive(&session, (unsigned char **)&buf, &length) == AUTH_OK);
   assert(strcmp(buf, "{\"response\":\"access denied \"}") == 0);
+
+  // ToDo: test server
 
   return 0;
 }
