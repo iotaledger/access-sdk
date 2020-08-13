@@ -262,7 +262,7 @@ int auth_utils_write(auth_ctx_t *session, const unsigned char *msg, unsigned sho
     buffer[i + encrypted_data_length + 2 + 1] = mac[i];
   }
 
-  int n = session->f_write(session->ext, buffer, buffer_length);
+  int n = session->f_write(session->sockfd, buffer, buffer_length);
 
   AUTH_GET_INTERNAL_SEQ_NUM_ENCRYPT(session)++;
 
@@ -284,7 +284,7 @@ int auth_utils_read(auth_ctx_t *session, unsigned char **msg, unsigned short *me
   unsigned char buffer[READ_BUF_LEN];
   unsigned char *encrypted_msg_buffer;
 
-  session->f_read(session->ext, buffer, CHARS_TO_READ);
+  session->f_read(session->sockfd, buffer, CHARS_TO_READ);
 
   sequence_number = buffer[0];
 
@@ -306,9 +306,9 @@ int auth_utils_read(auth_ctx_t *session, unsigned char **msg, unsigned short *me
   encrypted_msg_buffer[1] = buffer[1];
   encrypted_msg_buffer[2] = buffer[2];
 
-  session->f_read(session->ext, encrypted_msg_buffer + 3, encrypted_data_length);
+  session->f_read(session->sockfd, encrypted_msg_buffer + 3, encrypted_data_length);
 
-  session->f_read(session->ext, received_mac, MAC_HASH_L);
+  session->f_read(session->sockfd, received_mac, MAC_HASH_L);
 
   hmac_sha256(mac, AUTH_GET_INTERNAL_INTEGRITY_KEY_DECRYPTION(session), INTEGRITY_KEY_L, encrypted_msg_buffer,
               encrypted_data_length + 3);

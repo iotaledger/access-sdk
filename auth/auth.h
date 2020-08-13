@@ -56,11 +56,11 @@ extern "C" {
  *
  * it is used on the definition of auth_ctx_t to declare f_read and f_write function members.
  *
- * @param ext pointer to external data.
+ * @param sockfd pointer to socket file descriptor.
  * @param data data to be written or read.
  * @param len length of the data.
  */
-typedef ssize_t f_auth_ext_t(void *ext, void *data, unsigned short len);
+typedef ssize_t f_auth_socket_t(int *sockfd, void *data, unsigned short len);
 
 /**
  * @brief generic function signature type for key exchange verification
@@ -84,12 +84,12 @@ typedef struct auth_struct auth_struct_t;
 typedef struct {
   /*@{*/
   auth_struct_t *internal; /**< internal data */
-  void *ext; /**< external data */
+  void *sockfd; /**< socket file descriptor */
   /*@}*/
 
   /*@{*/
-  f_auth_ext_t *f_write; /**< function to write on authenticated session */
-  f_auth_ext_t *f_read; /**< function to read from authenticated session */
+  f_auth_socket_t *f_write; /**< function to write on authenticated session */
+  f_auth_socket_t *f_read; /**< function to read from authenticated session */
   /*@}*/
 
   /*@{*/
@@ -111,7 +111,7 @@ typedef struct {
  *
  * @return AUTH_OK or AUTH_ERROR
  */
-int auth_init_client(auth_ctx_t *session, void *ext);
+int auth_init_client(auth_ctx_t *session, int *sockfd);
 
 /**
  * @brief authenticator server intiializer function
@@ -123,7 +123,7 @@ int auth_init_client(auth_ctx_t *session, void *ext);
  *
  * @return AUTH_OR or AUTH_ERROR
  */
-int auth_init_server(auth_ctx_t *session, void *ext);
+int auth_init_server(auth_ctx_t *session, int *sockfd);
 
 /**
  * @brief sets option (priv/pub keys) to authenticator session context.

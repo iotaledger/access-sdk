@@ -105,7 +105,7 @@ int auth_server_compute(auth_ctx_t *session) {
   unsigned char *signature;
 
   // Server receives e from Client.
-  int read_message = session->f_read(session->ext, received_dh_public, DH_PUBLIC_L);
+  int read_message = session->f_read(session->sockfd, received_dh_public, DH_PUBLIC_L);
 
   // Server generates y and computes f
   int keys_generated = auth_utils_dh_generate_keys(session);
@@ -131,10 +131,10 @@ int auth_server_compute(auth_ctx_t *session) {
                                AUTH_GET_INTERNAL_DH_PUBLIC(session), DH_PUBLIC_L);
   auth_utils_concatenate_strings(writeBuffer + PUBLIC_KEY_L + DH_PUBLIC_L, NULL, 0, s_signed, SIGNED_MESSAGE_L);
 
-  int write_message = session->f_write(session->ext, writeBuffer, SIZE_OF_WRITE_BUFFER);
+  int write_message = session->f_write(session->sockfd, writeBuffer, SIZE_OF_WRITE_BUFFER);
 
   // Server receives ( kc || sc )
-  int read_second_message = session->f_read(session->ext, readBuffer, PUBLIC_KEY_L + SIGNED_MESSAGE_L);
+  int read_second_message = session->f_read(session->sockfd, readBuffer, PUBLIC_KEY_L + SIGNED_MESSAGE_L);
   client_public_key = readBuffer;
   signature = readBuffer + PUBLIC_KEY_L;
 

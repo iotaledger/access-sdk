@@ -86,7 +86,7 @@ int auth_client_generate(auth_ctx_t *session) {
   int keys_generated = auth_utils_dh_generate_keys(session);
 
   // Client sends e to Server.
-  int write_message = session->f_write(session->ext, AUTH_GET_INTERNAL_DH_PUBLIC(session), DH_PUBLIC_L);
+  int write_message = session->f_write(session->sockfd, AUTH_GET_INTERNAL_DH_PUBLIC(session), DH_PUBLIC_L);
 
   AUTH_GET_INTERNAL_SEQ_NUM_ENCRYPT(session) = 1;
   AUTH_GET_INTERNAL_SEQ_NUM_DECRYPT(session) = 1;
@@ -125,7 +125,7 @@ int auth_client_verify(auth_ctx_t *session) {
   unsigned char message[PUBLIC_KEY_L + SIGNED_MESSAGE_L];
 
   // Client receives ( ks || f || s )
-  ssize_t read_message = session->f_read(session->ext, readBuffer, SIZE_OF_READ_BUFFER);
+  ssize_t read_message = session->f_read(session->sockfd, readBuffer, SIZE_OF_READ_BUFFER);
   if (read_message != SIZE_OF_READ_BUFFER) {
     return AUTH_ERROR;
   }
@@ -160,7 +160,7 @@ int auth_client_verify(auth_ctx_t *session) {
 
   auth_utils_concatenate_strings(message, AUTH_GET_INTERNAL_PUBLIC_KEY(session), PUBLIC_KEY_L, signature,
                                SIGNED_MESSAGE_L);
-  ssize_t message_written = session->f_write(session->ext, message, PUBLIC_KEY_L + SIGNED_MESSAGE_L);
+  ssize_t message_written = session->f_write(session->sockfd, message, PUBLIC_KEY_L + SIGNED_MESSAGE_L);
 
   if ((read_message == SIZE_OF_READ_BUFFER) && (key_verified == 0) && (secret_computed == 0) && (h_computed == 0) &&
       (signature_verified == 0) && (computed_H == 0) && (message_signed == 0) &&

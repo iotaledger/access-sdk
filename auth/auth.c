@@ -25,7 +25,7 @@ typedef struct auth_struct auth_struct_t;
 
 static auth_struct_t internal;
 
-static int auth_init(auth_ctx_t *session, void *ext, int type) {
+static int auth_init(auth_ctx_t *session, int *sockfd, int type) {
   int ret = AUTH_ERROR;
 
   if (NULL != session) {
@@ -37,7 +37,7 @@ static int auth_init(auth_ctx_t *session, void *ext, int type) {
       memset((void *)AUTH_GET_INTERNAL(session), 0, sizeof(auth_struct_t));
 
       AUTH_GET_INTERNAL_TYPE(session) = type;
-      session->ext = ext;
+      session->sockfd = sockfd;
 
       ret = AUTH_OK;
     }
@@ -46,9 +46,9 @@ static int auth_init(auth_ctx_t *session, void *ext, int type) {
   return ret;
 }
 
-int auth_init_client(auth_ctx_t *session, void *ext) { return auth_init(session, ext, AUTH_TYPE_CLIENT); }
+int auth_init_client(auth_ctx_t *session, int *sockfd) { return auth_init(session, sockfd, AUTH_TYPE_CLIENT); }
 
-int auth_init_server(auth_ctx_t *session, void *ext) { return auth_init(session, ext, AUTH_TYPE_SERVER); }
+int auth_init_server(auth_ctx_t *session, int *sockfd) { return auth_init(session, sockfd, AUTH_TYPE_SERVER); }
 
 int auth_set_option(auth_ctx_t *session, const char *key, unsigned char *value) {
   int ret = AUTH_ERROR;
