@@ -78,7 +78,7 @@ int main(int argc, char **argv) {
     auth_helper_send_decision(1, &session, argv[1], strlen(argv[1]) + 1);
   } else {
     auth_helper_send_decision(1, &session, "{\"cmd\": \"get_all_users\"}",
-                                strlen("{\"cmd\": \"get_all_users\"}") + 1);
+                              strlen("{\"cmd\": \"get_all_users\"}") + 1);
   }
 
   unsigned short length;

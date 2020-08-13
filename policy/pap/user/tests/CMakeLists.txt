@@ -19,5 +19,12 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-add_subdirectory(auth_test)
-add_subdirectory(user_management)
+set(target user_test)
+set(sources user_test.c)
+set(libs sqlite3 fastjson pap)
+
+add_executable(${target} ${sources})
+target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(${target} PUBLIC ${libs})
+
+add_test(${target} ${target})

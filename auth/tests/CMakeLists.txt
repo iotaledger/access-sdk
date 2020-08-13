@@ -20,13 +20,11 @@
 cmake_minimum_required(VERSION 3.11)
 
 set(target auth_test)
-
-set(sources
-  auth_test.c)
-
-set(libs
-  auth)
+set(sources auth_test.c)
+set(libs auth)
 
 add_executable(${target} ${sources})
 target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(${target} PUBLIC ${libs})
+
+add_test(${target} ${target})

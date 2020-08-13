@@ -31,6 +31,14 @@ if(NOT DEFINED auth_implementation)
   #set(auth_implementation tinyauth CHACE STRING "auth implementation choice")
 endif()
 
+if(NOT DEFINED TEST)
+    option(TEST "Enable tests" ON)
+endif()
+
+if(TEST)
+    enable_testing()
+endif()
+
 # fetch iota_common
 include(FetchContent)
 FetchContent_Declare(
@@ -88,4 +96,3 @@ add_subdirectory(auth)
 add_subdirectory(policy)
 add_subdirectory(plugin)
 add_subdirectory(utils)
-add_subdirectory(tests)
