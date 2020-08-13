@@ -169,6 +169,16 @@ int auth_init_server(auth_ctx_t *session, int *sockfd);
 int auth_set_option(auth_ctx_t *session, const char *key, unsigned char *value);
 
 /**
+ * @brief connects as client to some server
+ *
+ * @param sockfd socket file descriptor
+ * @param servip pointer to string with server IP
+ * @param port server port
+ * @return AUTH_OR or AUTH_ERROR
+ */
+int auth_connect_client(int sockfd, char *servip, int port);
+
+/**
  * @brief performs actual authentication
  *
  * performs actual authentication, be it server or client side

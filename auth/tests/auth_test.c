@@ -26,26 +26,6 @@
 #include "auth.h"
 #include "auth_helper.h"
 
-int auth_connect_client(int sockfd, char *servip, int port) {
-
-  struct sockaddr_in serv_addr;
-  memset(&serv_addr, '0', sizeof(serv_addr));
-  serv_addr.sin_family = AF_INET;
-  serv_addr.sin_port = htons(port);
-
-  if (inet_pton(AF_INET, servip, &serv_addr.sin_addr) <= 0) {
-    printf("inet_pton error\n");
-    return AUTH_ERROR;
-  }
-
-  if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
-    printf("connection error\n");
-    return AUTH_ERROR;
-  }
-
-  return AUTH_OK;
-}
-
 int main(int argc, char **argv) {
 
   int sockfd;
