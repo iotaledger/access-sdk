@@ -21,7 +21,7 @@
  * \project IOTA Access
  * \file auth_client.c
  * \brief
- * Server side implemntation for ssl based authentication module
+ * Server side implemntation for RSA based authentication module
  *
  * @Author Djordje Golubovic, Bernardo Araujo
  *

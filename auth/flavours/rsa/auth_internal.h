@@ -21,7 +21,7 @@
  * \project IOTA Access
  * \file auth_internal.h
  * \brief
- * Header file for ssl based authentication module, internal functions
+ * Header file for RSA based authentication module, internal functions
  *
  * @Author Djordje Golubovic, Bernardo Araujo
  *

@@ -21,7 +21,7 @@
  * \project IOTA Access
  * \file auth_client.c
  * \brief
- * Implementation of client side authentication
+ * Client side implemntation for ECDSA based authentication module
  *
  * @Author Dejan Nedic, Milivoje Knezevic, Bernardo Araujo
  *

@@ -21,7 +21,7 @@
  * \project IOTA Access
  * \file auth_internal.h
  * \brief
- * Header file with internal function definitions for authentication.
+ * Header file for ECDSA based authentication module, internal functions
  *
  * @Author Nikola Kuzmanovic, Bernardo Araujo
  *

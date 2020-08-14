@@ -21,7 +21,7 @@
  * \project IOTA Access
  * \file auth_utils.c
  * \brief
- * Implemntation for ssl based authentication module
+ * Implementation of RSA key exchange and encryption key computation
  *
  * @Author Djordje Golubovic, Bernardo Araujo
  *

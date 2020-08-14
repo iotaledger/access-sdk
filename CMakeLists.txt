@@ -60,7 +60,10 @@ if(auth_flavour STREQUAL openssl)
 endif()
 
 # Global includes
-include_directories(utils/misc plugins/data/dataset)
+include_directories(
+  utils/misc
+  plugins/data/dataset
+)
 
 add_subdirectory(auth)
 add_subdirectory(policy)

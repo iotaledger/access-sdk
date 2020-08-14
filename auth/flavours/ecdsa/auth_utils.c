@@ -21,7 +21,7 @@
  * \project IOTA Access
  * \file auth_utils.c
  * \brief
- * Implementation of key exchange and encryption key computation
+ * Implementation of ECDSA key exchange and encryption key computation
  *
  * @Author Dejan Nedic, Milivoje Knezevic, Bernardo Araujo.
  *
