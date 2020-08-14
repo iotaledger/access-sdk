@@ -55,7 +55,7 @@ FetchContent_Declare(
   GIT_TAG 9be05e13408dd8cf8dafe8f11b1700a28194e07e
 )
 
-if(auth_implementation STREQUAL openssl)
+if(auth_flavour STREQUAL openssl)
   # fetch openssl
   include(FetchContent)
   FetchContent_Declare(
@@ -81,13 +81,14 @@ FetchContent_MakeAvailable(iota_common)
 message(STATUS "Fetching sqlite3")
 FetchContent_MakeAvailable(sqlite3)
 
-if(auth_implementation STREQUAL openssl)
+if(auth_flavour STREQUAL openssl)
   message(STATUS "Fetching openssl")
   FetchContent_MakeAvailable(openssl)
 endif()
 
 # fetch external libs
 include(ExternalProject)
+include(cmake/libsodium.cmake)
 
 # Global includes
 include_directories(utils/misc plugins/data/dataset)
