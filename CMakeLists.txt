@@ -21,22 +21,25 @@ cmake_minimum_required(VERSION 3.11)
 
 project(access_sdk)
 
-if(NOT DEFINED policy_format)
-  set(policy_format json CACHE STRING "Policy Format Choice")
-  #set(policy_format protobuf-c CHACE STRING "Policy Format Choice")
-endif()
-
-if(NOT DEFINED auth_implementation)
-  set(auth_implementation openssl CACHE STRING "auth implementation choice")
-  #set(auth_implementation tinyauth CHACE STRING "auth implementation choice")
-endif()
-
 if(NOT DEFINED TEST)
     option(TEST "Enable tests" ON)
 endif()
 
 if(TEST)
     enable_testing()
+endif()
+
+# default policy_format
+if(NOT DEFINED policy_format)
+  set(policy_format json CACHE STRING "Policy Format Choice")
+  #set(policy_format protobuf-c CHACE STRING "Policy Format Choice")
+endif()
+
+# default auth_flavour
+if(NOT DEFINED auth_flavour)
+  #set(auth_flavour eddsa CACHE STRING "auth flavour choice")
+  set(auth_flavour ecdsa CACHE STRING "auth flavour choice")
+  #set(auth_flavour rsa CACHE STRING "auth flavour choice")
 endif()
 
 if(${CMAKE_VERSION} VERSION_LESS 3.14)

@@ -24,9 +24,6 @@ link_directories("${CMAKE_INSTALL_PREFIX}/lib")
 
 set(target auth)
 
-set(auth_flavour ecdsa CACHE STRING "auth flavour choice")
-#set(auth_flavour rsa CACHE STRING "auth flavour choice")
-
 set(libs
   ${policy_format}
   common
@@ -36,7 +33,12 @@ if(auth_flavour STREQUAL rsa)
   list(APPEND libs ssl)
 elseif(auth_flavour STREQUAL ecdsa)
   list(APPEND libs cryptography)
+elseif(auth_flavour STREQUAL eddsa)
+  list(APPEND libs sodium)
 endif()
+
+message(STATUS test123)
+message(STATUS ${auth_flavour})
 
 set(sources
   auth_logger.c
