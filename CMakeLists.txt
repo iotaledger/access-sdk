@@ -39,32 +39,6 @@ if(TEST)
     enable_testing()
 endif()
 
-# fetch iota_common
-include(FetchContent)
-FetchContent_Declare(
-  iota_common
-  GIT_REPOSITORY http://github.com/iotaledger/iota_common.git
-  GIT_TAG cf649803757abf48432d4fa60e9f27ac119bae5f
-)
-
-# fetch sqlite-amalgamation
-include(FetchContent)
-FetchContent_Declare(
-  sqlite3
-  GIT_REPOSITORY https://github.com/azadkuh/sqlite-amalgamation.git
-  GIT_TAG 9be05e13408dd8cf8dafe8f11b1700a28194e07e
-)
-
-if(auth_flavour STREQUAL openssl)
-  # fetch openssl
-  include(FetchContent)
-  FetchContent_Declare(
-    openssl
-    GIT_REPOSITORY https://github.com/honeycombOS/openssl-cmake.git
-    GIT_TAG 8ffd9276ec8750ae4293cfa0bc9e7562807bb37d
-  )
-endif()
-
 if(${CMAKE_VERSION} VERSION_LESS 3.14)
     macro(FetchContent_MakeAvailable NAME)
         FetchContent_GetProperties(${NAME})
@@ -75,20 +49,12 @@ if(${CMAKE_VERSION} VERSION_LESS 3.14)
     endmacro()
 endif()
 
-message(STATUS "Fetching iota_common")
-FetchContent_MakeAvailable(iota_common)
-
-message(STATUS "Fetching sqlite3")
-FetchContent_MakeAvailable(sqlite3)
-
-if(auth_flavour STREQUAL openssl)
-  message(STATUS "Fetching openssl")
-  FetchContent_MakeAvailable(openssl)
-endif()
-
-# fetch external libs
-include(ExternalProject)
+include(cmake/iota_common.cmake)
+include(cmake/sqlite3.cmake)
 include(cmake/libsodium.cmake)
+if(auth_flavour STREQUAL openssl)
+  include(cmake/openssl.cmake)
+endif()
 
 # Global includes
 include_directories(utils/misc plugins/data/dataset)
