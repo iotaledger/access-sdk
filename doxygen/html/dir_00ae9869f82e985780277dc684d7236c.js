@@ -1,6 +1,7 @@
 var dir_00ae9869f82e985780277dc684d7236c =
 [
-    [ "flavours", "dir_de5b33f5c290337181d9fd995af16f41.html", "dir_de5b33f5c290337181d9fd995af16f41" ],
+    [ "eddsa", "dir_41d095b2afd88fda019ea4d1b9fd4845.html", "dir_41d095b2afd88fda019ea4d1b9fd4845" ],
+    [ "rsa", "dir_c02f9c2dac9158b3625b0ab6197fd514.html", "dir_c02f9c2dac9158b3625b0ab6197fd514" ],
     [ "tests", "dir_da99333b95f34abf5308ef662bd49d71.html", "dir_da99333b95f34abf5308ef662bd49d71" ],
     [ "auth.c", "auth_8c.html", "auth_8c" ],
     [ "auth.h", "auth_8h.html", "auth_8h" ],

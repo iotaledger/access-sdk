@@ -21,16 +21,6 @@ cmake_minimum_required(VERSION 3.11)
 
 project(access_sdk)
 
-if(NOT DEFINED policy_format)
-  set(policy_format json CACHE STRING "Policy Format Choice")
-  #set(policy_format protobuf-c CHACE STRING "Policy Format Choice")
-endif()
-
-if(NOT DEFINED auth_implementation)
-  set(auth_implementation openssl CACHE STRING "auth implementation choice")
-  #set(auth_implementation tinyauth CHACE STRING "auth implementation choice")
-endif()
-
 if(NOT DEFINED TEST)
     option(TEST "Enable tests" ON)
 endif()
@@ -39,30 +29,16 @@ if(TEST)
     enable_testing()
 endif()
 
-# fetch iota_common
-include(FetchContent)
-FetchContent_Declare(
-  iota_common
-  GIT_REPOSITORY http://github.com/iotaledger/iota_common.git
-  GIT_TAG cf649803757abf48432d4fa60e9f27ac119bae5f
-)
+# default policy_format
+if(NOT DEFINED policy_format)
+  set(policy_format json CACHE STRING "Policy Format Choice")
+  #set(policy_format protobuf-c CHACE STRING "Policy Format Choice")
+endif()
 
-# fetch sqlite-amalgamation
-include(FetchContent)
-FetchContent_Declare(
-  sqlite3
-  GIT_REPOSITORY https://github.com/azadkuh/sqlite-amalgamation.git
-  GIT_TAG 9be05e13408dd8cf8dafe8f11b1700a28194e07e
-)
-
-if(auth_implementation STREQUAL openssl)
-  # fetch openssl
-  include(FetchContent)
-  FetchContent_Declare(
-    openssl
-    GIT_REPOSITORY https://github.com/honeycombOS/openssl-cmake.git
-    GIT_TAG 8ffd9276ec8750ae4293cfa0bc9e7562807bb37d
-  )
+# default auth_flavour
+if(NOT DEFINED auth_flavour)
+  set(auth_flavour eddsa CACHE STRING "auth flavour choice")
+  #set(auth_flavour rsa CACHE STRING "auth flavour choice")
 endif()
 
 if(${CMAKE_VERSION} VERSION_LESS 3.14)
@@ -75,22 +51,20 @@ if(${CMAKE_VERSION} VERSION_LESS 3.14)
     endmacro()
 endif()
 
-message(STATUS "Fetching iota_common")
-FetchContent_MakeAvailable(iota_common)
-
-message(STATUS "Fetching sqlite3")
-FetchContent_MakeAvailable(sqlite3)
-
-if(auth_implementation STREQUAL openssl)
-  message(STATUS "Fetching openssl")
-  FetchContent_MakeAvailable(openssl)
+include(cmake/iota_common.cmake)
+include(cmake/sqlite3.cmake)
+include(cmake/libsodium.cmake)
+if(auth_flavour STREQUAL rsa)
+  include(cmake/openssl.cmake)
 endif()
 
-# fetch external libs
-include(ExternalProject)
-
 # Global includes
-include_directories(utils/misc plugins/data/dataset)
+include_directories(
+  utils/misc
+  utils/crypto
+  utils/crypto/ref
+  plugins/data/dataset
+)
 
 add_subdirectory(auth)
 add_subdirectory(policy)

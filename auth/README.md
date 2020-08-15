@@ -2,7 +2,7 @@
 
 Access Auth API comes in two flavours:
 - RSA flavour
-- ECDSA flavour
+- EdDSA flavour
 
 Both flavours share the following cryptographic primitives:
 - Keyed-Hash Message Authentication Code (**HMAC**) **SHA-256** [[NIST FIPS PUB 198-1](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.198-1.pdf)]
@@ -22,15 +22,15 @@ Both flavours share the following cryptographic primitives:
   - Wide Area Network (**WAN**) over **SSL** / **TCP** / **IPv4** / **802.3** stack on **SoC HW-based MMU with 512Mb RAM** (Embedded Linux arm64).
   - World Wide Web (**WWW**) over **SSL** / **TCP** / **IPv4** / **802.3** stack on **VPS** (Linux x86-64).
 
-## ECDSA Flavour
+## EdDSA Flavour
 - key exchange: Elliptic Curve Diffie-Hellman (**ECDH**) with **Curve25519** [[NIST SP 800-186](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf)]
-- signing/verification: Elliptic Curve Digital Signature Algorithm (**ECDSA**) with secp160r1 [[NIST SP 800-186](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf)].
+- signing/verification: Elliptic Curve Digital Signature Algorithm (**ECDSA**) with **Ed25519** [[NIST FIPS PUB 186-5](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5-draft.pdf)].
 - pros:
-  - not hungry for CPU+RAM (IoT friendly).
+  - IoT friendly.
+  - IOTA 1.5 compatible.
 - cons:
-  - ECDSA is less mature and standardized than RSA.
+  - EdDSA is younger than RSA.
   - Unknown vulnerabilities != No vulnerabilities.
-  - No deterministic keypairs derived from IOTA seeds.
 - usage scenarios:
   - Bluetooth Low Energy (**BLE**) Network over **SSL** / **TCP** / **IPv6** / **6LoWPAN** stack on **uC SW-based MMU with 256kb RAM** (FreeRTOS armv7-m).
   - Local Area Network (**LAN**) over **SSL** / **TCP** / **IPv4** / **802.11** stack on **uC SW-based MMU with 520 KiB SRAM** (ZephyrOS esp32).

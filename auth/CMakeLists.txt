@@ -24,9 +24,6 @@ link_directories("${CMAKE_INSTALL_PREFIX}/lib")
 
 set(target auth)
 
-set(auth_flavour ecdsa CACHE STRING "auth flavour choice")
-#set(auth_flavour rsa CACHE STRING "auth flavour choice")
-
 set(libs
   ${policy_format}
   common
@@ -34,7 +31,7 @@ set(libs
 
 if(auth_flavour STREQUAL rsa)
   list(APPEND libs ssl)
-elseif(auth_flavour STREQUAL ecdsa)
+elseif(auth_flavour STREQUAL eddsa)
   list(APPEND libs cryptography)
 endif()
 
@@ -42,14 +39,14 @@ set(sources
   auth_logger.c
   auth.c
   auth_helper.c
-  flavours/${auth_flavour}/auth_client.c
-  flavours/${auth_flavour}/auth_server.c
-  flavours/${auth_flavour}/auth_client.c
-  flavours/${auth_flavour}/auth_utils.c)
+  ${auth_flavour}/auth_client.c
+  ${auth_flavour}/auth_server.c
+  ${auth_flavour}/auth_client.c
+  ${auth_flavour}/auth_utils.c)
 
 set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/flavours/${auth_flavour})
+  ${CMAKE_CURRENT_SOURCE_DIR}/${auth_flavour})
 
 add_library(${target} ${sources})
 

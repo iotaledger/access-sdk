@@ -13,7 +13,7 @@ It is composed of the following pieces:
     * Policy Information API
 - Access Authentication API
     * RSA Flavour
-    * ECDSA Flavour
+    * EdDSA Flavour
 - Access Plugins API
     * Plugin API
     * Plugin Manager
@@ -26,4 +26,4 @@ You can find a precompiled Doxygen html book at [`doxygen/html`](https://github.
 
 In order to read it:
 1. Clone `https://github.com/iotaledger/access-sdk` to `$SDK` directory
-1. Render `$SDK/doxygen/html/index.html` on a web-browser.
+2. Render `$SDK/doxygen/html/index.html` on a web-browser.

@@ -1,9 +1,9 @@
 var searchData=
 [
   ['r',['r',['../symbols_8h.html#a62969232668331297e2dca1ae2ddd10d',1,'r():&#160;symbols.h'],['../symbols_8h.html#a5c71a5e59a53413cd6c270266d63b031',1,'R():&#160;symbols.h'],['../sha512_8c.html#a8fb1dfc3ad6dd07bc99c1962e6583087',1,'R():&#160;sha512.c']]],
-  ['read_5fbuf_5flen',['READ_BUF_LEN',['../ecdsa_2auth__utils_8c.html#a50d6f01ddd6a618217321629f3f99b63',1,'auth_utils.c']]],
-  ['red',['RED',['../ecdsa_2auth__debug_8h.html#a8d23feea868a983c8c2b661e1e16972f',1,'RED():&#160;auth_debug.h'],['../rsa_2auth__debug_8h.html#a8d23feea868a983c8c2b661e1e16972f',1,'RED():&#160;auth_debug.h']]],
-  ['reset',['RESET',['../ecdsa_2auth__debug_8h.html#ab702106cf3b3e96750b6845ded4e0299',1,'RESET():&#160;auth_debug.h'],['../rsa_2auth__debug_8h.html#ab702106cf3b3e96750b6845ded4e0299',1,'RESET():&#160;auth_debug.h']]],
+  ['read_5fbuf_5flen',['READ_BUF_LEN',['../eddsa_2auth__utils_8c.html#a50d6f01ddd6a618217321629f3f99b63',1,'auth_utils.c']]],
+  ['red',['RED',['../eddsa_2auth__debug_8h.html#a8d23feea868a983c8c2b661e1e16972f',1,'RED():&#160;auth_debug.h'],['../rsa_2auth__debug_8h.html#a8d23feea868a983c8c2b661e1e16972f',1,'RED():&#160;auth_debug.h']]],
+  ['reset',['RESET',['../eddsa_2auth__debug_8h.html#ab702106cf3b3e96750b6845ded4e0299',1,'RESET():&#160;auth_debug.h'],['../rsa_2auth__debug_8h.html#ab702106cf3b3e96750b6845ded4e0299',1,'RESET():&#160;auth_debug.h']]],
   ['response_5flen',['RESPONSE_LEN',['../user__implementation_8c.html#a41c9aee0637a91cf94505be79e779c41',1,'RESPONSE_LEN():&#160;user_implementation.c'],['../user__test_8c.html#a41c9aee0637a91cf94505be79e779c41',1,'RESPONSE_LEN():&#160;user_test.c']]],
   ['rnd',['RND',['../sha512_8c.html#a14b75d9ce98c82d21041eba16021cba7',1,'sha512.c']]],
   ['ror64c',['ROR64c',['../sha512_8c.html#a140a16d966f0c47c50c62c96f44879e7',1,'sha512.c']]],

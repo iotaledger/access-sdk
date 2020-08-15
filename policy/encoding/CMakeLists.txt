@@ -20,7 +20,6 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-# Depends on policy format
 if(policy_format STREQUAL json)
   add_subdirectory(json)
 endif()
@@ -28,4 +27,3 @@ endif()
 if(policy_format STREQUAL protobuf-c)
   add_subdirectory(protobuf-c)
 endif()
-

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['u',['U',['../symbols_8h.html#affc9cbf86b78292bdb405361761c47f5',1,'U():&#160;symbols.h'],['../symbols_8h.html#a1f9aca42e2010bb82488684dee1a66ea',1,'u():&#160;symbols.h']]],
+  ['u',['u',['../symbols_8h.html#a1f9aca42e2010bb82488684dee1a66ea',1,'u():&#160;symbols.h'],['../symbols_8h.html#affc9cbf86b78292bdb405361761c47f5',1,'U():&#160;symbols.h']]],
   ['url_5flen',['URL_LEN',['../user__implementation_8c.html#a1ac54dd3b9b49c1800b5f502a87650be',1,'user_implementation.c']]],
   ['user_5fmanagement_5finsert_5fquery',['USER_MANAGEMENT_INSERT_QUERY',['../user__implementation_8c.html#a90bfcac74650309194a2a50617f54f5d',1,'user_implementation.c']]],
   ['utils_5fstring_5ferr',['UTILS_STRING_ERR',['../utils_8h.html#a437e07cf14e2bae220b660a9b090c6cd',1,'utils.h']]],
