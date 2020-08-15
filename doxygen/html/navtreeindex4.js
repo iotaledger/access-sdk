@@ -80,7 +80,7 @@ var NAVTREEINDEX4 =
 "structattribute__value.html#a7c483835d9d9aab152eb64ee6bedd020":[4,0,2,1],
 "structauth__ctx__t.html":[4,0,3],
 "structauth__ctx__t.html#a0e73b908400691a395d66b91c9a03ed4":[4,0,3,0],
-"structauth__ctx__t.html#a52baa583872f87480329355873ce1c2a":[4,0,3,4],
+"structauth__ctx__t.html#a5172e2faaee08b8acfde873107f95a19":[4,0,3,4],
 "structauth__ctx__t.html#a6e27f49150e9a14580fb313cc2777e00":[4,0,3,5],
 "structauth__ctx__t.html#a7568d8fa4c0480edbf200cc9fb29d148":[4,0,3,3],
 "structauth__ctx__t.html#a9390357c55eb2fc5aac70448c9f91776":[4,0,3,1],

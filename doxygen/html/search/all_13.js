@@ -45,7 +45,7 @@ var searchData=
   ['signed_5fmessage_5fl',['SIGNED_MESSAGE_L',['../eddsa_2auth__internal_8h.html#a4056e83ae5dcf82c4ec2a7363218e739',1,'auth_internal.h']]],
   ['size',['size',['../structjsmntok.html#a439227feff9d7f55384e8780cfc2eb82',1,'jsmntok::size()'],['../structattribute__value.html#a439227feff9d7f55384e8780cfc2eb82',1,'attribute_value::size()']]],
   ['size_5fof_5ftoken',['size_of_token',['../json__helper_8c.html#ad4898e4f15a1878204473e0f79e4e94f',1,'json_helper.c']]],
-  ['sockfd',['sockfd',['../structauth__ctx__t.html#a52baa583872f87480329355873ce1c2a',1,'auth_ctx_t']]],
+  ['sockfd',['sockfd',['../structauth__ctx__t.html#a5172e2faaee08b8acfde873107f95a19',1,'auth_ctx_t']]],
   ['sodium_5fexport',['SODIUM_EXPORT',['../export_8h.html#a9a35f15c7aaca02eba96cf12a7655a85',1,'export.h']]],
   ['sodium_5fexport_5fweak',['SODIUM_EXPORT_WEAK',['../export_8h.html#aac1dfaaff7e2623aa51bb3f3bdb65d50',1,'export.h']]],
   ['sodium_5fmin',['SODIUM_MIN',['../export_8h.html#a20f714571c837c9497ad8bc7b2f8f433',1,'export.h']]],
