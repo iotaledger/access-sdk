@@ -11,9 +11,8 @@ Both flavours share the following cryptographic primitives:
 ## RSA Flavour
 - key exchange: [NIST FIPS PUB 800-56A](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-56ar.pdf) Diffie-Hellman (**DH**).
 - signing/verification: [NIST FIPS PUB 800-131A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar2.pdf): Rivest-Shamir-Adleman (**RSA**) 2048 bits.
-- base lib: [OpenSSL](https://github.com/openssl/openssl).
+- base lib: [OpenSSL v1.0.2](https://github.com/openssl/openssl/releases/tag/OpenSSL_1_0_2u).
 - pros:
-  - OpenSSL friendly.
   - RSA is still the leading DSA for most certificate applications.
   - deterministic keypair from BIP39 (via [dOpenSSL](https://github.com/bernardoaraujor/dopenssl)).
 - cons:
@@ -26,7 +25,7 @@ Both flavours share the following cryptographic primitives:
 ## EdDSA Flavour
 - key exchange: Elliptic Curve Diffie-Hellman (**ECDH**) with **Curve25519** [[NIST SP 800-186](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf)]
 - signing/verification: Elliptic Curve Digital Signature Algorithm (**ECDSA**) with **Ed25519** [[NIST FIPS PUB 186-5](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5-draft.pdf)].
-- base lib: [Sodium](https://github.com/jedisct1/libsodium)
+- base lib: [Sodium v1.0.18](https://github.com/jedisct1/libsodium/tree/1.0.18)
 - pros:
   - IoT friendly.
   - IOTA 1.5 compatible.
