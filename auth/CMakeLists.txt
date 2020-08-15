@@ -31,14 +31,9 @@ set(libs
 
 if(auth_flavour STREQUAL rsa)
   list(APPEND libs ssl)
-elseif(auth_flavour STREQUAL ecdsa)
-  list(APPEND libs cryptography)
 elseif(auth_flavour STREQUAL eddsa)
-  list(APPEND libs sodium)
+  list(APPEND libs cryptography)
 endif()
-
-message(STATUS test123)
-message(STATUS ${auth_flavour})
 
 set(sources
   auth_logger.c

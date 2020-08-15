@@ -37,8 +37,7 @@ endif()
 
 # default auth_flavour
 if(NOT DEFINED auth_flavour)
-  #set(auth_flavour eddsa CACHE STRING "auth flavour choice")
-  set(auth_flavour ecdsa CACHE STRING "auth flavour choice")
+  set(auth_flavour eddsa CACHE STRING "auth flavour choice")
   #set(auth_flavour rsa CACHE STRING "auth flavour choice")
 endif()
 
@@ -62,6 +61,8 @@ endif()
 # Global includes
 include_directories(
   utils/misc
+  utils/crypto
+  utils/crypto/ref
   plugins/data/dataset
 )
 
