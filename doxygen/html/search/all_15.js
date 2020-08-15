@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['u',['U',['../symbols_8h.html#affc9cbf86b78292bdb405361761c47f5',1,'U():&#160;symbols.h'],['../symbols_8h.html#a1f9aca42e2010bb82488684dee1a66ea',1,'u():&#160;symbols.h']]],
+  ['u',['u',['../symbols_8h.html#a1f9aca42e2010bb82488684dee1a66ea',1,'u():&#160;symbols.h'],['../symbols_8h.html#affc9cbf86b78292bdb405361761c47f5',1,'U():&#160;symbols.h']]],
   ['u8',['u8',['../curve25519-donna_8c.html#aed742c436da53c1080638ce6ef7d13de',1,'u8():&#160;curve25519-donna.c'],['../curve25519-donna_8h.html#aed742c436da53c1080638ce6ef7d13de',1,'u8():&#160;curve25519-donna.h']]],
   ['undefined',['UNDEFINED',['../pdp_8h.html#a40edf8b2e3ddde4f654a272d06bb6d9ea605159e8a4c32319fd69b5d151369d93',1,'pdp.h']]],
   ['unknown',['UNKNOWN',['../pdp_8h.html#a85bf71f7d38cc451799efe4838f36313a6ce26a62afab55d7606ad4e92428b30c',1,'pdp.h']]],

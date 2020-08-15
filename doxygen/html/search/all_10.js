@@ -185,12 +185,12 @@ var searchData=
   ['pos',['pos',['../structjsmn__parser.html#addcb93d939ffa259ff1d9247bdd590fd',1,'jsmn_parser']]],
   ['previous',['previous',['../struct__function__list.html#a9e6ee9141e09336efd4c9fbf976b2f25',1,'_function_list']]],
   ['private_5fkey',['private_key',['../structauth__struct.html#af84738c6aeec8055f423fa45dd2c8d2a',1,'auth_struct']]],
-  ['private_5fkey_5fl',['PRIVATE_KEY_L',['../ecdsa_2auth__internal_8h.html#ad894bf9de0d9deeeb51d02260e6a8589',1,'auth_internal.h']]],
+  ['private_5fkey_5fl',['PRIVATE_KEY_L',['../eddsa_2auth__internal_8h.html#ad894bf9de0d9deeeb51d02260e6a8589',1,'auth_internal.h']]],
   ['proper_5fformat',['proper_format',['../structvalidator__report__t.html#aca4e85ad19cfe63af93724583afa36e5',1,'validator_report_t']]],
   ['protobuf_2dc_2ec',['protobuf-c.c',['../protobuf-c_8c.html',1,'']]],
   ['protobuf_2dc_2eh',['protobuf-c.h',['../protobuf-c_8h.html',1,'']]],
   ['pub_5fkey',['pub_key',['../structauth__struct.html#aad713005343ebfb84e09a7441d655802',1,'auth_struct']]],
   ['public_5fid_5fsize',['PUBLIC_ID_SIZE',['../user__implementation_8c.html#a40e9389f1d320e18b1e4ee1fe8733929',1,'user_implementation.c']]],
   ['public_5fkey',['public_key',['../structauth__struct.html#a1b15e2b6adb24dae950013b9203b0036',1,'auth_struct::public_key()'],['../structpap__policy__id__signature__t.html#a26bff882d92e4fe75913746a4ab16d54',1,'pap_policy_id_signature_t::public_key()']]],
-  ['public_5fkey_5fl',['PUBLIC_KEY_L',['../ecdsa_2auth__internal_8h.html#a06cb5c0bb50ba10451097f66367b3c97',1,'auth_internal.h']]]
+  ['public_5fkey_5fl',['PUBLIC_KEY_L',['../eddsa_2auth__internal_8h.html#a06cb5c0bb50ba10451097f66367b3c97',1,'auth_internal.h']]]
 ];

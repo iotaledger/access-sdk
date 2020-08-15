@@ -27,6 +27,7 @@ Both flavours share the following cryptographic primitives:
 - signing/verification: Elliptic Curve Digital Signature Algorithm (**ECDSA**) with **Ed25519** [[NIST FIPS PUB 186-5](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5-draft.pdf)].
 - pros:
   - IoT friendly.
+  - IOTA 1.5 compatible.
 - cons:
   - EdDSA is younger than RSA.
   - Unknown vulnerabilities != No vulnerabilities.

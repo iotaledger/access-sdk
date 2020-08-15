@@ -85,7 +85,7 @@ $(document).ready(function(){initNavTree('md_auth__r_e_a_d_m_e.html','');});
 <div class="contents">
 <div class="textblock"><p>Access Auth API comes in two flavours:</p><ul>
 <li>RSA flavour</li>
-<li>ECDSA flavour</li>
+<li>EdDSA flavour</li>
 </ul>
 <p>Both flavours share the following cryptographic primitives:</p><ul>
 <li>Keyed-Hash Message Authentication Code (<b>HMAC</b>) <b>SHA-256</b> [<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.198-1.pdf">NIST FIPS PUB 198-1</a>]</li>
@@ -112,18 +112,18 @@ $(document).ready(function(){initNavTree('md_auth__r_e_a_d_m_e.html','');});
 </ul>
 </li>
 </ul>
-<h2>ECDSA Flavour</h2>
+<h2>EdDSA Flavour</h2>
 <ul>
 <li>key exchange: Elliptic Curve Diffie-Hellman (<b>ECDH</b>) with <b>Curve25519</b> [<a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf">NIST SP 800-186</a>]</li>
-<li>signing/verification: Elliptic Curve Digital Signature Algorithm (<b>ECDSA</b>) with secp160r1 [<a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf">NIST SP 800-186</a>].</li>
+<li>signing/verification: Elliptic Curve Digital Signature Algorithm (<b>ECDSA</b>) with <b>Ed25519</b> [<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5-draft.pdf">NIST FIPS PUB 186-5</a>].</li>
 <li>pros:<ul>
-<li>not hungry for CPU+RAM (IoT friendly).</li>
+<li>IoT friendly.</li>
+<li>IOTA 1.5 compatible.</li>
 </ul>
 </li>
 <li>cons:<ul>
-<li>ECDSA is less mature and standardized than RSA.</li>
+<li>EdDSA is younger than RSA.</li>
 <li>Unknown vulnerabilities != No vulnerabilities.</li>
-<li>No deterministic keypairs derived from IOTA seeds.</li>
 </ul>
 </li>
 <li>usage scenarios:<ul>

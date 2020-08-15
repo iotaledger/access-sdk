@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['t',['t',['../structge25519.html#a1790ea6911a572da4733d30d445ae900',1,'ge25519::t()'],['../structge25519__p1p1.html#a1790ea6911a572da4733d30d445ae900',1,'ge25519_p1p1::t()'],['../symbols_8h.html#a0acb682b8260ab1c60b918599864e2e5',1,'T():&#160;symbols.h'],['../symbols_8h.html#a1f0cf49f22a9b271d1d9e6e14609faed',1,'t():&#160;symbols.h']]],
+  ['t',['t',['../structge25519.html#a1790ea6911a572da4733d30d445ae900',1,'ge25519::t()'],['../structge25519__p1p1.html#a1790ea6911a572da4733d30d445ae900',1,'ge25519_p1p1::t()'],['../symbols_8h.html#a1f0cf49f22a9b271d1d9e6e14609faed',1,'t():&#160;symbols.h'],['../symbols_8h.html#a0acb682b8260ab1c60b918599864e2e5',1,'T():&#160;symbols.h']]],
   ['te_5fcomplex',['TE_COMPLEX',['../optimizer_8h.html#ad7806bfbfcf077c68c617c70b3a5d40ea1a8ef4089ad8d1d6f88636f16f4582e2',1,'optimizer.h']]],
   ['te_5foperator',['TE_OPERATOR',['../optimizer_8h.html#ad7806bfbfcf077c68c617c70b3a5d40eab5c348d9e3f230980e2499bb5273496a',1,'optimizer.h']]],
   ['te_5fvariable',['TE_VARIABLE',['../optimizer_8h.html#ad7806bfbfcf077c68c617c70b3a5d40eafdf88976301bdc90b66c81339abb2637',1,'optimizer.h']]],

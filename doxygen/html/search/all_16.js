@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['v',['v',['../structfe25519.html#a459371b23f9b8530927ccadf2da30cff',1,'fe25519::v()'],['../structsc25519.html#a459371b23f9b8530927ccadf2da30cff',1,'sc25519::v()'],['../symbols_8h.html#af40a326b23c68a27cebe60f16634a2cb',1,'V():&#160;symbols.h'],['../symbols_8h.html#a38bf1e5e0427bdeba2b469eea9befc23',1,'v():&#160;symbols.h']]],
+  ['v',['v',['../structfe25519.html#a459371b23f9b8530927ccadf2da30cff',1,'fe25519::v()'],['../structsc25519.html#a459371b23f9b8530927ccadf2da30cff',1,'sc25519::v()'],['../symbols_8h.html#a38bf1e5e0427bdeba2b469eea9befc23',1,'v():&#160;symbols.h'],['../symbols_8h.html#af40a326b23c68a27cebe60f16634a2cb',1,'V():&#160;symbols.h']]],
   ['valid_5fjson',['valid_json',['../structvalidator__report__t.html#ad400b8eddda1d263857ae57e494808b2',1,'validator_report_t']]],
   ['validate_2ec',['validate.c',['../validate_8c.html',1,'']]],
   ['validator_2ec',['validator.c',['../validator_8c.html',1,'']]],
