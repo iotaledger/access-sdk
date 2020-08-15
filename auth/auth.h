@@ -114,7 +114,7 @@ typedef struct auth_struct auth_struct_t;
 typedef struct {
   /*@{*/
   auth_struct_t *internal; /**< internal data */
-  void *sockfd; /**< socket file descriptor */
+  int *sockfd; /**< socket file descriptor */
   /*@}*/
 
   /*@{*/
