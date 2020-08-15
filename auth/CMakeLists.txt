@@ -30,7 +30,7 @@ set(libs
 )
 
 if(auth_flavour STREQUAL rsa)
-  list(APPEND libs ssl)
+  list(APPEND libs crypto)
 elseif(auth_flavour STREQUAL eddsa)
   list(APPEND libs cryptography)
 endif()
