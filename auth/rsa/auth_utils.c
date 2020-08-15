@@ -90,7 +90,7 @@ static int auth_utils_write(auth_ctx_t *session, void *data, unsigned short data
   int i = 0;
 
   while (i < data_len) {
-    int len = session->f_write(session->ext, data + i, data_len - i);
+    int len = session->f_write(session->sockfd, data + i, data_len - i);
     // TODO: Check return
     if (0 >= len) {
       break;
@@ -107,7 +107,7 @@ static int auth_utils_read(auth_ctx_t *session, void *data, unsigned short data_
   int i = 0;
 
   while (i < data_len) {
-    int len = session->f_read(session->ext, data + i, data_len - i);
+    int len = session->f_read(session->sockfd, data + i, data_len - i);
     // TODO: Check return
     if (0 >= len) {
       break;
