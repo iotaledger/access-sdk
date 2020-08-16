@@ -29,10 +29,10 @@ if(TEST)
     enable_testing()
 endif()
 
-# default policy_format
-if(NOT DEFINED policy_format)
-  set(policy_format json CACHE STRING "Policy Format Choice")
-  #set(policy_format protobuf-c CHACE STRING "Policy Format Choice")
+# default POLICY_FORMAT
+if(NOT DEFINED POLICY_FORMAT)
+  set(POLICY_FORMAT json CACHE STRING "Policy Format Choice")
+  #set(POLICY_FORMAT protobuf-c CHACE STRING "Policy Format Choice")
 endif()
 
 # default AUTH_FLAVOUR

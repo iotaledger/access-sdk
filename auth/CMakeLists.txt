@@ -25,7 +25,7 @@ link_directories("${CMAKE_INSTALL_PREFIX}/lib")
 set(target auth)
 
 set(libs
-  ${policy_format}
+  ${POLICY_FORMAT}
   common
 )
 
