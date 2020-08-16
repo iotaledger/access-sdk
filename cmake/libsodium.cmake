@@ -1,3 +1,4 @@
+
 include(ExternalProject)
 
 set(SODIUM_VERSION 1.0.18)
@@ -22,7 +23,3 @@ ExternalProject_Add(
 
 add_library(libsodium STATIC IMPORTED GLOBAL)
 
-add_dependencies(libsodium sodium)
-
-set_target_properties(sodium PROPERTIES IMPORTED_LOCATION ${SODIUM_STATIC_LIB})
-set_target_properties(sodium PROPERTIES INTERFACE_INCLUDE_DIRECTORIES ${SODIUM_INCLUDES})

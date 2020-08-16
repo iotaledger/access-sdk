@@ -53,8 +53,9 @@ endif()
 
 include(cmake/iota_common.cmake)
 include(cmake/sqlite3.cmake)
-include(cmake/libsodium.cmake)
-if(AUTH_FLAVOUR STREQUAL rsa)
+if(AUTH_FLAVOUR STREQUAL eddsa)
+  include(cmake/libsodium.cmake)
+elseif(AUTH_FLAVOUR STREQUAL rsa)
   include(cmake/openssl.cmake)
 endif()
 

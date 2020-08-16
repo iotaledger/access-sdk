@@ -10,19 +10,20 @@ set(OPENSSL_INCLUDES ${CMAKE_INSTALL_PREFIX}/include)
 
 file(MAKE_DIRECTORY ${OPENSSL_INCLUDES})
 
-ExternalProject_Add(
-    openssl
-    PREFIX ${OPENSSL_PREFIX}
-    BUILD_IN_SOURCE 1
-    DOWNLOAD_COMMAND wget ${OPENSSL_URL} && tar xvf ${OPENSSL_TARBALL}
-    CONFIGURE_COMMAND cd ${OPENSSL_PREFIX} && ./config --prefix=${CMAKE_CURRENT_BINARY_DIR} --openssldir=${OPENSSL_PREFIX}
-    BUILD_COMMAND cd ${OPENSSL_PREFIX} && make
-    INSTALL_COMMAND cd ${OPENSSL_PREFIX} && make install
-    BUILD_BYPRODUCTS ${OPENSSL_STATIC_CRYPTO_LIB} ${OPENSSL_STATIC_SSL_LIB}
+ExternalProject_add(
+   openssl
+   URL ${OPENSSL_URL}
+   CONFIGURE_COMMAND ./config --prefix=${CMAKE_CURRENT_BINARY_DIR} --openssldir=${OPENSSL_PREFIX}
+   BUILD_IN_SOURCE 1
+   BUILD_BYPRODUCTS ${OPENSSL_STATIC_CRYPTO_LIB} ${OPENSSL_STATIC_SSL_LIB}
+   INSTALL_COMMAND make install
 )
 
 add_library(ssl STATIC IMPORTED GLOBAL)
 add_library(crypto STATIC IMPORTED GLOBAL)
+
+add_dependencies(ssl openssl)
+add_dependencies(crypto openssl)
 
 set_target_properties(ssl PROPERTIES IMPORTED_LOCATION ${OPENSSL_STATIC_SSL_LIB})
 set_target_properties(ssl PROPERTIES INTERFACE_INCLUDE_DIRECTORIES ${OPENSSL_INCLUDES})
