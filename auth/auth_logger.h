@@ -33,8 +33,8 @@
  ****************************************************************************/
 
 
-#ifndef auth_LOGGER_H
-#define AUTH_LOGGER_ID
+#ifndef AUTH_LOGGER_H
+#define AUTH_LOGGER_H
 
 #include "utils/logger_helper.h"
 
