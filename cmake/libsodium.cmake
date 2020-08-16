@@ -10,7 +10,7 @@ set(SODIUM_INCLUDES ${CMAKE_CURRENT_BINARY_DIR}/include)
 file(MAKE_DIRECTORY ${SODIUM_INCLUDES})
 
 ExternalProject_Add(
-    sodium-src
+    sodium
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}
     SOURCE_DIR ${SODIUM_SRC}
     DOWNLOAD_COMMAND wget ${SODIUM_URL} && tar xvf ${SODIUM_TARBALL} && ${SODIUM_SRC}/autogen.sh
@@ -20,9 +20,9 @@ ExternalProject_Add(
     BUILD_BYPRODUCTS ${SODIUM_STATIC_LIB}
 )
 
-add_library(sodium STATIC IMPORTED GLOBAL)
+add_library(libsodium STATIC IMPORTED GLOBAL)
 
-add_dependencies(sodium sodium-src)
+add_dependencies(libsodium sodium)
 
 set_target_properties(sodium PROPERTIES IMPORTED_LOCATION ${SODIUM_STATIC_LIB})
 set_target_properties(sodium PROPERTIES INTERFACE_INCLUDE_DIRECTORIES ${SODIUM_INCLUDES})
