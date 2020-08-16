@@ -32,7 +32,6 @@ set(libs
 if(AUTH_FLAVOUR STREQUAL rsa)
   list(APPEND libs crypto)
 elseif(AUTH_FLAVOUR STREQUAL eddsa)
-  message(STATUS test123)
   list(APPEND libs cryptography)
 endif()
 
