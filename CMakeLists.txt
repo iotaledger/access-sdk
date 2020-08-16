@@ -35,10 +35,10 @@ if(NOT DEFINED policy_format)
   #set(policy_format protobuf-c CHACE STRING "Policy Format Choice")
 endif()
 
-# default auth_flavour
-if(NOT DEFINED auth_flavour)
-  set(auth_flavour eddsa CACHE STRING "auth flavour choice")
-  #set(auth_flavour rsa CACHE STRING "auth flavour choice")
+# default AUTH_FLAVOUR
+if(NOT DEFINED AUTH_FLAVOUR)
+  set(AUTH_FLAVOUR eddsa CACHE STRING "auth flavour choice")
+  #set(AUTH_FLAVOUR rsa CACHE STRING "auth flavour choice")
 endif()
 
 if(${CMAKE_VERSION} VERSION_LESS 3.14)
@@ -54,7 +54,7 @@ endif()
 include(cmake/iota_common.cmake)
 include(cmake/sqlite3.cmake)
 include(cmake/libsodium.cmake)
-if(auth_flavour STREQUAL rsa)
+if(AUTH_FLAVOUR STREQUAL rsa)
   include(cmake/openssl.cmake)
 endif()
 

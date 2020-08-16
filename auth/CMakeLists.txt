@@ -29,9 +29,10 @@ set(libs
   common
 )
 
-if(auth_flavour STREQUAL rsa)
+if(AUTH_FLAVOUR STREQUAL rsa)
   list(APPEND libs crypto)
-elseif(auth_flavour STREQUAL eddsa)
+elseif(AUTH_FLAVOUR STREQUAL eddsa)
+  message(STATUS test123)
   list(APPEND libs cryptography)
 endif()
 
@@ -39,14 +40,14 @@ set(sources
   auth_logger.c
   auth.c
   auth_helper.c
-  ${auth_flavour}/auth_client.c
-  ${auth_flavour}/auth_server.c
-  ${auth_flavour}/auth_client.c
-  ${auth_flavour}/auth_utils.c)
+  ${AUTH_FLAVOUR}/auth_client.c
+  ${AUTH_FLAVOUR}/auth_server.c
+  ${AUTH_FLAVOUR}/auth_client.c
+  ${AUTH_FLAVOUR}/auth_utils.c)
 
 set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/${auth_flavour})
+  ${CMAKE_CURRENT_SOURCE_DIR}/${AUTH_FLAVOUR})
 
 add_library(${target} ${sources})
 
