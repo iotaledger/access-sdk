@@ -1,7 +1,7 @@
 include(ExternalProject)
 
-set(OPENSSL_VERSION 1.0.2)
-set(OPENSSL_TARBALL OpenSSL_1_0_2u.tar.gz)
+set(OPENSSL_VERSION 1.1.1)
+set(OPENSSL_TARBALL OpenSSL_1_1_1.tar.gz)
 set(OPENSSL_URL https://github.com/openssl/openssl/archive/${OPENSSL_TARBALL})
 set(OPENSSL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/src/openssl-OpenSSL_1_0_2u)
 set(OPENSSL_SOURCE ${OPENSSL_PREFIX}/src/openssl)
@@ -21,19 +21,22 @@ ExternalProject_add(
    INSTALL_COMMAND make install
 )
 
-add_library(ssl STATIC IMPORTED)
-add_library(crypto STATIC IMPORTED)
+add_library(ssl STATIC IMPORTED GLOBAL)
+add_library(crypto STATIC IMPORTED GLOBAL)
 
 add_dependencies(ssl openssl)
 add_dependencies(crypto openssl)
 
-set_target_properties(ssl PROPERTIES IMPORTED_LOCATION ${OPENSSL_STATIC_SSL_LIB})
-set_target_properties(ssl PROPERTIES INTERFACE_INCLUDE_DIRECTORIES ${OPENSSL_INCLUDES})
+set_target_properties(ssl PROPERTIES
+    IMPORTED_LOCATION ${OPENSSL_STATIC_SSL_LIB}
+    INTERFACE_INCLUDE_DIRECTORIES ${OPENSSL_INCLUDES})
 
-set_target_properties(crypto PROPERTIES IMPORTED_LOCATION ${OPENSSL_STATIC_CRYPTO_LIB})
-set_target_properties(crypto PROPERTIES INTERFACE_INCLUDE_DIRECTORIES ${OPENSSL_INCLUDES})
+set_target_properties(crypto PROPERTIES
+    IMPORTED_LOCATION ${OPENSSL_STATIC_CRYPTO_LIB}
+    INTERFACE_INCLUDE_DIRECTORIES ${OPENSSL_INCLUDES})
 
-install(FILES ${OPENSSL_STATIC_SSL_LIB} DESTINATION lib)
+install(FILES ${OPENSSL_STATIC_SSL_LIB} EXPORT ssl-exp LIBRARY DESTINATION lib)
 install(FILES ${OPENSSL_STATIC_CRYPTO_LIB} DESTINATION lib)
+#install(EXPORT ssl DESTINATION lib)
 
 set_property(TARGET ssl PROPERTY PUBLIC_HEADER include/openssl/*.h)

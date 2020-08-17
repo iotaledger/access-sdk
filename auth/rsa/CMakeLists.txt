@@ -19,35 +19,30 @@
 
 cmake_minimum_required(VERSION 3.11)
 
+include(${CMAKE_DIR}/openssl.cmake)
+
 # libs in the sandbox
 link_directories("${CMAKE_INSTALL_PREFIX}/lib")
 
-add_subdirectory(${AUTH_FLAVOUR})
+set(libs
+  ${POLICY_FORMAT}
+  common
+)
 
 set(sources
-  auth_logger.c
-  auth.c
-  auth_helper.c
-)
+  auth_client.c
+  auth_server.c
+  auth_client.c
+  auth_utils.c)
 
 set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/../policy/encoding/${POLICY_FORMAT}
-  ${iota_common_SOURCE_DIR})
+  ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
-add_library(auth STATIC ${sources})
+add_library(rsa STATIC ${sources})
+target_include_directories(rsa PUBLIC ${include_dirs})
+target_link_directories(rsa PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/lib)
+target_link_libraries(rsa PRIVATE ssl crypto)
 
-target_link_directories(auth PUBLIC
-  ${iota_common_BUILD_DIR}
-  ${CMAKE_CURRENT_BINARY_DIR}/${AUTH_FLAVOUR})
 
-target_include_directories(auth PUBLIC ${include_dirs})
-target_link_libraries(auth PRIVATE ${AUTH_FLAVOUR})
-
-install(TARGETS auth DESTINATION lib)
-install(FILES auth.h DESTINATION include)
-install(FILES auth_logger.h DESTINATION include)
-
-if(TEST)
-  add_subdirectory(tests)
-endif()
+install(TARGETS rsa DESTINATION lib)

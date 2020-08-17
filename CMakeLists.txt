@@ -21,6 +21,8 @@ cmake_minimum_required(VERSION 3.11)
 
 project(access_sdk)
 
+set(CMAKE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
 if(NOT DEFINED TEST)
     option(TEST "Enable tests" ON)
 endif()
@@ -56,7 +58,7 @@ include(cmake/sqlite3.cmake)
 if(AUTH_FLAVOUR STREQUAL eddsa)
   include(cmake/sodium.cmake)
 elseif(AUTH_FLAVOUR STREQUAL rsa)
-  include(cmake/openssl.cmake)
+
 endif()
 
 # Global includes
