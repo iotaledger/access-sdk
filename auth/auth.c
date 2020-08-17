@@ -17,21 +17,15 @@
  * limitations under the License.
  */
 
-#include "auth.h"
-#include "auth_debug.h"
-#include "auth_internal.h"
-
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <unistd.h>
 
-ssize_t read_socket(int *sockfd, void *data, unsigned short len) {
-  return read(*sockfd, data, len);
-}
+#include "auth.h"
+#include "auth_debug.h"
+#include "auth_internal.h"
 
-ssize_t write_socket(int *sockfd, void *data, unsigned short len) {
-  return write(*sockfd, data, len);
-}
+#include "tcpip.h"
 
 // ToDo: implement proper verification.
 int verify(unsigned char *key, int len) { return 0; }

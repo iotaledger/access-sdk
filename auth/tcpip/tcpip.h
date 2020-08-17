@@ -34,6 +34,8 @@
 #ifndef AUTH_TCPIP_H
 #define AUTH_TCPIP_H
 
+#include <sys/types.h>
+
 /**
  * @brief no TCP/IP error
  */
@@ -45,6 +47,29 @@
 #define TCPIP_ERROR 1
 
 /**
+ * @brief write to socket
+ *
+ * @param sockfd pointer to socker file descriptor
+ * @param buffer with data to be written
+ * @param len length of data
+ *
+ * @return On success, the number of bytes written is returned (zero indicates nothing was written). On error, -1 is returned, and errno is set appropriately.
+ */
+ssize_t write_socket(int *sockfd, void *data, unsigned short len);
+
+/**
+ * @brief read from socket
+ *
+ * @param sockfd pointer to socker file descriptor
+ * @param buffer with for data to be read
+ * @param len length of data
+ *
+ * @return On success, the number of bytes read is returned (zero indicates end of file), and the file position is advanced by this number. On error, -1 is returned, and errno is set appropriately. In this case, it is left unspecified whether the file position (if any) changes.
+ */
+ssize_t read_socket(int *sockfd, void *data, unsigned short len);
+
+
+/**
  * @brief connects to server via TCP/IP
  *
  * @param sockfd socket file descriptor
@@ -52,6 +77,9 @@
  * @param port server port
  * @return TCPIP_OK or TCPIP_ERROR
  */
+
 int tcpip_connect(int sockfd, char *servip, int port);
+
+int tcpip_serve(int );
 
 #endif  // AUTH_TCPIP_H

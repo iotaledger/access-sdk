@@ -1,8 +1,18 @@
 #include "tcpip.h"
 
+
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include <string.h>>
 #include <unistd.h>
+
+ssize_t read_socket(int *sockfd, void *data, unsigned short len) {
+  return read(*sockfd, data, len);
+}
+
+ssize_t write_socket(int *sockfd, void *data, unsigned short len) {
+  return write(*sockfd, data, len);
+}
 
 int tcpip_connect(int sockfd, char *servip, int port) {
 

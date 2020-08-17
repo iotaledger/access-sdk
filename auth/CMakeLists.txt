@@ -36,7 +36,7 @@ target_link_directories(auth PUBLIC
   ${iota_common_BUILD_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}/${AUTH_FLAVOUR})
 target_include_directories(auth PUBLIC ${include_dirs})
-target_link_libraries(auth PRIVATE ${AUTH_FLAVOUR} ${POLICY_FORMAT})
+target_link_libraries(auth PRIVATE ${AUTH_FLAVOUR} ${POLICY_FORMAT} tcpip)
 
 install(TARGETS auth DESTINATION lib)
 install(FILES auth.h DESTINATION include)
