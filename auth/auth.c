@@ -51,10 +51,6 @@ static int auth_init(auth_ctx_t *session, int *sockfd, int type) {
     }
   }
 
-  session->f_read = read_socket;
-  session->f_write = write_socket;
-  session->f_verify = verify;
-
   return ret;
 }
 

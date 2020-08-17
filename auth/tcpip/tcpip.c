@@ -6,11 +6,11 @@
 #include <string.h>>
 #include <unistd.h>
 
-ssize_t read_socket(int *sockfd, void *data, unsigned short len) {
+ssize_t tcpip_read_socket(int *sockfd, void *data, unsigned short len) {
   return read(*sockfd, data, len);
 }
 
-ssize_t write_socket(int *sockfd, void *data, unsigned short len) {
+ssize_t tcpip_write_socket(int *sockfd, void *data, unsigned short len) {
   return write(*sockfd, data, len);
 }
 

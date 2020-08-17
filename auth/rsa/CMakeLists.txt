@@ -24,7 +24,6 @@ include(${CMAKE_DIR}/openssl.cmake)
 set(sources
   auth_client.c
   auth_server.c
-  auth_client.c
   auth_utils.c
   auth_logger.c
   auth_helper.c)
@@ -36,6 +35,6 @@ set(include_dirs
 add_library(rsa STATIC ${sources})
 target_include_directories(rsa PUBLIC ${include_dirs})
 target_link_directories(rsa PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/lib)
-target_link_libraries(rsa PRIVATE ssl crypto ${POLICY_FORMAT})
+target_link_libraries(rsa PRIVATE ssl crypto ${POLICY_FORMAT} tcpip)
 
 install(TARGETS rsa DESTINATION lib)
