@@ -22,6 +22,7 @@ cmake_minimum_required(VERSION 3.11)
 # libs in the sandbox
 link_directories("${CMAKE_INSTALL_PREFIX}/lib")
 
+add_subdirectory(tcpip)
 add_subdirectory(${AUTH_FLAVOUR})
 
 set(include_dirs
