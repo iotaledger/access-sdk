@@ -29,12 +29,6 @@ set(libs
   common
 )
 
-if(AUTH_FLAVOUR STREQUAL rsa)
-  list(APPEND libs crypto ssl)
-elseif(AUTH_FLAVOUR STREQUAL eddsa)
-  list(APPEND libs cryptography)
-endif()
-
 set(sources
   auth_logger.c
   auth.c
@@ -48,15 +42,23 @@ set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/${AUTH_FLAVOUR})
 
+find_library(OPENSSL_SSL NAMES ssl)
+find_library(OPENSSL_CRYPTO NAMES crypto)
+
+if(AUTH_FLAVOUR STREQUAL rsa)
+  list(APPEND libs crypto ssl)
+elseif(AUTH_FLAVOUR STREQUAL eddsa)
+  list(APPEND libs cryptography)
+endif()
+
 add_library(${target} ${sources})
 
 target_link_directories(auth PUBLIC
-  "${CMAKE_INSTALL_PREFIX}/lib"
-  "${CMAKE_BINARY_DIR}/../../lib/"
+  "${PROJECT_BINARY_DIR}/lib"
   "${iota_common_BUILD_DIR}")
 
 target_include_directories(${target} PUBLIC ${include_dirs})
-target_link_libraries(${target} PUBLIC ${libs})
+target_link_libraries(${target} PRIVATE ${libs})
 
 install(TARGETS auth DESTINATION lib)
 install(FILES auth.h DESTINATION include)

@@ -4,14 +4,16 @@ set(OPENSSL_VERSION 1.0.2)
 set(OPENSSL_TARBALL OpenSSL_1_0_2u.tar.gz)
 set(OPENSSL_URL https://github.com/openssl/openssl/archive/${OPENSSL_TARBALL})
 set(OPENSSL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/src/openssl-OpenSSL_1_0_2u)
+set(OPENSSL_SOURCE ${OPENSSL_PREFIX}/src/openssl)
 set(OPENSSL_STATIC_SSL_LIB ${CMAKE_CURRENT_BINARY_DIR}/lib/libssl.a)
 set(OPENSSL_STATIC_CRYPTO_LIB ${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.a)
-set(OPENSSL_INCLUDES ${CMAKE_INSTALL_PREFIX}/include)
+set(OPENSSL_INCLUDES ${OPENSSL_SOURCE})
 
-file(MAKE_DIRECTORY ${OPENSSL_INCLUDES})
+file(MAKE_DIRECTORY ${OPENSSL_PREFIX})
 
 ExternalProject_add(
    openssl
+   PREFIX ${OPENSSL_PREFIX}
    URL ${OPENSSL_URL}
    CONFIGURE_COMMAND ./config --prefix=${CMAKE_CURRENT_BINARY_DIR} --openssldir=${OPENSSL_PREFIX}
    BUILD_IN_SOURCE 1
@@ -19,8 +21,8 @@ ExternalProject_add(
    INSTALL_COMMAND make install
 )
 
-add_library(ssl STATIC IMPORTED GLOBAL)
-add_library(crypto STATIC IMPORTED GLOBAL)
+add_library(ssl STATIC IMPORTED)
+add_library(crypto STATIC IMPORTED)
 
 add_dependencies(ssl openssl)
 add_dependencies(crypto openssl)
@@ -33,3 +35,5 @@ set_target_properties(crypto PROPERTIES INTERFACE_INCLUDE_DIRECTORIES ${OPENSSL_
 
 install(FILES ${OPENSSL_STATIC_SSL_LIB} DESTINATION lib)
 install(FILES ${OPENSSL_STATIC_CRYPTO_LIB} DESTINATION lib)
+
+set_property(TARGET ssl PROPERTY PUBLIC_HEADER include/openssl/*.h)
