@@ -19,29 +19,24 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-# libs in the sandbox
-link_directories("${CMAKE_INSTALL_PREFIX}/lib")
+#include(${CMAKE_DIR}/sodium.cmake)
 
-add_subdirectory(${AUTH_FLAVOUR})
+set(sources
+  auth_client.c
+  auth_server.c
+  auth_client.c
+  auth_utils.c
+  auth_logger.c
+  auth_helper.c)
 
 set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/../policy/encoding/${POLICY_FORMAT}
-  ${iota_common_SOURCE_DIR})
+  ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
-# libauth.a
-add_library(auth STATIC auth.c)
-target_link_directories(auth PUBLIC
-  ${iota_common_BUILD_DIR}
-  ${CMAKE_CURRENT_BINARY_DIR}/${AUTH_FLAVOUR})
-target_include_directories(auth PUBLIC ${include_dirs})
-target_link_libraries(auth PRIVATE ${AUTH_FLAVOUR} ${POLICY_FORMAT})
+add_library(eddsa STATIC ${sources})
+target_include_directories(eddsa PUBLIC ${include_dirs})
+target_link_directories(eddsa PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/lib)
+#target_link_libraries(eddsa PRIVATE sodium ${POLICY_FORMAT} common)
+target_link_libraries(eddsa PRIVATE cryptography ${POLICY_FORMAT} common)
 
-install(TARGETS auth DESTINATION lib)
-install(FILES auth.h DESTINATION include)
-
-set(AUTH_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
-
-if(TEST)
-  add_subdirectory(tests)
-endif()
+install(TARGETS eddsa DESTINATION lib)
