@@ -21,14 +21,6 @@ cmake_minimum_required(VERSION 3.11)
 
 include(${CMAKE_DIR}/openssl.cmake)
 
-# libs in the sandbox
-link_directories("${CMAKE_INSTALL_PREFIX}/lib")
-
-set(libs
-  ${POLICY_FORMAT}
-  common
-)
-
 set(sources
   auth_client.c
   auth_server.c
@@ -43,6 +35,5 @@ add_library(rsa STATIC ${sources})
 target_include_directories(rsa PUBLIC ${include_dirs})
 target_link_directories(rsa PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/lib)
 target_link_libraries(rsa PRIVATE ssl crypto)
-
 
 install(TARGETS rsa DESTINATION lib)
