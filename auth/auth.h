@@ -126,19 +126,6 @@ int auth_init_client(auth_ctx_t *session, int *sockfd);
 int auth_init_server(auth_ctx_t *session, int *sockfd);
 
 /**
- * @brief sets option (priv/pub keys) to authenticator session context.
- *
- * sets option to authenticator session context with key/value pairs.
- *
- * @param session pointer to authenticator session context.
- * @param key pointer to key, where expected values are "public" and "private"
- * @param value pointer to the actual body of the key.
- *
- * @return AUTH_OR or AUTH_ERROR
- */
-int auth_set_option(auth_ctx_t *session, const char *key, unsigned char *value);
-
-/**
  * @brief performs actual authentication
  *
  * performs actual authentication, be it server or client side
