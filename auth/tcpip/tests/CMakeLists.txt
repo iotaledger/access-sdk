@@ -19,13 +19,12 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-#include(${CMAKE_DIR}/sodium.cmake)
+set(target tcpip_test)
+set(sources tcpip_test.c)
+set(libs auth ${AUTH_FLAVOUR} tcpip)
 
-set(include_dirs ${CMAKE_CURRENT_SOURCE_DIR})
+add_executable(${target} ${sources})
+target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${AUTH_SOURCE_DIR}/${AUTH_FLAVOUR})
+target_link_libraries(${target} PUBLIC ${libs})
 
-add_library(eddsa STATIC eddsa.c)
-target_include_directories(eddsa PUBLIC ${include_dirs})
-target_link_directories(eddsa PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/lib)
-target_link_libraries(eddsa PRIVATE sodium ${POLICY_FORMAT} common)
-
-install(TARGETS eddsa DESTINATION lib)
+add_test(${target} ${target})

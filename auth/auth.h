@@ -17,87 +17,49 @@
  * limitations under the License.
  */
 
-/****************************************************************************
- * \project IOTA Access
- * \file auth.h
- * \brief
- *    Authentication module API
- *
- * @Author Nikola Kuzmanovic, Bernardo Araujo
- *
- * \notes
- *
- * \history
- * 31.07.2018. Initial version.
- * 01.08.2020. Renaming.
- ****************************************************************************/
-
 #ifndef AUTH_H
 #define AUTH_H
 
 #include <stdio.h>
+#include <stdint.h>
 
-/**
- * @brief no authentication error
- */
+#include "auth_logger.h"
+
 #define AUTH_OK 0
-
-/**
- * @brief authentication error
- */
 #define AUTH_ERROR 1
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
-/**
- * @brief verify key
- * @param key
- * @param len
- * @return
- */
-int verify(unsigned char *key, int len);
-
-/**
- * @brief generic function signature type for socket read/write
- *
- * it is used on the definition of auth_ctx_t to declare f_read and f_write function members.
- *
- * @param sockfd pointer to socket file descriptor.
- * @param data data to be written or read.
- * @param len length of the data.
- */
-typedef ssize_t f_auth_socket_t(int *sockfd, void *data, unsigned short len);
-
-/**
- * @brief generic function signature type for key exchange verification
- *
- * @param
- */
-typedef int f_auth_key_verify(unsigned char *, int);
-
-/**
- * @brief declaration of auth_struct typedef.
- *
- * actual definition of this struct happens at auth/${AUTH_FLAVOUR}/auth_internal.h
- */
-typedef struct auth_struct auth_struct_t;
-
+#define AUTH_SERVER 0
+#define AUTH_CLIENT 1
 
 /**
  * @struct auth_ctx_t
- * @brief structure to represent authentication sessions.
+ * @brief structure to represent authenticated TCP/IP sessions.
+ *
+ * it is important to note that secret keys are never stored on memory
+ * secret key representation only happens inside the scope of function calls
+ * secret key representation is always destroyed from memory before function returns
  */
 typedef struct {
   /*@{*/
-  auth_struct_t *internal; /**< internal data */
-  int *sockfd; /**< socket file descriptor */
+  uint8_t side; /**< client or server*/
+  uint8_t sockfd; /**< socket file descriptor */
+  uint8_t port; /**< port */
+  struct sockaddr_in *peer_ip; /** peer IP address */
   /*@}*/
 
   /*@{*/
-  int status; /**< status of authenticated session */
+  uint8_t *nonce; /**< session nonce */
+  uint8_t *peer_DH_pk; /** peer Diffie Hellman public key */
+  uint8_t *peer_sign_pk; /** peer signing public key */
+  /*@}*/
+
+  /*@{*/
+  unsigned char *m; /**< message */
+  size_t mlen; /**< message length */
+  unsigned char *sm; /**< signed message */
+  size_t smlen; /**< signed message length */
+  unsigned char *em; /**< encrypted message */
+  size_t emlen; /** encrypted message length */
   /*@}*/
 } auth_ctx_t;
 
@@ -107,23 +69,24 @@ typedef struct {
  * initializes the authenticator in client mode.
  *
  * @param session pointer to authenticator session context.
- * @param ext external data structure.
+ * @param serv_ip server IP address
+ * @param port port
  *
  * @return AUTH_OK or AUTH_ERROR
  */
-int auth_init_client(auth_ctx_t *session, int *sockfd);
+uint8_t auth_init_client(auth_ctx_t *session, char *serv_ip, uint8_t port);
 
 /**
- * @brief authenticator server intiializer function
+ * @brief authenticator server initializer function
  *
  * initializes the authenticator in server mode.
  *
  * @param session pointer to authenticator session context.
- * @param ext external data structure.
+ * @param port port
  *
- * @return AUTH_OR or AUTH_ERROR
+ * @return AUTH_OK or AUTH_ERROR
  */
-int auth_init_server(auth_ctx_t *session, int *sockfd);
+uint8_t auth_init_server(auth_ctx_t *session, uint8_t port);
 
 /**
  * @brief performs actual authentication
@@ -134,20 +97,21 @@ int auth_init_server(auth_ctx_t *session, int *sockfd);
  *
  * @return AUTH_OR or AUTH_ERROR
  */
-int auth_authenticate(auth_ctx_t *session);
+uint8_t auth_authenticate(auth_ctx_t *session);
 
 /**
- * @brief send data over authenticated session
+ * @brief send message over authenticated session
  *
  * sends data over authenticated session
  *
- * @param session pointer to authenticator session context.
- * @param data pointer to data to be sent.
- * @param len data length (bytes)
+ * @param session pointer to auth session context.
+ * @param m pointer to message.
+ * @param mlen data length (bytes)
  *
  * @return AUTH_OK or AUTH_ERROR
  */
-int auth_send(auth_ctx_t *session, const unsigned char *data, unsigned short len);
+
+uint8_t auth_send(auth_ctx_t *session, const unsigned char *m, unsigned short mlen);
 
 /**
  * @brief receive data over authenticated session
@@ -160,7 +124,7 @@ int auth_send(auth_ctx_t *session, const unsigned char *data, unsigned short len
  *
  * @return AUTH_OK or AUTH_ERROR
  */
-int auth_receive(auth_ctx_t *session, unsigned char **data, unsigned short *len);
+uint8_t auth_receive(auth_ctx_t *session, unsigned char *m, unsigned short mlen);
 
 /**
  * @brief release authenticated session
@@ -171,9 +135,6 @@ int auth_receive(auth_ctx_t *session, unsigned char **data, unsigned short *len)
  *
  * @return AUTH_OK or AUTH_ERROR
  */
-int auth_release(auth_ctx_t *session);
+uint8_t auth_release(auth_ctx_t *session);
 
-#ifdef __cplusplus
-};
-#endif
 #endif /* AUTH_H */

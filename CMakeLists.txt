@@ -21,6 +21,8 @@ cmake_minimum_required(VERSION 3.11)
 
 project(access_sdk)
 
+set(CMAKE_C_STANDARD 99)
+
 set(CMAKE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 if(NOT DEFINED TEST)

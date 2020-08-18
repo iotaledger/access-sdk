@@ -17,111 +17,63 @@
  * limitations under the License.
  */
 
-#include <arpa/inet.h>
-#include <netinet/in.h>
-#include <unistd.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <strings.h>
 
 #include "auth.h"
-#include "auth_debug.h"
-#include "auth_internal.h"
-
 #include "tcpip.h"
+#include "client.h"
+#include "server.h"
 
-// ToDo: implement proper verification.
-int verify(unsigned char *key, int len) { return 0; }
+uint8_t auth_init_client(auth_ctx_t *session, char *serv_ip, uint8_t port) {
+  session = calloc(1, sizeof(auth_ctx_t));
 
-typedef struct auth_struct auth_struct_t;
-static auth_struct_t internal;
+  session->side = AUTH_CLIENT;
+  session->sockfd = tcpip_init_socket();
+  session->port = port;
 
-static int auth_init(auth_ctx_t *session, int *sockfd, int type) {
-  int ret = AUTH_ERROR;
+  struct sockaddr_in servaddr;
+  bzero(&servaddr, sizeof(servaddr));
 
-  if (NULL != session) {
-    memset((void *)session, 0, sizeof(auth_ctx_t));
+  servaddr.sin_family = AF_INET;
+  servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+  servaddr.sin_port = htons(port);
 
-    AUTH_GET_INTERNAL(session) = &internal;
+  session->peer_ip = &servaddr;
 
-    if (NULL != AUTH_GET_INTERNAL(session)) {
-      memset((void *)AUTH_GET_INTERNAL(session), 0, sizeof(auth_struct_t));
-
-      AUTH_GET_INTERNAL_TYPE(session) = type;
-      session->sockfd = sockfd;
-
-      ret = AUTH_OK;
-    }
+  if (tcpip_connect(session->sockfd, session->peer_ip, session->port) != TCPIP_OK) {
+    log_error(auth_logger_id, "[%s:%d] failed to connect to server.\n", __func__, __LINE__);
+    return AUTH_ERROR;
   }
 
-  return ret;
+  return AUTH_OK;
 }
 
-int auth_init_client(auth_ctx_t *session, int *sockfd) { return auth_init(session, sockfd, AUTH_TYPE_CLIENT); }
+uint8_t auth_init_server(auth_ctx_t *session, uint8_t port) {
+  session = calloc(1, sizeof(auth_ctx_t));
 
-int auth_init_server(auth_ctx_t *session, int *sockfd) { return auth_init(session, sockfd, AUTH_TYPE_SERVER); }
+  session->side = AUTH_SERVER;
+  session->sockfd = tcpip_init_socket();
+  session->port = port;
 
-int auth_authenticate(auth_ctx_t *session) {
-  int ret = AUTH_ERROR;
+  struct sockaddr_in servaddr;
+  bzero(&servaddr, sizeof(servaddr));
 
-  if (NULL != session) {
-    if (AUTH_TYPE_SERVER == AUTH_GET_INTERNAL_TYPE(session)) {
-      ret = auth_internal_server_authenticate(session);
-    } else if (AUTH_TYPE_CLIENT == AUTH_GET_INTERNAL_TYPE(session)) {
-      ret = auth_internal_client_authenticate(session);
-    }
-  }
+  servaddr.sin_family = AF_INET;
+  servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+  servaddr.sin_port = htons(port);
 
-  return ret;
+  session->peer_ip = &servaddr;
+
+  return AUTH_OK;
 }
 
-int auth_send(auth_ctx_t *session, const unsigned char *data, unsigned short len) {
-  int ret = AUTH_ERROR;
-
-  if ((NULL != session) && (NULL != data) && (len > 0)) {
-    /* Encrypt and send */
-    if (AUTH_TYPE_SERVER == AUTH_GET_INTERNAL_TYPE(session)) {
-      ret = auth_internal_server_send(session, data, len);
-    } else if (AUTH_TYPE_CLIENT == AUTH_GET_INTERNAL_TYPE(session)) {
-      ret = auth_internal_client_send(session, data, len);
-    }
-  }
-
-  return ret;
-}
-
-int auth_receive(auth_ctx_t *session, unsigned char **data, unsigned short *len) {
-  int ret = AUTH_ERROR;
-
-  if (NULL != session) {
-    /* Decrypt and receive */
-    if (AUTH_TYPE_SERVER == AUTH_GET_INTERNAL_TYPE(session)) {
-      ret = auth_internal_server_receive(session, data, len);
-    } else if (AUTH_TYPE_CLIENT == AUTH_GET_INTERNAL_TYPE(session)) {
-      ret = auth_internal_client_receive(session, data, len);
-    }
-  }
-
-  return ret;
-}
-
-int auth_release(auth_ctx_t *session) {
-  int ret = AUTH_ERROR;
-
-  if (NULL != AUTH_GET_INTERNAL(session)) {
-    if (AUTH_TYPE_SERVER == AUTH_GET_INTERNAL_TYPE(session)) {
-      auth_internal_release_server(session);
-    } else if (AUTH_TYPE_CLIENT == AUTH_GET_INTERNAL_TYPE(session)) {
-      auth_internal_release_client(session);
-    }
-
-    AUTH_GET_INTERNAL(session) = NULL;
-
-    ret = AUTH_OK;
-  }
-
-  if (NULL != session) {
-    session = NULL;
-
-    ret = AUTH_OK;
-  }
-
-  return ret;
-}
+// uint8_t auth_authenticate(auth_ctx_t *session);
+//
+// uint8_t auth_send(auth_ctx_t *session, const unsigned char *m, unsigned short mlen);
+//
+// uint8_t auth_receive(auth_ctx_t *session, unsigned char *m, unsigned short mlen);
+//
+// uint8_t auth_release(auth_ctx_t *session);

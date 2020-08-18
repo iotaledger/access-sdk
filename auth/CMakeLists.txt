@@ -28,15 +28,15 @@ add_subdirectory(${AUTH_FLAVOUR})
 set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/../policy/encoding/${POLICY_FORMAT}
+  ${CMAKE_CURRENT_SOURCE_DIR}/tcpip
   ${iota_common_SOURCE_DIR})
 
 # libauth.a
-add_library(auth STATIC auth.c)
-target_link_directories(auth PUBLIC
-  ${iota_common_BUILD_DIR}
-  ${CMAKE_CURRENT_BINARY_DIR}/${AUTH_FLAVOUR})
+add_library(auth auth.c auth_logger.c)
+target_link_directories(auth PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/${AUTH_FLAVOUR})
 target_include_directories(auth PUBLIC ${include_dirs})
-target_link_libraries(auth PRIVATE ${AUTH_FLAVOUR} ${POLICY_FORMAT} tcpip)
+#target_link_libraries(auth PUBLIC ${AUTH_FLAVOUR} ${POLICY_FORMAT} tcpip common)
+target_link_libraries(auth PUBLIC ${POLICY_FORMAT} tcpip common)
 
 install(TARGETS auth DESTINATION lib)
 install(FILES auth.h DESTINATION include)
