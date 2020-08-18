@@ -26,7 +26,7 @@
 
 #include "tcpip.h"
 
-uint8_t tcpip_init_socket(){
+int tcpip_socket(){
   uint8_t sockfd;
   if ((sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) {
     log_error(tcpip_logger_id, "[%s:%d] init socket failed.\n", __func__, __LINE__);
@@ -53,23 +53,23 @@ uint8_t tcpip_init_socket(){
 //}
 
 
-ssize_t tcpip_write(uint8_t *sockfd, unsigned char *m, uint8_t mlen) {
-  ssize_t ret = write(*sockfd, m, m);
+ssize_t tcpip_write(uint8_t sockfd, unsigned char *m, size_t mlen) {
+  ssize_t ret = write(sockfd, m, mlen);
 
   if (ret < 0){
     log_error(tcpip_logger_id, "[%s:%d] error writing to socket.\n", __func__, __LINE__);
-    return TCPIP_ERROR;
+    return ret;
   }
 
   return ret;
 }
 
-ssize_t tcpip_read(uint8_t *sockfd, unsigned char *m, uint8_t mlen) {
-  ssize_t ret = read(*sockfd, m, mlen);
+ssize_t tcpip_read(uint8_t sockfd, unsigned char *m, size_t mlen) {
+  ssize_t ret = read(sockfd, m, mlen);
 
-  if ( ret < 0){
+  if (ret < 0){
     log_error(tcpip_logger_id, "[%s:%d] error reading from socket.\n", __func__, __LINE__);
-    return TCPIP_ERROR;
+    return ret;
   }
 
   return ret;

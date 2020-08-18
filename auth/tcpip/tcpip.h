@@ -34,14 +34,7 @@
  * @brief init tcpip socket
  * @return socket file descriptor
  */
-uint8_t tcpip_init_socket();
-
-///**
-// * @brief init address
-// * @param hostlong
-// * @return
-// */
-//uint8_t tcpip_init_addr(struct sockaddr_in *serveraddr, uint32_t hostlong, uint8_t portno);
+int tcpip_socket();
 
 /**
  * @brief write message to socket
@@ -52,7 +45,7 @@ uint8_t tcpip_init_socket();
  *
  * @return On success, the number of bytes written is returned (zero indicates nothing was written). On error, -1 is returned, and errno is set appropriately.
  */
-ssize_t tcpip_write(uint8_t *sockfd, unsigned char *m, uint8_t mlen);
+ssize_t tcpip_write(uint8_t sockfd, unsigned char *m, size_t mlen);
 
 /**
  * @brief write message to socket
@@ -63,6 +56,6 @@ ssize_t tcpip_write(uint8_t *sockfd, unsigned char *m, uint8_t mlen);
  *
  * @return On success, the number of bytes read is returned (zero indicates end of file), and the file position is advanced by this number. On error, -1 is returned, and errno is set appropriately. In this case, it is left unspecified whether the file position (if any) changes.
  */
-ssize_t tcpip_read(uint8_t *sockfd, unsigned char *m, uint8_t mlen);
+ssize_t tcpip_read(uint8_t sockfd, unsigned char *m, size_t mlen);
 
 #endif  // AUTH_TCPIP_H

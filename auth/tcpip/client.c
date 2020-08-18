@@ -21,11 +21,12 @@
 
 #include "client.h"
 
-uint8_t tcpip_connect(uint8_t sockfd, struct sockaddr_in *peer_ip, uint8_t port) {
-  if (connect(sockfd, peer_ip, sizeof(peer_ip)) != 0) {
+int tcpip_connect(uint8_t sockfd, struct sockaddr_in *addr, socklen_t addrlen) {
+
+  int ret = connect(sockfd, addr, addrlen);
+  if (ret < 0) {
     log_error(tcpip_logger_id, "[%s:%d] connect socket failed.\n", __func__, __LINE__);
-    return TCPIP_ERROR;
   }
 
-  return TCPIP_OK;
+  return ret;
 };

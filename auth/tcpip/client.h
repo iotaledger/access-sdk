@@ -34,6 +34,6 @@
  * @return TCPIP_OK or TCPIP_ERROR
  */
 
-uint8_t tcpip_connect(uint8_t sockfd, struct sockaddr_in *peer_ip, uint8_t port);
+int tcpip_connect(uint8_t sockfd, struct sockaddr_in *addr, socklen_t addrlen);
 
 #endif  // TCPIP_CLIENT_H

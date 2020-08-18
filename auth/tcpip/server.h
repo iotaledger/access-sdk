@@ -30,7 +30,7 @@
  * @param saddrlen length of servaddr
  * @return TCPIP_OK or TCPIP_ERROR
  */
-uint8_t tcpip_bind(uint8_t sockfd, const struct sockaddr_in *saddr, socklen_t saddrlen);
+int tcpip_bind(uint8_t sockfd, const struct sockaddr_in *saddr, socklen_t saddrlen);
 
 /**
  * @brief listen on tcpip socket
@@ -39,7 +39,7 @@ uint8_t tcpip_bind(uint8_t sockfd, const struct sockaddr_in *saddr, socklen_t sa
  * @param backlog max len of queue for pending connections
  * @return TCPIP_OK or TCPIP_ERROR
  */
-uint8_t tcpip_listen(uint8_t sockfd, uint8_t backlog);
+int tcpip_listen(uint8_t sockfd, uint8_t backlog);
 
 /**
  * @brief accept on tcpip socket
@@ -47,6 +47,6 @@ uint8_t tcpip_listen(uint8_t sockfd, uint8_t backlog);
  * @param cliaddr
  * @return file descriptor
  */
-uint8_t tcpip_accept(uint8_t sockfd, struct sockaddr_in *cliaddr, socklen_t *restrict address_len);
+int tcpip_accept(uint8_t sockfd, struct sockaddr_in *cliaddr, socklen_t *restrict address_len);
 
 #endif  // AUTH_SERVER_H

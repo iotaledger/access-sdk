@@ -21,33 +21,40 @@
 
 #include "server.h"
 
-uint8_t tcpip_bind(uint8_t sockfd, const struct sockaddr_in *saddr, socklen_t saddrlen){
-  if (bind(sockfd, saddr, saddrlen) < 0) {
+int tcpip_bind(uint8_t sockfd, const struct sockaddr_in *saddr, socklen_t saddrlen){
+
+  int ret = bind(sockfd, saddr, saddrlen);
+  if (ret < 0) {
     log_error(tcpip_logger_id, "[%s:%d] bind socket failed.\n", __func__, __LINE__);
-    return TCPIP_ERROR;
+    return ret;
   }
 
   log_info(tcpip_logger_id, "[%s:%d] bind socket successful.\n", __func__, __LINE__);
 
-  return TCPIP_OK;
+  return ret;
 }
 
-uint8_t tcpip_listen(uint8_t sockfd, uint8_t backlog){
-  if (listen(sockfd, backlog) != 0){
+int tcpip_listen(uint8_t sockfd, uint8_t backlog){
+
+  int ret = listen(sockfd, backlog);
+
+  if (ret != 0){
     log_error(tcpip_logger_id, "[%s:%d] listen socket failed.\n", __func__, __LINE__);
-    return TCPIP_ERROR;
+    return ret;
   }
 
-  log_info(tcpip_logger_id, "[%s:%d] listening to socket...\n", __func__, __LINE__);
+  log_info(tcpip_logger_id, "[%s:%d] listening on socket...\n", __func__, __LINE__);
 
-  return TCPIP_OK;
+  return ret;
 }
 
-uint8_t tcpip_accept(uint8_t sockfd, struct sockaddr_in *cliaddr, socklen_t *restrict address_len){
-  uint8_t ret = accept(sockfd, cliaddr, sizeof(cliaddr));
+int tcpip_accept(uint8_t sockfd, struct sockaddr_in *cliaddr, socklen_t *restrict address_len){
+
+  uint8_t ret = accept(sockfd, cliaddr, address_len);
 
   if (ret < 0){
-    return TCPIP_ERROR;
+    log_error(tcpip_logger_id, "[%s:%d] accept socket failed, %s\n", __func__, __LINE__);
+    return ret;
   }
 
   log_info(tcpip_logger_id, "[%s:%d] accepted client: %s\n", __func__, __LINE__, inet_ntoa(cliaddr->sin_addr));
