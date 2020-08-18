@@ -1,7 +1,3 @@
-//
-// Created by bernardo on 18.08.20.
-//
-
 #ifndef TCPIP_CLIENT_TEST_H
 #define TCPIP_CLIENT_TEST_H
 

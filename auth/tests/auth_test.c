@@ -22,30 +22,37 @@
 #include <string.h>
 
 #include "auth.h"
-#include "auth_helper.h"
+#include "auth_client_test.h"
+#include "auth_server_test.h"
 
 #include "tcpip.h"
+#include "pthread.h"
+#include "auth_server_test.h"
+#include "auth_client_test.h"
 
 int main(int argc, char **argv) {
 
-  int sockfd;
-  auth_ctx_t session;
-  unsigned char *buf;
-  unsigned short length;
+  logger_helper_init(LOGGER_INFO);
+  logger_init_auth(LOGGER_INFO);
 
-  if ((sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) {
-    printf("\n Error : Could not create socket \n");
-    return 1;
-  }
+  // test server
+  static bool serve = true;
+  pthread_t server;
+  int ret = pthread_create(&server, NULL, &auth_server_test, &serve);
+  ret = pthread_detach(server);
 
-  assert(auth_init_client(&session, &sockfd) == AUTH_OK);
+  sleep(1);
+  // kill server
+  serve = false;
 
-  // assuming there's an open socket on server side
-  assert(tcpip_connect(sockfd, "127.0.0.1", 9998) == AUTH_OK);
-  assert(auth_authenticate(&session) == AUTH_OK);
-  assert(auth_helper_send_decision(1, &session, "test", strlen("test")) == AUTH_OK);
-  assert(auth_receive(&session, (unsigned char **)&buf, &length) == AUTH_OK);
-  assert(strcmp(buf, "{\"response\":\"access denied \"}") == 0);
+  // assert(auth_init_client(&session, &sockfd) == AUTH_OK);
+
+//  // assuming there's an open socket on server side
+//  assert(tcpip_connect(sockfd, "127.0.0.1", 9998) == AUTH_OK);
+//  assert(auth_authenticate(&session) == AUTH_OK);
+//  assert(auth_helper_send_decision(1, &session, "test", strlen("test")) == AUTH_OK);
+//  assert(auth_receive(&session, (unsigned char **)&buf, &length) == AUTH_OK);
+//  assert(strcmp(buf, "{\"response\":\"access denied \"}") == 0);
 
   // ToDo: test server
 

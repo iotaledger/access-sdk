@@ -27,11 +27,11 @@
 #include "client.h"
 #include "server.h"
 
-uint8_t auth_init_client(auth_ctx_t *session, char *serv_ip, uint8_t port) {
+uint8_t auth_init_client(auth_ctx_t *session, char *serv_ip, uint16_t port) {
   session = calloc(1, sizeof(auth_ctx_t));
 
   session->side = AUTH_CLIENT;
-  session->sockfd = tcpip_init_socket();
+  session->sockfd = tcpip_socket();
   session->port = port;
 
   struct sockaddr_in servaddr;
@@ -51,11 +51,10 @@ uint8_t auth_init_client(auth_ctx_t *session, char *serv_ip, uint8_t port) {
   return AUTH_OK;
 }
 
-uint8_t auth_init_server(auth_ctx_t *session, uint8_t port) {
-  session = calloc(1, sizeof(auth_ctx_t));
+uint8_t auth_init_server(auth_ctx_t *session, uint16_t port) {
 
   session->side = AUTH_SERVER;
-  session->sockfd = tcpip_init_socket();
+  session->sockfd = tcpip_socket();
   session->port = port;
 
   struct sockaddr_in servaddr;
@@ -67,10 +66,27 @@ uint8_t auth_init_server(auth_ctx_t *session, uint8_t port) {
 
   session->peer_ip = &servaddr;
 
+  log_info(auth_logger_id, "[%s:%d] initialized auth server.\n", __func__, __LINE__);
+
   return AUTH_OK;
 }
 
-// uint8_t auth_authenticate(auth_ctx_t *session);
+uint8_t auth_authenticate(auth_ctx_t *session){
+
+  uint8_t *nonce;
+  uint8_t *peer_DH_pk;
+  uint8_t *peer_sign_pk;
+
+  // process data
+
+  session->nonce = nonce;
+  session->peer_DH_pk = peer_DH_pk;
+  session->peer_sign_pk = peer_sign_pk;
+
+  // ToDo: log peer_sign_pk as peer_id
+  log_info(auth_logger_id, "[%s:%d] authenticated with peer xxx.\n", __func__, __LINE__);
+
+}
 //
 // uint8_t auth_send(auth_ctx_t *session, const unsigned char *m, unsigned short mlen);
 //

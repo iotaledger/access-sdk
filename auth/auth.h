@@ -43,7 +43,7 @@ typedef struct {
   /*@{*/
   uint8_t side; /**< client or server*/
   uint8_t sockfd; /**< socket file descriptor */
-  uint8_t port; /**< port */
+  uint16_t port; /**< port */
   struct sockaddr_in *peer_ip; /** peer IP address */
   /*@}*/
 
@@ -64,9 +64,9 @@ typedef struct {
 } auth_ctx_t;
 
 /**
- * @brief authenticator client initializer function
+ * @brief initialize authenticator in client mode.
  *
- * initializes the authenticator in client mode.
+ * initialize authenticator in client mode.
  *
  * @param session pointer to authenticator session context.
  * @param serv_ip server IP address
@@ -74,24 +74,27 @@ typedef struct {
  *
  * @return AUTH_OK or AUTH_ERROR
  */
-uint8_t auth_init_client(auth_ctx_t *session, char *serv_ip, uint8_t port);
+uint8_t auth_init_client(auth_ctx_t *session, char *serv_ip, uint16_t port);
 
 /**
- * @brief authenticator server initializer function
+ * @brief initialize authenticator in server mode.
  *
- * initializes the authenticator in server mode.
+ * initialize authenticator in server mode.
  *
  * @param session pointer to authenticator session context.
  * @param port port
  *
  * @return AUTH_OK or AUTH_ERROR
  */
-uint8_t auth_init_server(auth_ctx_t *session, uint8_t port);
+uint8_t auth_init_server(auth_ctx_t *session, uint16_t port);
 
 /**
- * @brief performs actual authentication
+ * @brief authenticate session
  *
- * performs actual authentication, be it server or client side
+ * populates the following auth_ctx_t members:
+ * - uint8_t *nonce: session nonce
+ * - *peer_DH_pk: peer's Diffie Hellman public key
+ * - *peer_sign_pk: peer's signing public key
  *
  * @param session pointer to authenticator session context.
  *
