@@ -18,6 +18,7 @@
  */
 
 #include <stdio.h>
+#include <stdint.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <string.h>
@@ -43,6 +44,14 @@ uint8_t tcpip_init_socket(){
 
   return sockfd;
 }
+
+//uint8_t tcpip_init_addr(struct sockaddr_in *serveraddr, uint32_t hostlong, uint8_t portno) {
+//  bzero((char *) serveraddr, sizeof(serveraddr));
+//  serveraddr->sin_family = AF_INET;
+//  serveraddr->sin_addr.s_addr = htonl(hostlong);
+//  serveraddr->sin_port = htons(portno);
+//}
+
 
 ssize_t tcpip_write(uint8_t *sockfd, unsigned char *m, uint8_t mlen) {
   ssize_t ret = write(*sockfd, m, m);

@@ -21,7 +21,7 @@ cmake_minimum_required(VERSION 3.11)
 
 set(target tcpip_test)
 set(sources tcpip_test.c)
-set(libs auth ${AUTH_FLAVOUR} tcpip)
+set(libs pthread auth ${AUTH_FLAVOUR} tcpip)
 
 add_executable(${target} ${sources})
 target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${AUTH_SOURCE_DIR}/${AUTH_FLAVOUR})

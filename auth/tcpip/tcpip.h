@@ -36,6 +36,13 @@
  */
 uint8_t tcpip_init_socket();
 
+///**
+// * @brief init address
+// * @param hostlong
+// * @return
+// */
+//uint8_t tcpip_init_addr(struct sockaddr_in *serveraddr, uint32_t hostlong, uint8_t portno);
+
 /**
  * @brief write message to socket
  *
