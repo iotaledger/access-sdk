@@ -38,7 +38,7 @@
 /////////////////
 #include "auth_internal.h"
 #include "auth_utils.h"
-
+#include "tcpip.h"
 /////////////////////////////////////
 /// Macros and defines
 /////////////////////////////////////
@@ -86,7 +86,7 @@ int auth_client_generate(auth_ctx_t *session) {
   int keys_generated = auth_utils_dh_generate_keys(session);
 
   // Client sends e to Server.
-  int write_message = session->f_write(session->sockfd, AUTH_GET_INTERNAL_DH_PUBLIC(session), DH_PUBLIC_L);
+  int write_message = tcpip_write_socket(session->sockfd, AUTH_GET_INTERNAL_DH_PUBLIC(session), DH_PUBLIC_L);
 
   AUTH_GET_INTERNAL_SEQ_NUM_ENCRYPT(session) = 1;
   AUTH_GET_INTERNAL_SEQ_NUM_DECRYPT(session) = 1;
@@ -125,7 +125,7 @@ int auth_client_verify(auth_ctx_t *session) {
   unsigned char message[PUBLIC_KEY_L + SIGNED_MESSAGE_L];
 
   // Client receives ( ks || f || s )
-  ssize_t read_message = session->f_read(session->sockfd, readBuffer, SIZE_OF_READ_BUFFER);
+  ssize_t read_message = tcpip_read_socket(session->sockfd, readBuffer, SIZE_OF_READ_BUFFER);
   if (read_message != SIZE_OF_READ_BUFFER) {
     return AUTH_ERROR;
   }
@@ -135,7 +135,7 @@ int auth_client_verify(auth_ctx_t *session) {
   s_signed = readBuffer + PUBLIC_KEY_L + DH_PUBLIC_L;
 
   // Client verifies that ks is public key of the Server
-  int key_verified = session->f_verify(received_dh_public, PUBLIC_KEY_L);
+  int key_verified = verify(received_dh_public, PUBLIC_KEY_L);
 
   // Client computes k = fx mod p
   int secret_computed = auth_utils_dh_compute_secret_k(session, received_dh_public);
@@ -160,7 +160,7 @@ int auth_client_verify(auth_ctx_t *session) {
 
   auth_utils_concatenate_strings(message, AUTH_GET_INTERNAL_PUBLIC_KEY(session), PUBLIC_KEY_L, signature,
                                SIGNED_MESSAGE_L);
-  ssize_t message_written = session->f_write(session->sockfd, message, PUBLIC_KEY_L + SIGNED_MESSAGE_L);
+  ssize_t message_written = tcpip_write_socket(session->sockfd, message, PUBLIC_KEY_L + SIGNED_MESSAGE_L);
 
   if ((read_message == SIZE_OF_READ_BUFFER) && (key_verified == 0) && (secret_computed == 0) && (h_computed == 0) &&
       (signature_verified == 0) && (computed_H == 0) && (message_signed == 0) &&

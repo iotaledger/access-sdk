@@ -19,23 +19,10 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-set(target pdp)
-
-set(sources pdp.c pdp_logger.c)
-
-set(include_dirs ${CMAKE_CURRENT_SOURCE_DIR})
-
-set(libs
-  ${POLICY_FORMAT}
-  pip
-  pap
-)
+set(target tcpip)
+set(sources tcpip.c)
 
 add_library(${target} ${sources})
+target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_include_directories(${target} PUBLIC ${include_dirs})
-target_link_libraries(${target} PUBLIC ${libs})
-
-install(TARGETS pdp DESTINATION lib)
-install(FILES pdp.h DESTINATION include)
-install(FILES pdp_logger.h DESTINATION include)
+add_test(${target} ${target})

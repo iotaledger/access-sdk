@@ -19,23 +19,24 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-set(target pdp)
+#include(${CMAKE_DIR}/sodium.cmake)
 
-set(sources pdp.c pdp_logger.c)
+set(sources
+  auth_client.c
+  auth_server.c
+  auth_client.c
+  auth_utils.c
+  auth_logger.c
+  auth_helper.c)
 
-set(include_dirs ${CMAKE_CURRENT_SOURCE_DIR})
+set(include_dirs
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
-set(libs
-  ${POLICY_FORMAT}
-  pip
-  pap
-)
+add_library(eddsa STATIC ${sources})
+target_include_directories(eddsa PUBLIC ${include_dirs})
+target_link_directories(eddsa PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/lib)
+#target_link_libraries(eddsa PRIVATE sodium ${POLICY_FORMAT} tcpip common)
+target_link_libraries(eddsa PRIVATE cryptography ${POLICY_FORMAT} tcpip common)
 
-add_library(${target} ${sources})
-
-target_include_directories(${target} PUBLIC ${include_dirs})
-target_link_libraries(${target} PUBLIC ${libs})
-
-install(TARGETS pdp DESTINATION lib)
-install(FILES pdp.h DESTINATION include)
-install(FILES pdp_logger.h DESTINATION include)
+install(TARGETS eddsa DESTINATION lib)

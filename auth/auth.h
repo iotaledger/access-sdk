@@ -51,27 +51,6 @@
 extern "C" {
 #endif
 
-/**
- * @brief write to socket
- *
- * @param sockfd pointer to socker file descriptor
- * @param buffer with data to be written
- * @param len length of data
- *
- * @return On success, the number of bytes written is returned (zero indicates nothing was written). On error, -1 is returned, and errno is set appropriately.
- */
-ssize_t write_socket(int *sockfd, void *data, unsigned short len);
-
-/**
- * @brief read from socket
- *
- * @param sockfd pointer to socker file descriptor
- * @param buffer with for data to be read
- * @param len length of data
- *
- * @return On success, the number of bytes read is returned (zero indicates end of file), and the file position is advanced by this number. On error, -1 is returned, and errno is set appropriately. In this case, it is left unspecified whether the file position (if any) changes.
- */
-ssize_t read_socket(int *sockfd, void *data, unsigned short len);
 
 /**
  * @brief verify key
@@ -102,7 +81,7 @@ typedef int f_auth_key_verify(unsigned char *, int);
 /**
  * @brief declaration of auth_struct typedef.
  *
- * actual definition of this struct happens at auth/flavours/${auth_flavour}/auth_internal.h
+ * actual definition of this struct happens at auth/${AUTH_FLAVOUR}/auth_internal.h
  */
 typedef struct auth_struct auth_struct_t;
 
@@ -115,15 +94,6 @@ typedef struct {
   /*@{*/
   auth_struct_t *internal; /**< internal data */
   int *sockfd; /**< socket file descriptor */
-  /*@}*/
-
-  /*@{*/
-  f_auth_socket_t *f_write; /**< function to write on authenticated session */
-  f_auth_socket_t *f_read; /**< function to read from authenticated session */
-  /*@}*/
-
-  /*@{*/
-  f_auth_key_verify *f_verify; /**< function to verify keys of authenticated session */
   /*@}*/
 
   /*@{*/
@@ -154,29 +124,6 @@ int auth_init_client(auth_ctx_t *session, int *sockfd);
  * @return AUTH_OR or AUTH_ERROR
  */
 int auth_init_server(auth_ctx_t *session, int *sockfd);
-
-/**
- * @brief sets option (priv/pub keys) to authenticator session context.
- *
- * sets option to authenticator session context with key/value pairs.
- *
- * @param session pointer to authenticator session context.
- * @param key pointer to key, where expected values are "public" and "private"
- * @param value pointer to the actual body of the key.
- *
- * @return AUTH_OR or AUTH_ERROR
- */
-int auth_set_option(auth_ctx_t *session, const char *key, unsigned char *value);
-
-/**
- * @brief connects as client to some server
- *
- * @param sockfd socket file descriptor
- * @param servip pointer to string with server IP
- * @param port server port
- * @return AUTH_OR or AUTH_ERROR
- */
-int auth_connect_client(int sockfd, char *servip, int port);
 
 /**
  * @brief performs actual authentication

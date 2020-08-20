@@ -21,10 +21,10 @@ cmake_minimum_required(VERSION 3.11)
 
 set(target auth_test)
 set(sources auth_test.c)
-set(libs auth)
+set(libs auth ${AUTH_FLAVOUR} tcpip)
 
 add_executable(${target} ${sources})
-target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${AUTH_SOURCE_DIR}/${AUTH_FLAVOUR})
 target_link_libraries(${target} PUBLIC ${libs})
 
 add_test(${target} ${target})

@@ -21,6 +21,8 @@ cmake_minimum_required(VERSION 3.11)
 
 project(access_sdk)
 
+set(CMAKE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
 if(NOT DEFINED TEST)
     option(TEST "Enable tests" ON)
 endif()
@@ -29,16 +31,16 @@ if(TEST)
     enable_testing()
 endif()
 
-# default policy_format
-if(NOT DEFINED policy_format)
-  set(policy_format json CACHE STRING "Policy Format Choice")
-  #set(policy_format protobuf-c CHACE STRING "Policy Format Choice")
+# default POLICY_FORMAT
+if(NOT DEFINED POLICY_FORMAT)
+  set(POLICY_FORMAT json CACHE STRING "Policy Format Choice")
+  #set(POLICY_FORMAT protobuf-c CHACE STRING "Policy Format Choice")
 endif()
 
-# default auth_flavour
-if(NOT DEFINED auth_flavour)
-  set(auth_flavour eddsa CACHE STRING "auth flavour choice")
-  #set(auth_flavour rsa CACHE STRING "auth flavour choice")
+# default AUTH_FLAVOUR
+if(NOT DEFINED AUTH_FLAVOUR)
+  set(AUTH_FLAVOUR eddsa CACHE STRING "auth flavour choice")
+  #set(AUTH_FLAVOUR rsa CACHE STRING "auth flavour choice")
 endif()
 
 if(${CMAKE_VERSION} VERSION_LESS 3.14)
@@ -53,9 +55,10 @@ endif()
 
 include(cmake/iota_common.cmake)
 include(cmake/sqlite3.cmake)
-include(cmake/libsodium.cmake)
-if(auth_flavour STREQUAL rsa)
-  include(cmake/openssl.cmake)
+if(AUTH_FLAVOUR STREQUAL eddsa)
+  include(cmake/sodium.cmake)
+elseif(AUTH_FLAVOUR STREQUAL rsa)
+
 endif()
 
 # Global includes

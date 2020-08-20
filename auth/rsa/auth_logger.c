@@ -19,9 +19,9 @@
 
 /****************************************************************************
  * \project IOTA Access
- * \file auth_logger.h
+ * \file auth_logger.c
  * \brief
- * Logger for Authentication module
+ * Logger for Access Secure Network module
  *
  * @Author Bernardo Araujo
  *
@@ -29,33 +29,20 @@
  *
  * \history
  * 17.07.2020. Initial version.
- * 01.08.2020. Renaming.
  ****************************************************************************/
 
+#include "auth_logger.h"
 
-#ifndef auth_LOGGER_H
-#define AUTH_LOGGER_ID
+#define AUTH_LOGGER_ID "auth"
 
-#include "utils/logger_helper.h"
+logger_id_t auth_logger_id;
 
-/**
- * @brief logger ID
- *
- */
-extern logger_id_t auth_logger_id;
+void logger_init_auth(logger_level_t level) {
+  auth_logger_id = logger_helper_enable(AUTH_LOGGER_ID, level, true);
+  log_info(auth_logger_id, "[%s:%d] enable logger %s.\n", __func__, __LINE__, AUTH_LOGGER_ID);
+}
 
-/**
- * @brief init Authentication logger
- *
- * @param[in] level A level of the logger
- *
- */
-void logger_init_auth(logger_level_t level);
-
-/**
- * @brief cleanup Authentication logger
- *
- */
-void logger_destroy_auth();
-
-#endif  // AUTH_LOGGER_ID
+void logger_destroy_auth() {
+  log_info(auth_logger_id, "[%s:%d] destroy logger %s.\n", __func__, __LINE__, AUTH_LOGGER_ID);
+  logger_helper_release(auth_logger_id);
+}

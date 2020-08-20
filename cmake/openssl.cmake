@@ -1,10 +1,42 @@
-# fetch openssl
-include(FetchContent)
-FetchContent_Declare(
-  openssl
-  GIT_REPOSITORY https://github.com/honeycombOS/openssl-cmake.git
-  GIT_TAG 8ffd9276ec8750ae4293cfa0bc9e7562807bb37d
+include(ExternalProject)
+
+set(OPENSSL_VERSION 1.1.1)
+set(OPENSSL_TARBALL OpenSSL_1_1_1.tar.gz)
+set(OPENSSL_URL https://github.com/openssl/openssl/archive/${OPENSSL_TARBALL})
+set(OPENSSL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/src/openssl-OpenSSL_1_0_2u)
+set(OPENSSL_SOURCE ${OPENSSL_PREFIX}/src/openssl)
+set(OPENSSL_STATIC_SSL_LIB ${CMAKE_CURRENT_BINARY_DIR}/lib/libssl.a)
+set(OPENSSL_STATIC_CRYPTO_LIB ${CMAKE_CURRENT_BINARY_DIR}/lib/libcrypto.a)
+set(OPENSSL_INCLUDES ${OPENSSL_SOURCE})
+
+file(MAKE_DIRECTORY ${OPENSSL_PREFIX})
+
+ExternalProject_add(
+   openssl
+   PREFIX ${OPENSSL_PREFIX}
+   URL ${OPENSSL_URL}
+   CONFIGURE_COMMAND ./config --prefix=${CMAKE_CURRENT_BINARY_DIR} --openssldir=${OPENSSL_PREFIX}
+   BUILD_IN_SOURCE 1
+   BUILD_BYPRODUCTS ${OPENSSL_STATIC_CRYPTO_LIB} ${OPENSSL_STATIC_SSL_LIB}
+   INSTALL_COMMAND make install
 )
 
-message(STATUS "Fetching openssl")
-FetchContent_MakeAvailable(openssl)
+add_library(ssl STATIC IMPORTED GLOBAL)
+add_library(crypto STATIC IMPORTED GLOBAL)
+
+add_dependencies(ssl openssl)
+add_dependencies(crypto openssl)
+
+set_target_properties(ssl PROPERTIES
+    IMPORTED_LOCATION ${OPENSSL_STATIC_SSL_LIB}
+    INTERFACE_INCLUDE_DIRECTORIES ${OPENSSL_INCLUDES})
+
+set_target_properties(crypto PROPERTIES
+    IMPORTED_LOCATION ${OPENSSL_STATIC_CRYPTO_LIB}
+    INTERFACE_INCLUDE_DIRECTORIES ${OPENSSL_INCLUDES})
+
+install(FILES ${OPENSSL_STATIC_SSL_LIB} EXPORT ssl-exp LIBRARY DESTINATION lib)
+install(FILES ${OPENSSL_STATIC_CRYPTO_LIB} DESTINATION lib)
+#install(EXPORT ssl DESTINATION lib)
+
+set_property(TARGET ssl PROPERTY PUBLIC_HEADER include/openssl/*.h)

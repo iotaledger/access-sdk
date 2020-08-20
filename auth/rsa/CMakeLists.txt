@@ -19,23 +19,22 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-set(target pdp)
+include(${CMAKE_DIR}/openssl.cmake)
 
-set(sources pdp.c pdp_logger.c)
+set(sources
+  auth_client.c
+  auth_server.c
+  auth_utils.c
+  auth_logger.c
+  auth_helper.c)
 
-set(include_dirs ${CMAKE_CURRENT_SOURCE_DIR})
+set(include_dirs
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
-set(libs
-  ${POLICY_FORMAT}
-  pip
-  pap
-)
+add_library(rsa STATIC ${sources})
+target_include_directories(rsa PUBLIC ${include_dirs})
+target_link_directories(rsa PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/lib)
+target_link_libraries(rsa PRIVATE ssl crypto ${POLICY_FORMAT} tcpip)
 
-add_library(${target} ${sources})
-
-target_include_directories(${target} PUBLIC ${include_dirs})
-target_link_libraries(${target} PUBLIC ${libs})
-
-install(TARGETS pdp DESTINATION lib)
-install(FILES pdp.h DESTINATION include)
-install(FILES pdp_logger.h DESTINATION include)
+install(TARGETS rsa DESTINATION lib)

@@ -17,21 +17,15 @@
  * limitations under the License.
  */
 
-#include "auth.h"
-#include "auth_debug.h"
-#include "auth_internal.h"
-
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <unistd.h>
 
-ssize_t read_socket(int *sockfd, void *data, unsigned short len) {
-  return read(*sockfd, data, len);
-}
+#include "auth.h"
+#include "auth_debug.h"
+#include "auth_internal.h"
 
-ssize_t write_socket(int *sockfd, void *data, unsigned short len) {
-  return write(*sockfd, data, len);
-}
+#include "tcpip.h"
 
 // ToDo: implement proper verification.
 int verify(unsigned char *key, int len) { return 0; }
@@ -57,50 +51,12 @@ static int auth_init(auth_ctx_t *session, int *sockfd, int type) {
     }
   }
 
-  session->f_read = read_socket;
-  session->f_write = write_socket;
-  session->f_verify = verify;
-
   return ret;
 }
 
 int auth_init_client(auth_ctx_t *session, int *sockfd) { return auth_init(session, sockfd, AUTH_TYPE_CLIENT); }
 
 int auth_init_server(auth_ctx_t *session, int *sockfd) { return auth_init(session, sockfd, AUTH_TYPE_SERVER); }
-
-int auth_connect_client(int sockfd, char *servip, int port) {
-
-  struct sockaddr_in serv_addr;
-  memset(&serv_addr, '0', sizeof(serv_addr));
-  serv_addr.sin_family = AF_INET;
-  serv_addr.sin_port = htons(port);
-
-  if (inet_pton(AF_INET, servip, &serv_addr.sin_addr) <= 0) {
-    printf("inet_pton error\n");
-    return AUTH_ERROR;
-  }
-
-  if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
-    printf("connection error\n");
-    return AUTH_ERROR;
-  }
-
-  return AUTH_OK;
-}
-
-int auth_set_option(auth_ctx_t *session, const char *key, unsigned char *value) {
-  int ret = AUTH_ERROR;
-
-  if (NULL != session) {
-    if (AUTH_TYPE_SERVER == AUTH_GET_INTERNAL_TYPE(session)) {
-      ret = auth_internal_server_set_option(session, key, value);
-    } else if (AUTH_TYPE_CLIENT == AUTH_GET_INTERNAL_TYPE(session)) {
-      ret = auth_internal_client_set_option(session, key, value);
-    }
-  }
-
-  return ret;
-}
 
 int auth_authenticate(auth_ctx_t *session) {
   int ret = AUTH_ERROR;

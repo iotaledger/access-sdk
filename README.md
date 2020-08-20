@@ -14,7 +14,7 @@ It is composed of the following pieces:
 - [Access Authentication API](/auth/README.md)
     * RSA Flavour
     * EdDSA Flavour
-- [Access Plugin API](/auth/plugin)
+- [Access Plugin API](/auth/README.md)
     * Plugin API
     * Plugin Manager
 - Access Utils
