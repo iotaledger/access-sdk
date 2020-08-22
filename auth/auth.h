@@ -36,7 +36,7 @@
 #define AUTH_H
 
 #include <stdio.h>
-
+#include <stdint.h>
 /**
  * @brief no authentication error
  */
@@ -141,7 +141,7 @@ typedef struct {
  *
  * @return AUTH_OK or AUTH_ERROR
  */
-int auth_init_client(auth_ctx_t *session, int *sockfd);
+int auth_init_client(auth_ctx_t *session, int *sockfd, uint8_t sk[]);
 
 /**
  * @brief authenticator server intiializer function
@@ -187,7 +187,7 @@ int auth_connect_client(int sockfd, char *servip, int port);
  *
  * @return AUTH_OR or AUTH_ERROR
  */
-int auth_authenticate(auth_ctx_t *session);
+int auth_authenticate(auth_ctx_t *session, uint8_t sk[]);
 
 /**
  * @brief send data over authenticated session

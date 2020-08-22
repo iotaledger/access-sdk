@@ -36,6 +36,8 @@
 /////////////////
 /// Includes
 /////////////////
+#include "sodium.h"
+
 #include "auth_internal.h"
 #include "auth_utils.h"
 
@@ -55,17 +57,16 @@
 /// Client authantication function declarations and definitions
 //////////////////////////////////////////////////////////////////
 
-int auth_client_init(auth_ctx_t *session) {
+int auth_client_init(auth_ctx_t *session, unsigned char sk[]) {
   int next_stage = AUTH_ERROR;
 
-  unsigned char public[PUBLIC_KEY_L];
-  unsigned char private[PRIVATE_KEY_L];
+  unsigned char pk[PUBLIC_KEY_L];
 
-  // generate private and public key on client side
-  crypto_sign_keypair(public, private);
+  // derive ed25519 public key from secret
+  crypto_scalarmult_base(pk, sk);
 
-  memcpy(AUTH_GET_INTERNAL_PUBLIC_KEY(session), public, PUBLIC_KEY_L);
-  memcpy(AUTH_GET_INTERNAL_PRIVATE_KEY(session), private, PRIVATE_KEY_L);
+  memcpy(AUTH_GET_INTERNAL_PUBLIC_KEY(session), pk, PUBLIC_KEY_L);
+  memcpy(AUTH_GET_INTERNAL_PRIVATE_KEY(session), sk, PRIVATE_KEY_L);
 
   memcpy(AUTH_GET_INTERNAL_ID_V(session), "client", IDENTIFICATION_STRING_L);
   next_stage = AUTH_COMPUTE;
@@ -219,14 +220,14 @@ int auth_client_finish(auth_ctx_t *session) {
   return next_stage;
 }
 
-int auth_internal_client_authenticate(auth_ctx_t *session) {
+int auth_internal_client_authenticate(auth_ctx_t *session, unsigned char sk[]) {
   int ret = AUTH_ERROR;
 
   int auth_stage = AUTH_INIT;
   while ((AUTH_DONE != auth_stage) && (AUTH_ERROR != auth_stage)) {
     switch (auth_stage) {
       case AUTH_INIT:
-        auth_stage = auth_client_init(session);
+        auth_stage = auth_client_init(session, sk);
         break;
       case AUTH_COMPUTE:
         auth_stage = auth_client_generate(session);

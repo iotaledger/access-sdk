@@ -27,12 +27,13 @@ set(target auth)
 set(libs
   ${policy_format}
   common
+  ccan
 )
 
 if(auth_flavour STREQUAL rsa)
   list(APPEND libs ssl)
 elseif(auth_flavour STREQUAL eddsa)
-  list(APPEND libs cryptography)
+  list(APPEND libs sodium cryptography)
 endif()
 
 set(sources
@@ -46,16 +47,27 @@ set(sources
 
 set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/${auth_flavour})
+  ${CMAKE_CURRENT_SOURCE_DIR}/${auth_flavour}
+  ${PROJECT_BINARY_DIR}/include
+  ${CMAKE_SOURCE_DIR}/ccan
+  ${CMAKE_SOURCE_DIR}/ccan/ccan/base64/
+  ${CMAKE_SOURCE_DIR}/ccan/ccan/err/
+  ${CMAKE_SOURCE_DIR}/ccan/ccan/str/hex/)
 
 add_library(${target} ${sources})
 
+add_dependencies(${target} ${libs})
+
 target_link_directories(auth PUBLIC
+  "${CMAKE_BINARY_DIR}/lib"
+  "${CMAKE_BINARY_DIR}/ccan"
   "${CMAKE_INSTALL_PREFIX}/lib"
   "${iota_common_BUILD_DIR}")
 
 target_include_directories(${target} PUBLIC ${include_dirs})
 target_link_libraries(${target} PUBLIC ${libs})
+
+message(STATUS "${libs}")
 
 install(TARGETS auth DESTINATION lib)
 install(FILES auth.h DESTINATION include)
