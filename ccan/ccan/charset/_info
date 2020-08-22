@@ -1,0 +1,174 @@
+#include "config.h"
+#include <stdio.h>
+#include <string.h>
+
+/**
+ * charset - character set conversion and validation routines
+ *
+ * This module provides a collection of well-tested routines
+ * for dealing with character set nonsense.
+ *
+ * Example:
+ *	#include <err.h>
+ *	#include <stdio.h>
+ *	#include <stdlib.h>
+ *	#include <string.h>
+ *	#include <ccan/charset/charset.h>
+ *	#include <ccan/tal/grab_file/grab_file.h>
+ *	#include <ccan/tal/tal.h>
+ *	
+ *	static void print_json_string(const char *s);
+ *	static bool parse_hex16(const char **sp, unsigned int *out);
+ *	
+ *	// Take a JSON-encoded string on input and print its literal value.
+ *	int main(void)
+ *	{
+ *		char *input;
+ *	
+ *		input = grab_file(NULL, NULL);
+ *		if (!input)
+ *			err(1, "Error reading input");
+ *		if (!utf8_validate(input, tal_count(input)-1)) {
+ *			fprintf(stderr, "Input contains invalid UTF-8\n");
+ *			return 1;
+ *		}
+ *		if (strlen(input) != tal_count(input)-1) {
+ *			fprintf(stderr, "Input contains null characters\n");
+ *			return 1;
+ *		}
+ *		
+ *		print_json_string(input);
+ *		
+ *		tal_free(input);
+ *		return 0;
+ *	}
+ *	
+ *	static void print_json_string(const char *s)
+ *	{
+ *		char output_buffer[4];
+ *		
+ *		// Skip leading whitespace
+ *		while (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\r')
+ *			s++;
+ *		
+ *		if (*s++ != '"') {
+ *			fprintf(stderr, "Expected JSON string literal surrounded by double quotes.\n");
+ *			exit(EXIT_FAILURE);
+ *		}
+ *		
+ *		while (*s != '"') {
+ *			unsigned char c = *s++;
+ *			char *b = output_buffer;
+ *			
+ *			if (c == '\\') {
+ *				c = *s++;
+ *				switch (c) {
+ *					case '"':
+ *					case '\\':
+ *					case '/':
+ *						*b++ = c;
+ *						break;
+ *					case 'b': *b++ = '\b'; break;
+ *					case 'f': *b++ = '\f'; break;
+ *					case 'n': *b++ = '\n'; break;
+ *					case 'r': *b++ = '\r'; break;
+ *					case 't': *b++ = '\t'; break;
+ *					case 'u': {
+ *						unsigned int uc, lc;
+ *						
+ *						if (!parse_hex16(&s, &uc))
+ *							goto syntax_error;
+ *						
+ *						if (uc >= 0xD800 && uc <= 0xDFFF) {
+ *							// Handle UTF-16 surrogate pair (e.g. "\uD834\uDD1E").
+ *							uchar_t unicode;
+ *							
+ *							if (*s++ != '\\' || *s++ != 'u' || !parse_hex16(&s, &lc))
+ *								goto syntax_error;
+ *							
+ *							unicode = from_surrogate_pair(uc, lc);
+ *							if (unicode == REPLACEMENT_CHARACTER) {
+ *								fprintf(stderr, "Invalid surrogate pair.\n");
+ *								exit(EXIT_FAILURE);
+ *							}
+ *							
+ *							b += utf8_write_char(unicode, b);
+ *						} else {
+ *							// Handle ordinary Unicode escape (e.g. "\u266B").
+ *							b += utf8_write_char(uc, b);
+ *						}
+ *						
+ *						break;
+ *					}
+ *					default:
+ *						goto syntax_error;
+ *				}
+ *			} else if (c <= 0x1F) {
+ *				// Control characters are not allowed in string literals.
+ *				goto syntax_error;
+ *			} else {
+ *				*b++ = c;
+ *			}
+ *			
+ *			fwrite(output_buffer, 1, b - output_buffer, stdout);
+ *		}
+ *		
+ *		putchar('\n');
+ *		return;
+ *		
+ *	syntax_error:
+ *		fprintf(stderr, "Syntax error in JSON string literal.\n");
+ *		exit(EXIT_FAILURE);
+ *	}
+ *	
+ *	static bool parse_hex16(const char **sp, unsigned int *out)
+ *	{
+ *		const char *s = *sp;
+ *		unsigned int ret = 0;
+ *		unsigned int i;
+ *		unsigned int tmp;
+ *		char		c;
+ *	
+ *		for (i = 0; i < 4; i++)
+ *		{
+ *			c = *s++;
+ *			if (c >= '0' && c <= '9')
+ *				tmp = c - '0';
+ *			else if (c >= 'A' && c <= 'F')
+ *				tmp = c - 'A' + 10;
+ *			else if (c >= 'a' && c <= 'f')
+ *				tmp = c - 'a' + 10;
+ *			else
+ *				return false;
+ *	
+ *			ret <<= 4;
+ *			ret += tmp;
+ *		}
+ *		
+ *		*out = ret;
+ *		*sp = s;
+ *		return true;
+ *	}
+ *
+ * Author: Joey Adams <joeyadams3.14159@gmail.com>
+ * License: MIT
+ * Version: 0.3
+ */
+int main(int argc, char *argv[])
+{
+	/* Expect exactly one argument */
+	if (argc != 2)
+		return 1;
+
+	if (strcmp(argv[1], "depends") == 0) {
+		/* Nothing */
+		return 0;
+	}
+	
+	if (strcmp(argv[1], "libs") == 0) {
+		printf("m\n"); /* Needed for the pow() invocation in run.c */
+		return 0;
+	}
+
+	return 1;
+}

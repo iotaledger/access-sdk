@@ -1,0 +1,26 @@
+#include "config.h"
+#include <stdio.h>
+#include <string.h>
+
+/**
+ * jacobson_karels - Jacobson/Karels Round Trip Time algorithm
+ *
+ * This implements the Jacobson/Karels algorithm for estimating round
+ * trip time and appropriate timeouts over a network link.
+ *
+ * Author: David Gibson <david@gibson.dropbear.id>
+ * License: LGPL (v2.1 or any later version)
+ */
+int main(int argc, char *argv[])
+{
+	/* Expect exactly one argument */
+	if (argc != 2)
+		return 1;
+
+	if (strcmp(argv[1], "depends") == 0) {
+		printf("ccan/minmax\n");
+		return 0;
+	}
+
+	return 1;
+}

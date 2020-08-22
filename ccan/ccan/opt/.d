@@ -1,0 +1,3 @@
+opt_ok_deps := ccan/opt/test/compile_ok-const-arg.c ccan/opt/test/run-add_desc.c ccan/opt/test/run.c ccan/opt/test/run-checkopt.c ccan/opt/test/run-consume_words.c ccan/opt/test/run-correct-reporting.c ccan/opt/test/run-early.c ccan/opt/test/run-helpers.c ccan/opt/test/run-iter.c ccan/opt/test/run-no-options.c ccan/opt/test/run-set_alloc.c ccan/opt/test/run-usage.c ccan/opt/test/utils.c ccan/opt/test/utils.h  ccan/opt/helpers.o ccan/opt/opt.o ccan/opt/parse.o ccan/opt/usage.o  ccan/cast/.ok ccan/compiler/.ok ccan/typesafe_cb/.ok 
+ccan/opt/.ok: $(opt_ok_deps)
+ccan/opt/.fast-ok: $(opt_ok_deps:%.ok=%.fast-ok)

@@ -1,0 +1,20 @@
+<?php
+// Pages created in subdirs need ../ appended.
+$url_prefix = getenv("URLPREFIX");
+?>
+<div class="menulist">
+  <div class="menulist-inner">
+    <ul class="menu">
+      <li><a href="<?=$url_prefix?>upload.html">Upload Code</a></li>
+      <li><a href="<?=$url_prefix?>list.html">Download Code</a></li>
+      <li><a href="<?=$url_prefix?>index.html">About</a></li>
+    </ul>
+    <div class="search">
+      <form method="get" action="http://www.google.com/search">
+        <input type="text"   name="q" size="25" maxlength="255" value="" />
+        <input type="hidden" name="sitesearch" value="ccodearchive.net"/>
+        <input type="submit" value="Search CCAN (Google)" />
+      </form>
+    </div>
+  </div>
+</div>
