@@ -84,12 +84,13 @@ int *auth_server_test(bool *serve) {
     auth_authenticate(server, ed25519_sk);
 
     // read msg
-    char buf[BUFSIZE]; /* message buffer */
-    bzero(buf, BUFSIZE);
-    int n = read(accept_sockfd, buf, BUFSIZE);
+    char buf[MSGLEN]; /* message buffer */
+    bzero(buf, MSGLEN);
+    int n = tcpip_read(accept_sockfd, buf, MSGLEN);
     assert(n >= 0);
 
     log_info(auth_logger_id, "[%s:%d] received %d bytes: %s\n", __func__, __LINE__, n, buf);
+
 
     /*
      * write: echo the input string back to the client
