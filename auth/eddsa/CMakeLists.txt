@@ -30,6 +30,7 @@ set(sources
   auth_helper.c)
 
 set(include_dirs
+  ${CMAKE_SOURCE_DIR}/policy/encoding/json
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
