@@ -98,13 +98,16 @@ int *auth_server_test(bool *serve) {
      */
     assert(write(accept_sockfd, buf, strlen(buf)) >= 0);
 
+    shutdown(accept_sockfd, SHUT_RDWR);
     close(accept_sockfd);
+
     log_info(auth_logger_id, "[%s:%d] released accept_sockfd.\n", __func__, __LINE__);
 
     // test: release while
     serve = false;
   }
 
+  shutdown(listen_sockfd, SHUT_RDWR);
   close(listen_sockfd);
   log_info(auth_logger_id, "[%s:%d] released listen_sockfd.\n", __func__, __LINE__);
 

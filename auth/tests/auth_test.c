@@ -48,9 +48,9 @@ int main(int argc, char **argv) {
   ret = pthread_detach(server);
 
   // wait for thread bootstrap
-  sleep(1);
+  sleep(1000);
 
-  auth_client_test("0.0.0.0", 9998);
+  //auth_client_test("0.0.0.0", 9998);
 
   // kill server
   serve = false;

@@ -66,8 +66,8 @@ int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
   crypto_sign_ed25519_sk_to_pk(ed25519_pk, ed25519_sk);
 
-  uint8_t *internal_pk = session->internal->public_key;
-  uint8_t *internal_sk = session->internal->private_key;
+  uint8_t *internal_pk = session->internal->ed25519_pk;
+  uint8_t *internal_sk = session->internal->ed25519_sk;
 
   memcpy(internal_pk, ed25519_pk, crypto_sign_PUBLICKEYBYTES);
   memcpy(internal_sk, ed25519_sk, crypto_sign_SECRETKEYBYTES);
@@ -79,8 +79,8 @@ int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   crypto_sign_ed25519_pk_to_curve25519(x25519_pk, ed25519_pk);
   crypto_sign_ed25519_sk_to_curve25519(x25519_sk, ed25519_sk);
 
-  memcpy(session->internal->dh_public, x25519_pk, crypto_scalarmult_curve25519_BYTES);
-  memcpy(session->internal->dh_private, x25519_sk, crypto_scalarmult_curve25519_BYTES);
+  memcpy(session->internal->x25519_pk, x25519_pk, crypto_scalarmult_curve25519_BYTES);
+  memcpy(session->internal->x25519_sk, x25519_sk, crypto_scalarmult_curve25519_BYTES);
 
   memcpy(session->internal->identification_v, "client", IDENTIFICATION_STRING_L);
 
@@ -104,15 +104,11 @@ int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
 }
 
 int auth_internal_server_send(auth_ctx_t *session, const unsigned char *data, unsigned short data_len) {
-  return auth_utils_write(session, data, data_len);
+ // return auth_utils_write(session, data, data_len);
 }
 
 int auth_internal_server_receive(auth_ctx_t *session, unsigned char **data, unsigned short *data_len) {
-  return auth_utils_read(session, data, data_len);
+//  return auth_utils_read(session, data, data_len);
 }
 
 void auth_internal_release_server(auth_ctx_t *session) {}
-
-int auth_internal_server_set_option(auth_ctx_t *session, const char *key, unsigned char *value) {
-  return auth_utils_set_option(session, key, value);
-}

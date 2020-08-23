@@ -71,64 +71,23 @@
 #define O_PAD (0x5C)
 #define SHA256_BLOCK_BYTES 64
 
-#define AUTH_GET_INTERNAL(s) ((s)->internal)
-#define AUTH_GET_INTERNAL_TYPE(s) (AUTH_GET_INTERNAL(s)->type)
-#define AUTH_GET_INTERNAL_DH_PUBLIC(s) (AUTH_GET_INTERNAL(s)->dh_public)
-#define AUTH_GET_INTERNAL_DH_PRIVATE(s) (AUTH_GET_INTERNAL(s)->dh_private)
-#define AUTH_GET_INTERNAL_PUBLIC_KEY(s) (AUTH_GET_INTERNAL(s)->public_key)
-#define AUTH_GET_INTERNAL_PRIVATE_KEY(s) (AUTH_GET_INTERNAL(s)->private_key)
-#define AUTH_GET_INTERNAL_EXCHANGE_HASH(s) (AUTH_GET_INTERNAL(s)->exchange_hash)
-#define AUTH_GET_INTERNAL_EXCHANGE_HASH2(s) (AUTH_GET_INTERNAL(s)->exchange_hash2)
-#define AUTH_GET_INTERNAL_SECREY_K(s) (AUTH_GET_INTERNAL(s)->nonce)
-#define AUTH_GET_INTERNAL_ID_V(s) (AUTH_GET_INTERNAL(s)->identification_v)
-#define AUTH_GET_INTERNAL_SEQ_NUM_DECRYPT(s) (AUTH_GET_INTERNAL(s)->sequence_number_encrypt)
-#define AUTH_GET_INTERNAL_SEQ_NUM_ENCRYPT(s) (AUTH_GET_INTERNAL(s)->sequence_number_decrypt)
-#define AUTH_GET_INTERNAL_CTX_ENCRYPT(s) (AUTH_GET_INTERNAL(s)->ctx_encrypt)
-#define AUTH_GET_INTERNAL_CTX_DECRYPT(s) (AUTH_GET_INTERNAL(s)->ctx_decrypt)
-
-#define AUTH_GET_INTERNAL_IV_ENCRYPTION(s) (AUTH_GET_INTERNAL(s)->keys.iv_encryption)
-#define AUTH_GET_INTERNAL_IV_DECRYPTION(s) (AUTH_GET_INTERNAL(s)->keys.iv_decryption)
-#define AUTH_GET_INTERNAL_ENCRYPTION_KEY(s) (AUTH_GET_INTERNAL(s)->keys.encryption_key)
-#define AUTH_GET_INTERNAL_DECRYPTION_KEY(s) (AUTH_GET_INTERNAL(s)->keys.decryption_key)
-#define AUTH_GET_INTERNAL_INTEGRITY_KEY_ENCRYPTION(s) (AUTH_GET_INTERNAL(s)->keys.integrity_key_encryption)
-#define AUTH_GET_INTERNAL_INTEGRITY_KEY_DECRYPTION(s) (AUTH_GET_INTERNAL(s)->keys.integrity_key_decryption)
-
 //////////////////////////////////////////
 // Structure definitions
 //////////////////////////////////////////
 
-typedef struct ea_keys {
-  unsigned char iv_encryption[IV_KEY_L];
-  unsigned char iv_decryption[IV_KEY_L];
-  unsigned char encryption_key[ENCRYPTION_KEY_L];
-  unsigned char decryption_key[ENCRYPTION_KEY_L];
-  unsigned char integrity_key_encryption[INTEGRITY_KEY_L];
-  unsigned char integrity_key_decryption[INTEGRITY_KEY_L];
-} ea_keys_t;
-
 struct auth_struct {
-  int type; /*AUTH_TYPE_X*/
+  int type; /* server or client */
 
-  uint8_t dh_public[crypto_scalarmult_curve25519_BYTES];
-  uint8_t dh_private[crypto_scalarmult_curve25519_BYTES];
+  uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
+  uint8_t ed25519_sk[crypto_sign_SECRETKEYBYTES];
+
+
+  uint8_t x25519_pk[crypto_scalarmult_curve25519_BYTES];
+  uint8_t x25519_sk[crypto_scalarmult_curve25519_BYTES];
 
   uint8_t nonce[crypto_box_NONCEBYTES];
-
-  uint8_t exchange_hash[EXCHANGE_HASH_L];
-  uint8_t exchange_hash2[EXCHANGE_HASH_L];
-
   uint8_t identification_v[IDENTIFICATION_STRING_L];
 
-  uint8_t public_key[PUBLIC_KEY_L];
-  uint8_t private_key[PRIVATE_KEY_L];
-
-  AES_ctx_t ctx_encrypt;
-  AES_ctx_t ctx_decrypt;
-
-  ea_keys_t keys;
-
-  unsigned char sequence_number_encrypt;
-  unsigned char sequence_number_decrypt;
 };
 
 //////////////////////////////////////////

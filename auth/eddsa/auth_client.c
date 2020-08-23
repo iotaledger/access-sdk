@@ -102,13 +102,13 @@ int auth_client_verify(auth_ctx_t *session) {
 //      AUTH_GET_INTERNAL_EXCHANGE_HASH2(session), AUTH_GET_INTERNAL_ID_V(session), vs,
 //      AUTH_GET_INTERNAL_PUBLIC_KEY(session), AUTH_GET_INTERNAL_DH_PUBLIC(session), received_dh_public,
 //      AUTH_GET_INTERNAL_SECREY_K(session));
-
-  // Client computes signature sc = sign( skc, hc )
-  int message_signed = auth_utils_compute_signature_s(signature, session, AUTH_GET_INTERNAL_EXCHANGE_HASH2(session));
-
-  auth_utils_concatenate_strings(message, AUTH_GET_INTERNAL_PUBLIC_KEY(session), PUBLIC_KEY_L, signature,
-                               SIGNED_MESSAGE_L);
-  ssize_t message_written = tcpip_write(session->sockfd, message, PUBLIC_KEY_L + SIGNED_MESSAGE_L);
+//
+//  // Client computes signature sc = sign( skc, hc )
+//  int message_signed = auth_utils_compute_signature_s(signature, session, AUTH_GET_INTERNAL_EXCHANGE_HASH2(session));
+//
+//  auth_utils_concatenate_strings(message, AUTH_GET_INTERNAL_PUBLIC_KEY(session), PUBLIC_KEY_L, signature,
+//                               SIGNED_MESSAGE_L);
+//  ssize_t message_written = tcpip_write(session->sockfd, message, PUBLIC_KEY_L + SIGNED_MESSAGE_L);
 
 //  if ((read_message == SIZE_OF_READ_BUFFER) && (key_verified == 0) && (secret_computed == 0) && (h_computed == 0) &&
 //      (signature_verified == 0) && (computed_H == 0) && (message_signed == 0) &&
@@ -135,11 +135,8 @@ int auth_internal_client_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
   crypto_sign_ed25519_sk_to_pk(ed25519_pk, ed25519_sk);
 
-  uint8_t *internal_pk = session->internal->public_key;
-  uint8_t *internal_sk = session->internal->private_key;
-
-  memcpy(internal_pk, ed25519_pk, crypto_sign_PUBLICKEYBYTES);
-  memcpy(internal_sk, ed25519_sk, crypto_sign_SECRETKEYBYTES);
+  memcpy(session->internal->ed25519_pk, ed25519_pk, crypto_sign_PUBLICKEYBYTES);
+  memcpy(session->internal->ed25519_sk, ed25519_sk, crypto_sign_SECRETKEYBYTES);
 
   // x25519
   uint8_t x25519_pk[crypto_scalarmult_curve25519_BYTES];
@@ -148,14 +145,14 @@ int auth_internal_client_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   crypto_sign_ed25519_pk_to_curve25519(x25519_pk, ed25519_pk);
   crypto_sign_ed25519_sk_to_curve25519(x25519_sk, ed25519_sk);
 
-  memcpy(session->internal->dh_public, x25519_pk, crypto_scalarmult_curve25519_BYTES);
-  memcpy(session->internal->dh_private, x25519_sk, crypto_scalarmult_curve25519_BYTES);
+  memcpy(session->internal->x25519_pk, x25519_pk, crypto_scalarmult_curve25519_BYTES);
+  memcpy(session->internal->x25519_sk, x25519_sk, crypto_scalarmult_curve25519_BYTES);
 
   memcpy(session->internal->identification_v, "client", IDENTIFICATION_STRING_L);
 
   // Client sends x25519_pk to Server.
   log_info(auth_logger_id, "[%s:%d] sending x25519_pk.\n", __func__, __LINE__);
-  int write_message = tcpip_write(session->sockfd, session->internal->dh_public, crypto_scalarmult_curve25519_BYTES);
+  int write_message = tcpip_write(session->sockfd, session->internal->x25519_pk, crypto_scalarmult_curve25519_BYTES);
   if (write_message != crypto_scalarmult_curve25519_BYTES){
     log_error(auth_logger_id, "[%s:%d] failed to send x25519_pk.\n", __func__, __LINE__);
     return AUTH_ERROR;
@@ -176,15 +173,15 @@ int auth_internal_client_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
 }
 
 int auth_internal_client_send(auth_ctx_t *session, const unsigned char *data, unsigned short data_len) {
-  return auth_utils_write(session, data, data_len);
+  //return auth_utils_write(session, data, data_len);
 }
 
 int auth_internal_client_receive(auth_ctx_t *session, unsigned char **data, unsigned short *data_len) {
-  return auth_utils_read(session, data, data_len);
+  //return auth_utils_read(session, data, data_len);
 }
 
 void auth_internal_release_client(auth_ctx_t *session) {}
 
 int auth_internal_client_set_option(auth_ctx_t *session, const char *key, unsigned char *value) {
-  return auth_utils_set_option(session, key, value);
+ // return auth_utils_set_option(session, key, value);
 }
