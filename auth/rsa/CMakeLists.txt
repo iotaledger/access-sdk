@@ -19,15 +19,22 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-set(target auth_test)
-set(sources auth_test.c)
-set(libs auth ${AUTH_FLAVOUR} tcpip pthread)
+include(${CMAKE_DIR}/openssl.cmake)
 
-add_executable(auth_test auth_test.c auth_client_test.c auth_server_test.c)
-add_dependencies(auth_test tcpip)
+set(sources
+  auth_client.c
+  auth_server.c
+  auth_utils.c
+  auth_logger.c
+  auth_helper.c)
 
-target_include_directories(auth_test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${AUTH_SOURCE_DIR}/${AUTH_FLAVOUR})
-target_link_directories(auth_test PUBLIC ${CMAKE_BINARY_DIR}/lib)
-target_link_libraries(auth_test PUBLIC ${libs})
+set(include_dirs
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
-add_test(auth_test auth_test)
+add_library(rsa STATIC ${sources})
+target_include_directories(rsa PUBLIC ${include_dirs})
+target_link_directories(rsa PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/lib)
+target_link_libraries(rsa PRIVATE ssl crypto ${POLICY_FORMAT} tcpip)
+
+install(TARGETS rsa DESTINATION lib)

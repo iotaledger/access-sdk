@@ -95,10 +95,10 @@ $(document).ready(function(){initNavTree('md_auth__r_e_a_d_m_e.html','');});
 <ul>
 <li>key exchange: <a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-56ar.pdf">NIST FIPS PUB 800-56A</a> Diffie-Hellman (<b>DH</b>).</li>
 <li>signing/verification: <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar2.pdf">NIST FIPS PUB 800-131A</a>: Rivest-Shamir-Adleman (<b>RSA</b>) 2048 bits.</li>
+<li>base lib: <a href="https://github.com/openssl/openssl/releases/tag/OpenSSL_1_0_2u">OpenSSL v1.0.2</a>.</li>
 <li>pros:<ul>
-<li>OpenSSL friendly.</li>
 <li>RSA is still the leading DSA for most certificate applications.</li>
-<li>deterministic keypair derived from IOTA seed (legacy or BIP39, IOTA 2.0) (via <a href="https://github.com/bernardoaraujor/dopenssl">dOpenSSL</a>).</li>
+<li>deterministic keypair from BIP39 (via <a href="https://github.com/bernardoaraujor/dopenssl">dOpenSSL</a>).</li>
 </ul>
 </li>
 <li>cons:<ul>
@@ -116,6 +116,7 @@ $(document).ready(function(){initNavTree('md_auth__r_e_a_d_m_e.html','');});
 <ul>
 <li>key exchange: Elliptic Curve Diffie-Hellman (<b>ECDH</b>) with <b>Curve25519</b> [<a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf">NIST SP 800-186</a>]</li>
 <li>signing/verification: Elliptic Curve Digital Signature Algorithm (<b>ECDSA</b>) with <b>Ed25519</b> [<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5-draft.pdf">NIST FIPS PUB 186-5</a>].</li>
+<li>base lib: <a href="https://github.com/jedisct1/libsodium/tree/1.0.18">Sodium v1.0.18</a></li>
 <li>pros:<ul>
 <li>IoT friendly.</li>
 <li>IOTA 1.5 compatible.</li>

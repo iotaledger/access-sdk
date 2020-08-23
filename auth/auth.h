@@ -184,10 +184,11 @@ int auth_connect_client(int sockfd, char *servip, int port);
  * performs actual authentication, be it server or client side
  *
  * @param session pointer to authenticator session context.
+ * @param sk array with secret key
  *
  * @return AUTH_OR or AUTH_ERROR
  */
-int auth_authenticate(auth_ctx_t *session, uint8_t sk[]);
+int auth_authenticate(auth_ctx_t *session);
 
 /**
  * @brief send data over authenticated session

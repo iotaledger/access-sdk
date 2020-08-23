@@ -102,14 +102,14 @@ int auth_set_option(auth_ctx_t *session, const char *key, unsigned char *value) 
   return ret;
 }
 
-int auth_authenticate(auth_ctx_t *session, uint8_t sk[]) {
+int auth_authenticate(auth_ctx_t *session) {
   int ret = AUTH_ERROR;
 
   if (NULL != session) {
     if (AUTH_TYPE_SERVER == AUTH_GET_INTERNAL_TYPE(session)) {
       ret = auth_internal_server_authenticate(session);
     } else if (AUTH_TYPE_CLIENT == AUTH_GET_INTERNAL_TYPE(session)) {
-      ret = auth_internal_client_authenticate(session, sk);
+      ret = auth_internal_client_authenticate(session);
     }
   }
 

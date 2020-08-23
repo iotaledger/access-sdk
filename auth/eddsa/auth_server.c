@@ -40,6 +40,7 @@
 #include "auth_internal.h"
 #include "auth_utils.h"
 #include "auth_logger.h"
+#include "tcpip.h"
 
 /////////////////////////////////////
 /// Macros and defines
@@ -105,7 +106,7 @@ int auth_server_compute(auth_ctx_t *session) {
   unsigned char *signature;
 
   // Server receives e from Client.
-  int read_message = session->f_read(session->sockfd, received_dh_public, DH_PUBLIC_L);
+  int read_message = tcpip_read(session->sockfd, received_dh_public, DH_PUBLIC_L);
 
   // Server generates y and computes f
   int keys_generated = auth_utils_dh_generate_keys(session);
@@ -131,15 +132,15 @@ int auth_server_compute(auth_ctx_t *session) {
                                AUTH_GET_INTERNAL_DH_PUBLIC(session), DH_PUBLIC_L);
   auth_utils_concatenate_strings(writeBuffer + PUBLIC_KEY_L + DH_PUBLIC_L, NULL, 0, s_signed, SIGNED_MESSAGE_L);
 
-  int write_message = session->f_write(session->sockfd, writeBuffer, SIZE_OF_WRITE_BUFFER);
+  int write_message = tcpip_socket(session->sockfd, writeBuffer, SIZE_OF_WRITE_BUFFER);
 
   // Server receives ( kc || sc )
-  int read_second_message = session->f_read(session->sockfd, readBuffer, PUBLIC_KEY_L + SIGNED_MESSAGE_L);
+  int read_second_message = tcpip_read(session->sockfd, readBuffer, PUBLIC_KEY_L + SIGNED_MESSAGE_L);
   client_public_key = readBuffer;
   signature = readBuffer + PUBLIC_KEY_L;
 
   // Server verifies that kc is the public key for Client
-  int key_verified = session->f_verify(client_public_key, PUBLIC_KEY_L);
+  int key_verified = verify(client_public_key, PUBLIC_KEY_L);
 
   // Server computes hc = hash( vc || vs || kc || e || f || k )
   int hc_computed = auth_utils_compute_session_identifier_h(

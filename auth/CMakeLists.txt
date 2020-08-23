@@ -19,6 +19,9 @@
 
 cmake_minimum_required(VERSION 3.11)
 
+add_subdirectory(tcpip)
+add_subdirectory(${AUTH_FLAVOUR})
+
 # libs in the sandbox
 link_directories("${CMAKE_INSTALL_PREFIX}/lib")
 
@@ -26,30 +29,33 @@ set(target auth)
 
 set(libs
   base58
+  tcpip
   ${policy_format}
   common
   ccan
 )
 
-if(auth_flavour STREQUAL rsa)
+if(AUTH_FLAVOUR STREQUAL rsa)
   list(APPEND libs ssl)
-elseif(auth_flavour STREQUAL eddsa)
+elseif(AUTH_FLAVOUR STREQUAL eddsa)
   list(APPEND libs sodium cryptography)
 endif()
 
 set(sources
-  auth_logger.c
   auth.c
-  auth_helper.c
-  ${auth_flavour}/auth_client.c
-  ${auth_flavour}/auth_server.c
-  ${auth_flavour}/auth_client.c
-  ${auth_flavour}/auth_utils.c)
+  auth_logger.c
+  ${AUTH_FLAVOUR}/auth_helper.c
+  ${AUTH_FLAVOUR}/auth_client.c
+  ${AUTH_FLAVOUR}/auth_server.c
+  ${AUTH_FLAVOUR}/auth_client.c
+  ${AUTH_FLAVOUR}/auth_utils.c)
 
 set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/${auth_flavour}
+  ${CMAKE_CURRENT_SOURCE_DIR}/tcpip
+  ${CMAKE_CURRENT_SOURCE_DIR}/${AUTH_FLAVOUR}
   ${PROJECT_BINARY_DIR}/include
+  ${CMAKE_SOURCE_DIR}/policy/encoding/json/
   ${CMAKE_SOURCE_DIR}/ccan
   ${CMAKE_SOURCE_DIR}/ccan/ccan/base64/
   ${CMAKE_SOURCE_DIR}/ccan/ccan/err/
@@ -72,7 +78,8 @@ message(STATUS "${libs}")
 
 install(TARGETS auth DESTINATION lib)
 install(FILES auth.h DESTINATION include)
-install(FILES auth_logger.h DESTINATION include)
+
+set(AUTH_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 if(TEST)
   add_subdirectory(tests)

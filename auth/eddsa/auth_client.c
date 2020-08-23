@@ -36,11 +36,9 @@
 /////////////////
 /// Includes
 /////////////////
-#include "sodium.h"
-
 #include "auth_internal.h"
 #include "auth_utils.h"
-
+#include "tcpip.h"
 /////////////////////////////////////
 /// Macros and defines
 /////////////////////////////////////
@@ -57,16 +55,17 @@
 /// Client authantication function declarations and definitions
 //////////////////////////////////////////////////////////////////
 
-int auth_client_init(auth_ctx_t *session, unsigned char sk[]) {
+int auth_client_init(auth_ctx_t *session) {
   int next_stage = AUTH_ERROR;
 
-  unsigned char pk[PUBLIC_KEY_L];
+  unsigned char public[PUBLIC_KEY_L];
+  unsigned char private[PRIVATE_KEY_L];
 
-  // derive ed25519 public key from secret
-  crypto_scalarmult_base(pk, sk);
+  // generate private and public key on client side
+  crypto_sign_keypair(public, private);
 
-  memcpy(AUTH_GET_INTERNAL_PUBLIC_KEY(session), pk, PUBLIC_KEY_L);
-  memcpy(AUTH_GET_INTERNAL_PRIVATE_KEY(session), sk, PRIVATE_KEY_L);
+  memcpy(AUTH_GET_INTERNAL_PUBLIC_KEY(session), public, PUBLIC_KEY_L);
+  memcpy(AUTH_GET_INTERNAL_PRIVATE_KEY(session), private, PRIVATE_KEY_L);
 
   memcpy(AUTH_GET_INTERNAL_ID_V(session), "client", IDENTIFICATION_STRING_L);
   next_stage = AUTH_COMPUTE;
@@ -87,7 +86,7 @@ int auth_client_generate(auth_ctx_t *session) {
   int keys_generated = auth_utils_dh_generate_keys(session);
 
   // Client sends e to Server.
-  int write_message = session->f_write(session->sockfd, AUTH_GET_INTERNAL_DH_PUBLIC(session), DH_PUBLIC_L);
+  int write_message = tcpip_write(session->sockfd, AUTH_GET_INTERNAL_DH_PUBLIC(session), DH_PUBLIC_L);
 
   AUTH_GET_INTERNAL_SEQ_NUM_ENCRYPT(session) = 1;
   AUTH_GET_INTERNAL_SEQ_NUM_DECRYPT(session) = 1;
@@ -126,7 +125,7 @@ int auth_client_verify(auth_ctx_t *session) {
   unsigned char message[PUBLIC_KEY_L + SIGNED_MESSAGE_L];
 
   // Client receives ( ks || f || s )
-  ssize_t read_message = session->f_read(session->sockfd, readBuffer, SIZE_OF_READ_BUFFER);
+  ssize_t read_message = tcpip_read(session->sockfd, readBuffer, SIZE_OF_READ_BUFFER);
   if (read_message != SIZE_OF_READ_BUFFER) {
     return AUTH_ERROR;
   }
@@ -136,7 +135,7 @@ int auth_client_verify(auth_ctx_t *session) {
   s_signed = readBuffer + PUBLIC_KEY_L + DH_PUBLIC_L;
 
   // Client verifies that ks is public key of the Server
-  int key_verified = session->f_verify(received_dh_public, PUBLIC_KEY_L);
+  int key_verified = verify(received_dh_public, PUBLIC_KEY_L);
 
   // Client computes k = fx mod p
   int secret_computed = auth_utils_dh_compute_secret_k(session, received_dh_public);
@@ -161,7 +160,7 @@ int auth_client_verify(auth_ctx_t *session) {
 
   auth_utils_concatenate_strings(message, AUTH_GET_INTERNAL_PUBLIC_KEY(session), PUBLIC_KEY_L, signature,
                                SIGNED_MESSAGE_L);
-  ssize_t message_written = session->f_write(session->sockfd, message, PUBLIC_KEY_L + SIGNED_MESSAGE_L);
+  ssize_t message_written = tcpip_write(session->sockfd, message, PUBLIC_KEY_L + SIGNED_MESSAGE_L);
 
   if ((read_message == SIZE_OF_READ_BUFFER) && (key_verified == 0) && (secret_computed == 0) && (h_computed == 0) &&
       (signature_verified == 0) && (computed_H == 0) && (message_signed == 0) &&
@@ -220,14 +219,14 @@ int auth_client_finish(auth_ctx_t *session) {
   return next_stage;
 }
 
-int auth_internal_client_authenticate(auth_ctx_t *session, unsigned char sk[]) {
+int auth_internal_client_authenticate(auth_ctx_t *session) {
   int ret = AUTH_ERROR;
 
   int auth_stage = AUTH_INIT;
   while ((AUTH_DONE != auth_stage) && (AUTH_ERROR != auth_stage)) {
     switch (auth_stage) {
       case AUTH_INIT:
-        auth_stage = auth_client_init(session, sk);
+        auth_stage = auth_client_init(session);
         break;
       case AUTH_COMPUTE:
         auth_stage = auth_client_generate(session);

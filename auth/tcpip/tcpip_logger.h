@@ -17,24 +17,8 @@
  * limitations under the License.
  */
 
-/****************************************************************************
- * \project IOTA Access
- * \file auth_logger.h
- * \brief
- * Logger for Authentication module
- *
- * @Author Bernardo Araujo
- *
- * \notes
- *
- * \history
- * 17.07.2020. Initial version.
- * 01.08.2020. Renaming.
- ****************************************************************************/
-
-
-#ifndef AUTH_LOGGER_H
-#define AUTH_LOGGER_H
+#ifndef TCPIP_LOGGER_H
+#define TCPIP_LOGGER_H
 
 #include "utils/logger_helper.h"
 
@@ -42,7 +26,7 @@
  * @brief logger ID
  *
  */
-extern logger_id_t auth_logger_id;
+extern logger_id_t tcpip_logger_id;
 
 /**
  * @brief init Authentication logger
@@ -50,12 +34,12 @@ extern logger_id_t auth_logger_id;
  * @param[in] level A level of the logger
  *
  */
-void logger_init_auth(logger_level_t level);
+void logger_init_tcpip(logger_level_t level);
 
 /**
  * @brief cleanup Authentication logger
  *
  */
-void logger_destroy_auth();
+void logger_destroy_tcpip();
 
-#endif  // AUTH_LOGGER_ID
+#endif  // TCPIP_LOGGER_ID

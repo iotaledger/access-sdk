@@ -40,14 +40,14 @@ set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}/user/implementations/${user_management_implementation}
   ${CMAKE_CURRENT_SOURCE_DIR}/policy_loader
   ${CMAKE_CURRENT_SOURCE_DIR}/../../plugin
-  ${CMAKE_CURRENT_SOURCE_DIR}/../../policy/${policy_format}
+  ${CMAKE_CURRENT_SOURCE_DIR}/../../policy/${POLICY_FORMAT}
   ${sqlite3_SOURCE_DIR}
 )
 
 set(libs
   fastjson
   sqlite3
-  ${policy_format}
+  ${POLICY_FORMAT}
   cryptography
   misc)
 

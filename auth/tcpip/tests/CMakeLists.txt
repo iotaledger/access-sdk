@@ -19,15 +19,10 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-set(target auth_test)
-set(sources auth_test.c)
-set(libs auth ${AUTH_FLAVOUR} tcpip pthread)
+set(libs pthread auth ${AUTH_FLAVOUR} tcpip)
 
-add_executable(auth_test auth_test.c auth_client_test.c auth_server_test.c)
-add_dependencies(auth_test tcpip)
+add_executable(tcpip_test tcpip_test.c tcpip_client_test.c tcpip_server_test.c)
+target_include_directories(tcpip_test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${AUTH_SOURCE_DIR}/${AUTH_FLAVOUR})
+target_link_libraries(tcpip_test PUBLIC ${libs})
 
-target_include_directories(auth_test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${AUTH_SOURCE_DIR}/${AUTH_FLAVOUR})
-target_link_directories(auth_test PUBLIC ${CMAKE_BINARY_DIR}/lib)
-target_link_libraries(auth_test PUBLIC ${libs})
-
-add_test(auth_test auth_test)
+add_test(tcpip_test tcpip_test)

@@ -17,45 +17,23 @@
  * limitations under the License.
  */
 
-#include <assert.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <pthread.h>
+#include <stdint.h>
 
-#include "sodium.h"
-#include "hex.h"
-
-#include "auth.h"
-#include "auth_logger.h"
 #include "tcpip.h"
-#include "auth_client_test.h"
-#include "auth_server_test.h"
 
+#ifndef TCPIP_CLIENT_H
+#define TCPIP_CLIENT_H
 
+/**
+ * @brief connects to server via TCP/IP
+ *
+ * @param sockfd socket file descriptor
+ * @param peer_ip peer IP address
+ * @param port server port
+ *
+ * @return TCPIP_OK or TCPIP_ERROR
+ */
 
+int tcpip_connect(uint8_t sockfd, struct sockaddr_in *addr, socklen_t addrlen);
 
-int main(int argc, char **argv) {
-
-  logger_helper_init(LOGGER_INFO);
-  logger_init_auth(LOGGER_INFO);
-
-  // test server
-  static bool serve = true;
-  pthread_t server;
-  int ret = pthread_create(&server, NULL, &auth_server_test, &serve);
-  ret = pthread_detach(server);
-
-  // wait for thread bootstrap
-  sleep(1);
-
-  auth_client_test("0.0.0.0", 9998);
-
-  // kill server
-  serve = false;
-
-  // wait for socket release
-  sleep(1);
-
-  return 0;
-}
+#endif  // TCPIP_CLIENT_H

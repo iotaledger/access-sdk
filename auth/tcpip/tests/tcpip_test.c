@@ -21,41 +21,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include <pthread.h>
+#include <netdb.h>
 
-#include "sodium.h"
-#include "hex.h"
-
-#include "auth.h"
-#include "auth_logger.h"
 #include "tcpip.h"
-#include "auth_client_test.h"
-#include "auth_server_test.h"
+#include "server.h"
+#include "client.h"
 
+#include "tcpip_client_test.h"
+#include "tcpip_server_test.h"
 
-
+/*
+ * error - wrapper for perror
+ */
+void error(char *msg) {
+  perror(msg);
+  exit(0);
+}
 
 int main(int argc, char **argv) {
-
-  logger_helper_init(LOGGER_INFO);
-  logger_init_auth(LOGGER_INFO);
 
   // test server
   static bool serve = true;
   pthread_t server;
-  int ret = pthread_create(&server, NULL, &auth_server_test, &serve);
-  ret = pthread_detach(server);
+  pthread_create(&server, NULL, &tcpip_server_test, &serve);
+  pthread_detach(server);
 
-  // wait for thread bootstrap
-  sleep(1);
-
-  auth_client_test("0.0.0.0", 9998);
+  // test client
+  tcpip_client_test();
 
   // kill server
   serve = false;
 
-  // wait for socket release
-  sleep(1);
-
-  return 0;
+  return( 0 );
 }
