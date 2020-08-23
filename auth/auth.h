@@ -169,10 +169,15 @@ int auth_init_server(auth_ctx_t *session, int *sockfd);
  */
 int auth_authenticate(auth_ctx_t *session, uint8_t sk[]);
 
-uint8_t auth_encrypt(auth_ctx_t *session, uint8_t ed25516_sk[], uint8_t *ciphertext, const uint8_t *data);
+// todo: test this
+uint8_t auth_encrypt(auth_ctx_t *session, uint8_t ed25516_sk[], uint8_t ciphertext[], const uint8_t *data);
 
-uint8_t auth_decrypt(auth_ctx_t*session, uint8_t ed25519_sk[], uint8_t *data, const uint8_t *ciphertext);
+// todo: test this
+uint8_t auth_decrypt(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *data, const uint8_t *ciphertext);
 
+uint8_t auth_sign(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *sm, size_t *smlen, uint8_t *m, size_t mlen);
+
+uint8_t auth_verify();
 
 /**
  * @brief release authenticated session

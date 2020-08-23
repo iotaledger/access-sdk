@@ -98,11 +98,12 @@ int *auth_server_test(bool *serve) {
 
     log_info(auth_logger_id, "[%s:%d] decrypted %d bytes from socket: %s\n", __func__, __LINE__, n, buf);
 
-
-    /*
-     * write: echo the input string back to the client
-     */
-    assert(write(accept_sockfd, buf, strlen(buf)) >= 0);
+//    char msg[MSGLEN]; /* message buffer */
+//    bzero(msg, MSGLEN);
+//    int n = tcpip_read(accept_sockfd, msg, MSGLEN);
+//    assert(n >= 0);
+//
+//    log_info(auth_logger_id, "[%s:%d] received %d bytes from socket: %s\n", __func__, __LINE__, n, msg);
 
     shutdown(accept_sockfd, SHUT_RDWR);
     close(accept_sockfd);
