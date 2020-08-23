@@ -22,7 +22,7 @@
 
 int *auth_server_test(bool *serve) {
 
-  auth_ctx_t *session = calloc(1, sizeof(auth_ctx_t));
+  auth_ctx_t *server = calloc(1, sizeof(auth_ctx_t));
 
   int listen_sockfd = tcpip_socket(AF_INET, SOCK_STREAM, 0);
   assert(listen_sockfd > 0);
@@ -35,14 +35,14 @@ int *auth_server_test(bool *serve) {
   int retstat = bind(listen_sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
   if (retstat != 0) {
     log_error(auth_logger_id, "[%s:%d] bind failed.\n", __func__, __LINE__);
-    free(session);
+    free(server);
     return 1;
   }
 
   retstat = listen(listen_sockfd, 10);
   if (retstat != 0) {
     log_error(auth_logger_id, "[%s:%d] listen failed.\n", __func__, __LINE__);
-    free(session);
+    free(server);
     return 1;
   }
 
@@ -52,7 +52,7 @@ int *auth_server_test(bool *serve) {
     */
     struct sockaddr_in clientaddr; /* client addr */
     int clientlen = sizeof(clientaddr);
-    int accept_sockfd = tcpip_accept(listen_sockfd, (struct sockaddr *) &clientaddr, &clientlen);
+    int accept_sockfd =  tcpip_accept(listen_sockfd, (struct sockaddr *) &clientaddr, &clientlen);
     assert(accept_sockfd >= 0);
 
     /*
@@ -69,7 +69,7 @@ int *auth_server_test(bool *serve) {
 
     log_info(auth_logger_id, "[%s:%d] established connection with %s (%s).\n", __func__, __LINE__, hostp->h_name, hostaddrp);
 
-    assert(auth_init_server(session, accept_sockfd) == AUTH_OK);
+    assert(auth_init_server(server, accept_sockfd) == AUTH_OK);
 
     uint8_t seed[crypto_sign_SEEDBYTES];
     bzero(seed, crypto_sign_SEEDBYTES);
@@ -81,11 +81,9 @@ int *auth_server_test(bool *serve) {
 
     crypto_sign_seed_keypair(ed25519_pk, ed25519_sk, seed);
 
-    auth_authenticate(session, ed25519_sk);
+    auth_authenticate(server, ed25519_sk);
 
-    /*
-     * read: read input string from the client
-     */
+    // read msg
     char buf[BUFSIZE]; /* message buffer */
     bzero(buf, BUFSIZE);
     int n = read(accept_sockfd, buf, BUFSIZE);

@@ -40,7 +40,6 @@
 
 #include "auth_logger.h"
 #include "auth_internal.h"
-#include "auth_utils.h"
 #include "tcpip.h"
 /////////////////////////////////////
 /// Macros and defines
@@ -59,31 +58,31 @@
 //////////////////////////////////////////////////////////////////
 
 int auth_client_verify(auth_ctx_t *session) {
-  int next_stage = AUTH_ERROR;
-
-  int SIZE_OF_READ_BUFFER = PUBLIC_KEY_L + crypto_scalarmult_curve25519_BYTES + SIGNED_MESSAGE_L;  // size of ks + f + s
-  unsigned char readBuffer[SIZE_OF_READ_BUFFER];
-  unsigned char *s_signed;
-  unsigned char *received_dh_public;
-  unsigned char *server_public_key;
-
-  unsigned char vs[IDENTIFICATION_STRING_L];
-  memcpy(vs, "server", IDENTIFICATION_STRING_L);
-  unsigned char signature[SIGNED_MESSAGE_L];
-  unsigned char message[PUBLIC_KEY_L + SIGNED_MESSAGE_L];
-
-  // Client receives ( ks || f || s )
-  ssize_t read_message = tcpip_read(session->sockfd, readBuffer, SIZE_OF_READ_BUFFER);
-  if (read_message != SIZE_OF_READ_BUFFER) {
-    return AUTH_ERROR;
-  }
-
-  server_public_key = readBuffer;
-  received_dh_public = readBuffer + PUBLIC_KEY_L;
-  s_signed = readBuffer + PUBLIC_KEY_L + crypto_scalarmult_curve25519_BYTES;
-
-  // Client verifies that ks is public key of the Server
-  int key_verified = verify(received_dh_public, PUBLIC_KEY_L);
+//  int next_stage = AUTH_ERROR;
+//
+//  int SIZE_OF_READ_BUFFER = PUBLIC_KEY_L + crypto_sign_PUBLICKEYBYTES + SIGNED_MESSAGE_L;  // size of ks + f + s
+//  unsigned char readBuffer[SIZE_OF_READ_BUFFER];
+//  unsigned char *s_signed;
+//  unsigned char *received_dh_public;
+//  unsigned char *server_public_key;
+//
+//  unsigned char vs[IDENTIFICATION_STRING_L];
+//  memcpy(vs, "server", IDENTIFICATION_STRING_L);
+//  unsigned char signature[SIGNED_MESSAGE_L];
+//  unsigned char message[PUBLIC_KEY_L + SIGNED_MESSAGE_L];
+//
+//  // Client receives ( ks || f || s )
+//  ssize_t read_message = tcpip_read(session->sockfd, readBuffer, SIZE_OF_READ_BUFFER);
+//  if (read_message != SIZE_OF_READ_BUFFER) {
+//    return AUTH_ERROR;
+//  }
+//
+//  server_public_key = readBuffer;
+//  received_dh_public = readBuffer + PUBLIC_KEY_L;
+//  s_signed = readBuffer + PUBLIC_KEY_L + crypto_scalarmult_curve25519_BYTES;
+//
+//  // Client verifies that ks is public key of the Server
+//  int key_verified = verify(received_dh_public, PUBLIC_KEY_L);
 
 //  // Client computes k = fx mod p
 //  int secret_computed = auth_utils_dh_compute_secret_k(session, received_dh_public);
@@ -124,12 +123,14 @@ int auth_client_verify(auth_ctx_t *session) {
 //    printf("%d\n", message_signed);
 //    printf("%d\n", message_written);
 //  }
-
-  return next_stage;
+//
+//  return next_stage;
 }
 
 int auth_internal_client_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[]) {
   int ret = AUTH_ERROR;
+
+  session->internal->type = AUTH_TYPE_CLIENT;
 
   // ed25519
   uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
@@ -148,8 +149,6 @@ int auth_internal_client_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   memcpy(session->internal->x25519_pk, x25519_pk, crypto_scalarmult_curve25519_BYTES);
   memcpy(session->internal->x25519_sk, x25519_sk, crypto_scalarmult_curve25519_BYTES);
 
-  memcpy(session->internal->identification_v, "client", IDENTIFICATION_STRING_L);
-
   // Client sends x25519_pk to Server.
   log_info(auth_logger_id, "[%s:%d] sending x25519_pk.\n", __func__, __LINE__);
   int write_message = tcpip_write(session->sockfd, session->internal->x25519_pk, crypto_scalarmult_curve25519_BYTES);
@@ -158,16 +157,31 @@ int auth_internal_client_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
     return AUTH_ERROR;
   }
 
+  log_info(auth_logger_id, "[%s:%d] x25519_pk sent.\n", __func__, __LINE__);
+
   // generate nonce
   for (int i = 0; i < crypto_box_NONCEBYTES; i++) {session->internal->nonce[i] = rand();}
 
   // Client sends nonce to Server.
-  log_info(auth_logger_id, "[%s:%d] sending nonce.\n", __func__, __LINE__);
+  log_info(auth_logger_id, "[%s:%d] sending DH nonce.\n", __func__, __LINE__);
   write_message = tcpip_write(session->sockfd, session->internal->nonce, crypto_box_NONCEBYTES);
   if (write_message <= 0){
-    log_error(auth_logger_id, "[%s:%d] failed to send x25519_pk.\n", __func__, __LINE__);
+    log_error(auth_logger_id, "[%s:%d] failed to send DH nonce.\n", __func__, __LINE__);
     return AUTH_ERROR;
   }
+
+  log_info(auth_logger_id, "[%s:%d] DH nonce sent.\n", __func__, __LINE__);
+
+  // receive server DH x25519_pk
+  log_info(auth_logger_id, "[%s:%d] waiting for server's DH x25519_pk.\n", __func__, __LINE__);
+
+  int read_message = tcpip_read(session->sockfd, session->internal->peer_x25519_pk, crypto_scalarmult_curve25519_BYTES);
+  if (read_message != crypto_scalarmult_curve25519_BYTES){
+    log_error(auth_logger_id, "[%s:%d] failed to read server DH 25519_pk.\n", __func__, __LINE__);
+    return AUTH_ERROR;
+  }
+
+  log_info(auth_logger_id, "[%s:%d] received server's DH x25519_pk.\n", __func__, __LINE__);
 
   return ret;
 }

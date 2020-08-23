@@ -57,10 +57,6 @@ static int auth_init(auth_ctx_t *session, int *sockfd, int type) {
     }
   }
 
-  session->f_read = read_socket;
-  session->f_write = write_socket;
-  session->f_verify = verify;
-
   return ret;
 }
 
@@ -102,50 +98,24 @@ int auth_authenticate(auth_ctx_t *session, uint8_t sk[]) {
   return ret;
 }
 
-int auth_send(auth_ctx_t *session, const unsigned char *data, unsigned short len) {
-  int ret = AUTH_ERROR;
-
-  if ((NULL != session) && (NULL != data) && (len > 0)) {
-    /* Encrypt and send */
-    if (AUTH_TYPE_SERVER == session->internal->type) {
-      ret = auth_internal_server_send(session, data, len);
-    } else if (AUTH_TYPE_CLIENT == session->internal->type) {
-      ret = auth_internal_client_send(session, data, len);
-    }
-  }
-
-  return ret;
-}
-
-int auth_receive(auth_ctx_t *session, unsigned char **data, unsigned short *len) {
-  int ret = AUTH_ERROR;
-
-  if (NULL != session) {
-    /* Decrypt and receive */
-    if (AUTH_TYPE_SERVER == session->internal->type) {
-      ret = auth_internal_server_receive(session, data, len);
-    } else if (AUTH_TYPE_CLIENT == session->internal->type) {
-      ret = auth_internal_client_receive(session, data, len);
-    }
-  }
-
-  return ret;
+uint8_t auth_encrypt(auth_ctx_t *session, uint8_t *ciphertext, const uint8_t *data){
+  return auth_internal_encrypt(session, ciphertext, data);
 }
 
 int auth_release(auth_ctx_t *session) {
   int ret = AUTH_ERROR;
 
-  if (NULL != session->internal->type) {
-    if (AUTH_TYPE_SERVER == session->internal->type) {
-      auth_internal_release_server(session);
-    } else if (AUTH_TYPE_CLIENT == session->internal->type) {
-      auth_internal_release_client(session);
-    }
-
-    session->internal = NULL;
-
-    ret = AUTH_OK;
-  }
+//  if (NULL != session->internal->type) {
+//    if (AUTH_TYPE_SERVER == session->internal->type) {
+//      auth_internal_release_server(session);
+//    } else if (AUTH_TYPE_CLIENT == session->internal->type) {
+//      auth_internal_release_client(session);
+//    }
+//
+//    session->internal = NULL;
+//
+//    ret = AUTH_OK;
+//  }
 
   if (NULL != session) {
     session = NULL;

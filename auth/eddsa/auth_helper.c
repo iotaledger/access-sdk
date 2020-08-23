@@ -38,9 +38,9 @@
 #include <string.h>
 #include "json_helper.h"
 
-int auth_helper_send_decision(int decision, auth_ctx_t *session, char *response, int size) {
-  return auth_send(session, response, size);
-}
+//int auth_helper_send_decision(int decision, auth_ctx_t *session, char *response, int size) {
+//  return auth_send(session, response, size);
+//}
 
 int auth_helper_check_msg_format(const char *request) {
   if (request == NULL) {

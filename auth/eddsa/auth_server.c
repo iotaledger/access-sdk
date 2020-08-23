@@ -37,23 +37,9 @@
 /// Includes
 /////////////////
 #include "sodium.h"
-#include "auth_debug.h"
 #include "auth_internal.h"
-#include "auth_utils.h"
 #include "auth_logger.h"
 #include "tcpip.h"
-
-/////////////////////////////////////
-/// Macros and defines
-/////////////////////////////////////
-
-/* AUTH_STAGES */
-#define AUTH_ERROR 0
-#define AUTH_INIT 1
-#define AUTH_COMPUTE 2
-#define AUTH_VERIFY 3
-#define AUTH_FINISH 4
-#define AUTH_DONE 5
 
 //////////////////////////////////////////////////////////////////
 /// internal server authentication function declarations and definitions
@@ -61,6 +47,8 @@
 
 int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[]) {
   int ret = AUTH_ERROR;
+
+  session->internal->type = AUTH_TYPE_SERVER;
 
   // ed25519
   uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
@@ -82,33 +70,34 @@ int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   memcpy(session->internal->x25519_pk, x25519_pk, crypto_scalarmult_curve25519_BYTES);
   memcpy(session->internal->x25519_sk, x25519_sk, crypto_scalarmult_curve25519_BYTES);
 
-  memcpy(session->internal->identification_v, "client", IDENTIFICATION_STRING_L);
-
   // Read client's x25519_pk
   log_info(auth_logger_id, "[%s:%d] waiting for client's x25519_pk.\n", __func__, __LINE__);
-  uint8_t client_x25519_pk[crypto_scalarmult_curve25519_BYTES];
-  int read_message = tcpip_read(session->sockfd, client_x25519_pk, crypto_scalarmult_curve25519_BYTES);
+
+  int read_message = tcpip_read(session->sockfd, session->internal->peer_x25519_pk, crypto_scalarmult_curve25519_BYTES);
   if (read_message != crypto_scalarmult_curve25519_BYTES){
-    log_error(auth_logger_id, "[%s:%d] failed to read client_x25519_pk.\n", __func__, __LINE__);
+    log_error(auth_logger_id, "[%s:%d] failed to read client x25519_pk.\n", __func__, __LINE__);
     return AUTH_ERROR;
   }
 
-  log_info(auth_logger_id, "[%s:%d] waiting for nonce.\n", __func__, __LINE__);
+  log_info(auth_logger_id, "[%s:%d] client's x25519_pk registered.\n", __func__, __LINE__);
+
+  log_info(auth_logger_id, "[%s:%d] waiting for DH nonce.\n", __func__, __LINE__);
   read_message = tcpip_read(session->sockfd, session->internal->nonce, crypto_box_NONCEBYTES);
   if (read_message != crypto_box_NONCEBYTES){
     log_error(auth_logger_id, "[%s:%d] failed to read nonce.\n", __func__, __LINE__);
     return AUTH_ERROR;
   }
 
+  log_info(auth_logger_id, "[%s:%d] DH nonce received.\n", __func__, __LINE__);
+
+  log_info(auth_logger_id, "[%s:%d] sending DH x25519_pk.\n", __func__, __LINE__);
+  int write_message = tcpip_write(session->sockfd, session->internal->x25519_pk, crypto_scalarmult_curve25519_BYTES);
+  if (write_message != crypto_scalarmult_curve25519_BYTES){
+    log_error(auth_logger_id, "[%s:%d] failed to send DH x25519_pk.\n", __func__, __LINE__);
+    return AUTH_ERROR;
+  }
+
+  log_info(auth_logger_id, "[%s:%d] x25519 DH sent.\n", __func__, __LINE__);
+
   return ret;
 }
-
-int auth_internal_server_send(auth_ctx_t *session, const unsigned char *data, unsigned short data_len) {
- // return auth_utils_write(session, data, data_len);
-}
-
-int auth_internal_server_receive(auth_ctx_t *session, unsigned char **data, unsigned short *data_len) {
-//  return auth_utils_read(session, data, data_len);
-}
-
-void auth_internal_release_server(auth_ctx_t *session) {}

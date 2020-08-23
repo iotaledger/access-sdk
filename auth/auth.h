@@ -35,6 +35,9 @@
 #ifndef AUTH_H
 #define AUTH_H
 
+#define MSGLEN 1024
+#define CHIPERLEN (crypto_box_MACBYTES + MSGLEN)
+
 #include <stdio.h>
 #include <stdint.h>
 /**
@@ -122,11 +125,6 @@ typedef struct {
   /*@}*/
 
   /*@{*/
-  f_auth_socket_t *f_write; /**< function to write on authenticated session */
-  f_auth_socket_t *f_read; /**< function to read from authenticated session */
-  /*@}*/
-
-  /*@{*/
   f_auth_key_verify *f_verify; /**< function to verify keys of authenticated session */
   /*@}*/
 
@@ -160,29 +158,6 @@ int auth_init_client(auth_ctx_t *session, int *sockfd);
 int auth_init_server(auth_ctx_t *session, int *sockfd);
 
 /**
- * @brief sets option (priv/pub keys) to authenticator session context.
- *
- * sets option to authenticator session context with key/value pairs.
- *
- * @param session pointer to authenticator session context.
- * @param key pointer to key, where expected values are "public" and "private"
- * @param value pointer to the actual body of the key.
- *
- * @return AUTH_OR or AUTH_ERROR
- */
-int auth_set_option(auth_ctx_t *session, const char *key, unsigned char *value);
-
-/**
- * @brief connects as client to some server
- *
- * @param sockfd socket file descriptor
- * @param servip pointer to string with server IP
- * @param port server port
- * @return AUTH_OR or AUTH_ERROR
- */
-int auth_connect_client(int sockfd, char *servip, int port);
-
-/**
  * @brief performs actual authentication
  *
  * performs actual authentication, be it server or client side
@@ -194,31 +169,7 @@ int auth_connect_client(int sockfd, char *servip, int port);
  */
 int auth_authenticate(auth_ctx_t *session, uint8_t sk[]);
 
-/**
- * @brief send data over authenticated session
- *
- * sends data over authenticated session
- *
- * @param session pointer to authenticator session context.
- * @param data pointer to data to be sent.
- * @param len data length (bytes)
- *
- * @return AUTH_OK or AUTH_ERROR
- */
-int auth_send(auth_ctx_t *session, const unsigned char *data, unsigned short len);
-
-/**
- * @brief receive data over authenticated session
- *
- * receives data over authenticated session
- *
- * @param pointer to authenticator session context.
- * @param data pointer to received data.
- * @param len pointer to data length (bytes).
- *
- * @return AUTH_OK or AUTH_ERROR
- */
-int auth_receive(auth_ctx_t *session, unsigned char **data, unsigned short *len);
+uint8_t auth_encrypt(auth_ctx_t *session, uint8_t *ciphertext, const uint8_t *data);
 
 /**
  * @brief release authenticated session

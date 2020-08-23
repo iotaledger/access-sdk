@@ -22,10 +22,10 @@ cmake_minimum_required(VERSION 3.11)
 #include(${CMAKE_DIR}/sodium.cmake)
 
 set(sources
+  auth_internal.c
   auth_client.c
   auth_server.c
   auth_client.c
-  auth_utils.c
   auth_logger.c
   auth_helper.c)
 
