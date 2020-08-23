@@ -29,8 +29,8 @@ uint8_t auth_internal_decrypt(auth_ctx_t*session, uint8_t ed25519_sk[], uint8_t 
     return AUTH_ERROR;
   }
 
-  bzero(x25519_sk, crypto_scalarmult_curve25519_BYTES);
-  bzero(ed25519_sk, crypto_scalarmult_curve25519_BYTES);
+  sodium_memzero(x25519_sk, crypto_scalarmult_curve25519_BYTES);
+  sodium_memzero(ed25519_sk, crypto_scalarmult_curve25519_BYTES);
 
   return AUTH_OK;
 }

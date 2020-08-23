@@ -74,7 +74,7 @@ int *auth_server_test(bool *serve) {
     uint8_t seed[crypto_sign_SEEDBYTES];
     bzero(seed, crypto_sign_SEEDBYTES);
 
-    for (int i = 0; i < crypto_sign_SEEDBYTES; i++) { seed[i] = rand(); }
+    for (int i = 0; i < crypto_sign_SEEDBYTES; i++) { seed[i] = rand() + 1; }
 
     uint8_t ed25519_sk[crypto_sign_SECRETKEYBYTES];
     uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
@@ -93,8 +93,7 @@ int *auth_server_test(bool *serve) {
     assert(n >= 0);
 
     // decrypt cipher
-    char buf[MSGLEN]; /* message buffer */
-    bzero(buf, MSGLEN);
+    char *buf = calloc(1, MSGLEN);
     assert(auth_decrypt(server, ed25519_sk, buf, cipher) == AUTH_OK);
 
     log_info(auth_logger_id, "[%s:%d] decrypted %d bytes from socket: %s\n", __func__, __LINE__, n, buf);

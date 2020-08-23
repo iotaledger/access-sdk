@@ -98,8 +98,8 @@ int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   log_info(auth_logger_id, "[%s:%d] x25519 DH sent.\n", __func__, __LINE__);
 
   // destroy private keys
-  bzero(ed25519_sk, crypto_sign_SECRETKEYBYTES);
-  bzero(x25519_sk, crypto_scalarmult_curve25519_BYTES);
+  sodium_memzero(ed25519_sk, crypto_sign_SECRETKEYBYTES);
+  sodium_memzero(x25519_sk, crypto_scalarmult_curve25519_BYTES);
 
   return ret;
 }
