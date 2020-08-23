@@ -88,7 +88,7 @@ int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
     return AUTH_ERROR;
   }
 
-  log_info(auth_logger_id, "[%s:%d] DH nonce received.\n", __func__, __LINE__);
+  log_info(auth_logger_id, "[%s:%d] DH nonce registered.\n", __func__, __LINE__);
 
   log_info(auth_logger_id, "[%s:%d] sending DH x25519_pk.\n", __func__, __LINE__);
   int write_message = tcpip_write(session->sockfd, session->internal->x25519_pk, crypto_scalarmult_curve25519_BYTES);
@@ -98,6 +98,10 @@ int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   }
 
   log_info(auth_logger_id, "[%s:%d] x25519 DH sent.\n", __func__, __LINE__);
+
+  // destroy private keys
+  bzero(session->internal->ed25519_sk, crypto_sign_SECRETKEYBYTES);
+  bzero(session->internal->x25519_sk, crypto_scalarmult_curve25519_BYTES);
 
   return ret;
 }
