@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+#include <errno.h>
+
 #include <stdio.h>
 #include <stdint.h>
 #include <arpa/inet.h>
@@ -64,11 +66,12 @@ ssize_t tcpip_write(uint8_t sockfd, unsigned char *m, size_t mlen) {
   return ret;
 }
 
-ssize_t tcpip_read(uint8_t sockfd, unsigned char *m, size_t mlen) {
+ssize_t tcpip_read(uint8_t sockfd, uint8_t *m, size_t mlen) {
   ssize_t ret = read(sockfd, m, mlen);
 
   if (ret < 0){
     log_error(tcpip_logger_id, "[%s:%d] error reading from socket.\n", __func__, __LINE__);
+    int err = errno;
     return ret;
   }
 

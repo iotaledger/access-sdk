@@ -79,18 +79,6 @@ int *auth_client_test(char *hostname, uint16_t portno) {
   hex_encode(ed25519_pk, crypto_box_PUBLICKEYBYTES, phexbuf, 2*crypto_box_PUBLICKEYBYTES+1);
   log_info(auth_logger_id, "[%s:%d] ed25519_pk: %s\n", __func__, __LINE__, phexbuf);
 
-//  uint8_t x25519_pk[crypto_scalarmult_curve25519_BYTES];
-//  uint8_t x25519_sk[crypto_scalarmult_curve25519_BYTES];
-//
-//  crypto_sign_ed25519_pk_to_curve25519(x25519_pk, ed25519_pk);
-//  crypto_sign_ed25519_sk_to_curve25519(x25519_sk, ed25519_sk);
-//
-//  hex_encode(x25519_sk, crypto_scalarmult_curve25519_BYTES, shexbuf, 2*crypto_scalarmult_curve25519_BYTES+1);
-//  log_info(auth_logger_id, "[%s:%d] x25519_sk: %s\n", __func__, __LINE__, shexbuf);
-//
-//  hex_encode(x25519_pk, crypto_scalarmult_curve25519_BYTES, phexbuf, 2*crypto_scalarmult_curve25519_BYTES+1);
-//  log_info(auth_logger_id, "[%s:%d] x25519_pk: %s\n", __func__, __LINE__, phexbuf);
-
   auth_authenticate(&client, ed25519_sk);
   ///////////////////////////////////////////////////////////////////////
   // tcpip send

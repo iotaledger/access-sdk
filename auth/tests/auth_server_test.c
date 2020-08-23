@@ -27,8 +27,6 @@ int *auth_server_test(bool *serve) {
   int listen_sockfd = tcpip_socket(AF_INET, SOCK_STREAM, 0);
   assert(listen_sockfd > 0);
 
-  assert(auth_init_server(session, listen_sockfd) == AUTH_OK);
-
   struct sockaddr_in serv_addr;
   serv_addr.sin_family = AF_INET;
   serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -70,6 +68,8 @@ int *auth_server_test(bool *serve) {
     assert(hostaddrp != NULL);
 
     log_info(auth_logger_id, "[%s:%d] established connection with %s (%s).\n", __func__, __LINE__, hostp->h_name, hostaddrp);
+
+    assert(auth_init_server(session, accept_sockfd) == AUTH_OK);
 
     uint8_t seed[crypto_sign_SEEDBYTES];
     bzero(seed, crypto_sign_SEEDBYTES);

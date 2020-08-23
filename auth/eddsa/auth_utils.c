@@ -45,26 +45,7 @@
 ///
 //////////////////////////////////////
 
-int auth_utils_dh_generate_keys(auth_ctx_t *session) {
-  static const unsigned char basepoint[DH_PRIVATE_L] = {9};
-  int r = rand();
 
-  // TODO: From where this magic numbers came from?
-  // memset(AUTH_GET_INTERNAL_DH_PRIVATE(session), r, DH_PRIVATE_L);
-  AUTH_GET_INTERNAL_DH_PRIVATE(session)[0] &= 248;
-  AUTH_GET_INTERNAL_DH_PRIVATE(session)[31] &= 127;
-  AUTH_GET_INTERNAL_DH_PRIVATE(session)[31] |= 64;
-
-  curve25519_donna(AUTH_GET_INTERNAL_DH_PUBLIC(session), AUTH_GET_INTERNAL_DH_PRIVATE(session), basepoint);
-
-  return 0;
-}
-
-int auth_utils_dh_compute_secret_k(auth_ctx_t *session, const unsigned char *public_key) {
-  curve25519_donna(AUTH_GET_INTERNAL_SECREY_K(session), AUTH_GET_INTERNAL_DH_PRIVATE(session), public_key);
-
-  return 0;
-}
 
 static int hash(unsigned char *exchange_hash, unsigned char *message, int message_length) {
   SHA256_CTX ctx;
@@ -75,73 +56,10 @@ static int hash(unsigned char *exchange_hash, unsigned char *message, int messag
   return 0;
 }
 
-int auth_utils_compute_session_identifier_h(unsigned char *exchange_hash, unsigned char *vc, unsigned char *vs,
-                                          unsigned char *k, unsigned char *c_public, unsigned char *s_public,
-                                          unsigned char *secretK) {
-  int CONCATINATED_STRING_L = 2 * IDENTIFICATION_STRING_L + PUBLIC_KEY_L + 2 * DH_PUBLIC_L + DH_SHARED_SECRET_L;
-  int CURENT_LENGTH = 0;
-  unsigned char concatenated_string[CONCATINATED_STRING_L];
-
-  for (int i = 0; i < IDENTIFICATION_STRING_L; i++) {
-    concatenated_string[i] = vc[i];
-  }
-
-  CURENT_LENGTH += IDENTIFICATION_STRING_L;
-  for (int i = 0; i < IDENTIFICATION_STRING_L; i++) {
-    concatenated_string[CURENT_LENGTH + i] = vs[i];
-  }
-
-  CURENT_LENGTH += IDENTIFICATION_STRING_L;
-  for (int i = 0; i < PUBLIC_KEY_L; i++) {
-    concatenated_string[CURENT_LENGTH + i] = k[i];
-  }
-
-  CURENT_LENGTH += PUBLIC_KEY_L;
-  for (int i = 0; i < DH_PUBLIC_L; i++) {
-    concatenated_string[CURENT_LENGTH + i] = c_public[i];
-  }
-
-  CURENT_LENGTH += DH_PUBLIC_L;
-  for (int i = 0; i < DH_PUBLIC_L; i++) {
-    concatenated_string[CURENT_LENGTH + i] = s_public[i];
-  }
-
-  CURENT_LENGTH += DH_PUBLIC_L;
-  for (int i = 0; i < DH_SHARED_SECRET_L; i++) {
-    concatenated_string[CURENT_LENGTH + i] = secretK[i];
-  }
-
-  hash(exchange_hash, concatenated_string, CONCATINATED_STRING_L);
-
-  return 0;
-}
-
-int auth_utils_generate_enc_auth_keys(unsigned char *hash, unsigned char *shared_secret_K, unsigned char *shared_H,
-                                    char magic_letter) {
-  SHA256_CTX ctx;
-  unsigned char contatinated_string[DH_SHARED_SECRET_L + EXCHANGE_HASH_L + 1];
-
-  for (int i = 0; i < DH_SHARED_SECRET_L; i++) {
-    contatinated_string[i] = shared_secret_K[i];
-  }
-
-  for (int i = 0; i < EXCHANGE_HASH_L; i++) {
-    contatinated_string[DH_SHARED_SECRET_L + i] = shared_H[i];
-  }
-
-  contatinated_string[DH_SHARED_SECRET_L + EXCHANGE_HASH_L] = magic_letter;
-
-  sha256_init(&ctx);
-  sha256_update(&ctx, contatinated_string, sizeof(contatinated_string));
-  sha256_final(&ctx, hash);
-
-  return 0;
-}
-
 int auth_utils_compute_signature_s(unsigned char *sig, auth_ctx_t *session, unsigned char *hash) {
   unsigned long long smlen;
 
-  crypto_sign(sig, &smlen, hash, DH_SHARED_SECRET_L, AUTH_GET_INTERNAL_PRIVATE_KEY(session));
+  //crypto_sign(sig, &smlen, hash, DH_SHARED_SECRET_L, AUTH_GET_INTERNAL_PRIVATE_KEY(session));
 
   log_info(auth_logger_id, "[%s:%d] SMLEN: %d\n", __func__, __LINE__, smlen);
   return 0;

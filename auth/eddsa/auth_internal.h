@@ -37,6 +37,8 @@
 
 #include <string.h>
 
+#include "sodium.h"
+
 #include "aes.h"
 #include "curve25519-donna.h"
 
@@ -54,9 +56,6 @@
 #define AUTH_TYPE_CLIENT (0)
 #define AUTH_TYPE_SERVER (1)
 
-#define DH_PUBLIC_L 32
-#define DH_PRIVATE_L 32
-#define DH_SHARED_SECRET_L 32
 #define EXCHANGE_HASH_L 32
 #define IDENTIFICATION_STRING_L 6
 #define PUBLIC_KEY_L 32
@@ -80,7 +79,7 @@
 #define AUTH_GET_INTERNAL_PRIVATE_KEY(s) (AUTH_GET_INTERNAL(s)->private_key)
 #define AUTH_GET_INTERNAL_EXCHANGE_HASH(s) (AUTH_GET_INTERNAL(s)->exchange_hash)
 #define AUTH_GET_INTERNAL_EXCHANGE_HASH2(s) (AUTH_GET_INTERNAL(s)->exchange_hash2)
-#define AUTH_GET_INTERNAL_SECREY_K(s) (AUTH_GET_INTERNAL(s)->secret_k)
+#define AUTH_GET_INTERNAL_SECREY_K(s) (AUTH_GET_INTERNAL(s)->nonce)
 #define AUTH_GET_INTERNAL_ID_V(s) (AUTH_GET_INTERNAL(s)->identification_v)
 #define AUTH_GET_INTERNAL_SEQ_NUM_DECRYPT(s) (AUTH_GET_INTERNAL(s)->sequence_number_encrypt)
 #define AUTH_GET_INTERNAL_SEQ_NUM_ENCRYPT(s) (AUTH_GET_INTERNAL(s)->sequence_number_decrypt)
@@ -110,18 +109,18 @@ typedef struct ea_keys {
 struct auth_struct {
   int type; /*AUTH_TYPE_X*/
 
-  unsigned char dh_public[DH_PUBLIC_L];
-  unsigned char dh_private[DH_PRIVATE_L];
+  uint8_t dh_public[crypto_scalarmult_curve25519_BYTES];
+  uint8_t dh_private[crypto_scalarmult_curve25519_BYTES];
 
-  unsigned char secret_k[DH_SHARED_SECRET_L];
+  uint8_t nonce[crypto_box_NONCEBYTES];
 
-  unsigned char exchange_hash[EXCHANGE_HASH_L];
-  unsigned char exchange_hash2[EXCHANGE_HASH_L];
+  uint8_t exchange_hash[EXCHANGE_HASH_L];
+  uint8_t exchange_hash2[EXCHANGE_HASH_L];
 
-  unsigned char identification_v[IDENTIFICATION_STRING_L];
+  uint8_t identification_v[IDENTIFICATION_STRING_L];
 
-  unsigned char public_key[PUBLIC_KEY_L];
-  unsigned char private_key[PRIVATE_KEY_L];
+  uint8_t public_key[PUBLIC_KEY_L];
+  uint8_t private_key[PRIVATE_KEY_L];
 
   AES_ctx_t ctx_encrypt;
   AES_ctx_t ctx_decrypt;
