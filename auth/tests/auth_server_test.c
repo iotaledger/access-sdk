@@ -84,12 +84,17 @@ int *auth_server_test(bool *serve) {
     auth_authenticate(server, ed25519_sk);
 
     // read msg
-    char buf[MSGLEN]; /* message buffer */
-    bzero(buf, MSGLEN);
-    int n = tcpip_read(accept_sockfd, buf, MSGLEN);
+    char cipher[CHIPERLEN]; /* message buffer */
+    bzero(cipher, CHIPERLEN);
+    int n = tcpip_read(accept_sockfd, cipher, CHIPERLEN);
     assert(n >= 0);
 
-    log_info(auth_logger_id, "[%s:%d] received %d bytes: %s\n", __func__, __LINE__, n, buf);
+    // decrypt cipher
+    char buf[MSGLEN]; /* message buffer */
+    bzero(buf, MSGLEN);
+    auth_decrypt(server, ed25519_sk, buf, cipher);
+
+    log_info(auth_logger_id, "[%s:%d] decrypted %d bytes from socket: %s\n", __func__, __LINE__, n, buf);
 
 
     /*

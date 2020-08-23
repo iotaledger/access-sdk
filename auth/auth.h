@@ -171,6 +171,9 @@ int auth_authenticate(auth_ctx_t *session, uint8_t sk[]);
 
 uint8_t auth_encrypt(auth_ctx_t *session, uint8_t ed25516_sk[], uint8_t *ciphertext, const uint8_t *data);
 
+uint8_t auth_decrypt(auth_ctx_t*session, uint8_t ed25519_sk[], uint8_t *data, const uint8_t *ciphertext);
+
+
 /**
  * @brief release authenticated session
  *
