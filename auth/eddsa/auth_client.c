@@ -132,24 +132,25 @@ int auth_internal_client_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
 
   session->internal->type = AUTH_TYPE_CLIENT;
 
-  // ed25519
+  // derive ed25519_pk
   uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
   crypto_sign_ed25519_sk_to_pk(ed25519_pk, ed25519_sk);
 
+  // save internal ed25519_pk
   memcpy(session->internal->ed25519_pk, ed25519_pk, crypto_sign_PUBLICKEYBYTES);
-  memcpy(session->internal->ed25519_sk, ed25519_sk, crypto_sign_SECRETKEYBYTES);
 
   // x25519
   uint8_t x25519_pk[crypto_scalarmult_curve25519_BYTES];
   uint8_t x25519_sk[crypto_scalarmult_curve25519_BYTES];
 
+  // x25519 from ed25519
   crypto_sign_ed25519_pk_to_curve25519(x25519_pk, ed25519_pk);
   crypto_sign_ed25519_sk_to_curve25519(x25519_sk, ed25519_sk);
 
+  // save internal x25519_pk
   memcpy(session->internal->x25519_pk, x25519_pk, crypto_scalarmult_curve25519_BYTES);
-  memcpy(session->internal->x25519_sk, x25519_sk, crypto_scalarmult_curve25519_BYTES);
 
-  // Client sends x25519_pk to Server.
+  // client sends x25519_pk to server.
   log_info(auth_logger_id, "[%s:%d] sending x25519_pk.\n", __func__, __LINE__);
   int write_message = tcpip_write(session->sockfd, session->internal->x25519_pk, crypto_scalarmult_curve25519_BYTES);
   if (write_message != crypto_scalarmult_curve25519_BYTES){
@@ -184,8 +185,8 @@ int auth_internal_client_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   log_info(auth_logger_id, "[%s:%d] received server's DH x25519_pk.\n", __func__, __LINE__);
 
   // destroy private keys
-  bzero(session->internal->ed25519_sk, crypto_sign_SECRETKEYBYTES);
-  bzero(session->internal->x25519_sk, crypto_scalarmult_curve25519_BYTES);
+  bzero(ed25519_sk, crypto_sign_SECRETKEYBYTES);
+  bzero(x25519_sk, crypto_scalarmult_curve25519_BYTES);
 
   return ret;
 }

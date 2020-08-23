@@ -81,7 +81,10 @@ int *auth_server_test(bool *serve) {
 
     crypto_sign_seed_keypair(ed25519_pk, ed25519_sk, seed);
 
-    auth_authenticate(server, ed25519_sk);
+    auth_authenticate(server, ed25519_sk); // erases ed25519_sk
+
+    // gen ed25519_sk again
+    crypto_sign_seed_keypair(ed25519_pk, ed25519_sk, seed);
 
     // read msg
     char cipher[CHIPERLEN]; /* message buffer */
@@ -92,7 +95,7 @@ int *auth_server_test(bool *serve) {
     // decrypt cipher
     char buf[MSGLEN]; /* message buffer */
     bzero(buf, MSGLEN);
-    auth_decrypt(server, ed25519_sk, buf, cipher);
+    assert(auth_decrypt(server, ed25519_sk, buf, cipher) == AUTH_OK);
 
     log_info(auth_logger_id, "[%s:%d] decrypted %d bytes from socket: %s\n", __func__, __LINE__, n, buf);
 

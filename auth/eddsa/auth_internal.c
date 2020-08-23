@@ -24,7 +24,7 @@ uint8_t auth_internal_decrypt(auth_ctx_t*session, uint8_t ed25519_sk[], uint8_t 
 
   if (crypto_box_open_easy(data, ciphertext, CHIPERLEN, session->internal->nonce,
                            session->internal->peer_x25519_pk, x25519_sk) != 0) {
-    log_error(auth_logger_id, "[%s:%d] failed to decrypt data.\n", __func__, __LINE__);
+    log_error(auth_logger_id, "[%s:%d] failed to decrypt cipher.\n", __func__, __LINE__);
 
     return AUTH_ERROR;
   }
