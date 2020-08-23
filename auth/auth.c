@@ -50,7 +50,7 @@ static int auth_init(auth_ctx_t *session, int *sockfd, int type) {
     if (NULL != AUTH_GET_INTERNAL(session)) {
       memset((void *)AUTH_GET_INTERNAL(session), 0, sizeof(auth_struct_t));
 
-      AUTH_GET_INTERNAL_TYPE(session) = type;
+      session->type = type;
       session->sockfd = sockfd;
 
       ret = AUTH_OK;
@@ -64,7 +64,7 @@ static int auth_init(auth_ctx_t *session, int *sockfd, int type) {
   return ret;
 }
 
-int auth_init_client(auth_ctx_t *session, int *sockfd, uint8_t sk[]) { return auth_init(session, sockfd, AUTH_TYPE_CLIENT); }
+int auth_init_client(auth_ctx_t *session, int *sockfd) { return auth_init(session, sockfd, AUTH_TYPE_CLIENT); }
 
 int auth_init_server(auth_ctx_t *session, int *sockfd) { return auth_init(session, sockfd, AUTH_TYPE_SERVER); }
 
@@ -102,14 +102,14 @@ int auth_set_option(auth_ctx_t *session, const char *key, unsigned char *value) 
   return ret;
 }
 
-int auth_authenticate(auth_ctx_t *session) {
+int auth_authenticate(auth_ctx_t *session, uint8_t sk[]) {
   int ret = AUTH_ERROR;
 
   if (NULL != session) {
-    if (AUTH_TYPE_SERVER == AUTH_GET_INTERNAL_TYPE(session)) {
-      ret = auth_internal_server_authenticate(session);
-    } else if (AUTH_TYPE_CLIENT == AUTH_GET_INTERNAL_TYPE(session)) {
-      ret = auth_internal_client_authenticate(session);
+    if (AUTH_TYPE_SERVER == session->type) {
+      ret = auth_internal_server_authenticate(session, sk);
+    } else if (AUTH_TYPE_CLIENT == session->type) {
+      ret = auth_internal_client_authenticate(session, sk);
     }
   }
 

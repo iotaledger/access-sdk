@@ -50,7 +50,7 @@ int auth_utils_dh_generate_keys(auth_ctx_t *session) {
   int r = rand();
 
   // TODO: From where this magic numbers came from?
-  memset(AUTH_GET_INTERNAL_DH_PRIVATE(session), r, DH_PRIVATE_L);
+  // memset(AUTH_GET_INTERNAL_DH_PRIVATE(session), r, DH_PRIVATE_L);
   AUTH_GET_INTERNAL_DH_PRIVATE(session)[0] &= 248;
   AUTH_GET_INTERNAL_DH_PRIVATE(session)[31] &= 127;
   AUTH_GET_INTERNAL_DH_PRIVATE(session)[31] |= 64;

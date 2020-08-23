@@ -144,7 +144,7 @@ struct auth_struct {
  *
  * @return  0 if it succeeds, 1 if it fails.
  */
-int auth_internal_server_authenticate(auth_ctx_t *session);
+int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t sk[]);
 /**
  * @fn      int auth_internal_client_authenticate(auth_ctx_t *session)
  *
@@ -154,7 +154,7 @@ int auth_internal_server_authenticate(auth_ctx_t *session);
  *
  * @return  0 if it succeeds, 1 if it fails.
  */
-int auth_internal_client_authenticate(auth_ctx_t *session);
+int auth_internal_client_authenticate(auth_ctx_t *session, uint8_t sk[]);
 /**
  * @fn      int auth_internal_server_send(auth_ctx_t *session, const unsigned
  * char *msg, unsigned short msg_length)

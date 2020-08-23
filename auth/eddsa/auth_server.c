@@ -36,6 +36,7 @@
 /////////////////
 /// Includes
 /////////////////
+#include "sodium.h"
 #include "auth_debug.h"
 #include "auth_internal.h"
 #include "auth_utils.h"
@@ -58,18 +59,25 @@
 /// Server authantication function declarations and definitions
 //////////////////////////////////////////////////////////////////
 
-int auth_server_init(auth_ctx_t *session) {
+int auth_server_init(auth_ctx_t *session, uint8_t ed25519_sk[]) {
   int next_stage = AUTH_ERROR;
 
-  unsigned char public[PUBLIC_KEY_L];
-  unsigned char private[PRIVATE_KEY_L];
-  crypto_sign_keypair(public, private);
-  memcpy(AUTH_GET_INTERNAL_PUBLIC_KEY(session), public, PUBLIC_KEY_L);
-  memcpy(AUTH_GET_INTERNAL_PRIVATE_KEY(session), private, PRIVATE_KEY_L);
-  memcpy(AUTH_GET_INTERNAL_ID_V(session), "server", IDENTIFICATION_STRING_L);
+  // ed25519
+  uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
+  crypto_sign_ed25519_sk_to_pk(ed25519_pk, ed25519_sk);
 
-  AUTH_GET_INTERNAL_SEQ_NUM_ENCRYPT(session) = 1;
-  AUTH_GET_INTERNAL_SEQ_NUM_DECRYPT(session) = 1;
+  memcpy(session->internal->public_key, ed25519_pk, crypto_sign_PUBLICKEYBYTES);
+  memcpy(session->internal->private_key, ed25519_sk, crypto_sign_SECRETKEYBYTES);
+
+  // x25519
+  uint8_t x25519_pk[crypto_scalarmult_curve25519_BYTES];
+  uint8_t x25519_sk[crypto_scalarmult_curve25519_BYTES];
+
+  crypto_sign_ed25519_pk_to_curve25519(x25519_pk, ed25519_pk);
+  crypto_sign_ed25519_sk_to_curve25519(x25519_sk, ed25519_sk);
+
+  memcpy(session->internal->dh_public, x25519_pk, crypto_sign_PUBLICKEYBYTES);
+  memcpy(session->internal->dh_private, x25519_sk, crypto_sign_SECRETKEYBYTES);
 
   next_stage = AUTH_COMPUTE;
 
@@ -105,8 +113,11 @@ int auth_server_compute(auth_ctx_t *session) {
   unsigned char *client_public_key;
   unsigned char *signature;
 
-  // Server receives e from Client.
-  int read_message = tcpip_read(session->sockfd, received_dh_public, DH_PUBLIC_L);
+  log_info(auth_logger_id, "[%s:%d] waiting for DH key.\n", __func__, __LINE__);
+
+  // Server receives e from Client.'
+  int *sockfd = session->sockfd;
+  int read_message = tcpip_read(*sockfd, received_dh_public, DH_PUBLIC_L);
 
   // Server generates y and computes f
   int keys_generated = auth_utils_dh_generate_keys(session);
@@ -202,7 +213,7 @@ int auth_server_finish(auth_ctx_t *session) {
   return next_stage;
 }
 
-int auth_internal_server_authenticate(auth_ctx_t *session) {
+int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t sk[]) {
   int ret = AUTH_ERROR;
 
   int auth_stage = AUTH_INIT;
@@ -210,7 +221,7 @@ int auth_internal_server_authenticate(auth_ctx_t *session) {
   while ((AUTH_DONE != auth_stage) && (AUTH_ERROR != auth_stage)) {
     switch (auth_stage) {
       case AUTH_INIT:
-        auth_stage = auth_server_init(session);
+        auth_stage = auth_server_init(session, sk);
         break;
       case AUTH_COMPUTE:
         auth_stage = auth_server_compute(session);

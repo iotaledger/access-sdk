@@ -8,6 +8,8 @@
 #include <string.h>
 #include <strings.h>
 
+#include "sodium.h"
+
 #include "assert.h"
 
 #include "tcpip/tcpip.h"
@@ -68,6 +70,18 @@ int *auth_server_test(bool *serve) {
     assert(hostaddrp != NULL);
 
     log_info(auth_logger_id, "[%s:%d] established connection with %s (%s).\n", __func__, __LINE__, hostp->h_name, hostaddrp);
+
+    uint8_t seed[crypto_sign_SEEDBYTES];
+    bzero(seed, crypto_sign_SEEDBYTES);
+
+    for (int i = 0; i < crypto_sign_SEEDBYTES; i++) { seed[i] = rand(); }
+
+    uint8_t ed25519_sk[crypto_sign_SECRETKEYBYTES];
+    uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
+
+    crypto_sign_seed_keypair(ed25519_pk, ed25519_sk, seed);
+
+    auth_authenticate(session, ed25519_sk);
 
     /*
      * read: read input string from the client

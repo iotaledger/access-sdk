@@ -113,8 +113,12 @@ typedef struct auth_struct auth_struct_t;
  */
 typedef struct {
   /*@{*/
+  int type;
+  /*@}*/
+
+  /*@{*/
   auth_struct_t *internal; /**< internal data */
-  int *sockfd; /**< socket file descriptor */
+  int sockfd; /**< socket file descriptor */
   /*@}*/
 
   /*@{*/
@@ -141,7 +145,7 @@ typedef struct {
  *
  * @return AUTH_OK or AUTH_ERROR
  */
-int auth_init_client(auth_ctx_t *session, int *sockfd, uint8_t sk[]);
+int auth_init_client(auth_ctx_t *session, int *sockfd);
 
 /**
  * @brief authenticator server intiializer function
@@ -188,7 +192,7 @@ int auth_connect_client(int sockfd, char *servip, int port);
  *
  * @return AUTH_OR or AUTH_ERROR
  */
-int auth_authenticate(auth_ctx_t *session);
+int auth_authenticate(auth_ctx_t *session, uint8_t sk[]);
 
 /**
  * @brief send data over authenticated session

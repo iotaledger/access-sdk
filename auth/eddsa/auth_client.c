@@ -36,6 +36,9 @@
 /////////////////
 /// Includes
 /////////////////
+#include "sodium.h"
+
+#include "auth_logger.h"
 #include "auth_internal.h"
 #include "auth_utils.h"
 #include "tcpip.h"
@@ -55,19 +58,30 @@
 /// Client authantication function declarations and definitions
 //////////////////////////////////////////////////////////////////
 
-int auth_client_init(auth_ctx_t *session) {
+int auth_client_init(auth_ctx_t *session, uint8_t ed25519_sk[]) {
   int next_stage = AUTH_ERROR;
 
-  unsigned char public[PUBLIC_KEY_L];
-  unsigned char private[PRIVATE_KEY_L];
+  // ed25519
+  uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
+  crypto_sign_ed25519_sk_to_pk(ed25519_pk, ed25519_sk);
 
-  // generate private and public key on client side
-  crypto_sign_keypair(public, private);
+  uint8_t *internal_pk = session->internal->public_key;
+  uint8_t *internal_sk = session->internal->private_key;
 
-  memcpy(AUTH_GET_INTERNAL_PUBLIC_KEY(session), public, PUBLIC_KEY_L);
-  memcpy(AUTH_GET_INTERNAL_PRIVATE_KEY(session), private, PRIVATE_KEY_L);
+  memcpy(internal_pk, ed25519_pk, crypto_sign_PUBLICKEYBYTES);
+  memcpy(internal_sk, ed25519_sk, crypto_sign_SECRETKEYBYTES);
 
-  memcpy(AUTH_GET_INTERNAL_ID_V(session), "client", IDENTIFICATION_STRING_L);
+  // x25519
+  uint8_t x25519_pk[crypto_scalarmult_curve25519_BYTES];
+  uint8_t x25519_sk[crypto_scalarmult_curve25519_BYTES];
+
+  crypto_sign_ed25519_pk_to_curve25519(x25519_pk, ed25519_pk);
+  crypto_sign_ed25519_sk_to_curve25519(x25519_sk, ed25519_sk);
+
+  memcpy(session->internal->dh_public, x25519_pk, crypto_sign_PUBLICKEYBYTES);
+  memcpy(session->internal->dh_private, x25519_sk, crypto_sign_SECRETKEYBYTES);
+
+  memcpy(session->internal->identification_v, "client", IDENTIFICATION_STRING_L);
   next_stage = AUTH_COMPUTE;
   return next_stage;
 }
@@ -79,19 +93,27 @@ int auth_client_init(auth_ctx_t *session) {
  *
  * */
 
-int auth_client_generate(auth_ctx_t *session) {
+int auth_client_compute(auth_ctx_t *session) {
   int next_stage = AUTH_ERROR;
 
   // Client generates p, g, vc and x and calculates e = gx mod p.
-  int keys_generated = auth_utils_dh_generate_keys(session);
+  auth_utils_dh_generate_keys(session);
+
+  log_info(auth_logger_id, "[%s:%d] sending DH key.\n", __func__, __LINE__);
 
   // Client sends e to Server.
-  int write_message = tcpip_write(session->sockfd, AUTH_GET_INTERNAL_DH_PUBLIC(session), DH_PUBLIC_L);
+  char *msg = session->internal->dh_public;
+  int write_message = tcpip_write(session->sockfd, msg, crypto_scalarmult_curve25519_BYTES);
+
+  if (write_message <= 0){
+    log_error(auth_logger_id, "[%s:%d] failed to send DH key.\n", __func__, __LINE__);
+    return AUTH_ERROR;
+  }
 
   AUTH_GET_INTERNAL_SEQ_NUM_ENCRYPT(session) = 1;
   AUTH_GET_INTERNAL_SEQ_NUM_DECRYPT(session) = 1;
 
-  if ((keys_generated == 0) && (write_message == DH_PUBLIC_L)) {
+  if (write_message == crypto_scalarmult_curve25519_BYTES) {
     next_stage = AUTH_VERIFY;
   }
 
@@ -219,17 +241,17 @@ int auth_client_finish(auth_ctx_t *session) {
   return next_stage;
 }
 
-int auth_internal_client_authenticate(auth_ctx_t *session) {
+int auth_internal_client_authenticate(auth_ctx_t *session, uint8_t sk[]) {
   int ret = AUTH_ERROR;
 
   int auth_stage = AUTH_INIT;
   while ((AUTH_DONE != auth_stage) && (AUTH_ERROR != auth_stage)) {
     switch (auth_stage) {
       case AUTH_INIT:
-        auth_stage = auth_client_init(session);
+        auth_stage = auth_client_init(session, sk);
         break;
       case AUTH_COMPUTE:
-        auth_stage = auth_client_generate(session);
+        auth_stage = auth_client_compute(session);
         break;
       case AUTH_VERIFY:
         auth_stage = auth_client_verify(session);

@@ -20,34 +20,10 @@
 
 int *auth_client_test(char *hostname, uint16_t portno) {
 
+  ///////////////////////////////////////////////////////////////
+  // tcpip
   auth_ctx_t client;
   int sockfd = tcpip_socket();
-
-  uint8_t seed[crypto_sign_SEEDBYTES];
-  bzero(seed, crypto_sign_SEEDBYTES);
-
-  for (int i = 0; i < crypto_sign_SEEDBYTES; i++) { seed[i] = rand(); }
-
-  uint8_t ed25519_sk[crypto_sign_SECRETKEYBYTES];
-  uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
-
-  crypto_sign_seed_keypair(ed25519_pk, ed25519_sk, seed);
-
-  char shexbuf[2*crypto_box_SECRETKEYBYTES+1];
-  char phexbuf[2*crypto_box_PUBLICKEYBYTES+1];
-
-  bzero(shexbuf,2*crypto_box_SECRETKEYBYTES+1);
-  bzero(phexbuf,2*crypto_box_PUBLICKEYBYTES+1);
-
-  hex_encode(ed25519_sk, crypto_box_SECRETKEYBYTES, shexbuf, 2*crypto_box_SECRETKEYBYTES+1);
-  log_info(auth_logger_id, "[%s:%d] sk: %s\n", __func__, __LINE__, shexbuf);
-
-  hex_encode(ed25519_pk, crypto_box_PUBLICKEYBYTES, phexbuf, 2*crypto_box_PUBLICKEYBYTES+1);
-  log_info(auth_logger_id, "[%s:%d] pk: %s\n", __func__, __LINE__, phexbuf);
-
-
-  assert(auth_init_client(&client, &sockfd, ed25519_sk) == AUTH_OK);
-
   int n;
   struct sockaddr_in serveraddr;
   struct hostent *server;
@@ -76,6 +52,48 @@ int *auth_client_test(char *hostname, uint16_t portno) {
 
   log_info(auth_logger_id, "[%s:%d] connected.\n", __func__, __LINE__);
 
+  ////////////////////////////////////////////////////////////////////
+  // auth
+
+  assert(auth_init_client(&client, &sockfd) == AUTH_OK);
+
+  uint8_t seed[crypto_sign_SEEDBYTES];
+  bzero(seed, crypto_sign_SEEDBYTES);
+
+  for (int i = 0; i < crypto_sign_SEEDBYTES; i++) { seed[i] = rand(); }
+
+  uint8_t ed25519_sk[crypto_sign_SECRETKEYBYTES];
+  uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
+
+  crypto_sign_seed_keypair(ed25519_pk, ed25519_sk, seed);
+
+  char shexbuf[2*crypto_box_SECRETKEYBYTES+1];
+  char phexbuf[2*crypto_box_PUBLICKEYBYTES+1];
+
+  bzero(shexbuf,2*crypto_box_SECRETKEYBYTES+1);
+  bzero(phexbuf,2*crypto_box_PUBLICKEYBYTES+1);
+
+  hex_encode(ed25519_sk, crypto_box_SECRETKEYBYTES, shexbuf, 2*crypto_box_SECRETKEYBYTES+1);
+  log_info(auth_logger_id, "[%s:%d] ed25519_sk: %s\n", __func__, __LINE__, shexbuf);
+
+  hex_encode(ed25519_pk, crypto_box_PUBLICKEYBYTES, phexbuf, 2*crypto_box_PUBLICKEYBYTES+1);
+  log_info(auth_logger_id, "[%s:%d] ed25519_pk: %s\n", __func__, __LINE__, phexbuf);
+
+//  uint8_t x25519_pk[crypto_scalarmult_curve25519_BYTES];
+//  uint8_t x25519_sk[crypto_scalarmult_curve25519_BYTES];
+//
+//  crypto_sign_ed25519_pk_to_curve25519(x25519_pk, ed25519_pk);
+//  crypto_sign_ed25519_sk_to_curve25519(x25519_sk, ed25519_sk);
+//
+//  hex_encode(x25519_sk, crypto_scalarmult_curve25519_BYTES, shexbuf, 2*crypto_scalarmult_curve25519_BYTES+1);
+//  log_info(auth_logger_id, "[%s:%d] x25519_sk: %s\n", __func__, __LINE__, shexbuf);
+//
+//  hex_encode(x25519_pk, crypto_scalarmult_curve25519_BYTES, phexbuf, 2*crypto_scalarmult_curve25519_BYTES+1);
+//  log_info(auth_logger_id, "[%s:%d] x25519_pk: %s\n", __func__, __LINE__, phexbuf);
+
+  auth_authenticate(&client, ed25519_sk);
+  ///////////////////////////////////////////////////////////////////////
+  // tcpip send
   /* set message on buffer */
   bzero(buf, BUFSIZE);
   strncpy(buf, "msg\0", strlen("msg\0"));
