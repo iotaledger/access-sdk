@@ -36,19 +36,14 @@ set(libs
 )
 
 if(AUTH_FLAVOUR STREQUAL rsa)
-  list(APPEND libs ssl)
+  list(APPEND libs ssl rsa)
 elseif(AUTH_FLAVOUR STREQUAL eddsa)
-  list(APPEND libs sodium cryptography)
+  list(APPEND libs sodium cryptography eddsa)
 endif()
 
 set(sources
   auth.c
-  auth_logger.c
-  ${AUTH_FLAVOUR}/auth_helper.c
-  ${AUTH_FLAVOUR}/auth_client.c
-  ${AUTH_FLAVOUR}/auth_server.c
-  ${AUTH_FLAVOUR}/auth_client.c
-  ${AUTH_FLAVOUR}/auth_utils.c)
+  auth_logger.c)
 
 set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}
