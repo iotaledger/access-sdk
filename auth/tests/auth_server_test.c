@@ -99,18 +99,21 @@ int *auth_server_test(bool *serve) {
     log_info(auth_logger_id, "[%s:%d] decrypted msg: %s\n", __func__, __LINE__, msg);
 
     ///////////////////////////////////////////////////////////
-    // open
-    // read msg
+    // verify
+
     size_t smlen = crypto_sign_BYTES + MSGLEN;
     uint8_t sm[smlen];
-    assert(tcpip_read(accept_sockfd, sm, CHIPERLEN) >= 0);
+    assert(tcpip_read(accept_sockfd, sm, smlen) >= 0);
 
     log_info(auth_logger_id, "[%s:%d] received signed msg: %s\n", __func__, __LINE__, sm);
 
-    char *msg_open = calloc(1, MSGLEN);
-    size_t msg_open_len;
-    assert(auth_open(server, msg_open, &msg_open_len, sm, smlen) == AUTH_OK);
-    assert(msg_open == "msg");
+    char *msg_verify = calloc(1, MSGLEN);
+    size_t msg_open_len = 0;
+    assert(auth_verify(server, msg_verify, &msg_open_len, sm, smlen) == AUTH_OK);
+    assert(msg_verify == "msg");
+
+    /////////////////////////////////////////////
+    // cleanup
 
     shutdown(accept_sockfd, SHUT_RDWR);
     close(accept_sockfd);

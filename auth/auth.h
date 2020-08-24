@@ -175,7 +175,7 @@ uint8_t auth_decrypt(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *data, c
 
 uint8_t auth_sign(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *sm, size_t *smlen, uint8_t *m, size_t mlen);
 
-uint8_t auth_open(auth_ctx_t *session, uint8_t *m, size_t *mlen, uint8_t *sm, size_t smlen);
+uint8_t auth_verify(auth_ctx_t *session, uint8_t *m, size_t *mlen, uint8_t *sm, size_t smlen);
 
 
 /**

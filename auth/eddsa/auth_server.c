@@ -69,13 +69,24 @@ int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   memcpy(session->internal->x25519_pk, x25519_pk, crypto_scalarmult_curve25519_BYTES);
 
   // read client x25519_pk
-  log_info(auth_logger_id, "[%s:%d] waiting for client's x25519_pk.\n", __func__, __LINE__);
+  log_info(auth_logger_id, "[%s:%d] waiting for client's ed25519_pk.\n", __func__, __LINE__);
 
-  int read_message = tcpip_read(session->sockfd, session->internal->peer_x25519_pk, crypto_scalarmult_curve25519_BYTES);
-  if (read_message != crypto_scalarmult_curve25519_BYTES){
-    log_error(auth_logger_id, "[%s:%d] failed to read client x25519_pk.\n", __func__, __LINE__);
+  uint8_t peer_ed25519_pk[crypto_sign_PUBLICKEYBYTES];
+  int read_message = tcpip_read(session->sockfd, peer_ed25519_pk, crypto_sign_PUBLICKEYBYTES);
+  if (read_message != crypto_sign_PUBLICKEYBYTES){
+    log_error(auth_logger_id, "[%s:%d] failed to read client ed25519_pk.\n", __func__, __LINE__);
     return AUTH_ERROR;
   }
+
+  memcpy(session->internal->peer_ed25519_pk, peer_ed25519_pk,crypto_sign_PUBLICKEYBYTES );
+  log_info(auth_logger_id, "[%s:%d] client's ed25519_pk registered.\n", __func__, __LINE__);
+
+  // x25519 from ed25519
+  uint8_t peer_x25519_pk[crypto_scalarmult_curve25519_BYTES];
+  crypto_sign_ed25519_pk_to_curve25519(peer_x25519_pk, peer_ed25519_pk);
+
+  // save internal peer_x25519_pk
+  memcpy(session->internal->peer_x25519_pk, peer_x25519_pk, crypto_scalarmult_curve25519_BYTES);
 
   log_info(auth_logger_id, "[%s:%d] client's x25519_pk registered.\n", __func__, __LINE__);
 
@@ -88,14 +99,14 @@ int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
 
   log_info(auth_logger_id, "[%s:%d] DH nonce registered.\n", __func__, __LINE__);
 
-  log_info(auth_logger_id, "[%s:%d] sending DH x25519_pk.\n", __func__, __LINE__);
-  int write_message = tcpip_write(session->sockfd, session->internal->x25519_pk, crypto_scalarmult_curve25519_BYTES);
-  if (write_message != crypto_scalarmult_curve25519_BYTES){
-    log_error(auth_logger_id, "[%s:%d] failed to send DH x25519_pk.\n", __func__, __LINE__);
+  log_info(auth_logger_id, "[%s:%d] sending ed25519_pk.\n", __func__, __LINE__);
+  int write_message = tcpip_write(session->sockfd, session->internal->ed25519_pk, crypto_scalarmult_curve25519_BYTES);
+  if (write_message != crypto_sign_PUBLICKEYBYTES){
+    log_error(auth_logger_id, "[%s:%d] failed to send ed25519_pk.\n", __func__, __LINE__);
     return AUTH_ERROR;
   }
 
-  log_info(auth_logger_id, "[%s:%d] x25519 DH sent.\n", __func__, __LINE__);
+  log_info(auth_logger_id, "[%s:%d] ed25519_pk sent.\n", __func__, __LINE__);
 
   // destroy private keys
   sodium_memzero(ed25519_sk, crypto_sign_SECRETKEYBYTES);

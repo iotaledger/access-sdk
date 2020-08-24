@@ -110,8 +110,8 @@ uint8_t auth_sign(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *sm, size_t
   return auth_internal_sign(session, ed25519_sk, sm, smlen, m, mlen);
 }
 
-uint8_t auth_open(auth_ctx_t *session, uint8_t *m, size_t *mlen, uint8_t *sm, size_t smlen) {
-  return auth_internal_open(session, m, mlen, sm, smlen);
+uint8_t auth_verify(auth_ctx_t *session, uint8_t *m, size_t *mlen, uint8_t *sm, size_t smlen) {
+  return auth_internal_verify(session, m, mlen, sm, smlen);
 }
 
 int auth_release(auth_ctx_t *session) {
