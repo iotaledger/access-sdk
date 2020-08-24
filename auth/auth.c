@@ -98,12 +98,12 @@ int auth_authenticate(auth_ctx_t *session, uint8_t sk[]) {
   return ret;
 }
 
-uint8_t auth_encrypt(auth_ctx_t *session, uint8_t ed25516_sk[], uint8_t ciphertext[], const uint8_t *data){
-  return auth_internal_encrypt(session, ed25516_sk, ciphertext, data);
+uint8_t auth_encrypt(auth_ctx_t *session, uint8_t ed25516_sk[], uint8_t cipher[], const uint8_t *m){
+  return auth_internal_encrypt(session, ed25516_sk, cipher, m);
 }
 
-uint8_t auth_decrypt(auth_ctx_t*session, uint8_t ed25519_sk[], uint8_t *data, const uint8_t *ciphertext){
-  return auth_internal_decrypt(session, ed25519_sk, data, ciphertext);
+uint8_t auth_decrypt(auth_ctx_t*session, uint8_t ed25519_sk[], uint8_t *m, const uint8_t *cipher){
+  return auth_internal_decrypt(session, ed25519_sk, m, cipher);
 }
 
 uint8_t auth_sign(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *sm, size_t *smlen, uint8_t *m, size_t mlen) {
@@ -125,23 +125,8 @@ uint8_t auth_receive(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *m, size
 int auth_release(auth_ctx_t *session) {
   int ret = AUTH_ERROR;
 
-//  if (NULL != session->internal->type) {
-//    if (AUTH_TYPE_SERVER == session->internal->type) {
-//      auth_internal_release_server(session);
-//    } else if (AUTH_TYPE_CLIENT == session->internal->type) {
-//      auth_internal_release_client(session);
-//    }
-//
-//    session->internal = NULL;
-//
-//    ret = AUTH_OK;
-//  }
-
-  if (NULL != session) {
-    session = NULL;
-
-    ret = AUTH_OK;
-  }
+  close(session->sockfd);
+  free(session);
 
   return ret;
 }

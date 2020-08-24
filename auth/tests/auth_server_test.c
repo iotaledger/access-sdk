@@ -87,7 +87,7 @@ int *auth_server_test(bool *serve) {
     crypto_sign_seed_keypair(ed25519_pk, ed25519_sk, seed);
 
     // decrypt cipher
-    char *msg = calloc(1, MSGLEN);
+    char msg[MSGLEN];
     assert(auth_receive(server, ed25519_sk, msg, MSGLEN) == AUTH_OK);
 
     log_info(auth_logger_id, "[%s:%d] received authenticated msg: %s\n", __func__, __LINE__, msg);
@@ -110,4 +110,5 @@ int *auth_server_test(bool *serve) {
   close(listen_sockfd);
   log_info(auth_logger_id, "[%s:%d] released listen_sockfd.\n", __func__, __LINE__);
 
+  auth_release(server);
 }

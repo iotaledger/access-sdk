@@ -126,10 +126,6 @@ typedef struct {
   /*@}*/
 
   /*@{*/
-  f_auth_key_verify *f_verify; /**< function to verify keys of authenticated session */
-  /*@}*/
-
-  /*@{*/
   int status; /**< status of authenticated session */
   /*@}*/
 } auth_ctx_t;
