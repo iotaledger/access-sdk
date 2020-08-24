@@ -74,7 +74,7 @@ int *auth_server_test(bool *serve) {
     uint8_t seed[crypto_sign_SEEDBYTES];
     bzero(seed, crypto_sign_SEEDBYTES);
 
-    for (int i = 0; i < crypto_sign_SEEDBYTES; i++) { seed[i] = rand() + 1; }
+    for (int i = 0; i < crypto_sign_SEEDBYTES; i++) { seed[i] = rand() + 2; }
 
     uint8_t ed25519_sk[crypto_sign_SECRETKEYBYTES];
     uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
@@ -86,33 +86,13 @@ int *auth_server_test(bool *serve) {
     // gen ed25519_sk again
     crypto_sign_seed_keypair(ed25519_pk, ed25519_sk, seed);
 
-    // read msg
-    char cipher[CHIPERLEN]; /* message buffer */
-    bzero(cipher, CHIPERLEN);
-    int n = tcpip_read(accept_sockfd, cipher, CHIPERLEN);
-    assert(n >= 0);
-
     // decrypt cipher
     char *msg = calloc(1, MSGLEN);
-    assert(auth_decrypt(server, ed25519_sk, msg, cipher) == AUTH_OK);
+    assert(auth_receive(server, ed25519_sk, msg, MSGLEN) == AUTH_OK);
 
-    log_info(auth_logger_id, "[%s:%d] decrypted msg: %s\n", __func__, __LINE__, msg);
+    log_info(auth_logger_id, "[%s:%d] received authenticated msg: %s\n", __func__, __LINE__, msg);
 
-    ///////////////////////////////////////////////////////////
-    // verify
-
-    size_t smlen = crypto_sign_BYTES + MSGLEN;
-    uint8_t sm[smlen];
-    assert(tcpip_read(accept_sockfd, sm, smlen) >= 0);
-
-    log_info(auth_logger_id, "[%s:%d] received signed msg: %s\n", __func__, __LINE__, sm);
-
-    char *msg_verify = calloc(1, MSGLEN);
-    size_t msg_open_len = 0;
-    assert(auth_verify(server, msg_verify, &msg_open_len, sm, smlen) == AUTH_OK);
-    assert(strcmp(msg_verify, "test") == 0);
-
-    log_info(auth_logger_id, "[%s:%d] verified msg: %s\n", __func__, __LINE__, msg_verify);
+    assert(strcmp(msg, "test") == 0);
 
     /////////////////////////////////////////////
     // cleanup

@@ -36,7 +36,8 @@
 #define AUTH_H
 
 #define MSGLEN 1024
-#define CHIPERLEN (crypto_box_MACBYTES + MSGLEN)
+#define CIPHERLEN (crypto_box_MACBYTES + MSGLEN)
+#define SIGCIPHERLEN (crypto_sign_BYTES + CIPHERLEN)
 
 #include <stdio.h>
 #include <stdint.h>
@@ -48,7 +49,7 @@
 /**
  * @brief authentication error
  */
-#define AUTH_ERROR 1
+#define AUTH_ERROR -1
 
 #ifdef __cplusplus
 extern "C" {
@@ -177,6 +178,9 @@ uint8_t auth_sign(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *sm, size_t
 
 uint8_t auth_verify(auth_ctx_t *session, uint8_t *m, size_t *mlen, uint8_t *sm, size_t smlen);
 
+uint8_t auth_send(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *m, size_t mlen);
+
+uint8_t auth_receive(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *m, size_t mlen);
 
 /**
  * @brief release authenticated session

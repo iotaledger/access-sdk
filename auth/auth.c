@@ -114,6 +114,14 @@ uint8_t auth_verify(auth_ctx_t *session, uint8_t *m, size_t *mlen, uint8_t *sm, 
   return auth_internal_verify(session, m, mlen, sm, smlen);
 }
 
+uint8_t auth_send(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *m, size_t mlen) {
+  return auth_internal_send(session, ed25519_sk, m, mlen);
+}
+
+uint8_t auth_receive(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *m, size_t mlen) {
+  return auth_internal_receive(session, ed25519_sk, m, mlen);
+}
+
 int auth_release(auth_ctx_t *session) {
   int ret = AUTH_ERROR;
 

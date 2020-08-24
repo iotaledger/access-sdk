@@ -44,6 +44,7 @@
 
 #include "sha256.h"
 
+#include "tcpip.h"
 #include "auth.h"
 #include "auth_logger.h"
 
@@ -111,4 +112,8 @@ uint8_t auth_internal_sign(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *s
 
 uint8_t auth_internal_verify(auth_ctx_t *session, uint8_t *m, size_t *mlen, uint8_t *sm, size_t smlen);
 
-#endif /* AUTH_INTERNAL_H_ */
+uint8_t auth_internal_send(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *m, size_t mlen);
+
+uint8_t auth_internal_receive(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *m, size_t mlen);
+
+#endif // AUTH_INTERNAL_H_
