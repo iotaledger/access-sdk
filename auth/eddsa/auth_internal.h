@@ -107,4 +107,8 @@ uint8_t auth_internal_encrypt(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t
 
 uint8_t auth_internal_decrypt(auth_ctx_t*session, uint8_t ed25519_sk[], uint8_t *data, const uint8_t *ciphertext);
 
+uint8_t auth_internal_sign(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *sm, size_t *smlen, uint8_t *m, size_t mlen);
+
+uint8_t auth_internal_open(auth_ctx_t *session, uint8_t *m, size_t *mlen, uint8_t *sm, size_t smlen);
+
 #endif /* AUTH_INTERNAL_H_ */
