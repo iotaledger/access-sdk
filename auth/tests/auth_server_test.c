@@ -110,7 +110,9 @@ int *auth_server_test(bool *serve) {
     char *msg_verify = calloc(1, MSGLEN);
     size_t msg_open_len = 0;
     assert(auth_verify(server, msg_verify, &msg_open_len, sm, smlen) == AUTH_OK);
-    assert(msg_verify == "msg");
+    assert(strcmp(msg_verify, "test") == 0);
+
+    log_info(auth_logger_id, "[%s:%d] verified msg: %s\n", __func__, __LINE__, msg_verify);
 
     /////////////////////////////////////////////
     // cleanup
