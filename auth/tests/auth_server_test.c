@@ -86,13 +86,23 @@ int *auth_server_test(bool *serve) {
     // gen ed25519_sk again
     crypto_sign_seed_keypair(ed25519_pk, ed25519_sk, seed);
 
-    // decrypt cipher
     char msg[MSGLEN];
     assert(auth_receive(server, ed25519_sk, msg, MSGLEN) == AUTH_OK);
 
     log_info(auth_logger_id, "[%s:%d] received authenticated msg: %s\n", __func__, __LINE__, msg);
 
     assert(strcmp(msg, "test") == 0);
+
+    /////////////////////////////////////////////
+
+    // gen ed25519_sk again
+    crypto_sign_seed_keypair(ed25519_pk, ed25519_sk, seed);
+
+    strcpy(msg, "test2");
+
+    /* send authenticated message to server */
+    log_info(auth_logger_id, "[%s:%d] sending authenticated message: %s\n", __func__, __LINE__, msg);
+    auth_send(server, ed25519_sk, msg, strlen(msg));
 
     /////////////////////////////////////////////
     // cleanup
