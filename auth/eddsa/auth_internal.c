@@ -93,6 +93,10 @@ uint8_t auth_internal_send(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *m
 
   log_info(auth_logger_id, "[%s:%d] send authenticated msg: %s\n", __func__, __LINE__, m);
 
+  sodium_memzero(ed25519_sk, crypto_sign_SECRETKEYBYTES);
+
+  return AUTH_OK;
+
 }
 
 uint8_t auth_internal_receive(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *m, size_t mlen) {
@@ -119,6 +123,8 @@ uint8_t auth_internal_receive(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t
   }
 
   log_info(auth_logger_id, "[%s:%d] read authenticated msg: %s\n", __func__, __LINE__, m);
+
+  sodium_memzero(ed25519_sk, crypto_sign_SECRETKEYBYTES);
 
   return AUTH_OK;
 }
