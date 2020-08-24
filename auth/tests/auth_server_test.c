@@ -96,14 +96,7 @@ int *auth_server_test(bool *serve) {
     char *buf = calloc(1, MSGLEN);
     assert(auth_decrypt(server, ed25519_sk, buf, cipher) == AUTH_OK);
 
-    log_info(auth_logger_id, "[%s:%d] decrypted %d bytes from socket: %s\n", __func__, __LINE__, n, buf);
-
-//    char msg[MSGLEN]; /* message buffer */
-//    bzero(msg, MSGLEN);
-//    int n = tcpip_read(accept_sockfd, msg, MSGLEN);
-//    assert(n >= 0);
-//
-//    log_info(auth_logger_id, "[%s:%d] received %d bytes from socket: %s\n", __func__, __LINE__, n, msg);
+    log_info(auth_logger_id, "[%s:%d] decrypted msg: %s\n", __func__, __LINE__, buf);
 
     shutdown(accept_sockfd, SHUT_RDWR);
     close(accept_sockfd);
