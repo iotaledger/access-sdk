@@ -91,7 +91,7 @@ uint8_t auth_internal_send(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *m
   /* send encrypted message to server */
   tcpip_write(socket_fd, sigcipher, SIGCIPHERLEN);
 
-  log_info(auth_logger_id, "[%s:%d] send authenticated msg: %s\n", __func__, __LINE__, m);
+  // log_info(auth_logger_id, "[%s:%d] send authenticated msg: %s\n", __func__, __LINE__, m);
 
   sodium_memzero(ed25519_sk, crypto_sign_SECRETKEYBYTES);
 
@@ -122,7 +122,7 @@ uint8_t auth_internal_receive(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t
     return AUTH_ERROR;
   }
 
-  log_info(auth_logger_id, "[%s:%d] read authenticated msg: %s\n", __func__, __LINE__, m);
+  // log_info(auth_logger_id, "[%s:%d] read authenticated msg: %s\n", __func__, __LINE__, m);
 
   sodium_memzero(ed25519_sk, crypto_sign_SECRETKEYBYTES);
 
