@@ -66,7 +66,7 @@ uint8_t auth_internal_send(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *m
 
   /* encrypting will destroy key, so we create a copy for signing. */
   uint8_t ed25519_sk_sign[crypto_sign_SECRETKEYBYTES];
-  strcpy(ed25519_sk_sign, ed25519_sk);
+  memcpy(ed25519_sk_sign, ed25519_sk, crypto_sign_SECRETKEYBYTES);
 
   uint8_t cipher[CIPHERLEN];
   if (auth_internal_encrypt(session, ed25519_sk, cipher, m) != AUTH_OK) {
