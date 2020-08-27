@@ -1,4 +1,3 @@
-
 include(ExternalProject)
 
 set(SODIUM_VERSION 1.0.18)
@@ -14,7 +13,7 @@ ExternalProject_Add(
     sodium
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}
     SOURCE_DIR ${SODIUM_SRC}
-    DOWNLOAD_COMMAND wget ${SODIUM_URL} && tar xvf ${SODIUM_TARBALL} && ${SODIUM_SRC}/autogen.sh
+    DOWNLOAD_COMMAND curl ${SODIUM_URL} --output ${SODIUM_TARBALL} && tar xvf ${SODIUM_TARBALL} && ${SODIUM_SRC}/autogen.sh
     CONFIGURE_COMMAND ${SODIUM_SRC}/configure --srcdir=${SODIUM_SRC} --prefix=${CMAKE_CURRENT_BINARY_DIR} --enable-static=yes --disable-shared
     BUILD_COMMAND make
     INSTALL_COMMAND make install
@@ -22,4 +21,5 @@ ExternalProject_Add(
 )
 
 add_library(libsodium STATIC IMPORTED GLOBAL)
+
 
