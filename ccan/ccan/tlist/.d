@@ -1,0 +1,3 @@
+tlist_ok_deps := ccan/tlist/test/compile_fail-tlist_add.c ccan/tlist/test/compile_fail-tlist_add_tail.c ccan/tlist/test/compile_fail-tlist_del_from.c ccan/tlist/test/compile_fail-tlist_for_each.c ccan/tlist/test/compile_fail-tlist_for_each_safe.c ccan/tlist/test/compile_fail-tlist_next2.c ccan/tlist/test/compile_fail-tlist_next.c ccan/tlist/test/compile_fail-tlist_prev2.c ccan/tlist/test/compile_fail-tlist_prev.c ccan/tlist/test/compile_fail-tlist_tail.c ccan/tlist/test/compile_fail-tlist_top.c ccan/tlist/test/run.c   ccan/list/.ok ccan/tcon/.ok 
+ccan/tlist/.ok: $(tlist_ok_deps)
+ccan/tlist/.fast-ok: $(tlist_ok_deps:%.ok=%.fast-ok)

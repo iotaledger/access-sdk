@@ -21,6 +21,8 @@ cmake_minimum_required(VERSION 3.11)
 
 project(access_sdk)
 
+set(CMAKE_C_STANDARD 99)
+
 set(CMAKE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 if(NOT DEFINED TEST)
@@ -37,12 +39,6 @@ if(NOT DEFINED POLICY_FORMAT)
   #set(POLICY_FORMAT protobuf-c CHACE STRING "Policy Format Choice")
 endif()
 
-# default AUTH_FLAVOUR
-if(NOT DEFINED AUTH_FLAVOUR)
-  set(AUTH_FLAVOUR eddsa CACHE STRING "auth flavour choice")
-  #set(AUTH_FLAVOUR rsa CACHE STRING "auth flavour choice")
-endif()
-
 if(${CMAKE_VERSION} VERSION_LESS 3.14)
     macro(FetchContent_MakeAvailable NAME)
         FetchContent_GetProperties(${NAME})
@@ -55,10 +51,11 @@ endif()
 
 include(cmake/iota_common.cmake)
 include(cmake/sqlite3.cmake)
-if(AUTH_FLAVOUR STREQUAL eddsa)
-  include(cmake/sodium.cmake)
-elseif(AUTH_FLAVOUR STREQUAL rsa)
+include(cmake/sodium.cmake)
+include(cmake/base58.cmake)
 
+if(auth_flavour STREQUAL rsa)
+  include(cmake/openssl.cmake)
 endif()
 
 # Global includes
@@ -73,3 +70,4 @@ add_subdirectory(auth)
 add_subdirectory(policy)
 add_subdirectory(plugin)
 add_subdirectory(utils)
+add_subdirectory(ccan)

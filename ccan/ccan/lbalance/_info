@@ -1,0 +1,93 @@
+/* Licensed under GPLv3+ - see LICENSE file for details */
+#include "config.h"
+#include <stdio.h>
+#include <string.h>
+
+/**
+ * lbalance - helpers for loadbalancing parallel tasks
+ *
+ * This code helps when you have a large number of one-shot tasks; it tries
+ * to determine the maximum amount of useful parallelism.
+ *
+ * License: GPL
+ * Author: Rusty Russell <rusty@rustcorp.com.au>
+ *
+ * Example:
+ *	// Run 1000 of the given commandline at best-known parallel rate.
+ *	// See tools/lbalance.c for a sligtly more serious example.
+ *	#include <ccan/lbalance/lbalance.h>
+ *      #include <sys/types.h>
+ *      #include <sys/time.h>
+ *      #include <sys/resource.h>
+ *      #include <sys/wait.h>
+ *      #include <err.h>
+ *
+ *	#define MAX 1000
+ *
+ *	static pid_t spawn(char *args[])
+ *	{
+ *		pid_t pid = fork();
+ *
+ *		if (pid == -1)
+ *			err(1, "forking");
+ *		if (pid == 0) {
+ *			execvp(args[0], args);
+ *			err(1, "exec failed");
+ *		}
+ *		return pid;
+ *	}
+ *
+ *	int main(int argc, char *argv[])
+ *	{
+ *		unsigned int num = 0, num_running = 0;
+ *		pid_t pids[MAX];
+ *		struct lbalance_task *tasks[MAX];
+ *		struct lbalance *lb;
+ *
+ *		if (argc == 1)
+ *			errx(1, "Usage: %s cmdline...", argv[0]);
+ *
+ *		lb = lbalance_new();
+ *
+ *		while (num - num_running < MAX) {
+ *			struct rusage ru;
+ *			pid_t pid;
+ *			unsigned int i;
+ *
+ *			// Make sure we're running as many as lbalance says to. 
+ *			while (num_running < lbalance_target(lb) && num < MAX) {
+ *				pids[num] = spawn(argv+1);
+ *				tasks[num] = lbalance_task_new(lb);
+ *				num++;
+ *				num_running++;
+ *			}
+ *
+ *			// Now wait for something to die.
+ *			pid = wait3(NULL, 0, &ru);
+ *			// Find it, tell lbalance it's finished.
+ *			for (i = 0; i < num; i++) {
+ *				if (pids[i] == pid) {
+ *					lbalance_task_free(tasks[i], &ru);
+ *					pids[i] = 0;
+ *					break;
+ *				}
+ *			}
+ *			num_running--;
+ *		}
+ *		lbalance_free(lb);
+ *		return 0;
+ *	}
+ */
+int main(int argc, char *argv[])
+{
+	/* Expect exactly one argument */
+	if (argc != 2)
+		return 1;
+
+	if (strcmp(argv[1], "depends") == 0) {
+		printf("ccan/tlist2\n");
+		return 0;
+	}
+
+	return 1;
+}

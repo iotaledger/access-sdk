@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['g_5ftask_5fsleep_5ftime',['g_task_sleep_time',['../globals__declarations_8h.html#aa9fab73b7fe7cf329be71ac7a346472e',1,'globals_declarations.h']]],
-  ['ge25519_5fbase',['ge25519_base',['../open_8c.html#abdae649b447c46df34addbc646dbcfde',1,'open.c']]]
+  ['internal',['internal',['../structauth__ctx__t.html#a7568d8fa4c0480edbf200cc9fb29d148',1,'auth_ctx_t']]],
+  ['is_5favailable',['is_available',['../structpap__action__list__.html#ac6b9da9373b9f5fb3deea63bc5a6e6de',1,'pap_action_list_']]],
+  ['is_5fpayed',['is_payed',['../structpap__policy__value__t.html#a8e49b8d1497491282f6d1d1ff46826b2',1,'pap_policy_value_t']]]
 ];

@@ -1,0 +1,3 @@
+tal/path_ok_deps := ccan/tal/path/test/run-basename.c ccan/tal/path/test/run-canon.c ccan/tal/path/test/run-cwd.c ccan/tal/path/test/run-dirname.c ccan/tal/path/test/run-ext_off.c ccan/tal/path/test/run-is_abs.c ccan/tal/path/test/run-is_dir.c ccan/tal/path/test/run-is_file.c ccan/tal/path/test/run-join.c ccan/tal/path/test/run-pushd.c ccan/tal/path/test/run-readlink.c ccan/tal/path/test/run-rel.c ccan/tal/path/test/run-simplify.c ccan/tal/path/test/run-split.c  ccan/tal/path/path.o  ccan/str/.ok ccan/take/.ok ccan/tal/.ok ccan/tal/str/.ok 
+ccan/tal/path/.ok: $(tal/path_ok_deps)
+ccan/tal/path/.fast-ok: $(tal/path_ok_deps:%.ok=%.fast-ok)

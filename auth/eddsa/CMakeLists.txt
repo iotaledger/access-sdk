@@ -22,21 +22,21 @@ cmake_minimum_required(VERSION 3.11)
 #include(${CMAKE_DIR}/sodium.cmake)
 
 set(sources
+  auth_internal.c
   auth_client.c
   auth_server.c
   auth_client.c
-  auth_utils.c
   auth_logger.c
   auth_helper.c)
 
 set(include_dirs
+  ${CMAKE_SOURCE_DIR}/policy/encoding/json
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
 add_library(eddsa STATIC ${sources})
 target_include_directories(eddsa PUBLIC ${include_dirs})
 target_link_directories(eddsa PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/lib)
-#target_link_libraries(eddsa PRIVATE sodium ${POLICY_FORMAT} tcpip common)
-target_link_libraries(eddsa PRIVATE cryptography ${POLICY_FORMAT} tcpip common)
+target_link_libraries(eddsa PRIVATE sodium ${POLICY_FORMAT} tcpip common)
 
 install(TARGETS eddsa DESTINATION lib)

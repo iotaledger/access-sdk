@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Access Core SDK: auth/auth.c File Reference</title>
+<title>IOTA Access SDK: auth/auth.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Access Core SDK
+   <div id="projectname">IOTA Access SDK
    </div>
   </td>
  </tr>
@@ -86,12 +86,12 @@ $(document).ready(function(){initNavTree('auth_8c.html','');});
 <div class="title">auth.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="auth_8h_source.html">auth.h</a>&quot;</code><br />
-<code>#include &quot;auth_debug.h&quot;</code><br />
-<code>#include &quot;auth_internal.h&quot;</code><br />
-<code>#include &lt;arpa/inet.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;arpa/inet.h&gt;</code><br />
 <code>#include &lt;netinet/in.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="auth_8h_source.html">auth.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="auth__debug_8h_source.html">auth_debug.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="auth__internal_8h_source.html">auth_internal.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for auth.c:</div>
 <div class="dyncontent">
@@ -107,39 +107,38 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad266358fec3ea82008c0728eec2491ea"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#ad266358fec3ea82008c0728eec2491ea">read_socket</a> (int *sockfd, void *data, unsigned short len)</td></tr>
-<tr class="memdesc:ad266358fec3ea82008c0728eec2491ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">read from socket  <a href="#ad266358fec3ea82008c0728eec2491ea">More...</a><br /></td></tr>
-<tr class="separator:ad266358fec3ea82008c0728eec2491ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6859a7b7dc923f0c2425c46c5f67f894"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a6859a7b7dc923f0c2425c46c5f67f894">write_socket</a> (int *sockfd, void *data, unsigned short len)</td></tr>
-<tr class="memdesc:a6859a7b7dc923f0c2425c46c5f67f894"><td class="mdescLeft">&#160;</td><td class="mdescRight">write to socket  <a href="#a6859a7b7dc923f0c2425c46c5f67f894">More...</a><br /></td></tr>
-<tr class="separator:a6859a7b7dc923f0c2425c46c5f67f894"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8af361c884fcf2ad1f1ebf8df6a2efcc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a8af361c884fcf2ad1f1ebf8df6a2efcc">verify</a> (unsigned char *key, int len)</td></tr>
-<tr class="memdesc:a8af361c884fcf2ad1f1ebf8df6a2efcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">verify key  <a href="#a8af361c884fcf2ad1f1ebf8df6a2efcc">More...</a><br /></td></tr>
-<tr class="separator:a8af361c884fcf2ad1f1ebf8df6a2efcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa915e80d3bbd756aaf57633b16c1f81d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#aa915e80d3bbd756aaf57633b16c1f81d">auth_init_client</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, int *sockfd)</td></tr>
-<tr class="memdesc:aa915e80d3bbd756aaf57633b16c1f81d"><td class="mdescLeft">&#160;</td><td class="mdescRight">authenticator client initializer function  <a href="#aa915e80d3bbd756aaf57633b16c1f81d">More...</a><br /></td></tr>
-<tr class="separator:aa915e80d3bbd756aaf57633b16c1f81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a175e4ad01a3ad5ad42a4325b41c91452"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a175e4ad01a3ad5ad42a4325b41c91452">auth_init_server</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, int *sockfd)</td></tr>
-<tr class="memdesc:a175e4ad01a3ad5ad42a4325b41c91452"><td class="mdescLeft">&#160;</td><td class="mdescRight">authenticator server intiializer function  <a href="#a175e4ad01a3ad5ad42a4325b41c91452">More...</a><br /></td></tr>
-<tr class="separator:a175e4ad01a3ad5ad42a4325b41c91452"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1435abd3d6dd6f85657aad2f74b3d6a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#ac1435abd3d6dd6f85657aad2f74b3d6a">auth_connect_client</a> (int sockfd, char *servip, int port)</td></tr>
-<tr class="memdesc:ac1435abd3d6dd6f85657aad2f74b3d6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">connects as client to some server  <a href="#ac1435abd3d6dd6f85657aad2f74b3d6a">More...</a><br /></td></tr>
-<tr class="separator:ac1435abd3d6dd6f85657aad2f74b3d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa629fed5186908a443d5878fd70e509a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#aa629fed5186908a443d5878fd70e509a">auth_set_option</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, const char *key, unsigned char *value)</td></tr>
-<tr class="memdesc:aa629fed5186908a443d5878fd70e509a"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets option (priv/pub keys) to authenticator session context.  <a href="#aa629fed5186908a443d5878fd70e509a">More...</a><br /></td></tr>
-<tr class="separator:aa629fed5186908a443d5878fd70e509a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb2aeb1d1877b48e2914085cbebc8536"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#aeb2aeb1d1877b48e2914085cbebc8536">auth_authenticate</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session)</td></tr>
-<tr class="memdesc:aeb2aeb1d1877b48e2914085cbebc8536"><td class="mdescLeft">&#160;</td><td class="mdescRight">performs actual authentication  <a href="#aeb2aeb1d1877b48e2914085cbebc8536">More...</a><br /></td></tr>
-<tr class="separator:aeb2aeb1d1877b48e2914085cbebc8536"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebdce657a266c56443232f0fe7eeffa0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#aebdce657a266c56443232f0fe7eeffa0">auth_send</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, const unsigned char *data, unsigned short len)</td></tr>
-<tr class="memdesc:aebdce657a266c56443232f0fe7eeffa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">send data over authenticated session  <a href="#aebdce657a266c56443232f0fe7eeffa0">More...</a><br /></td></tr>
-<tr class="separator:aebdce657a266c56443232f0fe7eeffa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b101d5a352ab952df3270267ddda59b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a2b101d5a352ab952df3270267ddda59b">auth_receive</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, unsigned char **data, unsigned short *len)</td></tr>
-<tr class="memdesc:a2b101d5a352ab952df3270267ddda59b"><td class="mdescLeft">&#160;</td><td class="mdescRight">receive data over authenticated session  <a href="#a2b101d5a352ab952df3270267ddda59b">More...</a><br /></td></tr>
-<tr class="separator:a2b101d5a352ab952df3270267ddda59b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65aa0f85b2ea2ca828266da3abb419d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a65aa0f85b2ea2ca828266da3abb419d6">auth_release</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session)</td></tr>
-<tr class="memdesc:a65aa0f85b2ea2ca828266da3abb419d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">release authenticated session  <a href="#a65aa0f85b2ea2ca828266da3abb419d6">More...</a><br /></td></tr>
-<tr class="separator:a65aa0f85b2ea2ca828266da3abb419d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad821ff360a78b28986a36ab6508694dc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#ad821ff360a78b28986a36ab6508694dc">auth_init_client</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, uint8_t *sockfd)</td></tr>
+<tr class="memdesc:ad821ff360a78b28986a36ab6508694dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">authenticator client initializer function  <a href="#ad821ff360a78b28986a36ab6508694dc">More...</a><br /></td></tr>
+<tr class="separator:ad821ff360a78b28986a36ab6508694dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5efe60fe3a88f748e7e3a75753f9905"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#ad5efe60fe3a88f748e7e3a75753f9905">auth_init_server</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, uint8_t *sockfd)</td></tr>
+<tr class="memdesc:ad5efe60fe3a88f748e7e3a75753f9905"><td class="mdescLeft">&#160;</td><td class="mdescRight">authenticator server intiializer function  <a href="#ad5efe60fe3a88f748e7e3a75753f9905">More...</a><br /></td></tr>
+<tr class="separator:ad5efe60fe3a88f748e7e3a75753f9905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5388e74d33e4c4215569d79851e54652"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a5388e74d33e4c4215569d79851e54652">auth_connect_client</a> (uint8_t sockfd, char *servip, uint8_t port)</td></tr>
+<tr class="separator:a5388e74d33e4c4215569d79851e54652"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9d22db95dbdde26c00e59de29b3cef5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#ac9d22db95dbdde26c00e59de29b3cef5">auth_authenticate</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, uint8_t sk[])</td></tr>
+<tr class="memdesc:ac9d22db95dbdde26c00e59de29b3cef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">performs actual authentication  <a href="#ac9d22db95dbdde26c00e59de29b3cef5">More...</a><br /></td></tr>
+<tr class="separator:ac9d22db95dbdde26c00e59de29b3cef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa91c8973dc89307f2d44032a17f3d711"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#aa91c8973dc89307f2d44032a17f3d711">auth_encrypt</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, uint8_t sk[], uint8_t cipher[], const uint8_t *<a class="el" href="symbols_8h.html#a00626facb4f86efb8618a4c5f5c3c5f8">m</a>)</td></tr>
+<tr class="memdesc:aa91c8973dc89307f2d44032a17f3d711"><td class="mdescLeft">&#160;</td><td class="mdescRight">generate cipher from message m  <a href="#aa91c8973dc89307f2d44032a17f3d711">More...</a><br /></td></tr>
+<tr class="separator:aa91c8973dc89307f2d44032a17f3d711"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a659faea139fafcbb39a8da64264a999d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a659faea139fafcbb39a8da64264a999d">auth_decrypt</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, uint8_t sk[], uint8_t *<a class="el" href="symbols_8h.html#a00626facb4f86efb8618a4c5f5c3c5f8">m</a>, const uint8_t *cipher)</td></tr>
+<tr class="memdesc:a659faea139fafcbb39a8da64264a999d"><td class="mdescLeft">&#160;</td><td class="mdescRight">generate message m from cipher  <a href="#a659faea139fafcbb39a8da64264a999d">More...</a><br /></td></tr>
+<tr class="separator:a659faea139fafcbb39a8da64264a999d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0deae93098ff3df1a3ce36c9a352e886"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a0deae93098ff3df1a3ce36c9a352e886">auth_sign</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, uint8_t sk[], uint8_t *sm, size_t *smlen, uint8_t *<a class="el" href="symbols_8h.html#a00626facb4f86efb8618a4c5f5c3c5f8">m</a>, size_t mlen)</td></tr>
+<tr class="memdesc:a0deae93098ff3df1a3ce36c9a352e886"><td class="mdescLeft">&#160;</td><td class="mdescRight">sign message m  <a href="#a0deae93098ff3df1a3ce36c9a352e886">More...</a><br /></td></tr>
+<tr class="separator:a0deae93098ff3df1a3ce36c9a352e886"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaa32c4516ef6f54d39d8c6a3ab276c6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#adaa32c4516ef6f54d39d8c6a3ab276c6">auth_verify</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, uint8_t *<a class="el" href="symbols_8h.html#a00626facb4f86efb8618a4c5f5c3c5f8">m</a>, size_t *mlen, uint8_t *sm, size_t smlen)</td></tr>
+<tr class="memdesc:adaa32c4516ef6f54d39d8c6a3ab276c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">verify signature  <a href="#adaa32c4516ef6f54d39d8c6a3ab276c6">More...</a><br /></td></tr>
+<tr class="separator:adaa32c4516ef6f54d39d8c6a3ab276c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6be1069c16efe8260f33068298b9fb7b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a6be1069c16efe8260f33068298b9fb7b">auth_send</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, uint8_t sk[], uint8_t *<a class="el" href="symbols_8h.html#a00626facb4f86efb8618a4c5f5c3c5f8">m</a>, size_t mlen)</td></tr>
+<tr class="memdesc:a6be1069c16efe8260f33068298b9fb7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">send message over authenticated session  <a href="#a6be1069c16efe8260f33068298b9fb7b">More...</a><br /></td></tr>
+<tr class="separator:a6be1069c16efe8260f33068298b9fb7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aa5e955cdb3597c20a68b7bc1643280"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a7aa5e955cdb3597c20a68b7bc1643280">auth_receive</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, uint8_t sk[], uint8_t *<a class="el" href="symbols_8h.html#a00626facb4f86efb8618a4c5f5c3c5f8">m</a>, size_t mlen)</td></tr>
+<tr class="memdesc:a7aa5e955cdb3597c20a68b7bc1643280"><td class="mdescLeft">&#160;</td><td class="mdescRight">receive message over authenticated session  <a href="#a7aa5e955cdb3597c20a68b7bc1643280">More...</a><br /></td></tr>
+<tr class="separator:a7aa5e955cdb3597c20a68b7bc1643280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a813c0923c9dfe10c0941ad7193ee80e7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="auth_8c.html#a813c0923c9dfe10c0941ad7193ee80e7">auth_release</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session)</td></tr>
+<tr class="memdesc:a813c0923c9dfe10c0941ad7193ee80e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">releases authenticated session and unbinds socket  <a href="#a813c0923c9dfe10c0941ad7193ee80e7">More...</a><br /></td></tr>
+<tr class="separator:a813c0923c9dfe10c0941ad7193ee80e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="aa33893e31fca7b51b379653cf8fd7c96"></a>
@@ -157,18 +156,28 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="aeb2aeb1d1877b48e2914085cbebc8536"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb2aeb1d1877b48e2914085cbebc8536">&#9670;&nbsp;</a></span>auth_authenticate()</h2>
+<a id="ac9d22db95dbdde26c00e59de29b3cef5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9d22db95dbdde26c00e59de29b3cef5">&#9670;&nbsp;</a></span>auth_authenticate()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int auth_authenticate </td>
+          <td class="memname">uint8_t auth_authenticate </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
-          <td class="paramname"><em>session</em></td><td>)</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sk</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -177,7 +186,8 @@ Functions</h2></td></tr>
 <p>performs actual authentication, be it server or client side</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">session</td><td>pointer to authenticator session context.</td></tr>
+    <tr><td class="paramname">session</td><td>pointer to authenticator session context. </td></tr>
+    <tr><td class="paramname">sk</td><td>array with secret key</td></tr>
   </table>
   </dd>
 </dl>
@@ -185,16 +195,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac1435abd3d6dd6f85657aad2f74b3d6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1435abd3d6dd6f85657aad2f74b3d6a">&#9670;&nbsp;</a></span>auth_connect_client()</h2>
+<a id="a5388e74d33e4c4215569d79851e54652"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5388e74d33e4c4215569d79851e54652">&#9670;&nbsp;</a></span>auth_connect_client()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int auth_connect_client </td>
+          <td class="memname">uint8_t auth_connect_client </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>sockfd</em>, </td>
         </tr>
         <tr>
@@ -206,7 +216,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>port</em>&#160;</td>
         </tr>
         <tr>
@@ -217,27 +227,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>connects as client to some server </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sockfd</td><td>socket file descriptor </td></tr>
-    <tr><td class="paramname">servip</td><td>pointer to string with server IP </td></tr>
-    <tr><td class="paramname">port</td><td>server port </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>AUTH_OR or AUTH_ERROR </dd></dl>
-
 </div>
 </div>
-<a id="aa915e80d3bbd756aaf57633b16c1f81d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa915e80d3bbd756aaf57633b16c1f81d">&#9670;&nbsp;</a></span>auth_init_client()</h2>
+<a id="a659faea139fafcbb39a8da64264a999d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a659faea139fafcbb39a8da64264a999d">&#9670;&nbsp;</a></span>auth_decrypt()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int auth_init_client </td>
+          <td class="memname">uint8_t auth_decrypt </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
           <td class="paramname"><em>session</em>, </td>
@@ -245,7 +244,111 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sk</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>cipher</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>generate message m from cipher </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>pointer to authenticated session struct </td></tr>
+    <tr><td class="paramname">sk</td><td>array with secret key (ed25519 or RSA) </td></tr>
+    <tr><td class="paramname">m</td><td>pointer with message (output) </td></tr>
+    <tr><td class="paramname">cipher</td><td>array with cipher (input) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>AUTH_OR or AUTH_ERROR </dd></dl>
+
+</div>
+</div>
+<a id="aa91c8973dc89307f2d44032a17f3d711"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa91c8973dc89307f2d44032a17f3d711">&#9670;&nbsp;</a></span>auth_encrypt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t auth_encrypt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sk</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>cipher</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>generate cipher from message m </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>pointer to authenticated session struct </td></tr>
+    <tr><td class="paramname">sk</td><td>array with secret key (ed25519 or RSA) </td></tr>
+    <tr><td class="paramname">cipher</td><td>array with cipher (output) </td></tr>
+    <tr><td class="paramname">m</td><td>pointer with message (input) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>AUTH_OR or AUTH_ERROR </dd></dl>
+
+</div>
+</div>
+<a id="ad821ff360a78b28986a36ab6508694dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad821ff360a78b28986a36ab6508694dc">&#9670;&nbsp;</a></span>auth_init_client()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t auth_init_client </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>sockfd</em>&#160;</td>
         </tr>
         <tr>
@@ -269,14 +372,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a175e4ad01a3ad5ad42a4325b41c91452"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a175e4ad01a3ad5ad42a4325b41c91452">&#9670;&nbsp;</a></span>auth_init_server()</h2>
+<a id="ad5efe60fe3a88f748e7e3a75753f9905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5efe60fe3a88f748e7e3a75753f9905">&#9670;&nbsp;</a></span>auth_init_server()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int auth_init_server </td>
+          <td class="memname">uint8_t auth_init_server </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
           <td class="paramname"><em>session</em>, </td>
@@ -284,7 +387,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
+          <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>sockfd</em>&#160;</td>
         </tr>
         <tr>
@@ -308,14 +411,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2b101d5a352ab952df3270267ddda59b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b101d5a352ab952df3270267ddda59b">&#9670;&nbsp;</a></span>auth_receive()</h2>
+<a id="a7aa5e955cdb3597c20a68b7bc1643280"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aa5e955cdb3597c20a68b7bc1643280">&#9670;&nbsp;</a></span>auth_receive()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int auth_receive </td>
+          <td class="memname">uint8_t auth_receive </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
           <td class="paramname"><em>session</em>, </td>
@@ -323,14 +426,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned char **&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sk</em>[], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned short *&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>mlen</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -340,28 +449,28 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>receive data over authenticated session </p>
-<p>receives data over authenticated session</p>
+<p>receive message over authenticated session </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pointer</td><td>to authenticator session context. </td></tr>
-    <tr><td class="paramname">data</td><td>pointer to received data. </td></tr>
-    <tr><td class="paramname">len</td><td>pointer to data length (bytes).</td></tr>
+    <tr><td class="paramname">session</td><td>pointer to authenticated session struct </td></tr>
+    <tr><td class="paramname">sk</td><td>array with secret key (ed25519 or RSA) </td></tr>
+    <tr><td class="paramname">m</td><td>pointer with message (input) </td></tr>
+    <tr><td class="paramname">mlen</td><td>pointer with length of m (input) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>AUTH_OK or AUTH_ERROR </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>AUTH_OR or AUTH_ERROR </dd></dl>
 
 </div>
 </div>
-<a id="a65aa0f85b2ea2ca828266da3abb419d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65aa0f85b2ea2ca828266da3abb419d6">&#9670;&nbsp;</a></span>auth_release()</h2>
+<a id="a813c0923c9dfe10c0941ad7193ee80e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a813c0923c9dfe10c0941ad7193ee80e7">&#9670;&nbsp;</a></span>auth_release()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int auth_release </td>
+          <td class="memname">uint8_t auth_release </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
           <td class="paramname"><em>session</em></td><td>)</td>
@@ -370,8 +479,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>release authenticated session </p>
-<p>releases authenticated session and unbinds socket</p>
+<p>releases authenticated session and unbinds socket </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>pointer to authenticator session context.</td></tr>
@@ -382,14 +490,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aebdce657a266c56443232f0fe7eeffa0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aebdce657a266c56443232f0fe7eeffa0">&#9670;&nbsp;</a></span>auth_send()</h2>
+<a id="a6be1069c16efe8260f33068298b9fb7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6be1069c16efe8260f33068298b9fb7b">&#9670;&nbsp;</a></span>auth_send()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int auth_send </td>
+          <td class="memname">uint8_t auth_send </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
           <td class="paramname"><em>session</em>, </td>
@@ -397,14 +505,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const unsigned char *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sk</em>[], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned short&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>mlen</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -414,59 +528,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>send data over authenticated session </p>
-<p>sends data over authenticated session</p>
+<p>send message over authenticated session </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">session</td><td>pointer to authenticator session context. </td></tr>
-    <tr><td class="paramname">data</td><td>pointer to data to be sent. </td></tr>
-    <tr><td class="paramname">len</td><td>data length (bytes)</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>AUTH_OK or AUTH_ERROR </dd></dl>
-
-</div>
-</div>
-<a id="aa629fed5186908a443d5878fd70e509a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa629fed5186908a443d5878fd70e509a">&#9670;&nbsp;</a></span>auth_set_option()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int auth_set_option </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
-          <td class="paramname"><em>session</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>key</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned char *&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>sets option (priv/pub keys) to authenticator session context. </p>
-<p>sets option to authenticator session context with key/value pairs.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>pointer to authenticator session context. </td></tr>
-    <tr><td class="paramname">key</td><td>pointer to key, where expected values are "public" and "private" </td></tr>
-    <tr><td class="paramname">value</td><td>pointer to the actual body of the key.</td></tr>
+    <tr><td class="paramname">session</td><td>pointer to authenticated session struct </td></tr>
+    <tr><td class="paramname">sk</td><td>array with secret key (ed25519 or RSA) </td></tr>
+    <tr><td class="paramname">m</td><td>pointer with message (input) </td></tr>
+    <tr><td class="paramname">mlen</td><td>pointer with length of m (input) </td></tr>
   </table>
   </dd>
 </dl>
@@ -474,29 +542,47 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad266358fec3ea82008c0728eec2491ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad266358fec3ea82008c0728eec2491ea">&#9670;&nbsp;</a></span>read_socket()</h2>
+<a id="a0deae93098ff3df1a3ce36c9a352e886"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0deae93098ff3df1a3ce36c9a352e886">&#9670;&nbsp;</a></span>auth_sign()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ssize_t read_socket </td>
+          <td class="memname">uint8_t auth_sign </td>
           <td>(</td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>sockfd</em>, </td>
+          <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sk</em>[], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned short&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>smlen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>mlen</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -506,36 +592,57 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>read from socket </p>
+<p>sign message m </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sockfd</td><td>pointer to socker file descriptor </td></tr>
-    <tr><td class="paramname">buffer</td><td>with for data to be read </td></tr>
-    <tr><td class="paramname">len</td><td>length of data</td></tr>
+    <tr><td class="paramname">session</td><td>pointer to authenticated session struct </td></tr>
+    <tr><td class="paramname">sk</td><td>array with secret key (ed25519 or RSA) </td></tr>
+    <tr><td class="paramname">sm</td><td>pointer with signed message (output) </td></tr>
+    <tr><td class="paramname">smlen</td><td>pointer with length of sm (output) </td></tr>
+    <tr><td class="paramname">m</td><td>pointer with message (input) </td></tr>
+    <tr><td class="paramname">mlen</td><td>pointer with length of m (input) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>On success, the number of bytes read is returned (zero indicates end of file), and the file position is advanced by this number. On error, -1 is returned, and errno is set appropriately. In this case, it is left unspecified whether the file position (if any) changes. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>AUTH_OR or AUTH_ERROR </dd></dl>
 
 </div>
 </div>
-<a id="a8af361c884fcf2ad1f1ebf8df6a2efcc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8af361c884fcf2ad1f1ebf8df6a2efcc">&#9670;&nbsp;</a></span>verify()</h2>
+<a id="adaa32c4516ef6f54d39d8c6a3ab276c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaa32c4516ef6f54d39d8c6a3ab276c6">&#9670;&nbsp;</a></span>auth_verify()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int verify </td>
+          <td class="memname">uint8_t auth_verify </td>
           <td>(</td>
-          <td class="paramtype">unsigned char *&#160;</td>
-          <td class="paramname"><em>key</em>, </td>
+          <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>mlen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>sm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>smlen</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -545,60 +652,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>verify key </p>
+<p>verify signature </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">key</td><td></td></tr>
-    <tr><td class="paramname">len</td><td></td></tr>
+    <tr><td class="paramname">session</td><td>pointer to authenticated session struct </td></tr>
+    <tr><td class="paramname">m</td><td>pointer with message (output) </td></tr>
+    <tr><td class="paramname">mlen</td><td>pointer with length of m (output) </td></tr>
+    <tr><td class="paramname">sm</td><td>pointer with signed message (input) </td></tr>
+    <tr><td class="paramname">smlen</td><td>pointer with length of sm (input) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
-
-</div>
-</div>
-<a id="a6859a7b7dc923f0c2425c46c5f67f894"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6859a7b7dc923f0c2425c46c5f67f894">&#9670;&nbsp;</a></span>write_socket()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">ssize_t write_socket </td>
-          <td>(</td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>sockfd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned short&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>write to socket </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sockfd</td><td>pointer to socker file descriptor </td></tr>
-    <tr><td class="paramname">buffer</td><td>with data to be written </td></tr>
-    <tr><td class="paramname">len</td><td>length of data</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>On success, the number of bytes written is returned (zero indicates nothing was written). On error, -1 is returned, and errno is set appropriately. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>AUTH_OR or AUTH_ERROR </dd></dl>
 
 </div>
 </div>

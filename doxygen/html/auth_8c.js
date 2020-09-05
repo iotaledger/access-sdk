@@ -1,15 +1,15 @@
 var auth_8c =
 [
     [ "auth_struct_t", "auth_8c.html#aa33893e31fca7b51b379653cf8fd7c96", null ],
-    [ "auth_authenticate", "auth_8c.html#aeb2aeb1d1877b48e2914085cbebc8536", null ],
-    [ "auth_connect_client", "auth_8c.html#ac1435abd3d6dd6f85657aad2f74b3d6a", null ],
-    [ "auth_init_client", "auth_8c.html#aa915e80d3bbd756aaf57633b16c1f81d", null ],
-    [ "auth_init_server", "auth_8c.html#a175e4ad01a3ad5ad42a4325b41c91452", null ],
-    [ "auth_receive", "auth_8c.html#a2b101d5a352ab952df3270267ddda59b", null ],
-    [ "auth_release", "auth_8c.html#a65aa0f85b2ea2ca828266da3abb419d6", null ],
-    [ "auth_send", "auth_8c.html#aebdce657a266c56443232f0fe7eeffa0", null ],
-    [ "auth_set_option", "auth_8c.html#aa629fed5186908a443d5878fd70e509a", null ],
-    [ "read_socket", "auth_8c.html#ad266358fec3ea82008c0728eec2491ea", null ],
-    [ "verify", "auth_8c.html#a8af361c884fcf2ad1f1ebf8df6a2efcc", null ],
-    [ "write_socket", "auth_8c.html#a6859a7b7dc923f0c2425c46c5f67f894", null ]
+    [ "auth_authenticate", "auth_8c.html#ac9d22db95dbdde26c00e59de29b3cef5", null ],
+    [ "auth_connect_client", "auth_8c.html#a5388e74d33e4c4215569d79851e54652", null ],
+    [ "auth_decrypt", "auth_8c.html#a659faea139fafcbb39a8da64264a999d", null ],
+    [ "auth_encrypt", "auth_8c.html#aa91c8973dc89307f2d44032a17f3d711", null ],
+    [ "auth_init_client", "auth_8c.html#ad821ff360a78b28986a36ab6508694dc", null ],
+    [ "auth_init_server", "auth_8c.html#ad5efe60fe3a88f748e7e3a75753f9905", null ],
+    [ "auth_receive", "auth_8c.html#a7aa5e955cdb3597c20a68b7bc1643280", null ],
+    [ "auth_release", "auth_8c.html#a813c0923c9dfe10c0941ad7193ee80e7", null ],
+    [ "auth_send", "auth_8c.html#a6be1069c16efe8260f33068298b9fb7b", null ],
+    [ "auth_sign", "auth_8c.html#a0deae93098ff3df1a3ce36c9a352e886", null ],
+    [ "auth_verify", "auth_8c.html#adaa32c4516ef6f54d39d8c6a3ab276c6", null ]
 ];

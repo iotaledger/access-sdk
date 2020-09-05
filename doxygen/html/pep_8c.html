@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Access Core SDK: policy/pep/pep.c File Reference</title>
+<title>IOTA Access SDK: policy/pep/pep.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Access Core SDK
+   <div id="projectname">IOTA Access SDK
    </div>
   </td>
  </tr>
@@ -94,7 +94,7 @@ $(document).ready(function(){initNavTree('pep_8c.html','');});
 <code>#include &quot;<a class="el" href="pdp_8h_source.html">pdp.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="pep__plugin_8h_source.html">pep_plugin.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="plugin__manager_8h_source.html">plugin_manager.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
+<code>#include &quot;utils.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for pep.c:</div>
 <div class="dyncontent">
@@ -123,7 +123,7 @@ Macros</h2></td></tr>
 <tr class="separator:ad12d8aba700503ef638d3121a9e31a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a506902722803fac2c001a7643c02ee69"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pep_8c.html#a506902722803fac2c001a7643c02ee69">PEP_ASCII_LF</a>&#160;&#160;&#160;10</td></tr>
 <tr class="separator:a506902722803fac2c001a7643c02ee69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51e5dee801c081e79880b4cc63d5d285"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pep_8c.html#a51e5dee801c081e79880b4cc63d5d285">PEP_CHECK_WHITESPACE</a>(<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a>)&#160;&#160;&#160;((<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#a244b02c75f221b35ce50ee2450d799c4">PEP_ASCII_SPACE</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#a95a952f47275836c149549bf5711cf93">PEP_ASCII_TAB</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#ad12d8aba700503ef638d3121a9e31a62">PEP_ASCII_CR</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#a506902722803fac2c001a7643c02ee69">PEP_ASCII_LF</a>) ? <a class="el" href="timer_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a> : <a class="el" href="timer_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>)</td></tr>
+<tr class="memitem:a51e5dee801c081e79880b4cc63d5d285"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pep_8c.html#a51e5dee801c081e79880b4cc63d5d285">PEP_CHECK_WHITESPACE</a>(<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a>)&#160;&#160;&#160;((<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#a244b02c75f221b35ce50ee2450d799c4">PEP_ASCII_SPACE</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#a95a952f47275836c149549bf5711cf93">PEP_ASCII_TAB</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#ad12d8aba700503ef638d3121a9e31a62">PEP_ASCII_CR</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#a506902722803fac2c001a7643c02ee69">PEP_ASCII_LF</a>) ? <a class="el" href="pip_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a> : <a class="el" href="pip_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>)</td></tr>
 <tr class="separator:a51e5dee801c081e79880b4cc63d5d285"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61924ab84902c04072fc71cc911c56ee"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pep_8c.html#a61924ab84902c04072fc71cc911c56ee">MAX_PEP_PLUGINS</a>&#160;&#160;&#160;5</td></tr>
 <tr class="separator:a61924ab84902c04072fc71cc911c56ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -237,7 +237,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a></td><td>)</td>
-          <td>&#160;&#160;&#160;((<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#a244b02c75f221b35ce50ee2450d799c4">PEP_ASCII_SPACE</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#a95a952f47275836c149549bf5711cf93">PEP_ASCII_TAB</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#ad12d8aba700503ef638d3121a9e31a62">PEP_ASCII_CR</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#a506902722803fac2c001a7643c02ee69">PEP_ASCII_LF</a>) ? <a class="el" href="timer_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a> : <a class="el" href="timer_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>)</td>
+          <td>&#160;&#160;&#160;((<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#a244b02c75f221b35ce50ee2450d799c4">PEP_ASCII_SPACE</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#a95a952f47275836c149549bf5711cf93">PEP_ASCII_TAB</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#ad12d8aba700503ef638d3121a9e31a62">PEP_ASCII_CR</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pep_8c.html#a506902722803fac2c001a7643c02ee69">PEP_ASCII_LF</a>) ? <a class="el" href="pip_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a> : <a class="el" href="pip_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">

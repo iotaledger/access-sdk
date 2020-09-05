@@ -1,0 +1,20 @@
+<?php
+// Pages created in subdirs need ../ appended.
+$url_prefix = getenv("URLPREFIX");
+?>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ccan</title>
+  <link rel="stylesheet" type="text/css" href="<?=$url_prefix?>ccan.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='//fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
+  <link href='<?=$url_prefix?>prettify/src/prettify.css' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="<?=$url_prefix?>prettify/src/run_prettify.js"></script>
+<head>
+<body>
+<div class='logo'>
+  <a href='<?=$url_prefix?>'><img src="<?=$url_prefix?>ccan.png" border="0"/></a>
+  <h1>Comprehensive C Archive Network</h1>
+</div>

@@ -1,0 +1,3 @@
+rfc822_ok_deps := ccan/rfc822/test/helper.c ccan/rfc822/test/helper.h ccan/rfc822/test/run-bad-header-name-chars.c ccan/rfc822/test/run-check-check.c ccan/rfc822/test/run-default-alloc-failure.c ccan/rfc822/test/run-hdr-and-body.c ccan/rfc822/test/run-hdr-no-colon.c ccan/rfc822/test/run-hdr-of-name.c ccan/rfc822/test/run-no-body.c ccan/rfc822/test/run-testdata.c ccan/rfc822/test/run-unfold.c ccan/rfc822/test/testdata.h  ccan/rfc822/rfc822.o  ccan/bytestring/.ok ccan/list/.ok ccan/mem/.ok ccan/str/.ok ccan/tal/.ok 
+ccan/rfc822/.ok: $(rfc822_ok_deps)
+ccan/rfc822/.fast-ok: $(rfc822_ok_deps:%.ok=%.fast-ok)

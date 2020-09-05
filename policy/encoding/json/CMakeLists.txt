@@ -19,7 +19,10 @@
 
 cmake_minimum_required(VERSION 3.11)
 
-set(target json)
+add_library(json jsmn.c json_helper.c)
+target_include_directories(json PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-add_library(${target} jsmn.c json_helper.c)
-target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+install(TARGETS json DESTINATION lib)
+install(FILES jsmn.h DESTINATION include)
+install(FILES json_helper.h DESTINATION include)
+

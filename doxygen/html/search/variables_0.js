@@ -17,6 +17,5 @@ var searchData=
   ['array8',['array8',['../json__helper_8c.html#a50900953cbb11e38cc61460c614a5d56',1,'json_helper.c']]],
   ['array81',['array81',['../json__helper_8c.html#a596262456cdec18fdd157215a0214b76',1,'json_helper.c']]],
   ['attribute',['attribute',['../structpip__plugin__args__t.html#a02bb188aae2c3fe8bd9a77374bf7016c',1,'pip_plugin_args_t']]],
-  ['auth_5fdh',['auth_dh',['../structauth__struct.html#adccd9dd29239d1d84f1c2f893d2d243d',1,'auth_struct']]],
-  ['auth_5flogger_5fid',['auth_logger_id',['../auth__logger_8c.html#a9329b4a7be28342e338520ee760556b0',1,'auth_logger_id():&#160;auth_logger.c'],['../auth__logger_8h.html#a9329b4a7be28342e338520ee760556b0',1,'auth_logger_id():&#160;auth_logger.c']]]
+  ['auth_5flogger_5fid',['auth_logger_id',['../auth__logger_8c.html#a9329b4a7be28342e338520ee760556b0',1,'auth_logger_id():&#160;auth_logger.c'],['../auth__logger_8h.html#a9329b4a7be28342e338520ee760556b0',1,'auth_logger_id():&#160;auth_logger.c'],['../eddsa_2auth__logger_8c.html#a9329b4a7be28342e338520ee760556b0',1,'auth_logger_id():&#160;auth_logger.c'],['../eddsa_2auth__logger_8h.html#a9329b4a7be28342e338520ee760556b0',1,'auth_logger_id():&#160;auth_logger.c']]]
 ];

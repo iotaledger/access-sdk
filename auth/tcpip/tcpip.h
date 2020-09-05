@@ -17,69 +17,45 @@
  * limitations under the License.
  */
 
-/****************************************************************************
- * \project IOTA Access
- * \file auth.h
- * \brief
- *    Authentication API submodule TCP/IP
- *
- * @Author Bernardo Araujo
- *
- * \notes
- *
- * \history
- * 18.08.2020. Initial Version
- ****************************************************************************/
-
 #ifndef AUTH_TCPIP_H
 #define AUTH_TCPIP_H
 
 #include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
-/**
- * @brief no TCP/IP error
- */
+#include "tcpip_logger.h"
+
 #define TCPIP_OK 0
+#define TCPIP_ERROR -1
 
 /**
- * @brief TCP/IP error
+ * @brief init tcpip socket
+ * @return socket file descriptor
  */
-#define TCPIP_ERROR 1
+int tcpip_socket();
 
 /**
- * @brief write to socket
+ * @brief write message to socket
  *
- * @param sockfd pointer to socker file descriptor
- * @param buffer with data to be written
- * @param len length of data
+ * @param sockfd pointer to socket file descriptor
+ * @param m message
+ * @param mlen length of message
  *
  * @return On success, the number of bytes written is returned (zero indicates nothing was written). On error, -1 is returned, and errno is set appropriately.
  */
-ssize_t tcpip_write_socket(int *sockfd, void *data, unsigned short len);
+ssize_t tcpip_write(uint8_t sockfd, unsigned char *m, size_t mlen);
 
 /**
- * @brief read from socket
+ * @brief write message to socket
  *
- * @param sockfd pointer to socker file descriptor
- * @param buffer with for data to be read
- * @param len length of data
+ * @param sockfd pointer to socket file descriptor
+ * @param m message
+ * @param mlen length of message
  *
  * @return On success, the number of bytes read is returned (zero indicates end of file), and the file position is advanced by this number. On error, -1 is returned, and errno is set appropriately. In this case, it is left unspecified whether the file position (if any) changes.
  */
-ssize_t tcpip_read_socket(int *sockfd, void *data, unsigned short len);
-
-
-/**
- * @brief connects to server via TCP/IP
- *
- * @param sockfd socket file descriptor
- * @param servip pointer to string with server IP
- * @param port server port
- * @return TCPIP_OK or TCPIP_ERROR
- */
-
-int tcpip_connect(int sockfd, char *servip, int port);
-
-int tcpip_serve(int );
+ssize_t tcpip_read(uint8_t sockfd, unsigned char *m, size_t mlen);
 
 #endif  // AUTH_TCPIP_H
