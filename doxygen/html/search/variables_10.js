@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['t',['t',['../structge25519.html#a1790ea6911a572da4733d30d445ae900',1,'ge25519::t()'],['../structge25519__p1p1.html#a1790ea6911a572da4733d30d445ae900',1,'ge25519_p1p1::t()']]],
-  ['toknext',['toknext',['../structjsmn__parser.html#a07a43834d3e063cab9e9a69b37dc55b8',1,'jsmn_parser']]],
-  ['toksuper',['toksuper',['../structjsmn__parser.html#a81bf640a522fb6791889aac12f71f8db',1,'jsmn_parser']]],
-  ['transaction_5fhash',['transaction_hash',['../structpdp__action__t.html#a097e50dbf44ce0b6432b9566c79a51e3',1,'pdp_action_t']]],
-  ['transaction_5fhash_5flen',['transaction_hash_len',['../structpdp__action__t.html#a6b237adf1a74a6bc1fb635949a81f373',1,'pdp_action_t']]],
-  ['type',['type',['../structauth__struct.html#ac765329451135abec74c45e1897abf26',1,'auth_struct::type()'],['../structjsmntok.html#a7def41ebc3980f6e4526819b42c2721f',1,'jsmntok::type()'],['../structoptimizer__log__var__t.html#aa7790b98457346a1d7a22d32cd56323a',1,'optimizer_log_var_t::type()'],['../structattribute__value.html#a7c483835d9d9aab152eb64ee6bedd020',1,'attribute_value::type()'],['../structpip__attribute__object__t.html#af4a3d72fff14e69cef4d0be7fe4a60ff',1,'pip_attribute_object_t::type()'],['../structtimer__node.html#a66a96eeebd021228f6b66f1dc1e84654',1,'timer_node::type()']]]
+  ['valid_5fjson',['valid_json',['../structvalidator__report__t.html#ad400b8eddda1d263857ae57e494808b2',1,'validator_report_t']]],
+  ['value',['value',['../structoptimizer__log__var__t.html#af91cc7b105fc4be13b519f95499e404a',1,'optimizer_log_var_t::value()'],['../structattribute__value.html#a0f61d63b009d0880a89c843bd50d8d76',1,'attribute_value::value()'],['../structpdp__action__t.html#a4e9aec275e566b978a3ccb4e043d8c61',1,'pdp_action_t::value()'],['../structpip__attribute__object__t.html#a544d8f55cf64329d120abc656adc5aa1',1,'pip_attribute_object_t::value()']]],
+  ['vc',['vc',['../structauth__struct.html#a35ded70edff22c25c74a6591321927ba',1,'auth_struct']]],
+  ['vs',['vs',['../structauth__struct.html#aeafb3025d83caaec5fb4f94e15d7767f',1,'auth_struct']]]
 ];

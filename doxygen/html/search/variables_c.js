@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['obligation',['obligation',['../structpep__plugin__args__t.html#ad28edff6bb2a56c2907dca89e1542842',1,'pep_plugin_args_t']]],
-  ['operation',['operation',['../structoptimizer__operator__t.html#a9b90394e6791890c2b3422b56d5d8a30',1,'optimizer_operator_t']]],
-  ['operator',['operator',['../unionoptimizer__function__element__t.html#ab92b1991b11dca737c6ff29e4e29c65d',1,'optimizer_function_element_t']]],
-  ['out_5fpacket_5fcount',['out_packet_count',['../structauth__struct.html#aeb15ffbf422489adca80b89745683abf',1,'auth_struct']]]
+  ['rsa_5fclient',['rsa_client',['../structauth__struct.html#ab72d35e1f88c9fde26a1162a0b8f7484',1,'auth_struct']]],
+  ['rsa_5fserver',['rsa_server',['../structauth__struct.html#a9917c3c5296e0ff3a437ced293a01253',1,'auth_struct']]]
 ];

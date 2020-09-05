@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['o',['O',['../symbols_8h.html#a396fecfabe3105afc15a61c209f910f0',1,'O():&#160;symbols.h'],['../symbols_8h.html#ac9ba2c61c69c381438f186315b5f2e9b',1,'o():&#160;symbols.h']]],
-  ['o_5fpad',['O_PAD',['../eddsa_2auth__internal_8h.html#a41cf47e57277056b2d817d8b8f92e4d6',1,'auth_internal.h']]],
+  ['o',['o',['../symbols_8h.html#ac9ba2c61c69c381438f186315b5f2e9b',1,'o():&#160;symbols.h'],['../symbols_8h.html#a396fecfabe3105afc15a61c209f910f0',1,'O():&#160;symbols.h']]],
   ['one',['ONE',['../symbols_8h.html#a206b6f5362e56b51ca957635350b70b6',1,'symbols.h']]],
   ['opt_5fmax_5fstr_5flen',['OPT_MAX_STR_LEN',['../optimizer_8h.html#af9aba8ef8572f1ddbe81ce4f12dd88a6',1,'optimizer.h']]],
   ['optimizer_5fascii_5fspace',['OPTIMIZER_ASCII_SPACE',['../optimizer_8c.html#a2896b11bf4e868dc07512d695708ad39',1,'optimizer.c']]],

@@ -86,8 +86,10 @@ $(document).ready(function(){initNavTree('eddsa_2auth__client_8c.html','');});
 <div class="title">auth_client.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="eddsa_2auth__internal_8h_source.html">auth_internal.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="eddsa_2auth__utils_8h_source.html">auth_utils.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;sodium.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="eddsa_2auth__logger_8h_source.html">auth_logger.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="eddsa_2auth__internal_8h_source.html">auth_internal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tcpip_8h_source.html">tcpip.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for auth_client.c:</div>
 <div class="dyncontent">
@@ -114,28 +116,18 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a15a849e32493aced1a29baa51bace8e3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eddsa_2auth__client_8c.html#a15a849e32493aced1a29baa51bace8e3">auth_client_init</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session)</td></tr>
-<tr class="memdesc:a15a849e32493aced1a29baa51bace8e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client authantication function declarations and definitions.  <a href="#a15a849e32493aced1a29baa51bace8e3">More...</a><br /></td></tr>
-<tr class="separator:a15a849e32493aced1a29baa51bace8e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5197daea4b9759242bdf11bde865cf1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eddsa_2auth__client_8c.html#ae5197daea4b9759242bdf11bde865cf1">auth_client_generate</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session)</td></tr>
-<tr class="separator:ae5197daea4b9759242bdf11bde865cf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2323665180550bb7f67befee1434e3b8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eddsa_2auth__client_8c.html#a2323665180550bb7f67befee1434e3b8">auth_client_verify</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session)</td></tr>
+<tr class="memdesc:a2323665180550bb7f67befee1434e3b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client authantication function declarations and definitions.  <a href="#a2323665180550bb7f67befee1434e3b8">More...</a><br /></td></tr>
 <tr class="separator:a2323665180550bb7f67befee1434e3b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9150d405fd88bd099486a02919b00081"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eddsa_2auth__client_8c.html#a9150d405fd88bd099486a02919b00081">auth_client_finish</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session)</td></tr>
-<tr class="separator:a9150d405fd88bd099486a02919b00081"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82887ed5242fe3fb4484f5c4e4e3a4c5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eddsa_2auth__client_8c.html#a82887ed5242fe3fb4484f5c4e4e3a4c5">auth_internal_client_authenticate</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session)</td></tr>
-<tr class="memdesc:a82887ed5242fe3fb4484f5c4e4e3a4c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that executes steps of client side AUTH authentication.  <a href="#a82887ed5242fe3fb4484f5c4e4e3a4c5">More...</a><br /></td></tr>
-<tr class="separator:a82887ed5242fe3fb4484f5c4e4e3a4c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15f113a870a3e153d20e72913b906eb7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eddsa_2auth__client_8c.html#a15f113a870a3e153d20e72913b906eb7">auth_internal_client_authenticate</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, uint8_t ed25519_sk[])</td></tr>
+<tr class="separator:a15f113a870a3e153d20e72913b906eb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21518e2922480ca57ca1e5f33c73d63f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eddsa_2auth__client_8c.html#a21518e2922480ca57ca1e5f33c73d63f">auth_internal_client_send</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, const unsigned char *data, unsigned short data_len)</td></tr>
 <tr class="separator:a21518e2922480ca57ca1e5f33c73d63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6035784431254b6103869e3e209b9687"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eddsa_2auth__client_8c.html#a6035784431254b6103869e3e209b9687">auth_internal_client_receive</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, unsigned char **data, unsigned short *data_len)</td></tr>
-<tr class="memdesc:a6035784431254b6103869e3e209b9687"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that is used to receive and read message from server.  <a href="#a6035784431254b6103869e3e209b9687">More...</a><br /></td></tr>
 <tr class="separator:a6035784431254b6103869e3e209b9687"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98643ba75c95b2a22f08aea9a4260e33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eddsa_2auth__client_8c.html#a98643ba75c95b2a22f08aea9a4260e33">auth_internal_release_client</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session)</td></tr>
-<tr class="memdesc:a98643ba75c95b2a22f08aea9a4260e33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that releases memory alocated for client session.  <a href="#a98643ba75c95b2a22f08aea9a4260e33">More...</a><br /></td></tr>
 <tr class="separator:a98643ba75c95b2a22f08aea9a4260e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95479f7722fa1778cd6090455bc2f036"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eddsa_2auth__client_8c.html#a95479f7722fa1778cd6090455bc2f036">auth_internal_client_set_option</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, const char *key, unsigned char *value)</td></tr>
-<tr class="memdesc:a95479f7722fa1778cd6090455bc2f036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that releases memory alocated for client session.  <a href="#a95479f7722fa1778cd6090455bc2f036">More...</a><br /></td></tr>
 <tr class="separator:a95479f7722fa1778cd6090455bc2f036"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -227,62 +219,6 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a9150d405fd88bd099486a02919b00081"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9150d405fd88bd099486a02919b00081">&#9670;&nbsp;</a></span>auth_client_finish()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int auth_client_finish </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
-          <td class="paramname"><em>session</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae5197daea4b9759242bdf11bde865cf1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5197daea4b9759242bdf11bde865cf1">&#9670;&nbsp;</a></span>auth_client_generate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int auth_client_generate </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
-          <td class="paramname"><em>session</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a15a849e32493aced1a29baa51bace8e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15a849e32493aced1a29baa51bace8e3">&#9670;&nbsp;</a></span>auth_client_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int auth_client_init </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
-          <td class="paramname"><em>session</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Client authantication function declarations and definitions. </p>
-
-</div>
-</div>
 <a id="a2323665180550bb7f67befee1434e3b8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2323665180550bb7f67befee1434e3b8">&#9670;&nbsp;</a></span>auth_client_verify()</h2>
 
@@ -299,10 +235,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Client authantication function declarations and definitions. </p>
+
 </div>
 </div>
-<a id="a82887ed5242fe3fb4484f5c4e4e3a4c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82887ed5242fe3fb4484f5c4e4e3a4c5">&#9670;&nbsp;</a></span>auth_internal_client_authenticate()</h2>
+<a id="a15f113a870a3e153d20e72913b906eb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15f113a870a3e153d20e72913b906eb7">&#9670;&nbsp;</a></span>auth_internal_client_authenticate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -311,20 +249,21 @@ Functions</h2></td></tr>
           <td class="memname">int auth_internal_client_authenticate </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *&#160;</td>
-          <td class="paramname"><em>session</em></td><td>)</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ed25519_sk</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Function that executes steps of client side AUTH authentication. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>Client session.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 if it succeeds, 1 if it fails. </dd></dl>
 
 </div>
 </div>
@@ -344,13 +283,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned char **&#160;</td>
-          <td class="paramname"><em>msg</em>, </td>
+          <td class="paramname"><em>data</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned short *&#160;</td>
-          <td class="paramname"><em>msg_length</em>&#160;</td>
+          <td class="paramname"><em>data_len</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -359,17 +298,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Function that is used to receive and read message from server. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>Client session </td></tr>
-    <tr><td class="paramname">msg</td><td>Address of buffer for received message </td></tr>
-    <tr><td class="paramname">msg_length</td><td>Received message length</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 if it succeeds, 1 if it fails. </dd></dl>
 
 </div>
 </div>
@@ -439,15 +367,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Function that releases memory alocated for client session. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>Client session</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 if it succeeds, 1 if it fails. </dd></dl>
-
 </div>
 </div>
 <a id="a98643ba75c95b2a22f08aea9a4260e33"></a>
@@ -465,14 +384,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Function that releases memory alocated for client session. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>Client session </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

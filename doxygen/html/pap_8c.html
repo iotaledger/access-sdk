@@ -96,12 +96,12 @@ $(document).ready(function(){initNavTree('pap_8c.html','');});
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;sys/socket.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="apiorig_8h_source.html">apiorig.h</a>&quot;</code><br />
+<code>#include &quot;apiorig.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="pap__logger_8h_source.html">pap_logger.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="pap__plugin_8h_source.html">pap_plugin.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="plugin__manager_8h_source.html">plugin_manager.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="sha256_8h_source.html">sha256.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
+<code>#include &quot;sha256.h&quot;</code><br />
+<code>#include &quot;utils.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="validator_8h_source.html">validator.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="jsmn_8h_source.html">jsmn.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -126,7 +126,7 @@ Macros</h2></td></tr>
 <tr class="separator:a05e1f3732892088997324c832d77002b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ddb759fc141528e0513be4e0489ec78"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pap_8c.html#a5ddb759fc141528e0513be4e0489ec78">PAP_ASCII_LF</a>&#160;&#160;&#160;10</td></tr>
 <tr class="separator:a5ddb759fc141528e0513be4e0489ec78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f66a4797511a669da38517012de0bcb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pap_8c.html#a6f66a4797511a669da38517012de0bcb">PAP_CHECK_WHITESPACE</a>(<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a>)&#160;&#160;&#160;((<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a2b6e3f73c6c844c24b756d40c1adc219">PAP_ASCII_SPACE</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a74c112e79423e36a198f603b37c41171">PAP_ASCII_TAB</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a05e1f3732892088997324c832d77002b">PAP_ASCII_CR</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a5ddb759fc141528e0513be4e0489ec78">PAP_ASCII_LF</a>) ? <a class="el" href="timer_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a> : <a class="el" href="timer_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>)</td></tr>
+<tr class="memitem:a6f66a4797511a669da38517012de0bcb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pap_8c.html#a6f66a4797511a669da38517012de0bcb">PAP_CHECK_WHITESPACE</a>(<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a>)&#160;&#160;&#160;((<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a2b6e3f73c6c844c24b756d40c1adc219">PAP_ASCII_SPACE</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a74c112e79423e36a198f603b37c41171">PAP_ASCII_TAB</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a05e1f3732892088997324c832d77002b">PAP_ASCII_CR</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a5ddb759fc141528e0513be4e0489ec78">PAP_ASCII_LF</a>) ? <a class="el" href="pip_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a> : <a class="el" href="pip_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>)</td></tr>
 <tr class="separator:a6f66a4797511a669da38517012de0bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -236,7 +236,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a></td><td>)</td>
-          <td>&#160;&#160;&#160;((<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a2b6e3f73c6c844c24b756d40c1adc219">PAP_ASCII_SPACE</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a74c112e79423e36a198f603b37c41171">PAP_ASCII_TAB</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a05e1f3732892088997324c832d77002b">PAP_ASCII_CR</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a5ddb759fc141528e0513be4e0489ec78">PAP_ASCII_LF</a>) ? <a class="el" href="timer_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a> : <a class="el" href="timer_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>)</td>
+          <td>&#160;&#160;&#160;((<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a2b6e3f73c6c844c24b756d40c1adc219">PAP_ASCII_SPACE</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a74c112e79423e36a198f603b37c41171">PAP_ASCII_TAB</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a05e1f3732892088997324c832d77002b">PAP_ASCII_CR</a>) || (<a class="el" href="symbols_8h.html#a6c4b361d72eb3767ba424ac9a6ecf52b">x</a> == <a class="el" href="pap_8c.html#a5ddb759fc141528e0513be4e0489ec78">PAP_ASCII_LF</a>) ? <a class="el" href="pip_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</a> : <a class="el" href="pip_8h.html#aa93f0eb578d23995850d61f7d61c55c1">FALSE</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">

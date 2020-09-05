@@ -131,13 +131,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a7d06e38671b497dfef9eee361474ae5a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsa_2auth__server_8c.html#a7d06e38671b497dfef9eee361474ae5a">auth_internal_server_send</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, const unsigned char *data, unsigned short data_len)</td></tr>
 <tr class="separator:a7d06e38671b497dfef9eee361474ae5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accc8aaa0835c4fe08762e9ad9de4e9f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsa_2auth__server_8c.html#accc8aaa0835c4fe08762e9ad9de4e9f7">auth_internal_server_receive</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, unsigned char **data, unsigned short *data_len)</td></tr>
-<tr class="memdesc:accc8aaa0835c4fe08762e9ad9de4e9f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that is used to receive and read message from client.  <a href="#accc8aaa0835c4fe08762e9ad9de4e9f7">More...</a><br /></td></tr>
 <tr class="separator:accc8aaa0835c4fe08762e9ad9de4e9f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afca48ce5a502c4abe86764b4686f6cad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsa_2auth__server_8c.html#afca48ce5a502c4abe86764b4686f6cad">auth_internal_release_server</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session)</td></tr>
-<tr class="memdesc:afca48ce5a502c4abe86764b4686f6cad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that releases memory alocated for server session.  <a href="#afca48ce5a502c4abe86764b4686f6cad">More...</a><br /></td></tr>
 <tr class="separator:afca48ce5a502c4abe86764b4686f6cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a173ed32bd6d263c87130f770c5559a83"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rsa_2auth__server_8c.html#a173ed32bd6d263c87130f770c5559a83">auth_internal_server_set_option</a> (<a class="el" href="structauth__ctx__t.html">auth_ctx_t</a> *session, const char *key, unsigned char *value)</td></tr>
-<tr class="memdesc:a173ed32bd6d263c87130f770c5559a83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that releases memory alocated for server session.  <a href="#a173ed32bd6d263c87130f770c5559a83">More...</a><br /></td></tr>
 <tr class="separator:a173ed32bd6d263c87130f770c5559a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -242,14 +239,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Function that releases memory alocated for server session. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>Server session </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
 <a id="aab342e33a8d7794668c85813c965df5e"></a>
@@ -271,7 +260,8 @@ Functions</h2></td></tr>
 <p>Function that executes steps of server side AUTH authentication. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">session</td><td>Server session.</td></tr>
+    <tr><td class="paramname">session</td><td>Server session. </td></tr>
+    <tr><td class="paramname">ed25519_sk[]</td><td>ed25519 secret key.</td></tr>
   </table>
   </dd>
 </dl>
@@ -310,17 +300,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Function that is used to receive and read message from client. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>Server session </td></tr>
-    <tr><td class="paramname">msg</td><td>Address of buffer for received message </td></tr>
-    <tr><td class="paramname">msg_length</td><td>Received message length</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 if it succeeds, 1 if it fails. </dd></dl>
 
 </div>
 </div>
@@ -389,15 +368,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Function that releases memory alocated for server session. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>Server session</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 if it succeeds, 1 if it fails. </dd></dl>
 
 </div>
 </div>

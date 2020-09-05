@@ -42,8 +42,5 @@ var searchData=
   ['pip_5fmax_5fstr_5flen',['PIP_MAX_STR_LEN',['../pip_8h.html#af6905d284fd1ff95d1d8ccfcfb0cbff4',1,'pip.h']]],
   ['plugin_5flogger_5fid',['PLUGIN_LOGGER_ID',['../plugin__logger_8c.html#a24912d3a60e175cc493a1c08ca6c0d86',1,'plugin_logger.c']]],
   ['pol_5fobjc_5fmin_5fmembers',['POL_OBJC_MIN_MEMBERS',['../validator_8c.html#ab08b130834bc8bca3ed1f9564a66f1b4',1,'validator.c']]],
-  ['poll_5ftimeout',['POLL_TIMEOUT',['../timer_8c.html#a9301f41bfe2a17a4add6f0dc7f239487',1,'timer.c']]],
-  ['private_5fkey_5fl',['PRIVATE_KEY_L',['../eddsa_2auth__internal_8h.html#ad894bf9de0d9deeeb51d02260e6a8589',1,'auth_internal.h']]],
-  ['public_5fid_5fsize',['PUBLIC_ID_SIZE',['../user__implementation_8c.html#a40e9389f1d320e18b1e4ee1fe8733929',1,'user_implementation.c']]],
-  ['public_5fkey_5fl',['PUBLIC_KEY_L',['../eddsa_2auth__internal_8h.html#a06cb5c0bb50ba10451097f66367b3c97',1,'auth_internal.h']]]
+  ['public_5fid_5fsize',['PUBLIC_ID_SIZE',['../user__implementation_8c.html#a40e9389f1d320e18b1e4ee1fe8733929',1,'user_implementation.c']]]
 ];
