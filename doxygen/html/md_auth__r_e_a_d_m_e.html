@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Access Core SDK: Auth API</title>
+<title>IOTA Access SDK: Auth API</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Access Core SDK
+   <div id="projectname">IOTA Access SDK
    </div>
   </td>
  </tr>
@@ -83,44 +83,13 @@ $(document).ready(function(){initNavTree('md_auth__r_e_a_d_m_e.html','');});
 <div class="title">Auth API </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h3>EdDSA Flavour</h3>
+<div class="textblock"><h2>EdDSA</h2>
 <ul>
 <li><b>key exchange</b>: <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf">NIST SP 800-186</a> Elliptic Curve Diffie-Hellman (ECDH) X25519.</li>
 <li><b>signing/verification</b>: <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5-draft.pdf">NIST FIPS PUB 186-5</a> Ed25519.</li>
 <li><b>MAC</b>: <a href="https://tools.ietf.org/html/rfc7539">RFC7539</a> Poly1305.</li>
 <li><b>encryption</b>: <a href="https://cr.yp.to/snuffle/xsalsa-20081128.pdf">XSalsa20</a> stream cipher.</li>
-<li><b>base lib</b>: <a href="https://github.com/jedisct1/libsodium/tree/1.0.18-RELEASE">Sodium v1.0.18</a></li>
-<li><b>pros</b>:<ul>
-<li>IoT friendly.</li>
-<li>IOTA 1.5 compatible.</li>
-<li>cryptographically robust.</li>
-<li>EdDSA is younger than RSA.</li>
-</ul>
-</li>
-<li><b>cons</b>:<ul>
-<li>unknown vulnerabilities != no vulnerabilities.</li>
-</ul>
-</li>
-<li><b>usage scenarios</b>: Edge Infrastructure and <a href="https://standards.ieee.org/project/1003_1.html">POSIX</a> compliant RTOSs.</li>
-</ul>
-<h3>RSA Flavour</h3>
-<ul>
-<li><b>key exchange</b>: <a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-56ar.pdf">NIST FIPS PUB 800-56A</a> Diffie-Hellman (DH).</li>
-<li><b>signing/verification</b>: <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar2.pdf">NIST FIPS PUB 800-131A</a> Rivest-Shamir-Adleman (RSA) 2048+ bits.</li>
-<li><b>HMAC</b>: <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.198-1.pdf">NIST FIPS PUB 198-1</a> SHA-256</li>
-<li><b>encryption</b>: <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf">NIST FIPS PUB 197</a> AES256</li>
-<li><b>base lib</b>: <a href="https://github.com/openssl/openssl/releases/tag/OpenSSL_1_0_2u">OpenSSL v1.0.2</a></li>
-<li><b>pros</b>:<ul>
-<li>OpenSSL friendly.</li>
-<li>RSA is still the leading DSA for most certificate applications.</li>
-</ul>
-</li>
-<li><b>cons</b>:<ul>
-<li>hungry for CPU+RAM (not IoT friendly).</li>
-<li><a href="https://crypto.stanford.edu/~dabo/pubs/papers/RSA-survey.pdf">RSA known vulnerabilities</a>, especially <a href="https://eprint.iacr.org/2017/351.pdf">Shor</a>.</li>
-</ul>
-</li>
-<li>usage scenarios: Cloud Infrastructure and Embedded Linux. </li>
+<li><b>base lib</b>: <a href="https://github.com/jedisct1/libsodium/tree/1.0.18-RELEASE">Sodium v1.0.18</a> </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

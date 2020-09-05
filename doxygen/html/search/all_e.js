@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['n',['N',['../symbols_8h.html#a0240ac851181b84ac374872dc5434ee4',1,'N():&#160;symbols.h'],['../symbols_8h.html#ad5228cd48403ef9d8b632f5c7c124720',1,'n():&#160;symbols.h']]],
+  ['n',['n',['../symbols_8h.html#ad5228cd48403ef9d8b632f5c7c124720',1,'n():&#160;symbols.h'],['../symbols_8h.html#a0240ac851181b84ac374872dc5434ee4',1,'N():&#160;symbols.h']]],
   ['new_5fcomplex_5felement',['new_complex_element',['../optimizer_8c.html#abf75295426571ecf492c0b8cca3a2b82',1,'optimizer.c']]],
   ['new_5foperator',['new_operator',['../optimizer_8c.html#a276fa6ec470d9471a1d420fa595b7b87',1,'optimizer.c']]],
   ['new_5fsimple_5felement',['new_simple_element',['../optimizer_8c.html#ab1337d1c306ca814e36224aeaf69bc7a',1,'optimizer.c']]],
@@ -8,7 +8,5 @@ var searchData=
   ['no_5fdead_5fcode',['no_dead_code',['../structvalidator__report__t.html#a2e8daec35a4fb12083a9360fd0fc0961',1,'validator_report_t']]],
   ['nonce',['nonce',['../structauth__struct.html#af73a4a6ff6a4878d8eae4ec38ffeaac2',1,'auth_struct']]],
   ['not',['NOT',['../pdp_8h.html#a40edf8b2e3ddde4f654a272d06bb6d9ea0378ebc895849163b249d0b330257dd6',1,'pdp.h']]],
-  ['ntohl',['ntohl',['../auth__utils_8c.html#a21dff5fd22359d8019b2144e8e626fdd',1,'auth_utils.c']]],
-  ['ntohs',['ntohs',['../auth__utils_8c.html#ad01743b73969567f09d0ba1616637452',1,'auth_utils.c']]],
   ['number',['NUMBER',['../pdp_8h.html#a85bf71f7d38cc451799efe4838f36313a12a90dfe20486bbe3e075afcd19ef2d0',1,'pdp.h']]]
 ];

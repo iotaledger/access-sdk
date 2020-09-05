@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['s',['s',['../symbols_8h.html#ac9562ee4ecb3b8aeebeb04656e7e57a9',1,'s():&#160;symbols.h'],['../symbols_8h.html#af933676109efed7ab34cea71d748a517',1,'S():&#160;symbols.h']]],
-  ['sentinel',['sentinel',['../eddsa_2auth__debug_8h.html#aee3bbc2ee9da587b5525a1ad8e053c92',1,'sentinel():&#160;auth_debug.h'],['../rsa_2auth__debug_8h.html#aee3bbc2ee9da587b5525a1ad8e053c92',1,'sentinel():&#160;auth_debug.h']]],
+  ['s',['S',['../symbols_8h.html#af933676109efed7ab34cea71d748a517',1,'S():&#160;symbols.h'],['../symbols_8h.html#ac9562ee4ecb3b8aeebeb04656e7e57a9',1,'s():&#160;symbols.h']]],
+  ['sentinel',['sentinel',['../auth__debug_8h.html#aee3bbc2ee9da587b5525a1ad8e053c92',1,'auth_debug.h']]],
   ['server_2ec',['server.c',['../server_8c.html',1,'']]],
   ['server_2eh',['server.h',['../server_8h.html',1,'']]],
   ['sigcipherlen',['SIGCIPHERLEN',['../auth_8h.html#afc669ad5d706169bea693a41275b62a6',1,'auth.h']]],
   ['signature',['signature',['../structpap__policy__id__signature__t.html#ab1720718c7697829827785bd23d9466e',1,'pap_policy_id_signature_t']]],
   ['signature_5falgorithm',['signature_algorithm',['../structpap__policy__id__signature__t.html#aac09ba233ac60a12582e9ea902484922',1,'pap_policy_id_signature_t']]],
-  ['signed_5fmessage_5fl',['SIGNED_MESSAGE_L',['../eddsa_2auth__internal_8h.html#a4056e83ae5dcf82c4ec2a7363218e739',1,'auth_internal.h']]],
+  ['signed_5fmessage_5fl',['SIGNED_MESSAGE_L',['../auth__internal_8h.html#a4056e83ae5dcf82c4ec2a7363218e739',1,'auth_internal.h']]],
   ['size',['size',['../structjsmntok.html#a439227feff9d7f55384e8780cfc2eb82',1,'jsmntok::size()'],['../structattribute__value.html#a439227feff9d7f55384e8780cfc2eb82',1,'attribute_value::size()']]],
   ['size_5fof_5ftoken',['size_of_token',['../json__helper_8c.html#ad4898e4f15a1878204473e0f79e4e94f',1,'json_helper.c']]],
   ['sockfd',['sockfd',['../structauth__ctx__t.html#a6b743e3e283f5cfee16e7ba01d5b366c',1,'auth_ctx_t']]],

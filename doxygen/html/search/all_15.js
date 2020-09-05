@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['u',['u',['../symbols_8h.html#a1f9aca42e2010bb82488684dee1a66ea',1,'u():&#160;symbols.h'],['../symbols_8h.html#affc9cbf86b78292bdb405361761c47f5',1,'U():&#160;symbols.h']]],
+  ['u',['U',['../symbols_8h.html#affc9cbf86b78292bdb405361761c47f5',1,'U():&#160;symbols.h'],['../symbols_8h.html#a1f9aca42e2010bb82488684dee1a66ea',1,'u():&#160;symbols.h']]],
   ['undefined',['UNDEFINED',['../pdp_8h.html#a40edf8b2e3ddde4f654a272d06bb6d9ea605159e8a4c32319fd69b5d151369d93',1,'pdp.h']]],
   ['unknown',['UNKNOWN',['../pdp_8h.html#a85bf71f7d38cc451799efe4838f36313a6ce26a62afab55d7606ad4e92428b30c',1,'pdp.h']]],
   ['uri',['uri',['../structpip__plugin__args__t.html#a0bf0fd40ab3731f540774726367da75a',1,'pip_plugin_args_t']]],
@@ -17,7 +17,6 @@ var searchData=
   ['user_5finit',['user_init',['../user_8c.html#a06fa49561b26010be99db938afeae09c',1,'user_init():&#160;user.c'],['../user_8h.html#a06fa49561b26010be99db938afeae09c',1,'user_init():&#160;user.c']]],
   ['user_5fmanagement_5finsert_5fquery',['USER_MANAGEMENT_INSERT_QUERY',['../user__implementation_8c.html#a90bfcac74650309194a2a50617f54f5d',1,'user_implementation.c']]],
   ['user_5fput_5fobj',['user_put_obj',['../user_8c.html#a8d9e5b23cb560b6e20cf02bfe34b603e',1,'user_put_obj(const char *user_object, char *json_response):&#160;user.c'],['../user_8h.html#a8d9e5b23cb560b6e20cf02bfe34b603e',1,'user_put_obj(const char *user_object, char *json_response):&#160;user.c']]],
-  ['user_5ftest_2ec',['user_test.c',['../user__test_8c.html',1,'']]],
   ['userimplementation_5fclear_5fall_5fcb',['userimplementation_clear_all_cb',['../user__implementation_8c.html#affcf8263cc975a37f80a01ee8bce85c4',1,'userimplementation_clear_all_cb(char *response):&#160;user_implementation.c'],['../user__implementation_8h.html#affcf8263cc975a37f80a01ee8bce85c4',1,'userimplementation_clear_all_cb(char *response):&#160;user_implementation.c']]],
   ['userimplementation_5fdeinit_5fcb',['userimplementation_deinit_cb',['../user__implementation_8c.html#a78591277356438c23ff73bc249517d29',1,'userimplementation_deinit_cb():&#160;user_implementation.c'],['../user__implementation_8h.html#a78591277356438c23ff73bc249517d29',1,'userimplementation_deinit_cb():&#160;user_implementation.c']]],
   ['userimplementation_5fget_5fall_5fcb',['userimplementation_get_all_cb',['../user__implementation_8c.html#a6069e25cc95a04b96fa70f94159ba420',1,'userimplementation_get_all_cb(char *response):&#160;user_implementation.c'],['../user__implementation_8h.html#a6069e25cc95a04b96fa70f94159ba420',1,'userimplementation_get_all_cb(char *response):&#160;user_implementation.c']]],

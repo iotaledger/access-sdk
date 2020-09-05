@@ -1,6 +1,5 @@
 var dir_aa6b617174339cd7b605f9fc0c8b2e9d =
 [
-    [ "tests", "dir_00a9c7a97e4b8a4862e625149e899fd9.html", "dir_00a9c7a97e4b8a4862e625149e899fd9" ],
     [ "client.c", "client_8c.html", "client_8c" ],
     [ "client.h", "client_8h.html", "client_8h" ],
     [ "server.c", "server_8c.html", "server_8c" ],

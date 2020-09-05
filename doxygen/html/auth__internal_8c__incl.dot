@@ -4,7 +4,7 @@ digraph "auth/eddsa/auth_internal.c"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node0 [label="auth/eddsa/auth_internal.c",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="auth_internal.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$eddsa_2auth__internal_8h.html"];
+  Node1 [label="auth_internal.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth__internal_8h.html"];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="string.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

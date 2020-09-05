@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['k',['k',['../structauth__struct.html#a6d21d2bfbe93c9234ab12c96498a2edd',1,'auth_struct']]],
-  ['k_5flen',['k_len',['../structauth__struct.html#accf6a22d87791e2c57e27c250a6e32e4',1,'auth_struct']]],
-  ['key_5fclient_5fserver',['key_client_server',['../structauth__struct.html#a11fd28aaa4c1bd7701a5661380fe8177',1,'auth_struct']]],
-  ['key_5fserver_5fclient',['key_server_client',['../structauth__struct.html#a1e94f2a87fa72547be1ba72802b1fb65',1,'auth_struct']]]
+  ['len',['len',['../structpap__plugin__len__args__t.html#afed088663f8704004425cdae2120b9b3',1,'pap_plugin_len_args_t::len()'],['../structpip__plugin__string__arg__t.html#a7360b55975153b822efc5217b7734e6a',1,'pip_plugin_string_arg_t::len()']]]
 ];

@@ -12,7 +12,5 @@ var searchData=
   ['validator_5fpolicy_5fdocgoc_5flevel_5fe',['validator_policy_docgoc_level_e',['../validator_8h.html#adb6fd0b3f791bf175dc2abd16f47e9a3',1,'validator.h']]],
   ['validator_5fpolicy_5ffirst_5flevel_5fe',['validator_policy_first_level_e',['../validator_8h.html#a3a6d915431b3d3e8598e22f4fe5f04d3',1,'validator.h']]],
   ['validator_5freport_5ft',['validator_report_t',['../structvalidator__report__t.html',1,'']]],
-  ['value',['value',['../structoptimizer__log__var__t.html#af91cc7b105fc4be13b519f95499e404a',1,'optimizer_log_var_t::value()'],['../structattribute__value.html#a0f61d63b009d0880a89c843bd50d8d76',1,'attribute_value::value()'],['../structpdp__action__t.html#a4e9aec275e566b978a3ccb4e043d8c61',1,'pdp_action_t::value()'],['../structpip__attribute__object__t.html#a544d8f55cf64329d120abc656adc5aa1',1,'pip_attribute_object_t::value()']]],
-  ['vc',['vc',['../structauth__struct.html#a35ded70edff22c25c74a6591321927ba',1,'auth_struct']]],
-  ['vs',['vs',['../structauth__struct.html#aeafb3025d83caaec5fb4f94e15d7767f',1,'auth_struct']]]
+  ['value',['value',['../structoptimizer__log__var__t.html#af91cc7b105fc4be13b519f95499e404a',1,'optimizer_log_var_t::value()'],['../structattribute__value.html#a0f61d63b009d0880a89c843bd50d8d76',1,'attribute_value::value()'],['../structpdp__action__t.html#a4e9aec275e566b978a3ccb4e043d8c61',1,'pdp_action_t::value()'],['../structpip__attribute__object__t.html#a544d8f55cf64329d120abc656adc5aa1',1,'pip_attribute_object_t::value()']]]
 ];

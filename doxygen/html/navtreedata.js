@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "Access Core SDK", "index.html", [
+  [ "IOTA Access SDK", "index.html", [
     [ "Auth API", "md_auth__r_e_a_d_m_e.html", null ],
     [ "Plugin API", "md_plugin__r_e_a_d_m_e.html", null ],
     [ "Policy API", "md_policy__r_e_a_d_m_e.html", null ],
@@ -21,7 +21,7 @@ var NAVTREE =
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", "globals_defs" ]
+        [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -30,10 +30,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"globals_defs_h.html",
-"pap__logger_8c.html#a4970139692c52c4b603c5469b9e9c3fd",
-"rsa_2auth__helper_8h.html#a68f25a25a8ba1692529df109cb7517e0a696ea2b81d622a2bfc3ddaba745dbd00",
-"structvalidator__report__t.html#a3944f7695e0d3a0bfd30a00c423eec48"
+"json__helper_8c.html#a18ecd6c8d9055dbd0ab6892230f42117",
+"pdp_8h.html#ab70d538c7a075582836086898e3a6d60a65604e7b50808b7fef84fee473c34053",
+"symbols_8h.html#a3d866bcc3e6368bb95201907177c539b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

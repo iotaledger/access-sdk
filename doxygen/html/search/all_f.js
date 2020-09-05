@@ -39,6 +39,5 @@ var searchData=
   ['optimizer_5freturn_5fe',['optimizer_return_e',['../optimizer_8h.html#a326484956bfb2e9ec748058793a5a5a1',1,'optimizer.h']]],
   ['optimizer_5fsymbol_5ft',['optimizer_symbol_t',['../optimizer_8h.html#af1efecad26989a87d8302bb0f0d26e69',1,'optimizer.h']]],
   ['optimizer_5ftype_5fof_5ffunc_5felem_5fe',['optimizer_type_of_func_elem_e',['../optimizer_8h.html#ad7806bfbfcf077c68c617c70b3a5d40e',1,'optimizer.h']]],
-  ['or',['OR',['../pdp_8h.html#a40edf8b2e3ddde4f654a272d06bb6d9ea96727447c0ad447987df1c6415aef074',1,'pdp.h']]],
-  ['out_5fpacket_5fcount',['out_packet_count',['../structauth__struct.html#aeb15ffbf422489adca80b89745683abf',1,'auth_struct']]]
+  ['or',['OR',['../pdp_8h.html#a40edf8b2e3ddde4f654a272d06bb6d9ea96727447c0ad447987df1c6415aef074',1,'pdp.h']]]
 ];

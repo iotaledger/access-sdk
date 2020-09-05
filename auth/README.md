@@ -1,4 +1,4 @@
-# Access Authentication API
+# Auth API
 
 ## EdDSA
 - **key exchange**: [NIST SP 800-186](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-186-draft.pdf) Elliptic Curve Diffie-Hellman (ECDH) X25519.

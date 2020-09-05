@@ -1,9 +1,0 @@
-digraph "auth/tcpip/tests" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  subgraph clusterdir_aa6b617174339cd7b605f9fc0c8b2e9d {
-    graph [ bgcolor="#ddddee", pencolor="black", label="tcpip" fontname="Helvetica", fontsize="10", URL="dir_aa6b617174339cd7b605f9fc0c8b2e9d.html"]
-  dir_00a9c7a97e4b8a4862e625149e899fd9 [shape=box, label="tests", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_00a9c7a97e4b8a4862e625149e899fd9.html"];
-  }
-}
