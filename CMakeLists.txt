@@ -39,12 +39,6 @@ if(NOT DEFINED POLICY_FORMAT)
   #set(POLICY_FORMAT protobuf-c CHACE STRING "Policy Format Choice")
 endif()
 
-# default AUTH_FLAVOUR
-if(NOT DEFINED AUTH_FLAVOUR)
-  set(AUTH_FLAVOUR eddsa CACHE STRING "auth flavour choice")
-  #set(AUTH_FLAVOUR rsa CACHE STRING "auth flavour choice")
-endif()
-
 if(${CMAKE_VERSION} VERSION_LESS 3.14)
     macro(FetchContent_MakeAvailable NAME)
         FetchContent_GetProperties(${NAME})

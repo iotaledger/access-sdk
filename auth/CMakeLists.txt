@@ -20,7 +20,7 @@
 cmake_minimum_required(VERSION 3.11)
 
 add_subdirectory(tcpip)
-add_subdirectory(${AUTH_FLAVOUR})
+add_subdirectory(eddsa)
 
 # libs in the sandbox
 link_directories("${CMAKE_INSTALL_PREFIX}/lib")
@@ -33,13 +33,8 @@ set(libs
   ${policy_format}
   common
   ccan
+  eddsa
 )
-
-if(AUTH_FLAVOUR STREQUAL rsa)
-  list(APPEND libs ssl rsa)
-elseif(AUTH_FLAVOUR STREQUAL eddsa)
-  list(APPEND libs sodium cryptography eddsa)
-endif()
 
 set(sources
   auth.c
@@ -48,7 +43,7 @@ set(sources
 set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/tcpip
-  ${CMAKE_CURRENT_SOURCE_DIR}/${AUTH_FLAVOUR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/eddsa
   ${PROJECT_BINARY_DIR}/include
   ${CMAKE_SOURCE_DIR}/policy/encoding/json/
   ${CMAKE_SOURCE_DIR}/ccan

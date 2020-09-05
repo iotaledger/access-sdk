@@ -37,7 +37,6 @@ set(include_dirs
 add_library(eddsa STATIC ${sources})
 target_include_directories(eddsa PUBLIC ${include_dirs})
 target_link_directories(eddsa PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/lib)
-#target_link_libraries(eddsa PRIVATE sodium ${POLICY_FORMAT} tcpip common)
-target_link_libraries(eddsa PRIVATE sodium cryptography ${POLICY_FORMAT} tcpip common)
+target_link_libraries(eddsa PRIVATE sodium ${POLICY_FORMAT} tcpip common)
 
 install(TARGETS eddsa DESTINATION lib)

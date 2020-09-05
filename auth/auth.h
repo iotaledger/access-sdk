@@ -66,7 +66,7 @@
 /**
  * @brief declaration of auth_struct typedef.
  *
- * actual definition of this struct happens at auth/${AUTH_FLAVOUR}/auth_internal.h
+ * actual definition of this struct happens at auth/eddsa/auth_internal.h
  */
 typedef struct auth_struct auth_struct_t;
 
@@ -80,7 +80,7 @@ typedef struct {
   /*@}*/
 
   /*@{*/
-  auth_struct_t *internal; /**< internal data (flavour dependent) */
+  auth_struct_t *internal; /**< internal data (eddsa dependent) */
     uint8_t sockfd; /**< socket file descriptor */
   /*@}*/
 
