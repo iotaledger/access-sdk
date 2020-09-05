@@ -23,14 +23,16 @@ add_library(auth_cmd ${sources})
 add_dependencies(auth_cmd cjson pdp)
 
 set(include
-  ${CMAKE_SOURCE_DIR}/policy/pdp/
+  ${PROJECT_SOURCE_DIR}/policy/pdp/
+  ${PROJECT_SOURCE_DIR}/policy/pap/
+  ${PROJECT_SOURCE_DIR}/policy/pap/user/
+  ${PROJECT_SOURCE_DIR}/policy/pap/user/db
+  ${PROJECT_SOURCE_DIR}/plugin
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${cjson_SOURCE_DIR}
 )
 
-message(STATUS testt)
-
-target_include_directories(auth_cmd PUBLIC  )
+target_include_directories(auth_cmd PUBLIC ${include})
 target_link_directories(auth_cmd PUBLIC ${iota_common_BINARY_DIR}/lib)
 target_link_libraries(auth_cmd PRIVATE cjson)
 

@@ -736,7 +736,7 @@ pap_error_e pap_get_subjects_list_of_actions(char *subject_id, int subject_id_le
 
       memcpy(action_elem->action, policy.policy_object.policy_object + tokens[action].start,
              tokens[action].end - tokens[action].start);
-      memcpy(action_elem->policy_id_str, pol_id_str, PAP_POL_ID_MAX_LEN * 2);
+      memcpy(action_elem->pol_id, pol_id_str, PAP_POL_ID_MAX_LEN * 2);
       memcpy(action_elem->is_available.cost, policy.policy_object.cost, strlen(policy.policy_object.cost));
       action_elem->next = NULL;
 

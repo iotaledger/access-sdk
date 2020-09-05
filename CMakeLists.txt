@@ -49,11 +49,11 @@ if(${CMAKE_VERSION} VERSION_LESS 3.14)
     endmacro()
 endif()
 
+include(cmake/cjson.cmake)
 include(cmake/iota_common.cmake)
 include(cmake/sqlite3.cmake)
 include(cmake/sodium.cmake)
 include(cmake/base58.cmake)
-include(cmake/cjson.cmake)
 
 if(auth_flavour STREQUAL rsa)
   include(cmake/openssl.cmake)

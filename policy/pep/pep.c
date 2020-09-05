@@ -238,7 +238,6 @@ bool pep_register_plugin(plugin_t *plugin) {
 
 bool pep_request_access(char *request, void *response) {
   char action_value[PEP_ACTION_LEN];
-  // TODO: obligations should be linked list of the elements of the 'obligation_s' structure type
   // char obligation[PDP_OBLIGATION_LEN];
   char tangle_address[PEP_IOTA_ADDR_LEN];
   char *norm_request = NULL;
