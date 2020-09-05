@@ -35,12 +35,24 @@
 #ifndef AUTH_H
 #define AUTH_H
 
-#define MSGLEN 1024
-#define CIPHERLEN (crypto_box_MACBYTES + MSGLEN)
-#define SIGCIPHERLEN (crypto_sign_BYTES + CIPHERLEN)
-
 #include <stdio.h>
 #include <stdint.h>
+
+/**
+ * @brief fixed message size (ToDo: https://github.com/iotaledger/access-sdk/issues/15)
+ */
+#define MSGLEN 1024
+
+/**
+ * @brief fixed cipher size (ToDo: https://github.com/iotaledger/access-sdk/issues/15)
+ */
+#define CIPHERLEN (crypto_box_MACBYTES + MSGLEN)
+
+/**
+ * @brief fixed signed cipher size (ToDo: https://github.com/iotaledger/access-sdk/issues/15)
+ */
+#define SIGCIPHERLEN (crypto_sign_BYTES + CIPHERLEN)
+
 /**
  * @brief no authentication error
  */
@@ -51,65 +63,12 @@
  */
 #define AUTH_ERROR -1
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/**
- * @brief write to socket
- *
- * @param sockfd pointer to socker file descriptor
- * @param buffer with data to be written
- * @param len length of data
- *
- * @return On success, the number of bytes written is returned (zero indicates nothing was written). On error, -1 is returned, and errno is set appropriately.
- */
-ssize_t write_socket(int *sockfd, void *data, unsigned short len);
-
-/**
- * @brief read from socket
- *
- * @param sockfd pointer to socker file descriptor
- * @param buffer with for data to be read
- * @param len length of data
- *
- * @return On success, the number of bytes read is returned (zero indicates end of file), and the file position is advanced by this number. On error, -1 is returned, and errno is set appropriately. In this case, it is left unspecified whether the file position (if any) changes.
- */
-ssize_t read_socket(int *sockfd, void *data, unsigned short len);
-
-/**
- * @brief verify key
- * @param key
- * @param len
- * @return
- */
-int verify(unsigned char *key, int len);
-
-/**
- * @brief generic function signature type for socket read/write
- *
- * it is used on the definition of auth_ctx_t to declare f_read and f_write function members.
- *
- * @param sockfd pointer to socket file descriptor.
- * @param data data to be written or read.
- * @param len length of the data.
- */
-typedef ssize_t f_auth_socket_t(int *sockfd, void *data, unsigned short len);
-
-/**
- * @brief generic function signature type for key exchange verification
- *
- * @param
- */
-typedef int f_auth_key_verify(unsigned char *, int);
-
 /**
  * @brief declaration of auth_struct typedef.
  *
- * actual definition of this struct happens at auth/flavours/${auth_flavour}/auth_internal.h
+ * actual definition of this struct happens at auth/${AUTH_FLAVOUR}/auth_internal.h
  */
 typedef struct auth_struct auth_struct_t;
-
 
 /**
  * @struct auth_ctx_t
@@ -117,16 +76,16 @@ typedef struct auth_struct auth_struct_t;
  */
 typedef struct {
   /*@{*/
-  int type;
+  uint8_t type;
   /*@}*/
 
   /*@{*/
-  auth_struct_t *internal; /**< internal data */
-  int sockfd; /**< socket file descriptor */
+  auth_struct_t *internal; /**< internal data (flavour dependent) */
+    uint8_t sockfd; /**< socket file descriptor */
   /*@}*/
 
   /*@{*/
-  int status; /**< status of authenticated session */
+  uint8_t status; /**< status of authenticated session */
   /*@}*/
 } auth_ctx_t;
 
@@ -140,7 +99,7 @@ typedef struct {
  *
  * @return AUTH_OK or AUTH_ERROR
  */
-int auth_init_client(auth_ctx_t *session, int *sockfd);
+uint8_t auth_init_client(auth_ctx_t *session, uint8_t *sockfd);
 
 /**
  * @brief authenticator server intiializer function
@@ -152,7 +111,7 @@ int auth_init_client(auth_ctx_t *session, int *sockfd);
  *
  * @return AUTH_OR or AUTH_ERROR
  */
-int auth_init_server(auth_ctx_t *session, int *sockfd);
+uint8_t auth_init_server(auth_ctx_t *session, uint8_t *sockfd);
 
 /**
  * @brief performs actual authentication
@@ -164,30 +123,79 @@ int auth_init_server(auth_ctx_t *session, int *sockfd);
  *
  * @return AUTH_OR or AUTH_ERROR
  */
-int auth_authenticate(auth_ctx_t *session, uint8_t sk[]);
-
-uint8_t auth_encrypt(auth_ctx_t *session, uint8_t ed25516_sk[], uint8_t ciphertext[], const uint8_t *data);
-
-uint8_t auth_decrypt(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *data, const uint8_t *ciphertext);
-
-uint8_t auth_sign(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *sm, size_t *smlen, uint8_t *m, size_t mlen);
-
-uint8_t auth_verify(auth_ctx_t *session, uint8_t *m, size_t *mlen, uint8_t *sm, size_t smlen);
-
-uint8_t auth_send(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *m, size_t mlen);
-
-uint8_t auth_receive(auth_ctx_t *session, uint8_t ed25519_sk[], uint8_t *m, size_t mlen);
+uint8_t auth_authenticate(auth_ctx_t *session, uint8_t sk[]);
 
 /**
- * @brief release authenticated session
- *
- * releases authenticated session and unbinds socket
+ * @brief generate cipher from message m
+ * @param session pointer to authenticated session struct
+ * @param sk array with secret key (ed25519 or RSA)
+ * @param cipher array with cipher (output)
+ * @param m pointer with message (input)
+ * @return AUTH_OR or AUTH_ERROR
+ */
+uint8_t auth_encrypt(auth_ctx_t *session, uint8_t sk[], uint8_t cipher[], const uint8_t *m);
+
+/**
+ * @brief generate message m from cipher
+ * @param session pointer to authenticated session struct
+ * @param sk array with secret key (ed25519 or RSA)
+ * @param m pointer with message (output)
+ * @param cipher array with cipher (input)
+ * @return AUTH_OR or AUTH_ERROR
+ */
+uint8_t auth_decrypt(auth_ctx_t *session, uint8_t sk[], uint8_t *m, const uint8_t *cipher);
+
+/**
+ * @brief sign message m
+ * @param session pointer to authenticated session struct
+ * @param sk array with secret key (ed25519 or RSA)
+ * @param sm pointer with signed message (output)
+ * @param smlen pointer with length of sm (output)
+ * @param m pointer with message (input)
+ * @param mlen pointer with length of m (input)
+ * @return AUTH_OR or AUTH_ERROR
+ */
+uint8_t auth_sign(auth_ctx_t *session, uint8_t sk[], uint8_t *sm, size_t *smlen, uint8_t *m, size_t mlen);
+
+/**
+ * @brief verify signature
+ * @param session pointer to authenticated session struct
+ * @param m pointer with message (output)
+ * @param mlen pointer with length of m (output)
+ * @param sm pointer with signed message (input)
+ * @param smlen pointer with length of sm (input)
+ * @return AUTH_OR or AUTH_ERROR
+ */
+uint8_t auth_verify(auth_ctx_t *session, uint8_t *m, size_t *mlen, uint8_t *sm, size_t smlen);
+
+/**
+ * @brief send message over authenticated session
+ * @param session pointer to authenticated session struct
+ * @param sk array with secret key (ed25519 or RSA)
+ * @param m pointer with message (input)
+ * @param mlen pointer with length of m (input)
+ * @return AUTH_OR or AUTH_ERROR
+ */
+uint8_t auth_send(auth_ctx_t *session, uint8_t sk[], uint8_t *m, size_t mlen);
+
+/**
+ * @brief receive message over authenticated session
+ * @param session pointer to authenticated session struct
+ * @param sk array with secret key (ed25519 or RSA)
+ * @param m pointer with message (input)
+ * @param mlen pointer with length of m (input)
+ * @return AUTH_OR or AUTH_ERROR
+ */
+uint8_t auth_receive(auth_ctx_t *session, uint8_t sk[], uint8_t *m, size_t mlen);
+
+/**
+ * @brief releases authenticated session and unbinds socket
  *
  * @param session pointer to authenticator session context.
  *
  * @return AUTH_OK or AUTH_ERROR
  */
-int auth_release(auth_ctx_t *session);
+uint8_t auth_release(auth_ctx_t *session);
 
 #ifdef __cplusplus
 };
