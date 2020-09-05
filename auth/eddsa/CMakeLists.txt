@@ -27,7 +27,7 @@ set(sources
   auth_server.c
   auth_client.c
   auth_logger.c
-  auth_helper.c)
+)
 
 set(include_dirs
   ${CMAKE_SOURCE_DIR}/policy/encoding/json
