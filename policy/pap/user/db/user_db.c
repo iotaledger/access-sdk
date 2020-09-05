@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-#include "user_implementation.h"
+#include "user_db.h"
 
 #include <libfastjson/json.h>
 #include <sqlite3.h>

@@ -20,7 +20,7 @@
 #ifndef _USER_H_
 #define _USER_H_
 
-#include "user_implementation.h"
+#include "user_db.h"
 
 int user_init();
 void user_deinit();
