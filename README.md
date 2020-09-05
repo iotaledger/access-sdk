@@ -91,8 +91,6 @@ It is composed of the following pieces:
     * Policy Enforcement API
     * Policy Information API
 - [Access Authentication API](/auth/README.md)
-    * RSA Flavour
-    * EdDSA Flavour
 - [Access Plugin API](/auth/README.md)
     * Plugin API
     * Plugin Manager
