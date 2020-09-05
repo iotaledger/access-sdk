@@ -21,6 +21,7 @@ cmake_minimum_required(VERSION 3.11)
 
 add_subdirectory(tcpip)
 add_subdirectory(eddsa)
+add_subdirectory(cmd)
 
 # libs in the sandbox
 link_directories("${CMAKE_INSTALL_PREFIX}/lib")
