@@ -17,10 +17,19 @@
 # limitations under the License.
 #
 
-cmake_minimum_required(VERSION 3.11)
-
 add_subdirectory(encoding)
 add_subdirectory(pdp)
 add_subdirectory(pip)
 add_subdirectory(pap)
 add_subdirectory(pep)
+
+add_library(policy policy.c)
+target_include_directories(policy PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${PROJECT_BINARY_DIR}/include)
+target_link_libraries(policy PUBLIC sodium)
+
+install(TARGETS policy DESTINATION lib)
+install(FILES policy.h DESTINATION include)
+
+if(TEST)
+    add_subdirectory(tests)
+endif()
