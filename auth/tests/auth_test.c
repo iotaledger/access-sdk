@@ -33,9 +33,6 @@
 #include "auth_client_test.h"
 #include "auth_server_test.h"
 
-
-
-
 int main(int argc, char **argv) {
 
   logger_helper_init(LOGGER_INFO);
