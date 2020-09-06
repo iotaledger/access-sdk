@@ -80,10 +80,10 @@ typedef struct attribute_value {
 } pdp_attribute_value_t;
 
 typedef struct {
+  unsigned long action_name;
   char pol_id[2 * PDP_POL_ID_MAX_LEN + 1];
   unsigned long start_time;
   unsigned long stop_time;
-  unsigned long tx_value;
   char* tx_addr;
   char* tx_hash;
   size_t tx_hash_len;

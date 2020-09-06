@@ -112,7 +112,7 @@ static int normalize_request(char *request, int request_len, char **request_norm
 static int append_action_item_to_str(char *str, int pos, pap_action_list_t *action_item) {
   if (action_item == NULL) {
     return 0;
-  } else if (action_item->policy_id_str == NULL) {
+  } else if (action_item->pol_id == NULL) {
     return 0;
   }
 
@@ -129,7 +129,7 @@ static int append_action_item_to_str(char *str, int pos, pap_action_list_t *acti
   buffer_position += strlen("\"policy_id\":\"");
 
   // add "policy_id" value
-  memcpy(str + buffer_position, action_item->policy_id_str, PEP_POL_ID_STR_LEN);
+  memcpy(str + buffer_position, action_item->pol_id, PEP_POL_ID_STR_LEN);
   buffer_position += PEP_POL_ID_STR_LEN;
   str[buffer_position++] = '\"';
 
@@ -256,8 +256,8 @@ bool pep_request_access(char *request, void *response) {
   memset(plugin_args.obligation, 0, PEP_ACTION_LEN * sizeof(char));
 
   plugin_args.action.action_list = NULL;
-  plugin_args.action.value = action_value;
-  plugin_args.action.wallet_address = tangle_address;
+  plugin_args.action.action_name = action_value;
+  plugin_args.action.tx_addr = tangle_address;
 
   // Get normalized request
   if (normalize_request(request, strlen(request), &norm_request) == 0) {

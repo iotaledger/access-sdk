@@ -610,7 +610,7 @@ pdp_decision_e pdp_calculate_decision(char *request_norm, char *obligation, pdp_
   pap_policy_t policy;
 
   // Check input parameters
-  if (request_norm == NULL || obligation == NULL || action == NULL || action->tx_value == NULL) {
+  if (request_norm == NULL || obligation == NULL || action == NULL || action->action_name == NULL) {
     log_error(pdp_logger_id, "[%s:%d] Invalid input parameters.\n", __func__, __LINE__);
     return ret;
   }
@@ -673,7 +673,7 @@ pdp_decision_e pdp_calculate_decision(char *request_norm, char *obligation, pdp_
   // Check if any wallet action is requested
   request_balance = jsonhelper_get_value(request_norm, 0, "tx_value");
   if (request_balance != -1) {
-    action->tx_value = strtoul(request_norm + jsonhelper_get_token_start(request_balance), NULL, PDP_STRTOUL_BASE);
+    action->action_name = strtoul(request_norm + jsonhelper_get_token_start(request_balance), NULL, PDP_STRTOUL_BASE);
   }
 
   request_wallet_addr = jsonhelper_get_value(request_norm, 0, "tx_addr");
@@ -736,7 +736,7 @@ pdp_decision_e pdp_calculate_decision(char *request_norm, char *obligation, pdp_
     // Get action
     // FIXME: Should action be taken for deny case also?
     int number_of_tokens = jsonhelper_get_token_num();
-    jsonhelper_get_action(action->tx_value, policy.policy_object.policy_object, number_of_tokens);
+    jsonhelper_get_action(action->action_name, policy.policy_object.policy_object, number_of_tokens);
 
     action->start_time = 0;
     action->stop_time = 0;
