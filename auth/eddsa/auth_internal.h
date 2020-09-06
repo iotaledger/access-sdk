@@ -58,11 +58,6 @@
 #define AUTH_TYPE_CLIENT (0)
 #define AUTH_TYPE_SERVER (1)
 
-#define ID_STRING_L 6
-#define SIGNED_MESSAGE_L 96
-#define MAC_HASH_L 32
-#define HASH_OUTPUT_L 32
-
 //////////////////////////////////////////
 // Structure definitions
 //////////////////////////////////////////

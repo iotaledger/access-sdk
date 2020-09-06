@@ -17,10 +17,6 @@
 # limitations under the License.
 #
 
-cmake_minimum_required(VERSION 3.11)
-
-#include(${CMAKE_DIR}/sodium.cmake)
-
 set(sources
   auth_internal.c
   auth_client.c
