@@ -55,10 +55,6 @@ include(cmake/sqlite3.cmake)
 include(cmake/sodium.cmake)
 include(cmake/base58.cmake)
 
-if(auth_flavour STREQUAL rsa)
-  include(cmake/openssl.cmake)
-endif()
-
 # Global includes
 include_directories(
   utils/misc
