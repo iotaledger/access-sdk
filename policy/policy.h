@@ -5,9 +5,6 @@
 #ifndef POLICY_H
 #define POLICY_H
 
-#define POLICY_ID_LEN 64 // todo: verify this value
-#define POLICY_SIG_LEN 64 // todo: verify this value
-
 #define POLICY_OK 0
 #define POLICY_ERROR 1
 
@@ -65,13 +62,12 @@ typedef struct {
 typedef struct {
 
   /*@{*/
-  char policy_id[POLICY_ID_LEN]; /**< policy identifier (hash) */
-  char policy_sig[POLICY_SIG_LEN]; /**< policy signature */
+  char policy_id[crypto_generichash_BYTES + crypto_sign_BYTES]; /**< policy identifier (signed hash) */
   /*@}*/
 
   /*@{*/
-  uint8_t object_pk[crypto_sign_PUBLICKEYBYTES]; /**< object public key */
-  uint8_t subject_pk[crypto_sign_PUBLICKEYBYTES]; /**< subject public key */
+  uint8_t object_pk[crypto_sign_PUBLICKEYBYTES]; /**< object identifier (public key) */
+  uint8_t subject_pk[crypto_sign_PUBLICKEYBYTES]; /**< subject identifier (public key) */
   /*@}*/
 
   /*@{*/
