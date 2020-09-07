@@ -17,6 +17,9 @@
 # limitations under the License.
 #
 
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
+
 set(target policy_test)
 set(sources policy_test.c)
 set(libs policy)

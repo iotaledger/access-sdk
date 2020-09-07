@@ -23,7 +23,7 @@ add_subdirectory(pip)
 add_subdirectory(pap)
 add_subdirectory(pep)
 
-set(libs sodium common)
+set(libs sodium common cjson base58)
 
 add_library(policy policy.c policy_logger.c)
 add_dependencies(policy ${libs})

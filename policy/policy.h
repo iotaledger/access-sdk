@@ -9,6 +9,11 @@
 #define POLICY_ERROR 1
 
 /**
+ * @brief max length of JSON encoding
+ */
+#define POLICY_JSON_MAX_LEN 512
+
+/**
  * @brief fee enum type
  */
 typedef enum {
@@ -62,7 +67,7 @@ typedef struct {
 typedef struct {
 
   /*@{*/
-  char policy_id[crypto_generichash_blake2b_BYTES + crypto_sign_BYTES]; /**< policy identifier (signed hash) */
+  uint8_t policy_id[crypto_generichash_blake2b_BYTES + crypto_sign_BYTES]; /**< policy identifier (signed hash) */
   /*@}*/
 
   /*@{*/
@@ -98,18 +103,18 @@ uint8_t policy_verify(policy_t *pol, uint8_t pk[]);
 
 /**
  * @brief encode policy struct into JSON
- * @param pol policy_t struct
- * @param json string with JSON
+ * @param pol pointer to policy_t struct (input)
+ * @param pol_json string with JSON (output)
  * @return POLICY_OK or POLICY_ERROR
  */
-uint8_t policy_encode_json(policy_t pol, unsigned char *json);
+uint8_t policy_encode_json(policy_t *pol, unsigned char pol_json[]);
 
 /**
  * @brief decode policy struct from JSON
- * @param json string with JSON (input)
- * @param pol policy_t struct (output)
+ * @param pol_json string with JSON (input)
+ * @param pol pointer to policy_t struct (output)
  * @return POLICY_OK or POLICY_ERROR
  */
-uint8_t policy_decode_json(unsigned char *json, policy_t *pol);
+uint8_t policy_decode_json(unsigned char *pol_json, policy_t *pol);
 
 #endif //POLICY_H

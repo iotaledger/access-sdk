@@ -19,6 +19,9 @@
 
 #include <assert.h>
 #include <string.h>
+#include <stdint.h>
+
+#include "libbase58.h"
 
 #include "policy.h"
 
@@ -48,6 +51,12 @@ int main(int argc, char **argv) {
 
   // verify policy
   assert(policy_verify(pol, owner_pk) == POLICY_OK);
+
+  // encode policy to JSON
+  char pol_json[POLICY_JSON_MAX_LEN];
+  assert(policy_encode_json(pol, pol_json) == POLICY_OK);
+
+  printf("json: %s\n", pol_json);
 
   return 0;
 
