@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-cmake_minimum_required(VERSION 3.11)
-
 add_subdirectory(tcpip)
 add_subdirectory(eddsa)
 add_subdirectory(cmd)

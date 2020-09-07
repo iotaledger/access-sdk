@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-cmake_minimum_required(VERSION 3.11)
-
 set(target auth_test)
 set(sources auth_test.c)
 set(libs auth eddsa tcpip pthread)

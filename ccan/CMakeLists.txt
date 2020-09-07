@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 3.16)
-
 set(sources
   ccan/base64/base64.c
   ccan/err/err.c

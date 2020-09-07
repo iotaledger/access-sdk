@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-cmake_minimum_required(VERSION 3.11)
-
 set(sources client.c server.c tcpip.c tcpip_logger.c)
 
 add_library(tcpip ${sources})
