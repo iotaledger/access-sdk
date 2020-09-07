@@ -11,37 +11,73 @@
 #define POLICY_OK 0
 #define POLICY_ERROR 1
 
+/**
+ * @brief fee enum type
+ */
 typedef enum {
-  NULL_FEE,
-  ONE_TIME_FEE,
-  PER_USE_FEE
+
+  /*@{*/
+  NULL_FEE, /**< no fee */
+  ONE_TIME_FEE, /**< one time fee */
+  PER_USE_FEE /**< per use fee */
+  /*@}*/
+
 } fee_t;
 
+/**
+ * @brief obligation struct type
+ */
 typedef struct {
-  char *obligation_id;
+
+  /*@{*/
+  char *obligation_id; /**< obligation identifier */
+  void *attributes; /**< obligation attributes */
+  /*@}*/
+
 } obligation_t;
 
+/**
+ * @brief action struct type
+ */
 typedef struct {
-  char *action_id;
 
-  fee_t fee;
-  unsigned long tx_value;
-  char *tx_addr;
-  char *tx_hash;
-  size_t tx_hash_len;
+  /*@{*/
+  char *action_id; /**< action identifier */
+  /*@}*/
 
-  void *attributes;
-  obligation_t *obligations;
+  /*@{*/
+  fee_t fee; /**< fee type */
+  unsigned long tx_value; /**< (optional) fee tx value */
+  char *tx_addr; /**< (optional) fee tx address */
+  char *tx_hash; /**< (optional) fee tx hash */
+  /*@}*/
+
+  /*@{*/
+  void *attributes; /**< (optional) attribute list */
+  obligation_t *obligations; /**< (optional) obligation list */
+  /*@}*/
+
 } action_t;
 
+/**
+ * @brief policy struct type
+ */
 typedef struct {
-  char policy_id[POLICY_ID_LEN];
-  char policy_sig[POLICY_SIG_LEN];
 
-  uint8_t object_pk[crypto_sign_PUBLICKEYBYTES];
-  uint8_t subject_pk[crypto_sign_PUBLICKEYBYTES];
+  /*@{*/
+  char policy_id[POLICY_ID_LEN]; /**< policy identifier (hash) */
+  char policy_sig[POLICY_SIG_LEN]; /**< policy signature */
+  /*@}*/
 
-  action_t *actions;
+  /*@{*/
+  uint8_t object_pk[crypto_sign_PUBLICKEYBYTES]; /**< object public key */
+  uint8_t subject_pk[crypto_sign_PUBLICKEYBYTES]; /**< subject public key */
+  /*@}*/
+
+  /*@{*/
+  action_t *actions; /**< action list */
+  /*@}*/
+
 } policy_t;
 
 #endif //POLICY_H
