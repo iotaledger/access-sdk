@@ -62,7 +62,7 @@ typedef struct {
 typedef struct {
 
   /*@{*/
-  char policy_id[crypto_generichash_BYTES + crypto_sign_BYTES]; /**< policy identifier (signed hash) */
+  char policy_id[crypto_generichash_blake2b_BYTES + crypto_sign_BYTES]; /**< policy identifier (signed hash) */
   /*@}*/
 
   /*@{*/
@@ -75,5 +75,41 @@ typedef struct {
   /*@}*/
 
 } policy_t;
+
+/**
+ * @brief sign policy
+ *
+ * warning: for security reasons, the secret key is erased from memory before this function returs.
+ *
+ * @param pol policy_t struct
+ * @param sk signer secret key
+ * @return POLICY_OK or POLICY_ERROR
+ */
+uint8_t policy_sign(policy_t *pol, uint8_t sk[]);
+
+/**
+ * @brief verify policy signature
+ *
+ * @param pol policy_t struct
+ * @param pk signer public key
+ * @return POLICY_OK or POLICY_ERROR
+ */
+uint8_t policy_verify(policy_t *pol, uint8_t pk[]);
+
+/**
+ * @brief encode policy struct into JSON
+ * @param pol policy_t struct
+ * @param json string with JSON
+ * @return POLICY_OK or POLICY_ERROR
+ */
+uint8_t policy_encode_json(policy_t pol, unsigned char *json);
+
+/**
+ * @brief decode policy struct from JSON
+ * @param json string with JSON (input)
+ * @param pol policy_t struct (output)
+ * @return POLICY_OK or POLICY_ERROR
+ */
+uint8_t policy_decode_json(unsigned char *json, policy_t *pol);
 
 #endif //POLICY_H

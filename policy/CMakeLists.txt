@@ -23,9 +23,14 @@ add_subdirectory(pip)
 add_subdirectory(pap)
 add_subdirectory(pep)
 
-add_library(policy policy.c)
+set(libs sodium common)
+
+add_library(policy policy.c policy_logger.c)
+add_dependencies(policy ${libs})
+
+target_link_directories(policy PUBLIC ${CMAKE_INSTALL_PREFIX}/lib)
 target_include_directories(policy PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${PROJECT_BINARY_DIR}/include)
-target_link_libraries(policy PUBLIC sodium)
+target_link_libraries(policy PUBLIC ${libs})
 
 install(TARGETS policy DESTINATION lib)
 install(FILES policy.h DESTINATION include)
