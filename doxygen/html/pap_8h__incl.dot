@@ -14,5 +14,5 @@ digraph "policy/pap/pap.h"
   Node0 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node5 [label="user.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$user_8h.html"];
   Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="user_implementation.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$user__implementation_8h.html"];
+  Node6 [label="user_db.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$user__db_8h.html"];
 }

@@ -16,8 +16,4 @@ digraph "auth/auth.h"
   Node8 [label="auth/eddsa/auth_server.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth__server_8c.html"];
   Node5 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node9 [label="auth/eddsa/auth_utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth__utils_8h.html"];
-  Node3 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node10 [label="auth/eddsa/auth_helper.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth__helper_8h.html"];
-  Node10 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node11 [label="auth/eddsa/auth_helper.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth__helper_8c.html"];
 }

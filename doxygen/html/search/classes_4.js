@@ -15,5 +15,6 @@ var searchData=
   ['pip_5fplugin_5fstring_5farg_5ft',['pip_plugin_string_arg_t',['../structpip__plugin__string__arg__t.html',1,'']]],
   ['plugin_5f',['plugin_',['../structplugin__.html',1,'']]],
   ['plugin_5fmanager_5ft',['plugin_manager_t',['../structplugin__manager__t.html',1,'']]],
-  ['policy_5fid_5flist_5f',['policy_id_list_',['../structpolicy__id__list__.html',1,'']]]
+  ['policy_5fid_5flist_5f',['policy_id_list_',['../structpolicy__id__list__.html',1,'']]],
+  ['policy_5ft',['policy_t',['../structpolicy__t.html',1,'']]]
 ];

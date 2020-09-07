@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x25519_5fpk',['x25519_pk',['../structauth__struct.html#a0e92ffd9fb435f865019e962c00966be',1,'auth_struct']]]
+  ['wallet_5faddress',['wallet_address',['../structpap__policy__value__t.html#a0808cc37e17577272a84f8adf32cfb48',1,'pap_policy_value_t']]]
 ];

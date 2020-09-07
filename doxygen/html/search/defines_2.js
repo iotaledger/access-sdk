@@ -1,7 +1,7 @@
 var searchData=
 [
   ['b',['B',['../symbols_8h.html#a111da81ae5883147168bbb8366377b10',1,'B():&#160;symbols.h'],['../symbols_8h.html#ab2d05693952610f937e5acb3c4a8fa1b',1,'b():&#160;symbols.h']]],
-  ['bc_5fhostname_5flen',['BC_HOSTNAME_LEN',['../user__implementation_8c.html#af1cc5f2f1022cfad1a961afd1b635c30',1,'user_implementation.c']]],
+  ['bc_5fhostname_5flen',['BC_HOSTNAME_LEN',['../user__db_8c.html#af1cc5f2f1022cfad1a961afd1b635c30',1,'user_db.c']]],
   ['boldblack',['BOLDBLACK',['../auth__debug_8h.html#aef2fe95894117165b29036718221979f',1,'auth_debug.h']]],
   ['boldblue',['BOLDBLUE',['../auth__debug_8h.html#a11e77c19555cbd15bcc744ff36a18635',1,'auth_debug.h']]],
   ['boldcyan',['BOLDCYAN',['../auth__debug_8h.html#ae87af5e6363eb1913b17f24dcb60a22d',1,'auth_debug.h']]],

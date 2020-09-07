@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['wallet_5faddress',['wallet_address',['../structpap__policy__value__t.html#a0808cc37e17577272a84f8adf32cfb48',1,'pap_policy_value_t::wallet_address()'],['../structpdp__action__t.html#a0953bb963182e341d847373e037ca6aa',1,'pdp_action_t::wallet_address()']]]
+  ['valid_5fjson',['valid_json',['../structvalidator__report__t.html#ad400b8eddda1d263857ae57e494808b2',1,'validator_report_t']]],
+  ['value',['value',['../structoptimizer__log__var__t.html#af91cc7b105fc4be13b519f95499e404a',1,'optimizer_log_var_t::value()'],['../structattribute__value.html#a0f61d63b009d0880a89c843bd50d8d76',1,'attribute_value::value()'],['../structpip__attribute__object__t.html#a544d8f55cf64329d120abc656adc5aa1',1,'pip_attribute_object_t::value()']]]
 ];

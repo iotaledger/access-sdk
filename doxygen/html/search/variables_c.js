@@ -1,9 +1,16 @@
 var searchData=
 [
-  ['tcpip_5flogger_5fid',['tcpip_logger_id',['../tcpip__logger_8c.html#a1dda38dd9e8cd3de030efeac65159fe3',1,'tcpip_logger_id():&#160;tcpip_logger.c'],['../tcpip__logger_8h.html#a1dda38dd9e8cd3de030efeac65159fe3',1,'tcpip_logger_id():&#160;tcpip_logger.c']]],
-  ['toknext',['toknext',['../structjsmn__parser.html#a07a43834d3e063cab9e9a69b37dc55b8',1,'jsmn_parser']]],
-  ['toksuper',['toksuper',['../structjsmn__parser.html#a81bf640a522fb6791889aac12f71f8db',1,'jsmn_parser']]],
-  ['transaction_5fhash',['transaction_hash',['../structpdp__action__t.html#a097e50dbf44ce0b6432b9566c79a51e3',1,'pdp_action_t']]],
-  ['transaction_5fhash_5flen',['transaction_hash_len',['../structpdp__action__t.html#a6b237adf1a74a6bc1fb635949a81f373',1,'pdp_action_t']]],
-  ['type',['type',['../structauth__ctx__t.html#a1d127017fb298b889f4ba24752d08b8e',1,'auth_ctx_t::type()'],['../structauth__struct.html#ac765329451135abec74c45e1897abf26',1,'auth_struct::type()'],['../structjsmntok.html#a7def41ebc3980f6e4526819b42c2721f',1,'jsmntok::type()'],['../structoptimizer__log__var__t.html#aa7790b98457346a1d7a22d32cd56323a',1,'optimizer_log_var_t::type()'],['../structattribute__value.html#a7c483835d9d9aab152eb64ee6bedd020',1,'attribute_value::type()'],['../structpip__attribute__object__t.html#af4a3d72fff14e69cef4d0be7fe4a60ff',1,'pip_attribute_object_t::type()']]]
+  ['signature',['signature',['../structpap__policy__id__signature__t.html#ab1720718c7697829827785bd23d9466e',1,'pap_policy_id_signature_t']]],
+  ['signature_5falgorithm',['signature_algorithm',['../structpap__policy__id__signature__t.html#aac09ba233ac60a12582e9ea902484922',1,'pap_policy_id_signature_t']]],
+  ['size',['size',['../structjsmntok.html#a439227feff9d7f55384e8780cfc2eb82',1,'jsmntok::size()'],['../structattribute__value.html#a439227feff9d7f55384e8780cfc2eb82',1,'attribute_value::size()']]],
+  ['sockfd',['sockfd',['../structauth__ctx__t.html#a6b743e3e283f5cfee16e7ba01d5b366c',1,'auth_ctx_t']]],
+  ['start',['start',['../structjsmntok.html#a37722a150250e2a5a98e5e0d11e53449',1,'jsmntok']]],
+  ['start_5ftime',['start_time',['../structpdp__action__t.html#a07795b64998e93a085d14a540fbee91c',1,'pdp_action_t']]],
+  ['status',['status',['../structauth__ctx__t.html#ade818037fd6c985038ff29656089758d',1,'auth_ctx_t']]],
+  ['stop_5ftime',['stop_time',['../structpdp__action__t.html#a327238f4143df5dad87fa44c1e82ec06',1,'pdp_action_t']]],
+  ['string',['string',['../structpip__plugin__string__arg__t.html#aed1cfb225a5fb77461e7972691e68a72',1,'pip_plugin_string_arg_t']]],
+  ['subject_5fpk',['subject_pk',['../structpolicy__t.html#a8efaf08c42a3858fe9f283094e1d89d6',1,'policy_t']]],
+  ['suspicious_5fconditions',['suspicious_conditions',['../structvalidator__report__t.html#a3944f7695e0d3a0bfd30a00c423eec48',1,'validator_report_t']]],
+  ['symbol',['symbol',['../structoptimizer__log__var__t.html#add9017cb9b8fc7e23bb9d6481e815a15',1,'optimizer_log_var_t::symbol()'],['../structoptimizer__complex__var__t.html#add9017cb9b8fc7e23bb9d6481e815a15',1,'optimizer_complex_var_t::symbol()']]],
+  ['symple_5fvar',['symple_var',['../unionoptimizer__function__element__t.html#a48115670e2f9226045b49a92f53bba3a',1,'optimizer_function_element_t']]]
 ];

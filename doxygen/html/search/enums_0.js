@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['adh_5ferror_5fe',['ADH_error_e',['../auth__helper_8h.html#a68f25a25a8ba1692529df109cb7517e0',1,'auth_helper.h']]]
+  ['fee_5ft',['fee_t',['../policy_8h.html#a40093d6e2ce378ce31703b6b35f5c28c',1,'policy.h']]]
 ];

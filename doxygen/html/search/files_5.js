@@ -23,6 +23,10 @@ var searchData=
   ['plugin_5flogger_2eh',['plugin_logger.h',['../plugin__logger_8h.html',1,'']]],
   ['plugin_5fmanager_2ec',['plugin_manager.c',['../plugin__manager_8c.html',1,'']]],
   ['plugin_5fmanager_2eh',['plugin_manager.h',['../plugin__manager_8h.html',1,'']]],
+  ['policy_2ec',['policy.c',['../policy_8c.html',1,'']]],
+  ['policy_2eh',['policy.h',['../policy_8h.html',1,'']]],
+  ['policy_5flogger_2ec',['policy_logger.c',['../policy__logger_8c.html',1,'']]],
+  ['policy_5flogger_2eh',['policy_logger.h',['../policy__logger_8h.html',1,'']]],
   ['protobuf_2dc_2ec',['protobuf-c.c',['../protobuf-c_8c.html',1,'']]],
   ['protobuf_2dc_2eh',['protobuf-c.h',['../protobuf-c_8h.html',1,'']]]
 ];

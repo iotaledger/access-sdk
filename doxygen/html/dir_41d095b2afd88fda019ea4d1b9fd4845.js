@@ -2,8 +2,6 @@ var dir_41d095b2afd88fda019ea4d1b9fd4845 =
 [
     [ "auth_client.c", "auth__client_8c.html", "auth__client_8c" ],
     [ "auth_debug.h", "auth__debug_8h.html", "auth__debug_8h" ],
-    [ "auth_helper.c", "auth__helper_8c.html", "auth__helper_8c" ],
-    [ "auth_helper.h", "auth__helper_8h.html", "auth__helper_8h" ],
     [ "auth_internal.c", "auth__internal_8c.html", "auth__internal_8c" ],
     [ "auth_internal.h", "auth__internal_8h.html", "auth__internal_8h" ],
     [ "auth_logger.c", "eddsa_2auth__logger_8c.html", "eddsa_2auth__logger_8c" ],

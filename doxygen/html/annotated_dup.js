@@ -1,11 +1,15 @@
 var annotated_dup =
 [
     [ "_function_list", "struct__function__list.html", "struct__function__list" ],
+    [ "action_t", "structaction__t.html", "structaction__t" ],
     [ "attribute_value", "structattribute__value.html", "structattribute__value" ],
+    [ "auth_cmd_t", "structauth__cmd__t.html", "structauth__cmd__t" ],
     [ "auth_ctx_t", "structauth__ctx__t.html", "structauth__ctx__t" ],
+    [ "auth_request_t", "structauth__request__t.html", null ],
     [ "auth_struct", "structauth__struct.html", "structauth__struct" ],
     [ "jsmn_parser", "structjsmn__parser.html", "structjsmn__parser" ],
     [ "jsmntok", "structjsmntok.html", "structjsmntok" ],
+    [ "obligation_t", "structobligation__t.html", "structobligation__t" ],
     [ "optimizer_complex_var_t", "structoptimizer__complex__var__t.html", "structoptimizer__complex__var__t" ],
     [ "optimizer_function_element_t", "unionoptimizer__function__element__t.html", "unionoptimizer__function__element__t" ],
     [ "optimizer_log_var_t", "structoptimizer__log__var__t.html", "structoptimizer__log__var__t" ],
@@ -26,5 +30,6 @@ var annotated_dup =
     [ "plugin_", "structplugin__.html", "structplugin__" ],
     [ "plugin_manager_t", "structplugin__manager__t.html", "structplugin__manager__t" ],
     [ "policy_id_list_", "structpolicy__id__list__.html", "structpolicy__id__list__" ],
+    [ "policy_t", "structpolicy__t.html", "structpolicy__t" ],
     [ "validator_report_t", "structvalidator__report__t.html", "structvalidator__report__t" ]
 ];

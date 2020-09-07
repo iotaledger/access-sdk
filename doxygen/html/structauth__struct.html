@@ -91,26 +91,26 @@ Data Fields</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:ac765329451135abec74c45e1897abf26"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structauth__struct.html#ac765329451135abec74c45e1897abf26">type</a></td></tr>
 <tr class="separator:ac765329451135abec74c45e1897abf26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51e286484d783dd4e0f8676629bf729d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structauth__struct.html#a51e286484d783dd4e0f8676629bf729d">ed25519_pk</a> [crypto_sign_PUBLICKEYBYTES]</td></tr>
-<tr class="separator:a51e286484d783dd4e0f8676629bf729d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47a8b65279f500a19c975b5f63c4413a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structauth__struct.html#a47a8b65279f500a19c975b5f63c4413a">ed25519_pk</a> [crypto_sign_ed25519_PUBLICKEYBYTES]</td></tr>
+<tr class="separator:a47a8b65279f500a19c975b5f63c4413a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e92ffd9fb435f865019e962c00966be"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structauth__struct.html#a0e92ffd9fb435f865019e962c00966be">x25519_pk</a> [crypto_scalarmult_curve25519_BYTES]</td></tr>
 <tr class="separator:a0e92ffd9fb435f865019e962c00966be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af73a4a6ff6a4878d8eae4ec38ffeaac2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structauth__struct.html#af73a4a6ff6a4878d8eae4ec38ffeaac2">nonce</a> [crypto_box_NONCEBYTES]</td></tr>
 <tr class="separator:af73a4a6ff6a4878d8eae4ec38ffeaac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8377bad606e03725fc838a8289ae90c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structauth__struct.html#af8377bad606e03725fc838a8289ae90c">peer_ed25519_pk</a> [crypto_sign_PUBLICKEYBYTES]</td></tr>
-<tr class="separator:af8377bad606e03725fc838a8289ae90c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa20f6301e1ff4dc8173824f2525cb3aa"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structauth__struct.html#aa20f6301e1ff4dc8173824f2525cb3aa">peer_ed25519_pk</a> [crypto_sign_ed25519_PUBLICKEYBYTES]</td></tr>
+<tr class="separator:aa20f6301e1ff4dc8173824f2525cb3aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adcfc113bce5fa0a20c8cdfb2b12bde9a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structauth__struct.html#adcfc113bce5fa0a20c8cdfb2b12bde9a">peer_x25519_pk</a> [crypto_scalarmult_curve25519_BYTES]</td></tr>
 <tr class="separator:adcfc113bce5fa0a20c8cdfb2b12bde9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Field Documentation</h2>
-<a id="a51e286484d783dd4e0f8676629bf729d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51e286484d783dd4e0f8676629bf729d">&#9670;&nbsp;</a></span>ed25519_pk</h2>
+<a id="a47a8b65279f500a19c975b5f63c4413a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47a8b65279f500a19c975b5f63c4413a">&#9670;&nbsp;</a></span>ed25519_pk</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES]</td>
+          <td class="memname">uint8_t ed25519_pk[crypto_sign_ed25519_PUBLICKEYBYTES]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -133,14 +133,14 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="af8377bad606e03725fc838a8289ae90c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8377bad606e03725fc838a8289ae90c">&#9670;&nbsp;</a></span>peer_ed25519_pk</h2>
+<a id="aa20f6301e1ff4dc8173824f2525cb3aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa20f6301e1ff4dc8173824f2525cb3aa">&#9670;&nbsp;</a></span>peer_ed25519_pk</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t peer_ed25519_pk[crypto_sign_PUBLICKEYBYTES]</td>
+          <td class="memname">uint8_t peer_ed25519_pk[crypto_sign_ed25519_PUBLICKEYBYTES]</td>
         </tr>
       </table>
 </div><div class="memdoc">

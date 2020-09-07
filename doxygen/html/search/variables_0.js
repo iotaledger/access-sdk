@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['action',['action',['../structpap__action__list__.html#ae7a4946bf55425cd10510c2df9f5ced6',1,'pap_action_list_::action()'],['../structpep__plugin__args__t.html#a90fabb8b0649640a67fa4568453f033b',1,'pep_plugin_args_t::action()']]],
+  ['action',['action',['../structauth__cmd__t.html#a423ee37f89234b0ef3c5c6e379f39d66',1,'auth_cmd_t::action()'],['../structpap__action__list__.html#ae7a4946bf55425cd10510c2df9f5ced6',1,'pap_action_list_::action()'],['../structpep__plugin__args__t.html#a90fabb8b0649640a67fa4568453f033b',1,'pep_plugin_args_t::action()']]],
+  ['action_5fid',['action_id',['../structaction__t.html#ad5935a4f0c2adbbbbcd6ab8e386d55b8',1,'action_t']]],
   ['action_5flist',['action_list',['../structpdp__action__t.html#a14f199e8bc2ca6ab5a1051f9c3745918',1,'pdp_action_t']]],
+  ['action_5fname',['action_name',['../structpdp__action__t.html#aa10479f5b87d05a9f5d423af6ed6cbde',1,'pdp_action_t']]],
+  ['actions',['actions',['../structpolicy__t.html#a1cffe18074a1da97a0518039d9d2cf48',1,'policy_t']]],
   ['array2',['array2',['../json__helper_8c.html#a565fc1c7ecc6c3ce6c6fbb65fd05ba0f',1,'json_helper.c']]],
   ['array21',['array21',['../json__helper_8c.html#ad4af4121ec8c16e2f852a5be5a149d70',1,'json_helper.c']]],
   ['array3',['array3',['../json__helper_8c.html#a10b2da5ce410901fbeee9e2084a6dd4d',1,'json_helper.c']]],
@@ -17,5 +20,6 @@ var searchData=
   ['array8',['array8',['../json__helper_8c.html#a50900953cbb11e38cc61460c614a5d56',1,'json_helper.c']]],
   ['array81',['array81',['../json__helper_8c.html#a596262456cdec18fdd157215a0214b76',1,'json_helper.c']]],
   ['attribute',['attribute',['../structpip__plugin__args__t.html#a02bb188aae2c3fe8bd9a77374bf7016c',1,'pip_plugin_args_t']]],
+  ['attributes',['attributes',['../structobligation__t.html#a2479cafaf79443592b1c655f561f0352',1,'obligation_t::attributes()'],['../structaction__t.html#a2479cafaf79443592b1c655f561f0352',1,'action_t::attributes()']]],
   ['auth_5flogger_5fid',['auth_logger_id',['../auth__logger_8c.html#a9329b4a7be28342e338520ee760556b0',1,'auth_logger_id():&#160;auth_logger.c'],['../auth__logger_8h.html#a9329b4a7be28342e338520ee760556b0',1,'auth_logger_id():&#160;auth_logger.c'],['../eddsa_2auth__logger_8c.html#a9329b4a7be28342e338520ee760556b0',1,'auth_logger_id():&#160;auth_logger.c'],['../eddsa_2auth__logger_8h.html#a9329b4a7be28342e338520ee760556b0',1,'auth_logger_id():&#160;auth_logger.c']]]
 ];

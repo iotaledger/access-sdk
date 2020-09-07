@@ -1,7 +1,7 @@
 var searchData=
 [
   ['e',['E',['../symbols_8h.html#a07484107e6d9fdf38b53edf631d6511d',1,'E():&#160;symbols.h'],['../symbols_8h.html#a270b1ecf56619755ce62f6970dfabc91',1,'e():&#160;symbols.h']]],
-  ['ed25519_5fpk',['ed25519_pk',['../structauth__struct.html#a51e286484d783dd4e0f8676629bf729d',1,'auth_struct']]],
+  ['ed25519_5fpk',['ed25519_pk',['../structauth__struct.html#a47a8b65279f500a19c975b5f63c4413a',1,'auth_struct']]],
   ['elem_5ftype',['elem_type',['../struct__function__list.html#afe30b93ae661cb4a12671faea5d6a169',1,'_function_list']]],
   ['element',['element',['../struct__function__list.html#a724ca578b294a55ebc36d7a756ac5cf9',1,'_function_list']]],
   ['end',['end',['../structjsmntok.html#abce9f5dc9c83f2639b72024fdee5d388',1,'jsmntok']]],

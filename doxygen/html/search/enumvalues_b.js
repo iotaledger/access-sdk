@@ -2,6 +2,7 @@ var searchData=
 [
   ['oa_5fabsorption',['OA_ABSORPTION',['../optimizer_8h.html#adb9c95e634e6c8e65921920fca2e66d7aa841c7d4ca8443ebcd36382722f364fd',1,'optimizer.h']]],
   ['oa_5fnone',['OA_NONE',['../optimizer_8h.html#adb9c95e634e6c8e65921920fca2e66d7ac7ffe09ace9e9142f71aa5294f5c7160',1,'optimizer.h']]],
+  ['one_5ftime_5ffee',['ONE_TIME_FEE',['../policy_8h.html#a40093d6e2ce378ce31703b6b35f5c28ca3ae82d90c7ac66c53483890376b4a77f',1,'policy.h']]],
   ['op_5fand',['OP_AND',['../parser_8h.html#ad7a3ab52d606067ad2cb8b6412a797f3ae2310d00f26e94b32317ecd168fb7e18',1,'parser.h']]],
   ['op_5feq',['OP_EQ',['../parser_8h.html#ad7a3ab52d606067ad2cb8b6412a797f3a1634898deb6e4d1bcb15416034c641c5',1,'parser.h']]],
   ['op_5fgeq',['OP_GEQ',['../parser_8h.html#ad7a3ab52d606067ad2cb8b6412a797f3abcf62e175a434a8e198e1d3ec41d41d0',1,'parser.h']]],
