@@ -51,11 +51,11 @@ int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   session->internal->type = AUTH_TYPE_SERVER;
 
   // derive ed25519_pk
-  uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
+  uint8_t ed25519_pk[crypto_sign_ed25519_PUBLICKEYBYTES];
   crypto_sign_ed25519_sk_to_pk(ed25519_pk, ed25519_sk);
 
   // save internal ed25519_pk
-  memcpy(session->internal->ed25519_pk, ed25519_pk, crypto_sign_PUBLICKEYBYTES);
+  memcpy(session->internal->ed25519_pk, ed25519_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
 
   // x25519
   uint8_t x25519_pk[crypto_scalarmult_curve25519_BYTES];
@@ -71,14 +71,14 @@ int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   // read client x25519_pk
   log_info(auth_logger_id, "[%s:%d] waiting for client's ed25519_pk.\n", __func__, __LINE__);
 
-  uint8_t peer_ed25519_pk[crypto_sign_PUBLICKEYBYTES];
-  int read_message = tcpip_read(session->sockfd, peer_ed25519_pk, crypto_sign_PUBLICKEYBYTES);
-  if (read_message != crypto_sign_PUBLICKEYBYTES){
+  uint8_t peer_ed25519_pk[crypto_sign_ed25519_PUBLICKEYBYTES];
+  int read_message = tcpip_read(session->sockfd, peer_ed25519_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
+  if (read_message != crypto_sign_ed25519_PUBLICKEYBYTES){
     log_error(auth_logger_id, "[%s:%d] failed to read client ed25519_pk.\n", __func__, __LINE__);
     return AUTH_ERROR;
   }
 
-  memcpy(session->internal->peer_ed25519_pk, peer_ed25519_pk,crypto_sign_PUBLICKEYBYTES );
+  memcpy(session->internal->peer_ed25519_pk, peer_ed25519_pk,crypto_sign_ed25519_PUBLICKEYBYTES );
   log_info(auth_logger_id, "[%s:%d] client's ed25519_pk registered.\n", __func__, __LINE__);
 
   // x25519 from ed25519
@@ -101,7 +101,7 @@ int auth_internal_server_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
 
   log_info(auth_logger_id, "[%s:%d] sending ed25519_pk.\n", __func__, __LINE__);
   int write_message = tcpip_write(session->sockfd, session->internal->ed25519_pk, crypto_scalarmult_curve25519_BYTES);
-  if (write_message != crypto_sign_PUBLICKEYBYTES){
+  if (write_message != crypto_sign_ed25519_PUBLICKEYBYTES){
     log_error(auth_logger_id, "[%s:%d] failed to send ed25519_pk.\n", __func__, __LINE__);
     return AUTH_ERROR;
   }

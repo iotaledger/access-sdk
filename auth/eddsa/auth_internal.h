@@ -65,10 +65,10 @@
 struct auth_struct {
   /*@{*/
   int     type; /**< server or client */
-  uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES]; /**< ed25519 public key */
+  uint8_t ed25519_pk[crypto_sign_ed25519_PUBLICKEYBYTES]; /**< ed25519 public key */
   uint8_t x25519_pk[crypto_scalarmult_curve25519_BYTES]; /**< DH x25519 public key */
   uint8_t nonce[crypto_box_NONCEBYTES]; /**< DH nonce */
-  uint8_t peer_ed25519_pk[crypto_sign_PUBLICKEYBYTES]; /**< peer's ed25519 public key */
+  uint8_t peer_ed25519_pk[crypto_sign_ed25519_PUBLICKEYBYTES]; /**< peer's ed25519 public key */
   uint8_t peer_x25519_pk[crypto_scalarmult_curve25519_BYTES]; /**< peer's DH x25519 public key */
   /*@}*/
 };

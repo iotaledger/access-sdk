@@ -71,8 +71,8 @@ typedef struct {
   /*@}*/
 
   /*@{*/
-  uint8_t object_pk[crypto_sign_PUBLICKEYBYTES]; /**< object identifier (public key) */
-  uint8_t subject_pk[crypto_sign_PUBLICKEYBYTES]; /**< subject identifier (public key) */
+  uint8_t object_pk[crypto_sign_ed25519_PUBLICKEYBYTES]; /**< object identifier (public key) */
+  uint8_t subject_pk[crypto_sign_ed25519_PUBLICKEYBYTES]; /**< subject identifier (public key) */
   /*@}*/
 
   /*@{*/

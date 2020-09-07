@@ -25,13 +25,13 @@
 
 #include "policy.h"
 
-static uint8_t owner_pk[crypto_sign_PUBLICKEYBYTES];
+static uint8_t owner_pk[crypto_sign_ed25519_PUBLICKEYBYTES];
 static uint8_t owner_sk[crypto_sign_SECRETKEYBYTES];
 
-static uint8_t object_pk[crypto_sign_PUBLICKEYBYTES];
+static uint8_t object_pk[crypto_sign_ed25519_PUBLICKEYBYTES];
 static uint8_t object_sk[crypto_sign_SECRETKEYBYTES];
 
-static uint8_t subject_pk[crypto_sign_PUBLICKEYBYTES];
+static uint8_t subject_pk[crypto_sign_ed25519_PUBLICKEYBYTES];
 static uint8_t subject_sk[crypto_sign_SECRETKEYBYTES];
 
 int main(int argc, char **argv) {
@@ -43,8 +43,8 @@ int main(int argc, char **argv) {
 
   //create policy
   policy_t *pol = calloc(1, sizeof(policy_t));
-  memcpy(pol->object_pk, object_pk, crypto_sign_PUBLICKEYBYTES);
-  memcpy(pol->subject_pk, subject_pk, crypto_sign_PUBLICKEYBYTES);
+  memcpy(pol->object_pk, object_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
+  memcpy(pol->subject_pk, subject_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
 
   // sign policy
   assert(policy_sign(pol, owner_sk) == POLICY_OK);

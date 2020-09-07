@@ -77,7 +77,7 @@ int *auth_server_test(bool *serve) {
     for (int i = 0; i < crypto_sign_SEEDBYTES; i++) { seed[i] = rand() + 2; }
 
     uint8_t ed25519_sk[crypto_sign_SECRETKEYBYTES];
-    uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
+    uint8_t ed25519_pk[crypto_sign_ed25519_PUBLICKEYBYTES];
 
     crypto_sign_seed_keypair(ed25519_pk, ed25519_sk, seed);
 

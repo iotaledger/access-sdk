@@ -60,7 +60,7 @@
 int auth_client_verify(auth_ctx_t *session) {
 //  int next_stage = AUTH_ERROR;
 //
-//  int SIZE_OF_READ_BUFFER = PUBLIC_KEY_L + crypto_sign_PUBLICKEYBYTES + SIGNED_MESSAGE_L;  // size of ks + f + s
+//  int SIZE_OF_READ_BUFFER = PUBLIC_KEY_L + crypto_sign_ed25519_PUBLICKEYBYTES + SIGNED_MESSAGE_L;  // size of ks + f + s
 //  unsigned char readBuffer[SIZE_OF_READ_BUFFER];
 //  unsigned char *s_signed;
 //  unsigned char *received_dh_public;
@@ -133,11 +133,11 @@ int auth_internal_client_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   session->internal->type = AUTH_TYPE_CLIENT;
 
   // derive ed25519_pk
-  uint8_t ed25519_pk[crypto_sign_PUBLICKEYBYTES];
+  uint8_t ed25519_pk[crypto_sign_ed25519_PUBLICKEYBYTES];
   crypto_sign_ed25519_sk_to_pk(ed25519_pk, ed25519_sk);
 
   // save internal ed25519_pk
-  memcpy(session->internal->ed25519_pk, ed25519_pk, crypto_sign_PUBLICKEYBYTES);
+  memcpy(session->internal->ed25519_pk, ed25519_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
 
   // x25519
   uint8_t x25519_pk[crypto_scalarmult_curve25519_BYTES];
@@ -176,16 +176,16 @@ int auth_internal_client_authenticate(auth_ctx_t *session, uint8_t ed25519_sk[])
   // receive server ed25519_pk
   log_info(auth_logger_id, "[%s:%d] waiting for server's ed25519_pk.\n", __func__, __LINE__);
 
-  uint8_t peer_ed25519_pk[crypto_sign_PUBLICKEYBYTES];
-  int read_message = tcpip_read(session->sockfd, peer_ed25519_pk, crypto_sign_PUBLICKEYBYTES);
-  if (read_message != crypto_sign_PUBLICKEYBYTES){
+  uint8_t peer_ed25519_pk[crypto_sign_ed25519_PUBLICKEYBYTES];
+  int read_message = tcpip_read(session->sockfd, peer_ed25519_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
+  if (read_message != crypto_sign_ed25519_PUBLICKEYBYTES){
     log_error(auth_logger_id, "[%s:%d] failed to read server ed25519_pk.\n", __func__, __LINE__);
     return AUTH_ERROR;
   }
 
   log_info(auth_logger_id, "[%s:%d] received server's ed25519_pk.\n", __func__, __LINE__);
 
-  memcpy(session->internal->peer_ed25519_pk, peer_ed25519_pk,crypto_sign_PUBLICKEYBYTES );
+  memcpy(session->internal->peer_ed25519_pk, peer_ed25519_pk,crypto_sign_ed25519_PUBLICKEYBYTES );
   log_info(auth_logger_id, "[%s:%d] server's ed25519_pk registered.\n", __func__, __LINE__);
 
   // x25519 from ed25519
