@@ -29,8 +29,6 @@ set(include
   ${cjson_SOURCE_DIR}
 )
 
-message(STATUS ${PROJECT_SOURCE_DIR}/include)
-
 target_include_directories(auth_cmd PUBLIC ${include})
 target_link_directories(auth_cmd PUBLIC ${iota_common_BINARY_DIR}/lib)
 target_link_libraries(auth_cmd PRIVATE cjson)

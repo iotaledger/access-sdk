@@ -65,8 +65,6 @@ target_link_directories(auth PUBLIC
 target_include_directories(${target} PUBLIC ${include_dirs})
 target_link_libraries(${target} PUBLIC ${libs})
 
-message(STATUS "${libs}")
-
 install(TARGETS auth DESTINATION lib)
 install(FILES auth.h DESTINATION include)
 
