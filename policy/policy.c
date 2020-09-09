@@ -89,17 +89,23 @@ uint8_t policy_encode_json(policy_t *pol, unsigned char pol_json[]) {
   //cJSON *actions = cJSON_CreateArray();
 
   if ((policy_id == NULL) || (object_pk == NULL) || (subject_pk == NULL)) {
-    log_error(policy_logger_id, "[%s:%d] failed to encode policy fields to JSON.\n", __func__, __LINE__);
+    log_error(policy_logger_id, "[%s:%d] failed to encode policy fields to JSON strings.\n", __func__, __LINE__);
     return POLICY_ERROR;
   }
 
   cJSON_AddItemToObject(json, "policy_id", policy_id);
   cJSON_AddItemToObject(json, "object_pk", object_pk);
   cJSON_AddItemToObject(json, "subject_pk", subject_pk);
+  // add actions
 
   char *output = cJSON_Print(json);
 
   if ((policy_id == NULL) || (object_pk == NULL) || (subject_pk == NULL)) {
+    log_error(policy_logger_id, "[%s:%d] failed to add items to JSON object.\n", __func__, __LINE__);
+    return POLICY_ERROR;
+  }
+
+  if (strlen(output) > POLICY_JSON_MAX_LEN) {
     log_error(policy_logger_id, "[%s:%d] JSON string exceeds POLICY_JSON_MAX_LEN.\n", __func__, __LINE__);
     return POLICY_ERROR;
   }
