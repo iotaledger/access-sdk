@@ -126,6 +126,6 @@ uint8_t policy_encode_json(policy_t *pol, unsigned char pol_json[]);
  * @param pol pointer to policy_t struct (output)
  * @return POLICY_OK or POLICY_ERROR
  */
-uint8_t policy_decode_json(unsigned char *pol_json, policy_t *pol);
+uint8_t policy_decode_json(unsigned char pol_json[], policy_t *pol);
 
 #endif //POLICY_H

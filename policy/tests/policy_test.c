@@ -47,6 +47,7 @@ int main(int argc, char **argv) {
   policy_t *pol = calloc(1, sizeof(policy_t));
   memcpy(&pol->policy_body.object_pk, object_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
   memcpy(&pol->policy_body.subject_pk, subject_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
+  // ToDo: populate actions
 
   // sign policy
   assert(policy_sign(pol, owner_sk) > 0);
@@ -59,6 +60,16 @@ int main(int argc, char **argv) {
   assert(policy_encode_json(pol, pol_json) == POLICY_OK);
 
   printf("json: %s\n", pol_json);
+
+  // decode policy JSON
+  policy_t *decoded_pol = calloc(1, sizeof(policy_t));
+  assert(policy_decode_json(pol_json, decoded_pol) == POLICY_OK);
+
+  // compare values
+  assert(memcmp(pol->policy_id, decoded_pol->policy_id, crypto_generichash_blake2b_BYTES + crypto_sign_BYTES) == 0);
+  assert(memcmp(pol->policy_body.object_pk, decoded_pol->policy_body.object_pk, crypto_sign_ed25519_PUBLICKEYBYTES) == 0);
+  assert(memcmp(pol->policy_body.subject_pk, decoded_pol->policy_body.subject_pk, crypto_sign_ed25519_PUBLICKEYBYTES) == 0);
+  // ToDo: assert actions
 
   return 0;
 
