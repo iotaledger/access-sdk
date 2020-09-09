@@ -6,7 +6,7 @@
 #define POLICY_H
 
 #define POLICY_OK 0
-#define POLICY_ERROR 1
+#define POLICY_ERROR -1
 
 /**
  * @brief max length of JSON encoding
@@ -62,6 +62,22 @@ typedef struct {
 } action_t;
 
 /**
+ * @brief policy body struct type
+ */
+typedef struct {
+
+  /*@{*/
+  uint8_t object_pk[crypto_sign_ed25519_PUBLICKEYBYTES]; /**< object identifier (public key) */
+  uint8_t subject_pk[crypto_sign_ed25519_PUBLICKEYBYTES]; /**< subject identifier (public key) */
+  /*@}*/
+
+  /*@{*/
+  action_t *actions; /**< action list */
+  /*@}*/
+
+} policy_body_t;
+
+/**
  * @brief policy struct type
  */
 typedef struct {
@@ -71,12 +87,7 @@ typedef struct {
   /*@}*/
 
   /*@{*/
-  uint8_t object_pk[crypto_sign_ed25519_PUBLICKEYBYTES]; /**< object identifier (public key) */
-  uint8_t subject_pk[crypto_sign_ed25519_PUBLICKEYBYTES]; /**< subject identifier (public key) */
-  /*@}*/
-
-  /*@{*/
-  action_t *actions; /**< action list */
+  policy_body_t policy_body;
   /*@}*/
 
 } policy_t;
@@ -88,7 +99,7 @@ typedef struct {
  *
  * @param pol policy_t struct
  * @param sk signer secret key
- * @return POLICY_OK or POLICY_ERROR
+ * @return policy_id_len or POLICY_ERROR
  */
 uint8_t policy_sign(policy_t *pol, uint8_t sk[]);
 

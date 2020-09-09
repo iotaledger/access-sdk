@@ -41,13 +41,15 @@ int main(int argc, char **argv) {
   crypto_sign_keypair(object_pk, object_sk);
   crypto_sign_keypair(subject_pk, subject_sk);
 
+  uint8_t *subject_pk_tmp = subject_pk;
+
   //create policy
   policy_t *pol = calloc(1, sizeof(policy_t));
-  memcpy(pol->object_pk, object_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
-  memcpy(pol->subject_pk, subject_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
+  memcpy(&pol->policy_body.object_pk, object_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
+  memcpy(&pol->policy_body.subject_pk, subject_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
 
   // sign policy
-  assert(policy_sign(pol, owner_sk) == POLICY_OK);
+  assert(policy_sign(pol, owner_sk) > 0);
 
   // verify policy
   assert(policy_verify(pol, owner_pk) == POLICY_OK);
