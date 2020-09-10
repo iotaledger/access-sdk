@@ -19,7 +19,7 @@ uint8_t policy_sign(policy_t *pol, uint8_t sk[]) {
   uint8_t *ser_pb = (uint8_t*) &pol->policy_body;
   size_t ser_pb_len = sizeof(ser_pb);
 
-  // policy hash
+  // hash serialized policy body
   uint8_t hash_pol[crypto_generichash_blake2b_BYTES];
   crypto_generichash_blake2b(hash_pol, crypto_generichash_blake2b_BYTES, ser_pb, ser_pb_len, NULL, 0);
 
@@ -41,12 +41,12 @@ uint8_t policy_verify(policy_t *pol, uint8_t pk[]) {
   uint8_t *ser_pb = (uint8_t*) &pol->policy_body;
   size_t ser_pb_len = sizeof(ser_pb);
 
-  // policy hash
-  size_t serialized_normalized_hash_pol_len = crypto_generichash_blake2b_BYTES;
-  uint8_t hash_pol[serialized_normalized_hash_pol_len];
+  // hash serialized policy body
+  size_t hash_pol_len = crypto_generichash_blake2b_BYTES;
+  uint8_t hash_pol[crypto_generichash_blake2b_BYTES];
   crypto_generichash_blake2b(hash_pol, crypto_generichash_blake2b_BYTES, ser_pb, ser_pb_len, NULL, 0);
 
-  if (crypto_sign_ed25519_open(hash_pol, &serialized_normalized_hash_pol_len, pol->policy_id, sizeof(pol->policy_id), pk) != 0) {
+  if (crypto_sign_ed25519_open(hash_pol, &hash_pol_len, pol->policy_id, sizeof(pol->policy_id), pk) != 0) {
     log_error(policy_logger_id, "[%s:%d] failed to verify policy.\n", __func__, __LINE__);
     return POLICY_ERROR;
   }
