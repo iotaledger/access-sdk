@@ -15,7 +15,7 @@ ExternalProject_Add(
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}
     SOURCE_DIR ${SODIUM_SRC}
     DOWNLOAD_COMMAND wget ${SODIUM_URL} && tar xvf ${SODIUM_TARBALL} && ${SODIUM_SRC}/autogen.sh
-    CONFIGURE_COMMAND ${SODIUM_SRC}/configure --srcdir=${SODIUM_SRC} --prefix=${CMAKE_CURRENT_BINARY_DIR} --enable-static=yes --disable-shared
+    CONFIGURE_COMMAND ${SODIUM_SRC}/configure --srcdir=${SODIUM_SRC} --prefix=${CMAKE_CURRENT_BINARY_DIR} --enable-static=yes --disable-shared --host=${CMAKE_SYSTEM_PROCESSOR}
     BUILD_COMMAND make
     INSTALL_COMMAND make install
     BUILD_BYPRODUCTS ${SODIUM_STATIC_LIB}
