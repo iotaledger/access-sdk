@@ -36,12 +36,20 @@ static uint8_t subject_sk[crypto_sign_SECRETKEYBYTES];
 
 int main(int argc, char **argv) {
 
-  // generate keypairs
-  crypto_sign_keypair(owner_pk, owner_sk);
-  crypto_sign_keypair(object_pk, object_sk);
-  crypto_sign_keypair(subject_pk, subject_sk);
+  uint8_t owner_seed[crypto_sign_SEEDBYTES];
+  uint8_t object_seed[crypto_sign_SEEDBYTES];
+  uint8_t subject_seed[crypto_sign_SEEDBYTES];
 
-  uint8_t *subject_pk_tmp = subject_pk;
+  for (int i = 0; i < crypto_sign_SEEDBYTES; i++) {
+    owner_seed[i] = rand();
+    object_seed[i] = rand() + 1;
+    subject_seed[i] = rand() + 2;
+  }
+
+  // generate keypairs deterministically
+  crypto_sign_seed_keypair(owner_pk, owner_sk, owner_seed);
+  crypto_sign_seed_keypair(object_pk, object_sk, object_seed);
+  crypto_sign_seed_keypair(subject_pk, subject_sk, subject_seed);
 
   //create policy
   policy_t *pol = calloc(1, sizeof(policy_t));
