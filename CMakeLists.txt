@@ -33,12 +33,6 @@ if(TEST)
     enable_testing()
 endif()
 
-# default POLICY_FORMAT
-if(NOT DEFINED POLICY_FORMAT)
-  set(POLICY_FORMAT json CACHE STRING "Policy Format Choice")
-  #set(POLICY_FORMAT protobuf-c CHACE STRING "Policy Format Choice")
-endif()
-
 if(${CMAKE_VERSION} VERSION_LESS 3.14)
     macro(FetchContent_MakeAvailable NAME)
         FetchContent_GetProperties(${NAME})
@@ -49,6 +43,7 @@ if(${CMAKE_VERSION} VERSION_LESS 3.14)
     endmacro()
 endif()
 
+include(cmake/mpack.cmake)
 include(cmake/cjson.cmake)
 include(cmake/iota_common.cmake)
 include(cmake/sqlite3.cmake)
