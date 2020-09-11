@@ -9,6 +9,31 @@
 #include "policy.h"
 #include "policy_logger.h"
 
+uint8_t policy_add_action(policy_t *pol, action_t *action) {
+
+  if (pol == NULL || action == NULL) {
+    log_error(policy_logger_id, "[%s:%d] invalid input.\n", __func__, __LINE__);
+    return POLICY_ERROR;
+  }
+
+  if (pol->policy_body.actions == NULL) {
+    pol->policy_body.actions = (action_t*) malloc(sizeof(action_t));
+    memcpy(pol->policy_body.actions, action, sizeof(action_t));
+  }else{
+    action_t *current = pol->policy_body.actions;
+
+    while(current->next_action != NULL) {
+      current = current->next_action;
+    }
+
+    current->next_action = (action_t*) malloc(sizeof(action_t));
+    memcpy(current->next_action, action, sizeof(action_t));
+  }
+
+  return POLICY_OK;
+
+}
+
 uint8_t policy_sign(policy_t *pol, uint8_t sk[]) {
 
   if (pol == NULL || sk == NULL) {
@@ -60,7 +85,6 @@ uint8_t policy_encode_json(policy_t *pol, unsigned char pol_json[]) {
   size_t policy_id_len = crypto_generichash_blake2b_BYTES + crypto_sign_BYTES;
   size_t object_pk_len = crypto_sign_ed25519_PUBLICKEYBYTES;
   size_t subject_pk_len = crypto_sign_ed25519_PUBLICKEYBYTES;
-  // ToDo: actions
 
   //////////////////////////////////////////////
   // encode to hex
@@ -68,17 +92,14 @@ uint8_t policy_encode_json(policy_t *pol, unsigned char pol_json[]) {
   size_t hex_policy_id_len = 2 * policy_id_len + 1;
   size_t hex_object_id_len = 2 * object_pk_len + 1;
   size_t hex_subject_id_len = 2 * subject_pk_len + 1;
-  // ToDo: actions
 
   unsigned char hex_policy_id[hex_policy_id_len];
   unsigned char hex_object_pk[hex_object_id_len];
   unsigned char hex_subject_pk[hex_subject_id_len];
-  // ToDo: actions
 
   if ((hex_encode(pol->policy_id, policy_id_len, hex_policy_id, hex_policy_id_len) == false)
       || (hex_encode(pol->policy_body.object_pk, object_pk_len, hex_object_pk, hex_object_id_len) == false)
       || (hex_encode(pol->policy_body.subject_pk, subject_pk_len, hex_subject_pk, hex_subject_id_len) == false)
-      // ToDo: actions
       ) {
       log_error(policy_logger_id, "[%s:%d] failed to encode policy fields to hex.\n", __func__, __LINE__);
       return POLICY_ERROR;
@@ -89,9 +110,9 @@ uint8_t policy_encode_json(policy_t *pol, unsigned char pol_json[]) {
 
   cJSON *json = cJSON_CreateObject();
 
-  cJSON *policy_id = cJSON_CreateString(hex_policy_id);;
-  cJSON *object_pk = cJSON_CreateString(hex_object_pk);;
-  cJSON *subject_pk = cJSON_CreateString(hex_subject_pk);;
+  cJSON *policy_id = cJSON_CreateString(hex_policy_id);
+  cJSON *object_pk = cJSON_CreateString(hex_object_pk);
+  cJSON *subject_pk = cJSON_CreateString(hex_subject_pk);
   // ToDo: actions
 
   if ((policy_id == NULL) || (object_pk == NULL) || (subject_pk == NULL)) {

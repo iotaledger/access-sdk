@@ -17,25 +17,17 @@
 # limitations under the License.
 #
 
-add_subdirectory(action)
-add_subdirectory(encoding)
-add_subdirectory(pdp)
-add_subdirectory(pip)
-add_subdirectory(pap)
-add_subdirectory(pep)
+set(libs common cjson)
 
-set(libs action sodium common cjson ccan mpack)
+add_library(action action.c action_logger.c)
+add_dependencies(action ${libs})
 
-add_library(policy policy.c policy_logger.c)
-add_dependencies(policy ${libs})
+target_link_directories(action PUBLIC ${CMAKE_INSTALL_PREFIX}/lib)
+target_include_directories(action PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${PROJECT_BINARY_DIR}/include)
+target_link_libraries(action PUBLIC ${libs})
 
-target_link_directories(policy PUBLIC ${CMAKE_INSTALL_PREFIX}/lib)
-target_include_directories(policy PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${PROJECT_BINARY_DIR}/include ${mpack_SOURCE_DIR}/src/mpack)
-target_link_libraries(policy PUBLIC ${libs})
-
-install(TARGETS policy DESTINATION lib)
-install(FILES policy.h DESTINATION include)
+install(FILES action.h DESTINATION include)
 
 if(TEST)
-    add_subdirectory(tests)
+  add_subdirectory(tests)
 endif()

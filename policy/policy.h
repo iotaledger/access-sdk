@@ -1,9 +1,11 @@
+#ifndef POLICY_H
+#define POLICY_H
+
 #include <stddef.h>
 
 #include "sodium.h"
 
-#ifndef POLICY_H
-#define POLICY_H
+#include "action.h"
 
 #define POLICY_OK 0
 #define POLICY_ERROR -1
@@ -12,54 +14,6 @@
  * @brief max length of JSON encoding
  */
 #define POLICY_JSON_MAX_LEN 512
-
-/**
- * @brief fee enum type
- */
-typedef enum {
-
-  /*@{*/
-  NULL_FEE, /**< no fee */
-  ONE_TIME_FEE, /**< one time fee */
-  PER_USE_FEE /**< per use fee */
-  /*@}*/
-
-} fee_t;
-
-/**
- * @brief obligation struct type
- */
-typedef struct {
-
-  /*@{*/
-  char *obligation_id; /**< obligation identifier */
-  void *attributes; /**< obligation attributes */
-  /*@}*/
-
-} obligation_t;
-
-/**
- * @brief action struct type
- */
-typedef struct {
-
-  /*@{*/
-  char *action_id; /**< action identifier */
-  /*@}*/
-
-  /*@{*/
-  fee_t fee; /**< fee type */
-  unsigned long tx_value; /**< (optional) fee tx value */
-  char *tx_addr; /**< (optional) fee tx address */
-  char *tx_hash; /**< (optional) fee tx hash */
-  /*@}*/
-
-  /*@{*/
-  void *attributes; /**< (optional) attribute list */
-  obligation_t *obligations; /**< (optional) obligation list */
-  /*@}*/
-
-} action_t;
 
 /**
  * @brief policy body struct type
@@ -91,6 +45,28 @@ typedef struct {
   /*@}*/
 
 } policy_t;
+
+/**
+ * @brief policy initializer
+ * @param pol pointer to policy_t
+ * @return POLICY_OK or POLICY_ERROR
+ */
+uint8_t policy_init(policy_t *pol);
+
+/**
+ * @brief destroy policy_t
+ * @param pol pointer to policy_t
+ * @return POLICY_OK or POLICY_ERROR
+ */
+uint8_t policy_destroy(policy_t *pol);
+
+/**
+ * @brief add action_t to policy_t
+ * @param pol pointer to policy_t
+ * @param action pointer to action_t
+ * @return POLICY_OK or POLICY_ERROR
+ */
+uint8_t policy_add_action(policy_t *pol, action_t *action);
 
 /**
  * @brief sign policy
