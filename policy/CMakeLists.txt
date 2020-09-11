@@ -23,13 +23,13 @@ add_subdirectory(pip)
 add_subdirectory(pap)
 add_subdirectory(pep)
 
-set(libs sodium common cjson ccan)
+set(libs sodium common cjson ccan mpack)
 
 add_library(policy policy.c policy_logger.c)
 add_dependencies(policy ${libs})
 
 target_link_directories(policy PUBLIC ${CMAKE_INSTALL_PREFIX}/lib)
-target_include_directories(policy PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${PROJECT_BINARY_DIR}/include)
+target_include_directories(policy PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${PROJECT_BINARY_DIR}/include ${mpack_SOURCE_DIR}/src/mpack)
 target_link_libraries(policy PUBLIC ${libs})
 
 install(TARGETS policy DESTINATION lib)

@@ -2,6 +2,7 @@
 #include <strings.h>
 #include <stdint.h>
 
+#include "mpack.h"
 #include "cJSON.h"
 #include "hex.h"
 
@@ -154,6 +155,54 @@ uint8_t policy_decode_json(unsigned char pol_json[], policy_t *pol) {
   memcpy(pol->policy_id, policy_id, crypto_generichash_blake2b_BYTES + crypto_sign_BYTES);
   memcpy(pol->policy_body.object_pk, object_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
   memcpy(pol->policy_body.subject_pk, subject_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
+
+  return POLICY_OK;
+}
+
+uint8_t policy_body_encode_binary(policy_body_t pol_body, char **pol_body_bin, size_t *pol_body_bin_len) {
+
+  char *data;
+  size_t data_len;
+  mpack_writer_t writer;
+  mpack_writer_init_growable(&writer, &data, &data_len);
+
+  mpack_start_map(&writer, 2); //ToDo: count = 3, action list
+
+  mpack_write_cstr(&writer, "object_pk");
+  mpack_write_bin(&writer, pol_body.object_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
+  mpack_write_cstr(&writer, "subject_pk");
+  mpack_write_bin(&writer, pol_body.subject_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
+  // ToDo: write action list
+
+  mpack_finish_map(&writer);
+
+  if (mpack_writer_destroy(&writer) != mpack_ok) {
+    log_error(policy_logger_id, "[%s:%d] failed to encode Policy body to binary.\n", __func__, __LINE__);
+    return POLICY_ERROR;
+  }
+
+  *pol_body_bin = (char*)malloc(data_len);
+  memcpy(*pol_body_bin, data, data_len);
+  memcpy(pol_body_bin_len, &data_len, sizeof(size_t));
+
+  return POLICY_OK;
+}
+
+uint8_t policy_decode_binary_body(char *pol_body_bin, size_t pol_body_bin_size, policy_body_t *pol_body) {
+
+  mpack_tree_t tree;
+  mpack_tree_init_data(&tree, pol_body_bin, pol_body_bin_size);
+  mpack_tree_parse(&tree);
+  mpack_node_t root = mpack_tree_root(&tree);
+
+  if (mpack_tree_destroy(&tree) != mpack_ok) {
+    log_error(policy_logger_id, "[%s:%d] failed to deencode Policy body from binary.\n", __func__, __LINE__);
+    return POLICY_ERROR;
+  }
+
+  memcpy(pol_body->object_pk, mpack_node_bin_data(mpack_node_map_cstr(root, "object_pk")), crypto_sign_ed25519_PUBLICKEYBYTES);
+  memcpy(pol_body->subject_pk, mpack_node_bin_data(mpack_node_map_cstr(root, "subject_pk")), crypto_sign_ed25519_PUBLICKEYBYTES);
+  // ToDo: parse actions
 
   return POLICY_OK;
 }

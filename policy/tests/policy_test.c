@@ -21,8 +21,6 @@
 #include <string.h>
 #include <stdint.h>
 
-#include "libbase58.h"
-
 #include "policy.h"
 
 static uint8_t owner_pk[crypto_sign_ed25519_PUBLICKEYBYTES];
@@ -57,6 +55,21 @@ int main(int argc, char **argv) {
   memcpy(&pol->policy_body.subject_pk, subject_pk, crypto_sign_ed25519_PUBLICKEYBYTES);
   // ToDo: populate actions
 
+  // encode policy body to binary
+  char *pol_body_bin;
+  size_t pol_body_bin_len;
+
+  assert(policy_body_encode_binary(pol->policy_body, &pol_body_bin, &pol_body_bin_len) == POLICY_OK);
+
+  printf("%s \n", pol_body_bin);
+
+  // decode policy body from binary
+  policy_body_t *decoded_pol_body_bin = calloc(1, sizeof(policy_body_t));
+  assert(policy_decode_binary_body(pol_body_bin, pol_body_bin_len, decoded_pol_body_bin) == POLICY_OK);
+
+  free(decoded_pol_body_bin);
+  free(pol_body_bin);
+
   // sign policy
   assert(policy_sign(pol, owner_sk) > 0);
 
@@ -70,14 +83,16 @@ int main(int argc, char **argv) {
   printf("json: %s\n", pol_json);
 
   // decode policy JSON
-  policy_t *decoded_pol = calloc(1, sizeof(policy_t));
-  assert(policy_decode_json(pol_json, decoded_pol) == POLICY_OK);
+  policy_t *decoded_pol_json = calloc(1, sizeof(policy_t));
+  assert(policy_decode_json(pol_json, decoded_pol_json) == POLICY_OK);
 
   // compare values
-  assert(memcmp(pol->policy_id, decoded_pol->policy_id, crypto_generichash_blake2b_BYTES + crypto_sign_BYTES) == 0);
-  assert(memcmp(pol->policy_body.object_pk, decoded_pol->policy_body.object_pk, crypto_sign_ed25519_PUBLICKEYBYTES) == 0);
-  assert(memcmp(pol->policy_body.subject_pk, decoded_pol->policy_body.subject_pk, crypto_sign_ed25519_PUBLICKEYBYTES) == 0);
+  assert(memcmp(pol->policy_id, decoded_pol_json->policy_id, crypto_generichash_blake2b_BYTES + crypto_sign_BYTES) == 0);
+  assert(memcmp(pol->policy_body.object_pk, decoded_pol_json->policy_body.object_pk, crypto_sign_ed25519_PUBLICKEYBYTES) == 0);
+  assert(memcmp(pol->policy_body.subject_pk, decoded_pol_json->policy_body.subject_pk, crypto_sign_ed25519_PUBLICKEYBYTES) == 0);
   // ToDo: assert actions
+
+  free(decoded_pol_json);
 
   return 0;
 

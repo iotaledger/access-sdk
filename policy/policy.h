@@ -128,4 +128,12 @@ uint8_t policy_encode_json(policy_t *pol, unsigned char pol_json[]);
  */
 uint8_t policy_decode_json(unsigned char pol_json[], policy_t *pol);
 
+uint8_t policy_encode_binary(policy_t *pol, char *pol_bin, size_t *pol_bin_size);
+
+uint8_t policy_body_encode_binary(policy_body_t pol_body, char **pol_body_bin, size_t *pol_body_bin_size);
+
+uint8_t policy_decode_binary(char *pol_bin, size_t *pol_bin_size, policy_t *pol);
+
+uint8_t policy_decode_binary_body(char *pol_body_bin, size_t pol_body_bin_size, policy_body_t *pol_body);
+
 #endif //POLICY_H
