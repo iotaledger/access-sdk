@@ -7,17 +7,30 @@
 #define ACTION_ERROR -1
 
 /**
+ * @brief attribute enum type
+ */
+typedef enum {
+
+  /*@{*/
+  ATTR_NUMBER,
+  ATTR_STRING,
+  ATTR_BOOL,
+  /*@}*/
+
+} attribute_enum;
+
+/**
  * @brief fee enum type
  */
 typedef enum {
 
   /*@{*/
-  NULL_FEE, /**< no fee */
-  ONE_TIME_FEE, /**< one time fee */
-  PER_USE_FEE /**< per use fee */
+  FEE_NULL, /**< no fee */
+  FEE_ONE_TIME, /**< one time fee */
+  FEE_PER_USE /**< per use fee */
   /*@}*/
 
-} fee_t;
+} fee_enum;
 
 /**
  * @brief attribute struct type
@@ -92,7 +105,7 @@ uint8_t action_destroy(action_t *action);
  * @param attribute_value void pointer with attribute value
  * @return
  */
-uint8_t action_add_attribute(action_t *action, char *attribute_id, void *attribute_value);
+uint8_t action_add_attribute(action_t *action, char *attribute_id, void *attribute_value, attribute_enum attribute_type);
 
 /**
  * @brief add obligation_t to action_t
@@ -102,6 +115,12 @@ uint8_t action_add_attribute(action_t *action, char *attribute_id, void *attribu
  */
 uint8_t action_add_obligation(action_t *action, char *obligation_id);
 
-uint8_t action_encode_json(action_t *action, unsigned char action_json[]);
+/**
+ * @brief encode action list to json
+ * @param action list of action_t (input)
+ * @param action_json string with action json (output)
+ * @return ACTION_OK or ACTION_ERROR
+ */
+uint8_t action_encode_json(action_t *actions, char *action_json_output);
 
 #endif  // ACTION_H

@@ -153,6 +153,7 @@ int main(int argc, char **argv) {
   assert(policy_verify(pol, owner_pk) == POLICY_OK);
 
   // encode policy to JSON
+  // ToDo: remove POLICY_JSON_MAX_LEN
   char pol_json[POLICY_JSON_MAX_LEN];
   assert(policy_encode_json(pol, pol_json) == POLICY_OK);
 
