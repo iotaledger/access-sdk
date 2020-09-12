@@ -17,12 +17,13 @@
 # limitations under the License.
 #
 
-cmake_minimum_required(VERSION 3.11)
+set(sources client.c server.c tcpip.c tcpip_logger.c)
 
-set(target tcpip)
-set(sources tcpip.c)
+add_library(tcpip ${sources})
+target_include_directories(tcpip PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${iota_common_SOURCE_DIR})
+target_link_directories(tcpip PUBLIC ${iota_common_BINARY_DIR}/lib)
+target_link_libraries(tcpip PRIVATE common pthread)
 
-add_library(${target} ${sources})
-target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
-add_test(${target} ${target})
+if(TEST)
+  add_subdirectory(tests)
+endif()

@@ -26,6 +26,7 @@ var searchData=
   ['pdp_5fgrant',['PDP_GRANT',['../pdp_8h.html#ab70d538c7a075582836086898e3a6d60af2e5a30c00b89d8a5144adeb1faf8a34',1,'pdp.h']]],
   ['pep_5fplugin_5faction_5fcb',['PEP_PLUGIN_ACTION_CB',['../pep__plugin_8h.html#a67f790c6bbd02d241d98cade58fc3804a29ef7f68f8d477006bc41f37b0cd5f42',1,'pep_plugin.h']]],
   ['pep_5fplugin_5fcallback_5fcount',['PEP_PLUGIN_CALLBACK_COUNT',['../pep__plugin_8h.html#a67f790c6bbd02d241d98cade58fc3804ae81b62f37f15b9c64a21920ace8283b1',1,'pep_plugin.h']]],
+  ['per_5fuse_5ffee',['PER_USE_FEE',['../policy_8h.html#a40093d6e2ce378ce31703b6b35f5c28cac9fbf9091f5a4ee7eef60ff53709ead6',1,'policy.h']]],
   ['pip_5ferror',['PIP_ERROR',['../pip_8h.html#aa579b35837197c9c6695b09552f7acd9a8d4e2fe19b5b829b27cea58396a64fbf',1,'pip.h']]],
   ['pip_5fno_5ferror',['PIP_NO_ERROR',['../pip_8h.html#aa579b35837197c9c6695b09552f7acd9acc33e752b5c1b2f9d9ee38b41208799d',1,'pip.h']]],
   ['pip_5fplugin_5facquire_5fcb',['PIP_PLUGIN_ACQUIRE_CB',['../pip__plugin_8h.html#a3568bd96325693b542c5d1b076997e2eae9ef8641b4dc04a188032e706bbfcca0',1,'pip_plugin.h']]],

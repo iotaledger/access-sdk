@@ -4,9 +4,7 @@ digraph "policy/encoding/json/json_helper.h"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node3 [label="policy/encoding/json\l/json_helper.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="auth/auth_helper.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth__helper_8c.html"];
+  Node4 [label="policy/encoding/json\l/json_helper.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$json__helper_8c.html"];
   Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="policy/encoding/json\l/json_helper.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$json__helper_8c.html"];
-  Node3 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="policy/pdp/pdp.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pdp_8c.html"];
+  Node5 [label="policy/pdp/pdp.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$pdp_8c.html"];
 }

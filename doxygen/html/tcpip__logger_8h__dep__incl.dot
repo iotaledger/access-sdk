@@ -1,0 +1,34 @@
+digraph "auth/tcpip/tcpip_logger.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node2 [label="auth/tcpip/tcpip_logger.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="auth/tcpip/tcpip.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tcpip_8h.html"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="auth/eddsa/auth_internal.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth__internal_8h.html"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="auth/auth.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth_8c.html"];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="auth/eddsa/auth_client.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth__client_8c.html"];
+  Node4 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="auth/eddsa/auth_internal.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth__internal_8c.html"];
+  Node4 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="auth/eddsa/auth_server.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth__server_8c.html"];
+  Node4 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="auth/eddsa/auth_utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$auth__utils_8h.html"];
+  Node3 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="auth/tcpip/client.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$client_8h.html"];
+  Node10 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="auth/tcpip/client.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$client_8c.html"];
+  Node3 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="auth/tcpip/server.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$server_8h.html"];
+  Node12 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="auth/tcpip/server.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$server_8c.html"];
+  Node3 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="auth/tcpip/tcpip.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tcpip_8c.html"];
+  Node2 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="auth/tcpip/tcpip_logger.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tcpip__logger_8c.html"];
+}

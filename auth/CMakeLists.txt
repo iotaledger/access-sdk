@@ -17,26 +17,51 @@
 # limitations under the License.
 #
 
-cmake_minimum_required(VERSION 3.11)
+add_subdirectory(tcpip)
+add_subdirectory(eddsa)
+add_subdirectory(cmd)
 
 # libs in the sandbox
 link_directories("${CMAKE_INSTALL_PREFIX}/lib")
 
-add_subdirectory(tcpip)
-add_subdirectory(${AUTH_FLAVOUR})
+set(target auth)
+
+set(libs
+  base58
+  tcpip
+  ${policy_format}
+  common
+  ccan
+  eddsa
+)
+
+set(sources
+  auth.c
+  auth_logger.c)
 
 set(include_dirs
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/../policy/encoding/${POLICY_FORMAT}
-  ${iota_common_SOURCE_DIR})
+  ${CMAKE_CURRENT_SOURCE_DIR}/tcpip
+  ${CMAKE_CURRENT_SOURCE_DIR}/eddsa
+  ${PROJECT_BINARY_DIR}/include
+  ${CMAKE_SOURCE_DIR}/policy/encoding/json/
+  ${CMAKE_SOURCE_DIR}/ccan
+  ${CMAKE_SOURCE_DIR}/ccan/ccan/base64/
+  ${CMAKE_SOURCE_DIR}/ccan/ccan/err/
+  ${CMAKE_SOURCE_DIR}/ccan/ccan/str/hex/)
 
-# libauth.a
-add_library(auth STATIC auth.c)
+add_library(${target} ${sources})
+
+add_dependencies(${target} ${libs})
+
 target_link_directories(auth PUBLIC
-  ${iota_common_BUILD_DIR}
-  ${CMAKE_CURRENT_BINARY_DIR}/${AUTH_FLAVOUR})
-target_include_directories(auth PUBLIC ${include_dirs})
-target_link_libraries(auth PRIVATE ${AUTH_FLAVOUR} ${POLICY_FORMAT} tcpip)
+  "${CMAKE_BINARY_DIR}/lib"
+  "${CMAKE_BINARY_DIR}/ccan"
+  "${CMAKE_INSTALL_PREFIX}/lib"
+  "${iota_common_BUILD_DIR}")
+
+target_include_directories(${target} PUBLIC ${include_dirs})
+target_link_libraries(${target} PUBLIC ${libs})
 
 install(TARGETS auth DESTINATION lib)
 install(FILES auth.h DESTINATION include)

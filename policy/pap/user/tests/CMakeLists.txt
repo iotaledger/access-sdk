@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-cmake_minimum_required(VERSION 3.11)
-
 set(target user_test)
 set(sources user_test.c)
 set(libs sqlite3 fastjson pap)

@@ -80,14 +80,13 @@ typedef struct attribute_value {
 } pdp_attribute_value_t;
 
 typedef struct {
-  char pol_id_str[2 * PDP_POL_ID_MAX_LEN + 1];
+  unsigned long action_name;
+  char pol_id[2 * PDP_POL_ID_MAX_LEN + 1];
   unsigned long start_time;
   unsigned long stop_time;
-  unsigned long balance;
-  char* wallet_address;
-  char* transaction_hash;
-  int transaction_hash_len;
-  char* value;
+  char* tx_addr;
+  char* tx_hash;
+  size_t tx_hash_len;
   pap_action_list_t* action_list;
 } pdp_action_t;
 

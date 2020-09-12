@@ -22,7 +22,7 @@ digraph "policy/pep/pep.c"
   Node4 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node9 [label="user.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$user_8h.html"];
   Node9 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node10 [label="user_implementation.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$user__implementation_8h.html"];
+  Node10 [label="user_db.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$user__db_8h.html"];
   Node2 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node0 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -39,5 +39,5 @@ digraph "policy/pep/pep.c"
   Node15 [label="plugin_manager.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$plugin__manager_8h.html"];
   Node15 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node0 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node16 [label="utils.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8h.html"];
+  Node16 [label="utils.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
 }

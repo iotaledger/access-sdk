@@ -1,5 +1,23 @@
 var searchData=
 [
-  ['next',['next',['../structpolicy__id__list__.html#a82caeefe70decce31735382112359d9d',1,'policy_id_list_::next()'],['../structpap__action__list__.html#a4ca6348f83fd04149e7e8ad64e6932ae',1,'pap_action_list_::next()'],['../struct__function__list.html#a3f32378d737884a2f39ef54eb80329de',1,'_function_list::next()'],['../structtimer__node.html#a36c52f8d93b13e455a31516ef75f2425',1,'timer_node::next()']]],
-  ['no_5fdead_5fcode',['no_dead_code',['../structvalidator__report__t.html#a2e8daec35a4fb12083a9360fd0fc0961',1,'validator_report_t']]]
+  ['pap_5flogger_5fid',['pap_logger_id',['../pap__logger_8c.html#af6f1eace9736cb3e7b4ce3da9906a6e5',1,'pap_logger_id():&#160;pap_logger.c'],['../pap__logger_8h.html#af6f1eace9736cb3e7b4ce3da9906a6e5',1,'pap_logger_id():&#160;pap_logger.c']]],
+  ['pdp_5flogger_5fid',['pdp_logger_id',['../pdp__logger_8c.html#aeac4f2f4e755f47e97086b4975d01d68',1,'pdp_logger_id():&#160;pdp_logger.c'],['../pdp__logger_8h.html#aeac4f2f4e755f47e97086b4975d01d68',1,'pdp_logger_id():&#160;pdp_logger.c']]],
+  ['peer_5fed25519_5fpk',['peer_ed25519_pk',['../structauth__struct.html#aa20f6301e1ff4dc8173824f2525cb3aa',1,'auth_struct']]],
+  ['peer_5fx25519_5fpk',['peer_x25519_pk',['../structauth__struct.html#adcfc113bce5fa0a20c8cdfb2b12bde9a',1,'auth_struct']]],
+  ['plugin_5flogger_5fid',['plugin_logger_id',['../plugin__logger_8c.html#afb6eb9cd8a3f128e6ccdfdb0a4cc4e1f',1,'plugin_logger_id():&#160;plugin_logger.c'],['../plugin__logger_8h.html#afb6eb9cd8a3f128e6ccdfdb0a4cc4e1f',1,'plugin_logger_id():&#160;plugin_logger.c']]],
+  ['plugin_5fspecific_5fdata',['plugin_specific_data',['../structplugin__.html#a8455b16385dc9914d19eb94c3d9b92be',1,'plugin_']]],
+  ['plugins',['plugins',['../structplugin__manager__t.html#a958e556f111c04876d5a3289c95dce89',1,'plugin_manager_t']]],
+  ['plugins_5fmax_5fnum',['plugins_max_num',['../structplugin__manager__t.html#a2cadb906d6295ea6366729b20217043a',1,'plugin_manager_t']]],
+  ['plugins_5fnum',['plugins_num',['../structplugin__manager__t.html#af76c5af574d93e46239ff95e0164bb83',1,'plugin_manager_t']]],
+  ['pol_5fid',['pol_id',['../structpap__action__list__.html#a0b061c1a7152f4cdb50d91beb85b9550',1,'pap_action_list_::pol_id()'],['../structpdp__action__t.html#a25bbdacfa81104231fb30ffafccb3833',1,'pdp_action_t::pol_id()']]],
+  ['policy',['policy',['../structpap__plugin__get__args__t.html#aaa8dd87e7009702fb5d5c81837b285ef',1,'pap_plugin_get_args_t']]],
+  ['policy_5fid',['policy_id',['../structauth__cmd__t.html#a71ce8d80ceefcad0622741a82f20349d',1,'auth_cmd_t::policy_id()'],['../structpap__policy__t.html#a7ec4591a596e85c5c0860eecf1833af9',1,'pap_policy_t::policy_id()'],['../structpolicy__id__list__.html#a7ec4591a596e85c5c0860eecf1833af9',1,'policy_id_list_::policy_id()'],['../structpap__plugin__get__args__t.html#a7ec4591a596e85c5c0860eecf1833af9',1,'pap_plugin_get_args_t::policy_id()'],['../structpap__plugin__has__args__t.html#a71ce8d80ceefcad0622741a82f20349d',1,'pap_plugin_has_args_t::policy_id()'],['../structpap__plugin__len__args__t.html#a71ce8d80ceefcad0622741a82f20349d',1,'pap_plugin_len_args_t::policy_id()'],['../structpolicy__t.html#a6e547b67b167b7cc2242c133ae8958e5',1,'policy_t::policy_id()']]],
+  ['policy_5fid_5fsignature',['policy_id_signature',['../structpap__policy__t.html#a2da834519f405f006f4b41b6aebe312d',1,'pap_policy_t']]],
+  ['policy_5flogger_5fid',['policy_logger_id',['../policy__logger_8c.html#a02661b7777ee3ff2f077fb331b820c31',1,'policy_logger_id():&#160;policy_logger.c'],['../policy__logger_8h.html#a02661b7777ee3ff2f077fb331b820c31',1,'policy_logger_id():&#160;policy_logger.c']]],
+  ['policy_5fobject',['policy_object',['../structpap__policy__object__t.html#a4120459e0b91765e8b85c2f55f985897',1,'pap_policy_object_t::policy_object()'],['../structpap__policy__t.html#afb6868ac0d7d2dbb039dadda631d737d',1,'pap_policy_t::policy_object()']]],
+  ['policy_5fobject_5fsize',['policy_object_size',['../structpap__policy__object__t.html#a480e4c83dcba7125b1f3a400e60c9273',1,'pap_policy_object_t']]],
+  ['pos',['pos',['../structjsmn__parser.html#addcb93d939ffa259ff1d9247bdd590fd',1,'jsmn_parser']]],
+  ['previous',['previous',['../struct__function__list.html#a9e6ee9141e09336efd4c9fbf976b2f25',1,'_function_list']]],
+  ['proper_5fformat',['proper_format',['../structvalidator__report__t.html#aca4e85ad19cfe63af93724583afa36e5',1,'validator_report_t']]],
+  ['public_5fkey',['public_key',['../structpap__policy__id__signature__t.html#a26bff882d92e4fe75913746a4ab16d54',1,'pap_policy_id_signature_t']]]
 ];

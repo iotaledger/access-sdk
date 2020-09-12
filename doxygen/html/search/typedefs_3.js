@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ea_5fkeys_5ft',['ea_keys_t',['../eddsa_2auth__internal_8h.html#aae0fd012ba09dbdd3138ce78e1f0f503',1,'auth_internal.h']]]
+  ['optimizer_5ffunction_5flist_5felem_5ft',['optimizer_function_list_elem_t',['../optimizer_8h.html#afa0204935a74fb6c56666ce0896b36f2',1,'optimizer.h']]],
+  ['optimizer_5fsymbol_5ft',['optimizer_symbol_t',['../optimizer_8h.html#af1efecad26989a87d8302bb0f0d26e69',1,'optimizer.h']]]
 ];

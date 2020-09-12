@@ -1,23 +1,11 @@
 var searchData=
 [
-  ['pap_5flogger_5fid',['pap_logger_id',['../pap__logger_8c.html#af6f1eace9736cb3e7b4ce3da9906a6e5',1,'pap_logger_id():&#160;pap_logger.c'],['../pap__logger_8h.html#af6f1eace9736cb3e7b4ce3da9906a6e5',1,'pap_logger_id():&#160;pap_logger.c']]],
-  ['pdp_5flogger_5fid',['pdp_logger_id',['../pdp__logger_8c.html#aeac4f2f4e755f47e97086b4975d01d68',1,'pdp_logger_id():&#160;pdp_logger.c'],['../pdp__logger_8h.html#aeac4f2f4e755f47e97086b4975d01d68',1,'pdp_logger_id():&#160;pdp_logger.c']]],
-  ['plugin_5flogger_5fid',['plugin_logger_id',['../plugin__logger_8c.html#afb6eb9cd8a3f128e6ccdfdb0a4cc4e1f',1,'plugin_logger_id():&#160;plugin_logger.c'],['../plugin__logger_8h.html#afb6eb9cd8a3f128e6ccdfdb0a4cc4e1f',1,'plugin_logger_id():&#160;plugin_logger.c']]],
-  ['plugin_5fspecific_5fdata',['plugin_specific_data',['../structplugin__.html#a8455b16385dc9914d19eb94c3d9b92be',1,'plugin_']]],
-  ['plugins',['plugins',['../structplugin__manager__t.html#a958e556f111c04876d5a3289c95dce89',1,'plugin_manager_t']]],
-  ['plugins_5fmax_5fnum',['plugins_max_num',['../structplugin__manager__t.html#a2cadb906d6295ea6366729b20217043a',1,'plugin_manager_t']]],
-  ['plugins_5fnum',['plugins_num',['../structplugin__manager__t.html#af76c5af574d93e46239ff95e0164bb83',1,'plugin_manager_t']]],
-  ['pol_5fid_5fstr',['pol_id_str',['../structpdp__action__t.html#a50fe4dedb11b2bc9ca48fc33f5e84938',1,'pdp_action_t']]],
-  ['policy',['policy',['../structpap__plugin__get__args__t.html#aaa8dd87e7009702fb5d5c81837b285ef',1,'pap_plugin_get_args_t']]],
-  ['policy_5fid',['policy_id',['../structpap__policy__t.html#a7ec4591a596e85c5c0860eecf1833af9',1,'pap_policy_t::policy_id()'],['../structpolicy__id__list__.html#a7ec4591a596e85c5c0860eecf1833af9',1,'policy_id_list_::policy_id()'],['../structpap__plugin__get__args__t.html#a7ec4591a596e85c5c0860eecf1833af9',1,'pap_plugin_get_args_t::policy_id()'],['../structpap__plugin__has__args__t.html#a71ce8d80ceefcad0622741a82f20349d',1,'pap_plugin_has_args_t::policy_id()'],['../structpap__plugin__len__args__t.html#a71ce8d80ceefcad0622741a82f20349d',1,'pap_plugin_len_args_t::policy_id()']]],
-  ['policy_5fid_5fsignature',['policy_id_signature',['../structpap__policy__t.html#a2da834519f405f006f4b41b6aebe312d',1,'pap_policy_t']]],
-  ['policy_5fid_5fstr',['policy_id_str',['../structpap__action__list__.html#a1da28d323ecf5226e9ef7dd6cd66a5da',1,'pap_action_list_']]],
-  ['policy_5fobject',['policy_object',['../structpap__policy__object__t.html#a4120459e0b91765e8b85c2f55f985897',1,'pap_policy_object_t::policy_object()'],['../structpap__policy__t.html#afb6868ac0d7d2dbb039dadda631d737d',1,'pap_policy_t::policy_object()']]],
-  ['policy_5fobject_5fsize',['policy_object_size',['../structpap__policy__object__t.html#a480e4c83dcba7125b1f3a400e60c9273',1,'pap_policy_object_t']]],
-  ['pos',['pos',['../structjsmn__parser.html#addcb93d939ffa259ff1d9247bdd590fd',1,'jsmn_parser']]],
-  ['previous',['previous',['../struct__function__list.html#a9e6ee9141e09336efd4c9fbf976b2f25',1,'_function_list']]],
-  ['private_5fkey',['private_key',['../structauth__struct.html#af84738c6aeec8055f423fa45dd2c8d2a',1,'auth_struct']]],
-  ['proper_5fformat',['proper_format',['../structvalidator__report__t.html#aca4e85ad19cfe63af93724583afa36e5',1,'validator_report_t']]],
-  ['pub_5fkey',['pub_key',['../structauth__struct.html#aad713005343ebfb84e09a7441d655802',1,'auth_struct']]],
-  ['public_5fkey',['public_key',['../structauth__struct.html#a1b15e2b6adb24dae950013b9203b0036',1,'auth_struct::public_key()'],['../structpap__policy__id__signature__t.html#a26bff882d92e4fe75913746a4ab16d54',1,'pap_policy_id_signature_t::public_key()']]]
+  ['tcpip_5flogger_5fid',['tcpip_logger_id',['../tcpip__logger_8c.html#a1dda38dd9e8cd3de030efeac65159fe3',1,'tcpip_logger_id():&#160;tcpip_logger.c'],['../tcpip__logger_8h.html#a1dda38dd9e8cd3de030efeac65159fe3',1,'tcpip_logger_id():&#160;tcpip_logger.c']]],
+  ['toknext',['toknext',['../structjsmn__parser.html#a07a43834d3e063cab9e9a69b37dc55b8',1,'jsmn_parser']]],
+  ['toksuper',['toksuper',['../structjsmn__parser.html#a81bf640a522fb6791889aac12f71f8db',1,'jsmn_parser']]],
+  ['tx_5faddr',['tx_addr',['../structpdp__action__t.html#a84deb49e8d0e58070b96e7aa5d837276',1,'pdp_action_t::tx_addr()'],['../structaction__t.html#a84deb49e8d0e58070b96e7aa5d837276',1,'action_t::tx_addr()']]],
+  ['tx_5fhash',['tx_hash',['../structpdp__action__t.html#acce26c053f11526a5bbc13adfb9f86a1',1,'pdp_action_t::tx_hash()'],['../structaction__t.html#acce26c053f11526a5bbc13adfb9f86a1',1,'action_t::tx_hash()']]],
+  ['tx_5fhash_5flen',['tx_hash_len',['../structpdp__action__t.html#ac7fdc3cf39a9edf66dbe28469cda66aa',1,'pdp_action_t']]],
+  ['tx_5fvalue',['tx_value',['../structaction__t.html#a84cb99a6f0bb0bfd90742d66e470e386',1,'action_t']]],
+  ['type',['type',['../structauth__ctx__t.html#a1d127017fb298b889f4ba24752d08b8e',1,'auth_ctx_t::type()'],['../structauth__struct.html#ac765329451135abec74c45e1897abf26',1,'auth_struct::type()'],['../structjsmntok.html#a7def41ebc3980f6e4526819b42c2721f',1,'jsmntok::type()'],['../structoptimizer__log__var__t.html#aa7790b98457346a1d7a22d32cd56323a',1,'optimizer_log_var_t::type()'],['../structattribute__value.html#a7c483835d9d9aab152eb64ee6bedd020',1,'attribute_value::type()'],['../structpip__attribute__object__t.html#af4a3d72fff14e69cef4d0be7fe4a60ff',1,'pip_attribute_object_t::type()']]]
 ];

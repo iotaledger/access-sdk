@@ -1,12 +1,16 @@
 var searchData=
 [
   ['o',['O',['../symbols_8h.html#a396fecfabe3105afc15a61c209f910f0',1,'O():&#160;symbols.h'],['../symbols_8h.html#ac9ba2c61c69c381438f186315b5f2e9b',1,'o():&#160;symbols.h']]],
-  ['o_5fpad',['O_PAD',['../eddsa_2auth__internal_8h.html#a41cf47e57277056b2d817d8b8f92e4d6',1,'auth_internal.h']]],
   ['oa_5fabsorption',['OA_ABSORPTION',['../optimizer_8h.html#adb9c95e634e6c8e65921920fca2e66d7aa841c7d4ca8443ebcd36382722f364fd',1,'optimizer.h']]],
   ['oa_5fnone',['OA_NONE',['../optimizer_8h.html#adb9c95e634e6c8e65921920fca2e66d7ac7ffe09ace9e9142f71aa5294f5c7160',1,'optimizer.h']]],
   ['obj_5fto_5fexpression',['obj_to_expression',['../optimizer_8c.html#a34f2efe20b4122fb38850808d6ebc92e',1,'optimizer.c']]],
+  ['object_5fpk',['object_pk',['../structpolicy__t.html#a9eab22eb3843f961364853de7323dbd8',1,'policy_t']]],
   ['obligation',['obligation',['../structpep__plugin__args__t.html#ad28edff6bb2a56c2907dca89e1542842',1,'pep_plugin_args_t']]],
+  ['obligation_5fid',['obligation_id',['../structobligation__t.html#a4eaf4f2b2e2524337a993a574839fe6a',1,'obligation_t']]],
+  ['obligation_5ft',['obligation_t',['../structobligation__t.html',1,'']]],
+  ['obligations',['obligations',['../structaction__t.html#a08326b07e17a4f2d5a020c178190a2cb',1,'action_t']]],
   ['one',['ONE',['../symbols_8h.html#a206b6f5362e56b51ca957635350b70b6',1,'symbols.h']]],
+  ['one_5ftime_5ffee',['ONE_TIME_FEE',['../policy_8h.html#a40093d6e2ce378ce31703b6b35f5c28ca3ae82d90c7ac66c53483890376b4a77f',1,'policy.h']]],
   ['op_5fand',['OP_AND',['../parser_8h.html#ad7a3ab52d606067ad2cb8b6412a797f3ae2310d00f26e94b32317ecd168fb7e18',1,'parser.h']]],
   ['op_5feq',['OP_EQ',['../parser_8h.html#ad7a3ab52d606067ad2cb8b6412a797f3a1634898deb6e4d1bcb15416034c641c5',1,'parser.h']]],
   ['op_5fgeq',['OP_GEQ',['../parser_8h.html#ad7a3ab52d606067ad2cb8b6412a797f3abcf62e175a434a8e198e1d3ec41d41d0',1,'parser.h']]],
@@ -15,7 +19,6 @@ var searchData=
   ['op_5flte',['OP_LTE',['../parser_8h.html#ad7a3ab52d606067ad2cb8b6412a797f3a1ef7283640d22f87945d58bd6cfc4927',1,'parser.h']]],
   ['op_5for',['OP_OR',['../parser_8h.html#ad7a3ab52d606067ad2cb8b6412a797f3af317be3def89f5f66558bbc402291176',1,'parser.h']]],
   ['op_5funknown',['OP_UNKNOWN',['../parser_8h.html#ad7a3ab52d606067ad2cb8b6412a797f3a3070ec4253e2531351d7aeb586069a54',1,'parser.h']]],
-  ['open_2ec',['open.c',['../open_8c.html',1,'']]],
   ['operation',['operation',['../structoptimizer__operator__t.html#a9b90394e6791890c2b3422b56d5d8a30',1,'optimizer_operator_t']]],
   ['operator',['operator',['../unionoptimizer__function__element__t.html#ab92b1991b11dca737c6ff29e4e29c65d',1,'optimizer_function_element_t']]],
   ['opt_5fmax_5fstr_5flen',['OPT_MAX_STR_LEN',['../optimizer_8h.html#af9aba8ef8572f1ddbe81ce4f12dd88a6',1,'optimizer.h']]],
@@ -41,6 +44,5 @@ var searchData=
   ['optimizer_5freturn_5fe',['optimizer_return_e',['../optimizer_8h.html#a326484956bfb2e9ec748058793a5a5a1',1,'optimizer.h']]],
   ['optimizer_5fsymbol_5ft',['optimizer_symbol_t',['../optimizer_8h.html#af1efecad26989a87d8302bb0f0d26e69',1,'optimizer.h']]],
   ['optimizer_5ftype_5fof_5ffunc_5felem_5fe',['optimizer_type_of_func_elem_e',['../optimizer_8h.html#ad7806bfbfcf077c68c617c70b3a5d40e',1,'optimizer.h']]],
-  ['or',['OR',['../pdp_8h.html#a40edf8b2e3ddde4f654a272d06bb6d9ea96727447c0ad447987df1c6415aef074',1,'pdp.h']]],
-  ['out_5fpacket_5fcount',['out_packet_count',['../structauth__struct.html#aeb15ffbf422489adca80b89745683abf',1,'auth_struct']]]
+  ['or',['OR',['../pdp_8h.html#a40edf8b2e3ddde4f654a272d06bb6d9ea96727447c0ad447987df1c6415aef074',1,'pdp.h']]]
 ];

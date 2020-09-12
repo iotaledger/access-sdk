@@ -126,7 +126,7 @@ typedef struct policy_id_list_ {
 } pap_policy_id_list_t;
 
 typedef struct pap_action_list_ {
-  char policy_id_str[PAP_POL_ID_MAX_LEN * 2 + 1];  // Consider null character
+  char pol_id[PAP_POL_ID_MAX_LEN * 2 + 1];  // Consider null character
   char action[PAP_MAX_STR_LEN];
   pap_policy_value_t is_available;
   struct pap_action_list_ *next;

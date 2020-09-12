@@ -18,8 +18,6 @@
 # limitations under the License.
 #
 
-cmake_minimum_required(VERSION 3.11)
-
 if(POLICY_FORMAT STREQUAL json)
   add_subdirectory(json)
 endif()

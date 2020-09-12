@@ -1,0 +1,3 @@
+agar_ok_deps := ccan/agar/test/api-adjacency.c ccan/agar/test/api-bellman_ford.c ccan/agar/test/api-bfs.c ccan/agar/test/api-dfs.c ccan/agar/test/api-dijkstra.c ccan/agar/test/chain.c ccan/agar/test/error-graph.c ccan/agar/test/full.c ccan/agar/test/grid.c ccan/agar/test/negacycle.c ccan/agar/test/parallel.c ccan/agar/test/shortcut1.c ccan/agar/test/shortcut2.c ccan/agar/test/simple-graphr.h ccan/agar/test/traversal1.c ccan/agar/test/trivial.c  ccan/agar/agar.o  ccan/aga/.ok ccan/container_of/.ok ccan/hash/.ok ccan/htable/.ok ccan/tal/.ok 
+ccan/agar/.ok: $(agar_ok_deps)
+ccan/agar/.fast-ok: $(agar_ok_deps:%.ok=%.fast-ok)

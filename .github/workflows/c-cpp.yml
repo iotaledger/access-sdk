@@ -1,0 +1,32 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Install deps
+      run: |
+        sudo apt-get update
+        sudo apt-get install python3-distutils libfastjson-dev libcurl4-gnutls-dev libssl-dev -y
+
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+        # This can be removed once access-sdk is made public
+        token: ${{ secrets.PAT }}
+
+    - name: Run CMake
+      uses: lukka/run-cmake@v2.5
+      with:
+        cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
+        buildDirectory: ${{ github.workspace }}/build/
+        cmakeAppendedArgs: -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/build/ext_install
+        buildWithCMake: true

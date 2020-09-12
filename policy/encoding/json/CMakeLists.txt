@@ -17,9 +17,10 @@
 # limitations under the License.
 #
 
-cmake_minimum_required(VERSION 3.11)
+add_library(json jsmn.c json_helper.c)
+target_include_directories(json PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-set(target json)
+install(TARGETS json DESTINATION lib)
+install(FILES jsmn.h DESTINATION include)
+install(FILES json_helper.h DESTINATION include)
 
-add_library(${target} jsmn.c json_helper.c)
-target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
