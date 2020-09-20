@@ -5,7 +5,7 @@ The Figure below shows a visual representation of the Policy Update Protocol:
 ToDo: refactor this.
 -->
 
-![drawing](/docs/images/update.png)
+![drawing](/docs/v0.1.0/images/update.png)
 1. Supervisor creates Access, Wallet and Network Actors. Network Actor starts Policy Update and Request Listener Daemons.
 2. Access Actor registers Platform Plugin callbacks.
 3. PAP sends Storage Checksum to Network Actor, who forwards it to the Tangle Policy Store (TPS). If ID sent by PAP matches with the Checksum of Policy List stored on the TPS, then TPS replies ok (nothing to update). If the ID differs, the TPS replies with Policy List (update required).

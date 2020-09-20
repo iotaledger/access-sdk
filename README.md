@@ -39,16 +39,16 @@ IOTA Access is divided into a few repositories:
 ## Documentation
 For newcomers, documentation is the ideal place to start. It will give you an overview of how the project is structured.
 
-The [docs](/docs) directory contains markdown files for documentation:
- - [Introduction](/docs/01-introduction.md)
- - [Engineering Specification](/docs/02-engineering-specs.md)
- - [Architecture](/docs/03-architecture.md)
- - [Plugin Specs](/docs/04-plugin-specs.md)
- - [Authentication Specs](/docs/05-auth-specs.md)
- - [Policy Specs](/docs/06-policy-specs.md)
- - [Access Server Reference Implementation](/docs/07-asri.md)
- - [Access Policy Updater](/docs/08-apu.md)
- - [Getting Started](/docs/09-getting-started.md)
+The [docs](/docs/v0.1.0) directory contains markdown files for documentation:
+ - [Introduction](/docs/v0.1.0/01-introduction.md)
+ - [Engineering Specification](/docs/v0.1.0/02-engineering-specs.md)
+ - [Architecture](/docs/v0.1.0/03-architecture.md)
+ - [Plugin Specs](/docs/v0.1.0/04-plugin-specs.md)
+ - [Authentication Specs](/docs/v0.1.0/05-auth-specs.md)
+ - [Policy Specs](/docs/v0.1.0/06-policy-specs.md)
+ - [Access Server Reference Implementation](/docs/v0.1.0/07-asri.md)
+ - [Access Policy Updater](/docs/v0.1.0/08-apu.md)
+ - [Getting Started](/docs/v0.1.0/09-getting-started.md)
 
  ## SDK Doxygen
 You can find a precompiled Doxygen html book of the Access SDK at [`doxygen/html`](https://github.com/iotaledger/access-sdk/tree/master/doxygen/html).

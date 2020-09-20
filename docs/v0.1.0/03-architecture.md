@@ -8,7 +8,7 @@ It can be divided in 4 stacked layers:
 - API Layer
 - Portability Layer
 
-![drawing](/docs/images/arch.svg)
+![drawing](/docs/v0.1.0/images/arch.svg)
 
 The **Portability Layer** implements platform-dependent code. Anything related to drivers, Operating Systems and base libraries.
 
@@ -31,7 +31,7 @@ The Access Core API is divided into 4 different modules (and a few submodules):
 - Policy Enforcement Point (PEP)
 - Policy Decision Point (PDP)
 
-![drawing](/docs/images/pxp.png)
+![drawing](/docs/v0.1.0/images/pxp.png)
 
 ##### Policy Administration Point
 
@@ -53,8 +53,8 @@ On action request, Policy Enforcement Point (PEP) requests decision from Policy 
 
 Note: `GoC` stands for `Grant OR Conflict`, while `DoC` stands for `Denial OR Conflict`. This comes from the logical foundation behind the [Policy Language](/docs/04-policy-specs.md).
 
-![drawing](/docs/images/pdp.png)
+![drawing](/docs/v0.1.0/images/pdp.png)
 
 Calculation of `policy GoC` and `policy DoC` are modules that recursively solve every operation in the policy and return result at the end. The module is executed recursively as long as attributes in the attribute list of the policy contain predefined operations.
 
-![drawing](/docs/images/pdp2.png)
+![drawing](/docs/v0.1.0/images/pdp2.png)
