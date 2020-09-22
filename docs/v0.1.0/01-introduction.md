@@ -27,6 +27,8 @@ Alice's uses Access Mobile Client to create the Policy that delegates device acc
 
 Carol's uses Access Mobile Client to initiate Access Requests, and her requests are stored on the Tangle.
 
+**Note**: currently, the MVP has a Policy Store acting as an intermediary database between the Server, Client and the Tangle. The long term vision for the project is based on a Permanode solution, as mentioned in Scenario 2.
+
 ## Scenario 3
 Alice owns a company that functions in a building with smart locks. Alice writes a Policy where her employees are allowed to enter the building only under specific conditions (such as time, employee ID, clearance level).
 
