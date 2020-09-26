@@ -26,7 +26,7 @@ In automotive and smart mobility contexts, none of this works reliably. Vehicles
 For example, a vehicle with IOTA Access enabled, could connect to a parking entry station with IOTA Access enabled, and that entry station could directly allow the vehicle to enter and park based on the policy language if it has been approved. Or if there is a payment requirement, the wallet integration built into IOTA Access can allow for direct M2M payments between that vehicle and the parking entry station. No human interaction directly required. The station gives access to the vehicle. The vehicle pays for that access in a predetermined fashion, which could be as granular as by the second charge rates. When the vehicle leaves, the payment stops, and the transaction is concluded. This can work for EV charging, tolling, parking, fast food, usage-based road tax, mobility as a service use cases, or even delivery services. A user want’s a package dropped off in the trunk of their car while they are at work instead of at their house, Access could enable it. A user wants to rent out an autonomous vehicle in the future to make money while they work, then Access could enable that. A homeowner wants a smart lock to directly and securely manage access and payment for that access to a home they are renting out as an AirBnB. Access could enable that. All of these direct, frictionless use cases and more rely on access and permissions systems. And most cannot be done securely or reliably with centralized systems.
 
 ## Disclaimer
-IOTA Access is a Work-in-Progress, and the project should be seen as a [*Minimum Viable Product*](https://en.wikipedia.org/wiki/Minimum_viable_product) (MVP).
+IOTA Access is a Work-in-Progress, and the project should be seen as a [Minimal Viable Product (MVP)](https://www.agilealliance.org/glossary/mvp). It is by no means ready for production.
 
 ## Repositories
 IOTA Access is divided into a few repositories:
@@ -36,10 +36,10 @@ IOTA Access is divided into a few repositories:
 - [github.com/iotaledger/access-mobile-client](https://github.com/iotaledger/access-mobile-client.git) contains an Android-based Access Reference Implementation. It is meant to work as the User Interface both for creating policies and initiating access requests. It will eventually be replaced by the cross-platform implementation under the access-client repository.
 - [github.com/iotaledger/access-policy-store](https://github.com/iotaledger/access-policy-store) contains the Access Policy Store. It consists of interface servers for managing policies. It will eventually be rendered obsolete when a Permanode solution is rolled out.
 
-## Documentation
-For newcomers, documentation is the ideal place to start. It will give you an overview of how the project is structured.
+## Documentation (v0.1.0-alpha)
 
-The [docs](/docs/v0.1.0) directory contains markdown files for documentation:
+The [docs](/docs/v0.1.0) directory contains markdown files for documentation over the `v0.1.0-alpha` release tag.
+Please note that it does not necessarily reflect the current state of `master` or `develop` branches. In case you want to inspect the code, make sure you set the release tag.
  - [Introduction](/docs/v0.1.0/01-introduction.md)
  - [Engineering Specification](/docs/v0.1.0/02-engineering-specs.md)
  - [Architecture](/docs/v0.1.0/03-architecture.md)
@@ -50,8 +50,9 @@ The [docs](/docs/v0.1.0) directory contains markdown files for documentation:
  - [Access Policy Updater](/docs/v0.1.0/08-apu.md)
  - [Getting Started](/docs/v0.1.0/09-getting-started.md)
 
- ## SDK Doxygen
+## SDK Doxygen (develop)
 You can find a precompiled Doxygen html book of the Access SDK at [`doxygen/html`](https://github.com/iotaledger/access-sdk/tree/master/doxygen/html).
+It reflects the state of the `develop` branch.
 
 In order to read it:
 1. Clone `https://github.com/iotaledger/access-sdk` to `$SDK` directory
