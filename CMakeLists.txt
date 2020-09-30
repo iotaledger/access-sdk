@@ -55,11 +55,6 @@ endif()
 
 include(cmake/iota_common.cmake)
 include(cmake/sqlite3.cmake)
-if(AUTH_FLAVOUR STREQUAL eddsa)
-  include(cmake/sodium.cmake)
-elseif(AUTH_FLAVOUR STREQUAL rsa)
-
-endif()
 
 # Global includes
 include_directories(
