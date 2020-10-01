@@ -5,7 +5,7 @@
 
 #include "sodium.h"
 
-#include "action.h"
+#include "action/action.h"
 
 #define POLICY_OK 0
 #define POLICY_ERROR -1
