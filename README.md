@@ -32,8 +32,7 @@ IOTA Access is a Work-in-Progress, and the project should be seen as a [Minimal 
 IOTA Access is divided into a few repositories:
 - [github.com/iotaledger/access-sdk](http://github.com/iotaledger/access-sdk) contains the Access Core Software Development Kit (SDK). It consists of the Core SDK components used as building pieces for Access dApps (server and client).
 - [github.com/iotaledger/access-server](https://github.com/iotaledger/access-server) contains the Access Server Reference Implementation (ASRI). It consists of the embedded software meant to be executed on the target device for which access will be delegated.
-- [github.com/iotaledger/access-client](http://github.com/iotaledger/access-client) contains the Access Client Reference Implementation (ACRI). It provides the User Interface both for creating policies and initiating access requests. At the moment, it’s a Work In Progress (WIP).
-- [github.com/iotaledger/access-mobile-client](https://github.com/iotaledger/access-mobile-client.git) contains an Android-based Access Reference Implementation. It is meant to work as the User Interface both for creating policies and initiating access requests. It will eventually be replaced by the cross-platform implementation under the access-client repository.
+- [github.com/iotaledger/access-mobile-client](https://github.com/iotaledger/access-mobile-client.git) contains an Android-based Access Reference Implementation. It is meant to work as the User Interface both for creating policies and initiating access requests. It will eventually be replaced by the cross-platform implementation.
 - [github.com/iotaledger/access-policy-store](https://github.com/iotaledger/access-policy-store) contains the Access Policy Store. It consists of interface servers for managing policies. It will eventually be rendered obsolete when a Permanode solution is rolled out.
 
 ## Documentation (v0.1.0-alpha)
