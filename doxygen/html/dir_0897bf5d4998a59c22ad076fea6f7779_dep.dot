@@ -1,9 +1,0 @@
-digraph "access_auth_api/implementations/openssl" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  subgraph clusterdir_df785a38b30569023bad7167d93f4e58 {
-    graph [ bgcolor="#ddddee", pencolor="black", label="implementations" fontname="Helvetica", fontsize="10", URL="dir_df785a38b30569023bad7167d93f4e58.html"]
-  dir_0897bf5d4998a59c22ad076fea6f7779 [shape=box, label="openssl", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_0897bf5d4998a59c22ad076fea6f7779.html"];
-  }
-}
